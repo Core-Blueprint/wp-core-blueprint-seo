@@ -49,18 +49,12 @@ final class Assets {
 			return;
 		}
 
+		// PageRegistry owns shared Core Admin presentation. SEO contributes only
+		// feature-specific settings composition and behavior.
 		wp_enqueue_style(
 			'core-blueprint-seo-admin',
 			CB_SEO_URL . 'assets/css/seo-admin.css',
-			[
-				'cb-core-css-nav-tabs',
-				'cb-core-css-interactive-surfaces',
-				'cb-core-css-field',
-				'cb-core-css-form-controls',
-				'cb-core-css-badges',
-				'cb-core-css-kv-tables',
-				'cb-core-css-buttons',
-			],
+			[],
 			CB_SEO_VERSION
 		);
 
