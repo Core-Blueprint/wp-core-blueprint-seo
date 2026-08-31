@@ -3,9 +3,6 @@ declare(strict_types=1);
 /**
  * Wires the SEO extension into Core Blueprint Base.
  *
- * v1.0.0-rc1 completes the privacy-first SEO baseline with archive policy,
- * conflict detection, Access-safe discovery and non-destructive SEOPress migration.
- *
  * @package Core_Blueprint_SEO
  */
 
@@ -13,6 +10,7 @@ namespace CB\SEO;
 
 use CB\Core\Admin\PageRegistry;
 use CB\Core\Dashboard\CardRegistry;
+use CB\Core\ExtensionRegistry;
 use CB\SEO\Admin\Pages\Seo;
 use CB\SEO\Admin\SettingsPage;
 use CB\SEO\Admin\Assets;
@@ -32,8 +30,9 @@ final class Bootstrap {
 	public static function boot(): void {
 		Lifecycle::maybe_upgrade();
 
-		// The settings surface remains available while SEO is disabled because it
-		// owns the switch that can re-enable the subsystem.
+		// The settings surface remains available while SEO is disabled because the
+		// Base dashboard and the settings page both operate on the canonical State.
+		add_action( 'cb_core_register_extensions', [ self::class, 'register_extension' ] );
 		add_action( 'cb_core_register_pages', [ self::class, 'register_page' ] );
 		add_filter( 'plugin_action_links_' . CB_SEO_BASENAME, [ SettingsPage::class, 'plugin_action_links' ] );
 		add_action( 'admin_init', [ SettingsPage::class, 'handle_save' ] );
@@ -62,6 +61,15 @@ final class Bootstrap {
 		SchemaRuntime::boot();
 	}
 
+	public static function register_extension(): void {
+		ExtensionRegistry::register( [
+			'id'           => 'core-blueprint-seo',
+			'plugin_file'  => CB_SEO_BASENAME,
+			'requires_api' => '1.0',
+			'menu_url'     => admin_url( 'admin.php?page=core-blueprint-seo' ),
+			'status_id'    => 'seo',
+		] );
+	}
 
 	public static function register_dashboard_shortcuts(): void {
 		if ( ! class_exists( CardRegistry::class ) ) {
@@ -102,7 +110,21 @@ final class Bootstrap {
 	}
 
 	public static function register_page(): void {
-		PageRegistry::register( new Seo() );
+		PageRegistry::register(
+			new Seo(),
+			[
+				'components' => [
+					'master-switch',
+					'notices',
+					'nav-tabs',
+					'cards',
+					'fields',
+					'form-controls',
+					'badges',
+					'kv-table',
+				],
+			]
+		);
 	}
 
 	/** @param array<string,array{state:class-string,capability:string}> $definitions */
@@ -126,7 +148,7 @@ final class Bootstrap {
 		$labels['seo_extension_deactivated'] = $translate ? __( 'SEO extension deactivated', 'core-blueprint-seo' ) : 'SEO extension deactivated';
 		$labels['seo_metadata_settings_updated'] = $translate ? __( 'SEO metadata templates updated', 'core-blueprint-seo' ) : 'SEO metadata templates updated';
 		$labels['seo_object_metadata_updated']   = $translate ? __( 'SEO content metadata updated', 'core-blueprint-seo' ) : 'SEO content metadata updated';
-		$labels['seo_term_metadata_updated']     = $translate ? __( 'SEO term metadata updated', 'core-blueprint-seo' ) : 'SEO term metadata updated';
+		$labels['seo_term_metadata_updated']      = $translate ? __( 'SEO term metadata updated', 'core-blueprint-seo' ) : 'SEO term metadata updated';
 		$labels['seo_object_indexing_updated']    = $translate ? __( 'SEO content indexing directives updated', 'core-blueprint-seo' ) : 'SEO content indexing directives updated';
 		$labels['seo_term_indexing_updated']      = $translate ? __( 'SEO term indexing directives updated', 'core-blueprint-seo' ) : 'SEO term indexing directives updated';
 		$labels['seo_object_canonical_updated']  = $translate ? __( 'SEO content canonical updated', 'core-blueprint-seo' ) : 'SEO content canonical updated';
