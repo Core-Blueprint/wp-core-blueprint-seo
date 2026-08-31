@@ -3,15 +3,15 @@
  * Plugin Name: Core Blueprint SEO
  * Plugin URI:  https://coreblueprint.io
  * Description: Governed SEO metadata and indexing controls for Core Blueprint with WordPress-first fallbacks and builder-independent administration.
- * Version:     1.0.0-rc1.1
+ * Version:     1.0.0-rc2
  * Author:      Core Blueprint
- * Author URI:  https://coreblueprint.io
+ * Author URI: https://coreblueprint.io
  * License:     GPL-2.0+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: core-blueprint-seo
  * Domain Path: /languages
  * Requires at least: 7.0
- * Requires PHP:      8.0
+ * Requires PHP:      8.4
  *
  * @package Core_Blueprint_SEO
  */
@@ -26,8 +26,7 @@ if ( defined( 'CB_SEO_FILE' ) || defined( 'CB_SEO_VERSION' ) ) {
 	return;
 }
 
-define( 'CB_SEO_VERSION', '1.0.0-rc1.1' );
-define( 'CB_SEO_MIN_CORE_VERSION', '1.0.0-rc1' );
+define( 'CB_SEO_VERSION', '1.0.0-rc2' );
 define( 'CB_SEO_FILE', __FILE__ );
 define( 'CB_SEO_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CB_SEO_URL', plugin_dir_url( __FILE__ ) );
@@ -72,7 +71,7 @@ add_action( 'plugins_loaded', static function (): void {
 		if ( is_admin() ) {
 			add_action( 'admin_notices', static function (): void {
 				echo '<div class="notice notice-error"><p><strong>Core Blueprint SEO:</strong> ';
-				echo esc_html__( 'A compatible Core Blueprint Base installation is required. Activate or update Core Blueprint Base first.', 'core-blueprint-seo' );
+				echo esc_html__( 'A compatible Core Blueprint Base installation with API 1.0 or newer is required. Activate or update Core Blueprint Base first.', 'core-blueprint-seo' );
 				echo '</p></div>';
 			} );
 		}
