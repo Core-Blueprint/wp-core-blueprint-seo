@@ -1,0 +1,920 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: Core Blueprint SEO 1.0.0-rc1.1\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-08-28 04:53+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr_FR\n"
+"Language-Team: fr_FR <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#, python-format
+msgid "%d images are missing an alt attribute"
+msgstr "%d images n’ont pas d’attribut alt"
+
+msgid "1 image is missing an alt attribute"
+msgstr "1 image n’a pas d’attribut alt"
+
+msgid "A compatible Core Blueprint Base installation is required. Activate or update Core Blueprint Base first."
+msgstr ""
+"Une installation compatible de Core Blueprint Base est requise. Activez ou mettez dÃ¢ÂÂabord ÃÂ  jour Core "
+"Blueprint Base."
+
+msgid "A typographic dash separator."
+msgstr "Un tiret typographique utilisÃ© comme sÃ©parateur."
+
+msgid "AI Discovery"
+msgstr "Découverte IA"
+
+msgid "AI discovery"
+msgstr "Découverte IA"
+
+msgid "AI discovery settings saved."
+msgstr "Paramètres de découverte IA enregistrés."
+
+#, python-format
+msgid "All %d images have alt attributes"
+msgstr "Les %d images ont un attribut alt"
+
+msgid "All post-type and taxonomy templates are saved together."
+msgstr "Tous les modÃ¨les de types de contenu et de taxonomies sont enregistrÃ©s ensemble."
+
+#, python-format
+msgid "Allow search engines to index %s"
+msgstr "Autoriser les moteurs de recherche à indexer %s"
+
+msgid "Analysis failed."
+msgstr "Échec de l’analyse."
+
+msgid "Analysis source:"
+msgstr "Source de l’analyse :"
+
+msgid "Analyze live page"
+msgstr "Analyser la page en ligne"
+
+msgid ""
+"Analyze the rendered public URL instead of editor or page-builder storage. The request is made as an anonymous "
+"visitor. Save or update the page first if you want recent changes included."
+msgstr ""
+"Analyse l’URL publique rendue plutôt que les données de l’éditeur ou du constructeur de pages. La requête est "
+"effectuée comme un visiteur anonyme. Enregistrez ou mettez à jour la page avant l’analyse pour inclure les "
+"modifications récentes."
+
+msgid "Analyzing…"
+msgstr "Analyse en cours…"
+
+msgid "Block this content from search engine indexes (noindex)"
+msgstr "Bloquer lâindexation de ce contenu par les moteurs de recherche (noindex)"
+
+msgid "Block this term archive from search engine indexes (noindex)"
+msgstr "Bloquer lâindexation de cette archive de terme par les moteurs de recherche (noindex)"
+
+msgid "Canonical URL"
+msgstr "URL canonique"
+
+msgid "Canonical URL is missing"
+msgstr "L’URL canonique est absente"
+
+msgid "Canonical URL is present"
+msgstr "L’URL canonique est présente"
+
+msgid "Choose image"
+msgstr "Choisir une image"
+
+msgid "Configured SEO, social metadata and structured data can be emitted on supported public content."
+msgstr ""
+"Les métadonnées SEO et sociales configurées ainsi que les données structurées peuvent être émises sur les contenus "
+"publics pris en charge."
+
+msgid "Consider mentioning the focus keyword near the start of the visible content"
+msgstr "Envisagez de mentionner le mot-clé principal près du début du contenu visible"
+
+msgid "Consider using the focus keyword in a subheading"
+msgstr "Envisagez d’utiliser le mot-clé principal dans un intertitre"
+
+msgid "Consider using the focus keyword in the H1 heading"
+msgstr "Envisagez d’utiliser le mot-clé principal dans le titre H1"
+
+msgid "Consider using the focus keyword in the document title"
+msgstr "Envisagez d’utiliser le mot-clé principal dans le titre du document"
+
+msgid "Consider using the focus keyword in the meta description"
+msgstr "Envisagez d’utiliser le mot-clé principal dans la méta-description"
+
+msgid "Content"
+msgstr "Contenu"
+
+msgid "Content changed since this analysis."
+msgstr "Le contenu a changé depuis cette analyse."
+
+msgid "Content marked noindex is also excluded from the WordPress XML sitemap while Core Blueprint SEO is active."
+msgstr "Le contenu marquÃ© noindex est Ã©galement exclu du sitemap XML WordPress tant que Core Blueprint SEO est actif."
+
+msgid "Content overview"
+msgstr "Aperçu du contenu"
+
+msgid "Control which public content groups search engines may index and which groups WordPress publishes in its XML sitemap."
+msgstr ""
+"Contrôlez quels groupes de contenu public peuvent être indexés par les moteurs de recherche et quels groupes "
+"WordPress publie dans son sitemap XML."
+
+msgid "Core Blueprint could not resolve a public URL for this content."
+msgstr "Core Blueprint n’a pas pu déterminer d’URL publique pour ce contenu."
+
+msgid ""
+"Core Blueprint uses the resolved SEO description first and falls back only to an explicit WordPress excerpt. Builder "
+"content is not parsed."
+msgstr ""
+"Core Blueprint utilise d’abord la description SEO résolue et ne se rabat que sur un extrait WordPress explicite. Le "
+"contenu du builder n’est pas analysé."
+
+msgid "Current taxonomy term description."
+msgstr "Description actuelle du terme de taxonomie."
+
+msgid "Current term name."
+msgstr "Nom actuel du terme."
+
+msgid "Custom"
+msgstr "PersonnalisÃ©"
+
+msgid "Default social image"
+msgstr "Image sociale par défaut"
+
+msgid "Description template"
+msgstr "ModÃ¨le de description"
+
+msgid ""
+"Disabled by default on upgrade so existing SEO plugins are not duplicated. Per-content social overrides remain stored"
+" either way."
+msgstr ""
+"Désactivé par défaut après une mise à jour afin de ne pas dupliquer la sortie des extensions SEO existantes. Les "
+"remplacements sociaux par contenu restent enregistrés."
+
+msgid "Do not ask search engines to follow links on this content (nofollow)"
+msgstr "Demander aux moteurs de recherche de ne pas suivre les liens de ce contenu (nofollow)"
+
+msgid "Do not ask search engines to follow links on this term archive (nofollow)"
+msgstr "Demander aux moteurs de recherche de ne pas suivre les liens de cette archive de terme (nofollow)"
+
+msgid "Do not index images from this content (noimageindex)"
+msgstr "Ne pas indexer les images de ce contenu (noimageindex)"
+
+msgid "Do not index images from this term archive (noimageindex)"
+msgstr "Ne pas indexer les images de cette archive de terme (noimageindex)"
+
+msgid "Do not provide a cached copy of this content (noarchive)"
+msgstr "Ne pas fournir de copie en cache de ce contenu (noarchive)"
+
+msgid "Do not provide a cached copy of this term archive (noarchive)"
+msgstr "Ne pas fournir de copie en cache de cette archive de terme (noarchive)"
+
+msgid "Do not show a text snippet for this content (nosnippet)"
+msgstr "Ne pas afficher dâextrait de texte pour ce contenu (nosnippet)"
+
+msgid "Do not show a text snippet for this term archive (nosnippet)"
+msgstr "Ne pas afficher dâextrait de texte pour cette archive de terme (nosnippet)"
+
+msgid "Document detail"
+msgstr "Détail du document"
+
+msgid "Document title is missing"
+msgstr "Le titre du document est absent"
+
+msgid "Document title is present"
+msgstr "Le titre du document est présent"
+
+msgid "Emit Core Blueprint JSON-LD"
+msgstr "Émettre le JSON-LD Core Blueprint"
+
+msgid "Emit Open Graph and X/Twitter metadata"
+msgstr "Émettre les métadonnées Open Graph et X/Twitter"
+
+#, python-format
+msgid "Exact phrase occurrences in visible content: %d"
+msgstr "Occurrences exactes de l’expression dans le contenu visible : %d"
+
+msgid "Exactly one H1 heading is present"
+msgstr "Un seul titre H1 est présent"
+
+msgid "Example: wordpress maintenance"
+msgstr "Exemple : maintenance wordpress"
+
+msgid "Explicit WordPress post excerpt. Builder content is intentionally not parsed."
+msgstr "Extrait WordPress explicite. Le contenu du constructeur nâest volontairement pas analysÃ©."
+
+#, python-format
+msgid "External links: %d"
+msgstr "Liens externes : %d"
+
+msgid "Focus keyword"
+msgstr "Mot-clé cible"
+
+msgid "Focus keyword appears in a subheading"
+msgstr "Le mot-clé principal apparaît dans un sous-titre"
+
+msgid "Focus keyword appears in an H1 heading"
+msgstr "Le mot-clé principal apparaît dans un titre H1"
+
+msgid "Focus keyword appears in the URL"
+msgstr "Le mot-clé principal apparaît dans l’URL"
+
+msgid "Focus keyword appears in the document title"
+msgstr "Le mot-clé principal apparaît dans le titre du document"
+
+msgid "Focus keyword appears in the meta description"
+msgstr "Le mot-clé principal apparaît dans la méta-description"
+
+msgid "Focus keyword appears in the visible page content"
+msgstr "Le mot-clé principal apparaît dans le contenu visible de la page"
+
+msgid "Focus keyword appears near the start of the visible content"
+msgstr "Le mot-clé principal apparaît près du début du contenu visible"
+
+msgid "Focus keyword checks: %1$d/%2$d"
+msgstr "Contrôles du mot-clé cible : %1$d/%2$d"
+
+msgid "Good"
+msgstr "Bon"
+
+msgid "Governed search metadata with WordPress-first fallbacks and builder-independent administration."
+msgstr ""
+"MÃ©tadonnÃ©es de recherche gouvernÃ©es avec des replis WordPress-first et une administration indÃ©pendante du "
+"constructeur."
+
+#, python-format
+msgid "H1 headings found: %d"
+msgstr "Titres H1 trouvés : %d"
+
+#, python-format
+msgid "H1 headings: %d"
+msgstr "Titres H1 : %d"
+
+msgid "H1 keyword check was not evaluated because no H1 heading is published."
+msgstr "La vérification du mot-clé principal dans le H1 n’a pas été évaluée, car aucun titre H1 n’est publié."
+
+#, python-format
+msgid "HTTP status is %d"
+msgstr "Le statut HTTP est %d"
+
+msgid "HTTP status is 200"
+msgstr "Le statut HTTP est 200"
+
+#, python-format
+msgid "HTTP status: %d"
+msgstr "Statut HTTP : %d"
+
+msgid "Hard limit across all selected content types to keep the document compact."
+msgstr "Limite stricte pour l’ensemble des types de contenu sélectionnés afin de garder le document compact."
+
+msgid "Heading hierarchy has no skipped levels"
+msgstr "La hiérarchie des titres ne saute aucun niveau"
+
+msgid "Heading hierarchy skips one or more levels"
+msgstr "La hiérarchie des titres saute un ou plusieurs niveaux"
+
+msgid "Identity logo or image"
+msgstr "Logo ou image de l’identité"
+
+msgid "If empty, Core Blueprint uses the featured image and then the configured default social image."
+msgstr "Si vide, Core Blueprint utilise d’abord l’image mise en avant puis l’image sociale par défaut configurée."
+
+#, python-format
+msgid "Images missing an alt attribute: %d"
+msgstr "Images sans attribut alt : %d"
+
+#, python-format
+msgid "Images: %d"
+msgstr "Images : %d"
+
+#, python-format
+msgid "Include %s in the XML sitemap"
+msgstr "Inclure %s dans le sitemap XML"
+
+msgid "Include descriptions when available"
+msgstr "Inclure les descriptions lorsqu’elles sont disponibles"
+
+msgid "Included content"
+msgstr "Contenu inclus"
+
+msgid "Index"
+msgstr "Indexation"
+
+msgid "Indexing"
+msgstr "Indexation"
+
+msgid "Individual SEO controls can add restrictions, but they cannot override a content group that is disabled here."
+msgstr ""
+"Les réglages SEO individuels peuvent ajouter des restrictions, mais ils ne peuvent pas réactiver un groupe de contenu"
+" désactivé ici."
+
+#, python-format
+msgid "Internal links: %d"
+msgstr "Liens internes : %d"
+
+msgid "Keyword appears in a subheading"
+msgstr "Le mot-clé apparaît dans un sous-titre"
+
+msgid "Keyword appears in an H1 heading"
+msgstr "Le mot-clé apparaît dans un titre H1"
+
+msgid "Keyword appears in the URL"
+msgstr "Le mot-clé apparaît dans l’URL"
+
+msgid "Keyword appears in the document title"
+msgstr "Le mot-clé apparaît dans le titre du document"
+
+msgid "Keyword appears in the meta description"
+msgstr "Le mot-clé apparaît dans la méta-description"
+
+msgid "Keyword appears in the visible page content"
+msgstr "Le mot-clé apparaît dans le contenu visible de la page"
+
+msgid "Keyword appears near the start of the visible content"
+msgstr "Le mot-clé apparaît près du début du contenu visible"
+
+msgid "Leave empty to emit no Core Blueprint meta description for this content type."
+msgstr "Laissez vide pour que Core Blueprint ne gÃ©nÃ¨re aucune mÃ©ta-description pour ce type de contenu."
+
+msgid "Leave empty to keep WordPress responsible for this title."
+msgstr "Laissez vide pour que WordPress reste responsable de ce titre."
+
+msgid ""
+"Leave empty to keep the normal site behaviour. Core Blueprint only emits a term canonical when an explicit override "
+"is configured."
+msgstr ""
+"Laissez vide pour conserver le comportement normal du site. Core Blueprint nâÃ©met une URL canonique pour un terme "
+"que lorsquâun remplacement explicite est configurÃ©."
+
+msgid "Leave empty to use the WordPress site title."
+msgstr "Laisser vide pour utiliser le titre du site WordPress."
+
+msgid ""
+"Leave empty to use the global template for this post type. If no template exists, WordPress keeps its normal document"
+" title."
+msgstr ""
+"Laissez vide pour utiliser le modÃ¨le global de ce type de contenu. Si aucun modÃ¨le nâexiste, WordPress conserve "
+"son titre de document normal."
+
+msgid ""
+"Leave empty to use the global template. Core Blueprint emits no fallback description when neither an override nor a "
+"template is configured."
+msgstr ""
+"Laissez vide pour utiliser le modÃ¨le global. Core Blueprint ne gÃ©nÃ¨re aucune description de secours si aucun "
+"remplacement ni modÃ¨le nâest configurÃ©."
+
+msgid "Live analysis is available after this content has been published."
+msgstr "L’analyse en ligne est disponible après la publication de ce contenu."
+
+msgid "Maximum listed items"
+msgstr "Nombre maximal d’éléments listés"
+
+msgid "Meta description"
+msgstr "MÃ©ta-description"
+
+msgid "Meta description is missing"
+msgstr "La méta-description est absente"
+
+msgid "Meta description is present"
+msgstr "La méta-description est présente"
+
+msgid "Meta description keyword check was not evaluated because no meta description is published."
+msgstr "La vérification du mot-clé dans la méta-description n’a pas été évaluée car aucune méta-description n’est publiée."
+
+msgid "Metadata template sections"
+msgstr "Sections des modÃ¨les de mÃ©tadonnÃ©es"
+
+msgid "Metadata templates"
+msgstr "ModÃ¨les de mÃ©tadonnÃ©es"
+
+msgid "Needs attention"
+msgstr "À vérifier"
+
+msgid "No AI discovery changes were detected."
+msgstr "Aucune modification de découverte IA détectée."
+
+msgid "No Core Blueprint meta description"
+msgstr "Aucune mÃ©ta-description Core Blueprint"
+
+msgid "No live analysis has been run yet."
+msgstr "Aucune analyse en ligne n’a encore été exécutée."
+
+msgid "No metadata template changes were detected."
+msgstr "Aucune modification des modÃ¨les de mÃ©tadonnÃ©es nâa Ã©tÃ© dÃ©tectÃ©e."
+
+msgid "No search visibility changes were detected."
+msgstr "Aucune modification de visibilité dans les moteurs de recherche détectée."
+
+msgid "No social or structured data changes were detected."
+msgstr "Aucune modification des métadonnées sociales ou des données structurées n’a été détectée."
+
+msgid "Off - SEO dormant"
+msgstr "DÃÂ©sactivÃÂ© Ã¢ÂÂ SEO en veille"
+
+msgid "On - SEO active"
+msgstr "ActivÃÂ© Ã¢ÂÂ SEO actif"
+
+msgid ""
+"Only published, publicly viewable, non-password-protected content is eligible. Content explicitly marked noindex is "
+"always excluded."
+msgstr ""
+"Seul le contenu publié, visible publiquement et non protégé par mot de passe est éligible. Le contenu explicitement "
+"marqué noindex est toujours exclu."
+
+msgid "Open"
+msgstr "Ouvrir"
+
+msgid "Open Graph and X/Twitter overrides. Empty values inherit the resolved SEO metadata."
+msgstr "Remplacements Open Graph et X/Twitter. Les valeurs vides héritent des métadonnées SEO résolues."
+
+msgid "Open only the content types you want to customize. Unconfigured content keeps WordPress defaults."
+msgstr ""
+"Ouvrez uniquement les types de contenu Ã  personnaliser. Le contenu non configurÃ© conserve les valeurs par dÃ©faut "
+"de WordPress."
+
+msgid "Optimisation"
+msgstr "Optimisation"
+
+msgid "Optional Open Graph and X/Twitter overrides. Empty fields inherit the resolved SEO metadata."
+msgstr "Remplacements Open Graph et X/Twitter facultatifs. Les champs vides héritent des métadonnées SEO résolues."
+
+msgid "Optional absolute HTTP(S) URL"
+msgstr "URL HTTP(S) absolue facultative"
+
+msgid "Optional absolute HTTP(S) URL. Leave empty to keep the normal WordPress/site canonical behaviour."
+msgstr "URL HTTP(S) absolue facultative. Laissez vide pour conserver le comportement canonique normal de WordPress/du site."
+
+msgid "Optional. Leave empty to use the taxonomy template or the normal WordPress title."
+msgstr "Facultatif. Laissez vide pour utiliser le modÃ¨le de taxonomie ou le titre WordPress normal."
+
+msgid "Optional. Leave empty to use the taxonomy template."
+msgstr "Facultatif. Laissez vide pour utiliser le modÃ¨le de taxonomie."
+
+msgid "Organization"
+msgstr "Organisation"
+
+msgid ""
+"Outputs one small schema.org graph for the site identity, website and current page. Other Core Blueprint extensions "
+"can add their own nodes through the shared graph filter."
+msgstr ""
+"Émet un graphe schema.org compact pour l’identité du site, le site Web et la page actuelle. Les autres extensions "
+"Core Blueprint peuvent ajouter leurs propres nœuds via le filtre de graphe partagé."
+
+msgid "Page is indexable"
+msgstr "La page est indexable"
+
+msgid "Page is marked noindex"
+msgstr "La page est marquée noindex"
+
+msgid "Person"
+msgstr "Personne"
+
+msgid "Post title or term name."
+msgstr "Titre de publication ou nom du terme."
+
+msgid "Post types"
+msgstr "Types de contenu"
+
+msgid "Publish an AI discovery document at /llms.txt"
+msgstr "Publier un document de découverte IA sur /llms.txt"
+
+msgid ""
+"Publish this content before running the live analysis. Draft analysis will be added separately so the public renderer"
+" remains the source of truth."
+msgstr ""
+"Publiez ce contenu avant de lancer l’analyse en ligne. L’analyse des brouillons sera ajoutée séparément afin que le "
+"rendu public reste la source de référence."
+
+msgid "Remove image"
+msgstr "Supprimer l’image"
+
+msgid "Rendered frontend"
+msgstr "Frontend rendu"
+
+msgid ""
+"Rendered-page content analysis remains a later stage and will use the live frontend document rather than builder "
+"storage."
+msgstr ""
+"Lâanalyse du contenu de la page rendue viendra ultÃ©rieurement et utilisera le document frontend en direct plutÃ´t "
+"que le stockage du constructeur."
+
+msgid "Resolved preview"
+msgstr "AperÃ§u rÃ©solu"
+
+msgid "SEO"
+msgstr "SEO"
+
+msgid "SEO AI discovery settings updated"
+msgstr "Paramètres SEO de découverte IA mis à jour"
+
+msgid "SEO analysis"
+msgstr "Analyse SEO"
+
+msgid "SEO content canonical updated"
+msgstr "URL canonique SEO du contenu mise Ã  jour"
+
+msgid "SEO content indexing directives updated"
+msgstr "Directives dâindexation SEO du contenu mises Ã  jour"
+
+msgid "SEO content metadata updated"
+msgstr "MÃ©tadonnÃ©es SEO du contenu mises Ã  jour"
+
+msgid "SEO content social metadata updated"
+msgstr "Métadonnées sociales du contenu SEO mises à jour"
+
+msgid "SEO deactivated"
+msgstr "SEO dÃÂ©sactivÃÂ©"
+
+msgid "SEO disabled"
+msgstr "SEO dÃÂ©sactivÃÂ©"
+
+msgid "SEO enabled"
+msgstr "SEO activÃÂ©"
+
+msgid "SEO extension activated"
+msgstr "Extension SEO activÃÂ©e"
+
+msgid "SEO extension deactivated"
+msgstr "Extension SEO dÃÂ©sactivÃÂ©e"
+
+msgid "SEO indexing policy updated"
+msgstr "Politique d’indexation SEO mise à jour"
+
+msgid "SEO metadata active"
+msgstr "MÃ©tadonnÃ©es SEO actives"
+
+msgid "SEO metadata templates saved."
+msgstr "ModÃ¨les de mÃ©tadonnÃ©es SEO enregistrÃ©s."
+
+msgid "SEO metadata templates updated"
+msgstr "ModÃ¨les de mÃ©tadonnÃ©es SEO mis Ã  jour"
+
+msgid "SEO output is disabled"
+msgstr "La sortie SEO est dÃ©sactivÃ©e"
+
+msgid "SEO output is disabled. All templates, social settings and per-object metadata remain stored."
+msgstr "La sortie SEO est désactivée. Tous les modèles, réglages sociaux et métadonnées par objet restent enregistrés."
+
+msgid "SEO runtime is disabled. Extension settings are preserved."
+msgstr "Le runtime SEO est dÃÂ©sactivÃÂ©. Les rÃÂ©glages de lÃ¢ÂÂextension sont conservÃÂ©s."
+
+msgid "SEO sections"
+msgstr "Sections SEO"
+
+msgid "SEO social settings updated"
+msgstr "Réglages sociaux SEO mis à jour"
+
+msgid "SEO structured data settings updated"
+msgstr "Réglages SEO des données structurées mis à jour"
+
+msgid "SEO term canonical updated"
+msgstr "URL canonique SEO du terme mise Ã  jour"
+
+msgid "SEO term indexing directives updated"
+msgstr "Directives dâindexation SEO du terme mises Ã  jour"
+
+msgid "SEO term metadata updated"
+msgstr "MÃ©tadonnÃ©es SEO du terme mises Ã  jour"
+
+msgid "SEO term social metadata updated"
+msgstr "Métadonnées sociales du terme SEO mises à jour"
+
+msgid "SEO title"
+msgstr "Titre SEO"
+
+msgid "SEO — Analysis"
+msgstr "SEO — Analyse"
+
+msgid "SEO — Indexing"
+msgstr "SEO — Indexation"
+
+msgid "SEO — Search appearance"
+msgstr "SEO — Apparence dans les résultats"
+
+msgid "SEO — Social appearance"
+msgstr "SEO — Apparence sociale"
+
+msgid "Save AI discovery"
+msgstr "Enregistrer la découverte IA"
+
+msgid "Save metadata templates"
+msgstr "Enregistrer les modÃ¨les de mÃ©tadonnÃ©es"
+
+msgid "Save search visibility"
+msgstr "Enregistrer la visibilité"
+
+msgid "Save social and structured data"
+msgstr "Enregistrer les métadonnées sociales et les données structurées"
+
+msgid "Search appearance"
+msgstr "Apparence dans les résultats"
+
+msgid "Search engine directives"
+msgstr "Directives pour les moteurs de recherche"
+
+msgid "Search visibility"
+msgstr "Visibilité dans les moteurs de recherche"
+
+msgid "Search visibility settings saved."
+msgstr "Paramètres de visibilité dans les moteurs de recherche enregistrés."
+
+msgid "Settings"
+msgstr "RÃÂ©glages"
+
+msgid "Singular post-type label."
+msgstr "LibellÃ© singulier du type de contenu."
+
+msgid "Singular taxonomy label."
+msgstr "LibellÃ© singulier de la taxonomie."
+
+msgid "Site identity name"
+msgstr "Nom de l’identité du site"
+
+msgid "Site identity type"
+msgstr "Type d’identité du site"
+
+msgid "Sitemap"
+msgstr "Sitemap"
+
+msgid "Social & Schema"
+msgstr "Réseaux sociaux et schéma"
+
+msgid "Social and structured data"
+msgstr "Métadonnées sociales et données structurées"
+
+msgid "Social and structured data settings saved."
+msgstr "Réglages des métadonnées sociales et des données structurées enregistrés."
+
+msgid "Social appearance"
+msgstr "Apparence sociale"
+
+msgid "Social description"
+msgstr "Description sociale"
+
+msgid "Social description (optional)"
+msgstr "Description sociale (facultatif)"
+
+msgid "Social image"
+msgstr "Image sociale"
+
+msgid "Social metadata"
+msgstr "Métadonnées sociales"
+
+msgid "Social title"
+msgstr "Titre social"
+
+msgid "Social title (optional)"
+msgstr "Titre social (facultatif)"
+
+msgid "Structured data"
+msgstr "Données structurées"
+
+msgid "Taxonomies"
+msgstr "Taxonomies"
+
+msgid "Taxonomy templates apply to public term archive pages when a term has no individual SEO override."
+msgstr ""
+"Les modÃ¨les de taxonomie sâappliquent aux archives publiques de termes lorsquâun terme ne possÃ¨de aucune "
+"substitution SEO individuelle."
+
+msgid "Technical and content checks"
+msgstr "Contrôles techniques et de contenu"
+
+msgid "Template variables"
+msgstr "Variables de modÃ¨le"
+
+msgid ""
+"Templates apply only when an individual post or term has no SEO override. Leave a template empty to keep WordPress in"
+" control of that value."
+msgstr ""
+"Les modÃ¨les sâappliquent uniquement lorsquâun article ou un terme ne possÃ¨de aucune substitution SEO "
+"individuelle. Laissez un modÃ¨le vide pour laisser WordPress gÃ©rer cette valeur."
+
+msgid "The WordPress HTML API is required for rendered-page analysis."
+msgstr "L’API HTML de WordPress est requise pour analyser les pages rendues."
+
+msgid "The analysis request could not be verified."
+msgstr "La requête d’analyse n’a pas pu être vérifiée."
+
+msgid "The content could not be found."
+msgstr "Le contenu est introuvable."
+
+msgid ""
+"The document lists selected public and indexable WordPress content. It is disabled by default on upgrade and does not"
+" affect search rankings."
+msgstr ""
+"Le document répertorie le contenu WordPress public et indexable sélectionné. Il est désactivé par défaut après une "
+"mise à jour et n’affecte pas le classement dans les moteurs de recherche."
+
+msgid "The focus keyword does not appear in the URL"
+msgstr "Le mot-clé principal n’apparaît pas dans l’URL"
+
+msgid "The focus keyword does not appear in the visible page content"
+msgstr "Le mot-clé principal n’apparaît pas dans le contenu visible de la page"
+
+msgid "The image has an alt attribute"
+msgstr "L’image a un attribut alt"
+
+msgid ""
+"The keyword is used for guidance only. Core Blueprint does not treat keyword density as a search-engine ranking "
+"formula."
+msgstr ""
+"Le mot-clé sert uniquement de guide. Core Blueprint ne considère pas la densité de mots-clés comme une formule de "
+"classement des moteurs de recherche."
+
+msgid "The live URL returned an empty document."
+msgstr "L’URL en ligne a renvoyé un document vide."
+
+msgid "The live document could not be parsed as HTML."
+msgstr "Le document en ligne n’a pas pu être traité comme HTML."
+
+msgid "The resolved URL is outside this WordPress site and was not fetched for security reasons."
+msgstr "L’URL déterminée se trouve en dehors de ce site WordPress et n’a pas été récupérée pour des raisons de sécurité."
+
+msgid "These are restrictive per-content overrides. Leave them unchecked to keep the normal WordPress or global SEO policy."
+msgstr ""
+"Il sâagit de restrictions appliquÃ©es Ã  ce contenu. Laissez-les dÃ©cochÃ©es pour conserver la politique WordPress "
+"ou SEO globale normale."
+
+msgid "This content type is not eligible for public SEO analysis."
+msgstr "Ce type de contenu n’est pas éligible à l’analyse SEO publique."
+
+msgid "Title and meta-description templates are active for configured public content."
+msgstr "Les modÃ¨les de titre et de mÃ©ta-description sont actifs pour les contenus publics configurÃ©s."
+
+msgid "Title template"
+msgstr "ModÃ¨le de titre"
+
+msgid "Toggle SEO"
+msgstr "Activer ou dÃÂ©sactiver le SEO"
+
+msgid ""
+"Unchecked directives inherit the normal WordPress or global SEO policy. noindex also removes this term from the "
+"WordPress XML sitemap."
+msgstr ""
+"Les directives non cochÃ©es hÃ©ritent de la politique WordPress ou SEO globale normale. noindex supprime Ã©galement "
+"ce terme du sitemap XML WordPress."
+
+msgid "Use the configured post-type template"
+msgstr "Utiliser le modÃ¨le configurÃ© pour ce type de contenu"
+
+msgid "Use the normal WordPress canonical"
+msgstr "Utiliser lâURL canonique WordPress normale"
+
+msgid "Use the resolved SEO description"
+msgstr "Utiliser la description SEO résolue"
+
+msgid "Use the resolved SEO title"
+msgstr "Utiliser le titre SEO résolu"
+
+msgid "Use these variables inside title and description templates. They are resolved at render time."
+msgstr "Utilisez ces variables dans les modÃ¨les de titre et de description. Elles sont rÃ©solues lors du rendu."
+
+msgid "Used as the Organization logo or Person image in structured data."
+msgstr "Utilisé comme logo de l’organisation ou image de la personne dans les données structurées."
+
+msgid "Used when content has no explicit social image or featured image."
+msgstr "Utilisé lorsque le contenu n’a ni image sociale explicite ni image mise en avant."
+
+#, python-format
+msgid "Version %s"
+msgstr "Version %s"
+
+#, python-format
+msgid "Visible words: %d"
+msgstr "Mots visibles : %d"
+
+msgid ""
+"When indexing is disabled, Core Blueprint also removes that content group from XML sitemaps. Disabling only the "
+"sitemap keeps public pages indexable but stops advertising them through the WordPress sitemap."
+msgstr ""
+"Lorsque l’indexation est désactivée, Core Blueprint retire également ce groupe de contenu des sitemaps XML. "
+"Désactiver uniquement le sitemap conserve les pages publiques indexables mais empêche leur publication dans le "
+"sitemap WordPress."
+
+msgid "WordPress default"
+msgstr "Valeur WordPress par dÃ©faut"
+
+msgid "WordPress default title"
+msgstr "Titre WordPress par dÃ©faut"
+
+msgid "WordPress site title."
+msgstr "Titre du site WordPress."
+
+msgid "You are not allowed to analyze this content."
+msgstr "Vous n’êtes pas autorisé à analyser ce contenu."
+
+msgid "You can prepare metadata below while the module is dormant. Nothing is emitted on the frontend until SEO is enabled."
+msgstr ""
+"Vous pouvez prÃ©parer les mÃ©tadonnÃ©es ci-dessous pendant que le module est inactif. Rien nâest gÃ©nÃ©rÃ© sur le "
+"frontend tant que le SEO nâest pas activÃ©."
+
+msgid "llms.txt"
+msgstr "llms.txt"
+
+#, python-format
+msgid ""
+"%s can emit overlapping titles, canonicals, robots directives, social metadata or structured data. Keep only one SEO "
+"output provider active when validating the frontend."
+msgstr ""
+"%s peut générer des titres, URL canoniques, directives robots, métadonnées sociales ou données structurées en double."
+" Ne conservez qu’un seul fournisseur de sortie SEO actif lors de la validation du site public."
+
+msgid "Access-managed content is protected from AI discovery"
+msgstr "Le contenu géré par Access est protégé de la découverte par l’IA"
+
+msgid "Allow author archives to be indexed"
+msgstr "Autoriser l’indexation des archives d’auteurs"
+
+msgid "Allow date archives to be indexed"
+msgstr "Autoriser l’indexation des archives par date"
+
+msgid "Another SEO plugin is active"
+msgstr "Une autre extension SEO est active"
+
+msgid "Archive pages"
+msgstr "Pages d’archives"
+
+msgid "Control indexability for WordPress archive contexts that are not individual post types or taxonomies."
+msgstr ""
+"Contrôlez l’indexabilité des contextes d’archives WordPress qui ne sont ni des types de contenu individuels ni des "
+"taxonomies."
+
+#, python-format
+msgid ""
+"For privacy, Core Blueprint SEO excludes selected Access-managed content types until Core Blueprint Access explicitly"
+" confirms anonymous public discovery: %s."
+msgstr ""
+"Pour protéger la confidentialité, Core Blueprint SEO exclut les types de contenu sélectionnés gérés par Access "
+"jusqu’à ce que Core Blueprint Access confirme explicitement leur découverte publique anonyme : %s."
+
+msgid "Import SEOPress data"
+msgstr "Importer les données SEOPress"
+
+msgid ""
+"Import supported SEO metadata from SEOPress without deleting or modifying the source data. Existing Core Blueprint "
+"SEO values always win."
+msgstr ""
+"Importez les métadonnées SEO prises en charge depuis SEOPress sans supprimer ni modifier les données source. Les "
+"valeurs Core Blueprint SEO existantes sont toujours prioritaires."
+
+msgid ""
+"Imported fields include titles, descriptions, canonicals, restrictive robots directives and social overrides. "
+"Facebook social values are preferred, with X/Twitter as fallback. Redirects, analytics, schema configuration and "
+"image URLs without a WordPress attachment ID are intentionally not migrated."
+msgstr ""
+"Les champs importés comprennent les titres, descriptions, URL canoniques, directives robots restrictives et "
+"remplacements sociaux. Les valeurs Facebook sont prioritaires, avec X/Twitter en solution de repli. Les redirections,"
+" analytics, réglages de schéma et URL d’images sans ID de pièce jointe WordPress ne sont volontairement pas migrés."
+
+msgid "No SEOPress metadata or title-template configuration was detected."
+msgstr "Aucune métadonnée SEOPress ni configuration de modèle de titre n’a été détectée."
+
+msgid "Posts/CPTs with SEOPress metadata"
+msgstr "Articles/CPT avec métadonnées SEOPress"
+
+msgid "SEOPress data imported"
+msgstr "Données SEOPress importées"
+
+msgid "SEOPress migration"
+msgstr "Migration SEOPress"
+
+msgid ""
+"SEOPress migration completed. %1$d content objects changed and %2$d fields or settings were imported. Existing Core "
+"Blueprint SEO values were preserved."
+msgstr ""
+"Migration SEOPress terminée. %1$d objets de contenu ont été modifiés et %2$d champs ou réglages ont été importés. Les"
+" valeurs Core Blueprint SEO existantes ont été conservées."
+
+msgid "Search results and 404 pages remain noindex in line with WordPress defaults."
+msgstr "Les résultats de recherche et les pages 404 restent en noindex conformément aux valeurs par défaut de WordPress."
+
+msgid "Supported global templates"
+msgstr "Modèles globaux pris en charge"
+
+msgid "Templates with unsupported variables"
+msgstr "Modèles avec variables non prises en charge"
+
+msgid "Terms with SEOPress metadata"
+msgstr "Termes avec métadonnées SEOPress"
+
+msgid "Tools"
+msgstr "Outils"
+
+msgid ""
+"SEOPress is still active while Core Blueprint SEO output is enabled. Temporarily set Core Blueprint SEO to dormant "
+"before importing, then disable SEOPress and re-enable Core Blueprint SEO after validation."
+msgstr ""
+"SEOPress est toujours actif alors que la sortie Core Blueprint SEO est activée. Placez temporairement Core Blueprint "
+"SEO en veille avant l’import, puis désactivez SEOPress et réactivez Core Blueprint SEO après validation."
+
+msgid "To prevent duplicate frontend metadata, set Core Blueprint SEO to dormant before importing while SEOPress is active."
+msgstr ""
+"Pour éviter les métadonnées dupliquées sur le site public, placez Core Blueprint SEO en veille avant l’import tant "
+"que SEOPress est actif."
+

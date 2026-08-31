@@ -1,0 +1,163 @@
+/**
+ * Core Blueprint SEO - native WordPress editor composition.
+ *
+ * Keep post-edit surfaces visually native. This file only adds spacing and
+ * lightweight grouping that WordPress does not provide for custom SEO fields.
+ */
+
+.cb-seo-native-panel > :first-child,
+.cb-seo-native-panel fieldset > :first-child {
+	margin-top: 0;
+}
+
+.cb-seo-native-panel > :last-child,
+.cb-seo-native-panel fieldset > :last-child {
+	margin-bottom: 0;
+}
+
+.cb-seo-native-panel__preview {
+	margin-top: 18px;
+	padding-top: 14px;
+	border-top: 1px solid #dcdcde;
+}
+
+.cb-seo-native-panel__preview > :first-child {
+	margin-top: 0;
+}
+
+.cb-seo-native-panel__directives {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.cb-seo-native-panel__canonical {
+	margin-top: 18px;
+	padding-top: 16px;
+	border-top: 1px solid #dcdcde;
+}
+
+.cb-seo-native-panel__canonical input[type="url"] {
+	margin-top: 6px;
+}
+
+.cb-seo-image-field {
+	margin-top: 12px;
+}
+
+.cb-seo-image-field__preview[hidden] {
+	display: none;
+}
+
+.cb-seo-image-field__preview img {
+	display: block;
+	max-width: 240px;
+	max-height: 140px;
+	width: auto;
+	height: auto;
+	margin-top: 8px;
+	border: 1px solid #dcdcde;
+}
+
+.cb-seo-image-field__actions {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.cb-seo-analysis {
+	margin: 0;
+}
+
+.cb-seo-analysis__output {
+	margin-top: 14px;
+}
+
+.cb-seo-analysis__meta {
+	padding: 10px 0;
+	border-top: 1px solid #dcdcde;
+	border-bottom: 1px solid #dcdcde;
+}
+
+.cb-seo-analysis__time {
+	opacity: .72;
+}
+
+.cb-seo-analysis__stale {
+	display: block;
+	margin-top: 5px;
+	font-weight: 600;
+}
+
+.cb-seo-analysis__keyword-summary {
+	margin-top: 14px;
+}
+
+.cb-seo-analysis__keyword-summary > :first-child {
+	margin-top: 0;
+}
+
+.cb-seo-analysis__not-evaluated {
+	margin-top: 4px;
+}
+
+.cb-seo-analysis__group {
+	margin-top: 16px;
+}
+
+.cb-seo-analysis__group h4 {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	margin: 0 0 8px;
+}
+
+.cb-seo-analysis__count {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 18px;
+	height: 18px;
+	padding: 0 5px;
+	border: 1px solid #c3c4c7;
+	border-radius: 9px;
+	font-size: 11px;
+	font-weight: 400;
+	line-height: 1;
+}
+
+.cb-seo-analysis-list {
+	margin: 0;
+}
+
+.cb-seo-analysis-list__item {
+	display: flex;
+	align-items: flex-start;
+	gap: 7px;
+	margin: 0 0 6px;
+}
+
+.cb-seo-analysis-list__icon {
+	flex: 0 0 16px;
+	font-weight: 700;
+	text-align: center;
+}
+
+.cb-seo-analysis-list__item.needs-attention {
+	font-weight: 500;
+}
+
+.cb-seo-analysis-list__item.is-optimisation {
+	opacity: .82;
+}
+
+.cb-seo-analysis__facts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 14px;
+	margin-top: 18px;
+	padding-top: 12px;
+	border-top: 1px solid #dcdcde;
+	font-size: 12px;
+	opacity: .78;
+}

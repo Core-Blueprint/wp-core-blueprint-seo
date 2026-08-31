@@ -1,0 +1,66 @@
+<?php
+declare(strict_types=1);
+/**
+ * Environment and Base-contract checks for Core Blueprint SEO.
+ *
+ * @package Core_Blueprint_SEO
+ */
+
+namespace CB\SEO;
+
+defined( 'ABSPATH' ) || exit;
+
+final class Requirements {
+
+	public static function base_ready(): bool {
+		if ( ! defined( 'CB_CORE_FILE' ) || ! defined( 'CB_CORE_VERSION' ) ) {
+			return false;
+		}
+
+		if ( version_compare( (string) CB_CORE_VERSION, CB_SEO_MIN_CORE_VERSION, '<' ) ) {
+			return false;
+		}
+
+		$required_classes = [
+			'\\CB\\Core\\Admin\\Page',
+			'\\CB\\Core\\Admin\\PageRegistry',
+			'\\CB\\Core\\Modules\\ActivationRegistry',
+			'\\CB\\Core\\UI\\MasterSwitch',
+			'\\CB\\Core\\UI\\Notice',
+			'\\CB\\Core\\UI\\Card',
+			'\\CB\\Core\\Log\\AuditLog',
+		];
+
+		foreach ( $required_classes as $class ) {
+			if ( ! class_exists( $class ) && ! interface_exists( $class ) ) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Activation-time messages deliberately remain plain English so activation
+	 * never triggers translation loading before WordPress' init hook.
+	 *
+	 * @return string[]
+	 */
+	public static function unmet(): array {
+		$errors = [];
+
+		if ( version_compare( PHP_VERSION, '8.0.0', '<' ) ) {
+			$errors[] = sprintf( 'PHP 8.0 or higher is required. This server runs PHP %s.', PHP_VERSION );
+		}
+
+		if ( ! defined( 'CB_CORE_FILE' ) || ! defined( 'CB_CORE_VERSION' ) ) {
+			$errors[] = 'Core Blueprint Base must be installed and active.';
+		} elseif ( version_compare( (string) CB_CORE_VERSION, CB_SEO_MIN_CORE_VERSION, '<' ) ) {
+			$errors[] = sprintf( 'Core Blueprint Base %s or newer is required. This site runs %s.', CB_SEO_MIN_CORE_VERSION, (string) CB_CORE_VERSION );
+		} elseif ( ! self::base_ready() ) {
+			$errors[] = 'The active Core Blueprint Base installation does not expose the required extension Foundation contracts.';
+		}
+
+		return $errors;
+	}
+}
