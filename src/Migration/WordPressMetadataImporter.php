@@ -224,7 +224,7 @@ final class WordPressMetadataImporter {
 		$tokens = array_values( array_filter( explode( '_', $normalized ) ) );
 		$has = static fn( string $token ): bool => in_array( $token, $tokens, true );
 		$contains = static fn( string $needle ): bool => false !== strpos( $normalized, $needle );
-		$seo_context = $has( 'seo' ) || $has( 'meta' ) || $contains( 'seo' ) || $contains( 'metadata' );
+		$seo_text_context = $has( 'seo' ) || $contains( 'seo' ) || $contains( 'meta_title' ) || $contains( 'metatitle' ) || $contains( 'meta_description' ) || $contains( 'metadescription' ) || $contains( 'meta_desc' ) || $contains( 'metadesc' );
 		$social_context = $has( 'social' ) || $has( 'twitter' ) || $has( 'facebook' ) || $has( 'fb' ) || $contains( 'open_graph' ) || $contains( 'opengraph' ) || 1 === preg_match( '/(^|_)og(_|$)/', $normalized );
 
 		if ( $contains( 'noimageindex' ) || ( $has( 'no' ) && $has( 'image' ) && $has( 'index' ) ) ) {
@@ -256,11 +256,11 @@ final class WordPressMetadataImporter {
 			return [ 'target' => 'social_description', 'confidence' => 'automatic' ];
 		}
 
-		if ( $has( 'title' ) || $contains( 'metatitle' ) || $contains( 'meta_title' ) ) {
-			return [ 'target' => 'title', 'confidence' => $seo_context ? 'automatic' : 'review' ];
+		if ( $seo_text_context && ( $has( 'title' ) || $contains( 'metatitle' ) || $contains( 'meta_title' ) ) ) {
+			return [ 'target' => 'title', 'confidence' => 'automatic' ];
 		}
-		if ( $has( 'description' ) || $has( 'desc' ) || $contains( 'metadescription' ) || $contains( 'meta_description' ) || $contains( 'metadesc' ) || $contains( 'meta_desc' ) ) {
-			return [ 'target' => 'description', 'confidence' => $seo_context ? 'automatic' : 'review' ];
+		if ( $seo_text_context && ( $has( 'description' ) || $has( 'desc' ) || $contains( 'metadescription' ) || $contains( 'meta_description' ) || $contains( 'metadesc' ) || $contains( 'meta_desc' ) ) ) {
+			return [ 'target' => 'description', 'confidence' => 'automatic' ];
 		}
 
 		return null;

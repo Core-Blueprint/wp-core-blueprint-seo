@@ -501,7 +501,7 @@ final class SettingsPage {
 		?>
 		<section class="cb-seo-import-section" aria-labelledby="cb-seo-import-title">
 			<h3 id="cb-seo-import-title"><?php esc_html_e( 'Import existing SEO metadata', 'core-blueprint-seo' ); ?></h3>
-			<p><?php esc_html_e( 'Core Blueprint scans WordPress post and term metadata for field names with recognizable SEO semantics. Discovery is vendor-neutral: it does not identify or target plugin brands.', 'core-blueprint-seo' ); ?></p>
+			<p><?php esc_html_e( 'Core Blueprint discovers existing WordPress metadata by field semantics rather than vendor-specific import profiles. Stored field names are shown as-is so you can review the source before importing.', 'core-blueprint-seo' ); ?></p>
 			<p class="description"><?php esc_html_e( 'Source metadata is never changed or deleted, and existing Core Blueprint SEO values always win. Global plugin settings and templates are intentionally not guessed because WordPress has no canonical SEO option schema.', 'core-blueprint-seo' ); ?></p>
 
 			<?php if ( ! $preview['detected'] ) : ?>
