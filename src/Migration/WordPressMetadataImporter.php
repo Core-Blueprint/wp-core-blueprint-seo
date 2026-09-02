@@ -249,17 +249,17 @@ final class WordPressMetadataImporter {
 		if ( $social_context && ( $contains( 'image_id' ) || $contains( 'img_id' ) || $contains( 'image_attachment_id' ) || $contains( 'img_attachment_id' ) || ( ( $has( 'image' ) || $has( 'img' ) ) && ( $has( 'id' ) || $has( 'attachment' ) ) ) ) ) {
 			return [ 'target' => 'social_image_id', 'confidence' => 'automatic' ];
 		}
-		if ( $social_context && $has( 'title' ) ) {
+		if ( $social_context && ( $has( 'title' ) || $contains( 'socialtitle' ) ) ) {
 			return [ 'target' => 'social_title', 'confidence' => 'automatic' ];
 		}
-		if ( $social_context && ( $has( 'description' ) || $has( 'desc' ) ) ) {
+		if ( $social_context && ( $has( 'description' ) || $has( 'desc' ) || $contains( 'socialdescription' ) || $contains( 'socialdesc' ) ) ) {
 			return [ 'target' => 'social_description', 'confidence' => 'automatic' ];
 		}
 
-		if ( $has( 'title' ) ) {
+		if ( $has( 'title' ) || $contains( 'metatitle' ) || $contains( 'meta_title' ) ) {
 			return [ 'target' => 'title', 'confidence' => $seo_context ? 'automatic' : 'review' ];
 		}
-		if ( $has( 'description' ) || $has( 'desc' ) ) {
+		if ( $has( 'description' ) || $has( 'desc' ) || $contains( 'metadescription' ) || $contains( 'meta_description' ) || $contains( 'metadesc' ) || $contains( 'meta_desc' ) ) {
 			return [ 'target' => 'description', 'confidence' => $seo_context ? 'automatic' : 'review' ];
 		}
 
