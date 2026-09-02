@@ -3,7 +3,7 @@
  * Plugin Name: Core Blueprint SEO
  * Plugin URI:  https://coreblueprint.io
  * Description: Governed SEO metadata and indexing controls for Core Blueprint with WordPress-first fallbacks and builder-independent administration.
- * Version:     1.0.0-rc3
+ * Version:     1.0.0-rc4
  * Author:      Core Blueprint
  * Author URI: https://coreblueprint.io
  * License:     GPL-2.0+
@@ -26,7 +26,7 @@ if ( defined( 'CB_SEO_FILE' ) || defined( 'CB_SEO_VERSION' ) ) {
 	return;
 }
 
-define( 'CB_SEO_VERSION', '1.0.0-rc3' );
+define( 'CB_SEO_VERSION', '1.0.0-rc4' );
 define( 'CB_SEO_FILE', __FILE__ );
 define( 'CB_SEO_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CB_SEO_URL', plugin_dir_url( __FILE__ ) );
