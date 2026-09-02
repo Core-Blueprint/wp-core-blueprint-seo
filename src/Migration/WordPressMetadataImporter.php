@@ -20,6 +20,7 @@ defined( 'ABSPATH' ) || exit;
 
 final class WordPressMetadataImporter {
 	private const BATCH_SIZE = 250;
+	private const MAX_META_KEYS = 5000;
 	private const MAX_CANDIDATES = 120;
 
 	/** @var string[] */
@@ -92,13 +93,13 @@ final class WordPressMetadataImporter {
 	 */
 	public static function import( $raw_rows ): array {
 		$report = [
-			'posts_changed'    => 0,
-			'terms_changed'    => 0,
-			'fields_imported'  => 0,
-			'skipped_existing' => 0,
-			'skipped_invalid'  => 0,
-			'skipped_conflicts'=> 0,
-			'mappings_used'    => 0,
+			'posts_changed'     => 0,
+			'terms_changed'     => 0,
+			'fields_imported'   => 0,
+			'skipped_existing'  => 0,
+			'skipped_invalid'   => 0,
+			'skipped_conflicts' => 0,
+			'mappings_used'     => 0,
 		];
 
 		$mapping = self::validated_mapping( $raw_rows );
@@ -172,34 +173,31 @@ final class WordPressMetadataImporter {
 
 		$table = 'post' === $kind ? $wpdb->postmeta : $wpdb->termmeta;
 		$id_column = 'post' === $kind ? 'post_id' : 'term_id';
+		$excluded_prefix = $wpdb->esc_like( '_cb_seo_' ) . '%';
 
-		// The WHERE clause is deliberately semantic, not vendor-specific. Review
-		// candidates can still be surfaced for generic private keys ending in
-		// title/description when the field name alone is not strong enough for an
-		// automatic mapping.
-		$patterns = [
-			'%seo%',
-			'%meta%title%',
-			'%meta%desc%',
-			'%description%',
-			'%canonical%',
-			'%noindex%',
-			'%nofollow%',
-			'%noimageindex%',
-			'%noarchive%',
-			'%nosnippet%',
-			'%social%',
-			'%open%graph%',
-			'%opengraph%',
-			'%twitter%',
-			'%attachment%id%',
-			'%image%id%',
-			'%title%',
-		];
-		$where = implode( ' OR ', array_fill( 0, count( $patterns ), 'LOWER(meta_key) LIKE %s' ) );
-		$sql = "SELECT meta_key, COUNT(DISTINCT {$id_column}) AS object_count FROM {$table} WHERE ({$where}) AND meta_key NOT LIKE %s GROUP BY meta_key";
-		$params = array_merge( $patterns, [ '_cb_seo_%' ] );
-		$rows = $wpdb->get_results( $wpdb->prepare( $sql, ...$params ), ARRAY_A ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- table/column names are trusted WordPress properties.
+		// First inspect only distinct metadata keys. This lets MySQL use the
+		// meta_key index instead of applying a large set of leading-wildcard LIKE
+		// predicates across every metadata row. Values are never selected here.
+		$sql = "SELECT DISTINCT meta_key FROM {$table} WHERE meta_key NOT LIKE %s ORDER BY meta_key ASC LIMIT %d";
+		$keys = $wpdb->get_col( $wpdb->prepare( $sql, $excluded_prefix, self::MAX_META_KEYS ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- table name is a trusted WordPress property.
+		if ( ! is_array( $keys ) ) {
+			return [];
+		}
+
+		$candidate_keys = [];
+		foreach ( $keys as $key ) {
+			$key = (string) $key;
+			if ( '' !== $key && null !== self::infer_target( $key ) ) {
+				$candidate_keys[] = $key;
+			}
+		}
+		if ( empty( $candidate_keys ) ) {
+			return [];
+		}
+
+		$placeholders = implode( ', ', array_fill( 0, count( $candidate_keys ), '%s' ) );
+		$count_sql = "SELECT meta_key, COUNT(DISTINCT {$id_column}) AS object_count FROM {$table} WHERE meta_key IN ({$placeholders}) GROUP BY meta_key";
+		$rows = $wpdb->get_results( $wpdb->prepare( $count_sql, ...$candidate_keys ), ARRAY_A ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- table/column names are trusted WordPress properties.
 		if ( ! is_array( $rows ) ) {
 			return [];
 		}
@@ -226,8 +224,8 @@ final class WordPressMetadataImporter {
 		$tokens = array_values( array_filter( explode( '_', $normalized ) ) );
 		$has = static fn( string $token ): bool => in_array( $token, $tokens, true );
 		$contains = static fn( string $needle ): bool => false !== strpos( $normalized, $needle );
-		$seo_context = $has( 'seo' ) || $has( 'meta' ) || $contains( 'wpseo' ) || $contains( 'metadata' );
-		$social_context = $has( 'social' ) || $has( 'twitter' ) || $contains( 'open_graph' ) || $contains( 'opengraph' ) || preg_match( '/(^|_)og(_|$)/', $normalized );
+		$seo_context = $has( 'seo' ) || $has( 'meta' ) || $contains( 'seo' ) || $contains( 'metadata' );
+		$social_context = $has( 'social' ) || $has( 'twitter' ) || $has( 'facebook' ) || $has( 'fb' ) || $contains( 'open_graph' ) || $contains( 'opengraph' ) || 1 === preg_match( '/(^|_)og(_|$)/', $normalized );
 
 		if ( $contains( 'noimageindex' ) || ( $has( 'no' ) && $has( 'image' ) && $has( 'index' ) ) ) {
 			return [ 'target' => 'noimageindex', 'confidence' => 'automatic' ];
@@ -248,7 +246,7 @@ final class WordPressMetadataImporter {
 			return [ 'target' => 'canonical', 'confidence' => 'automatic' ];
 		}
 
-		if ( $social_context && ( $contains( 'image_id' ) || $contains( 'image_attachment_id' ) || ( $has( 'image' ) && ( $has( 'id' ) || $has( 'attachment' ) ) ) ) ) {
+		if ( $social_context && ( $contains( 'image_id' ) || $contains( 'img_id' ) || $contains( 'image_attachment_id' ) || $contains( 'img_attachment_id' ) || ( ( $has( 'image' ) || $has( 'img' ) ) && ( $has( 'id' ) || $has( 'attachment' ) ) ) ) ) {
 			return [ 'target' => 'social_image_id', 'confidence' => 'automatic' ];
 		}
 		if ( $social_context && $has( 'title' ) ) {
