@@ -307,3 +307,34 @@
 .cb-core-seo-wrap .cb-seo-template-tabs {
 	margin-top: var(--cb-space-3);
 }
+
+/* Tools composition. The key/value table surface remains Base-owned. */
+.cb-core-seo-wrap .cb-seo-tools-section > h3 {
+	margin: 0 0 var(--cb-space-3);
+	color: var(--cb-text-strong);
+	font-size: var(--cb-fs-md);
+	font-weight: var(--cb-fw-semibold);
+}
+
+.cb-core-seo-wrap .cb-seo-tools-section > p {
+	margin: 0 0 var(--cb-space-4);
+}
+
+.cb-core-seo-wrap .cb-seo-migration-preview th[scope="row"] {
+	width: auto;
+}
+
+.cb-core-seo-wrap .cb-seo-migration-preview td {
+	width: 1%;
+	text-align: end;
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}
+
+.cb-core-seo-wrap .cb-seo-migration-preview + .description {
+	margin-top: var(--cb-space-3);
+}
+
+.cb-core-seo-wrap .cb-seo-migration-form {
+	margin-top: var(--cb-space-4);
+}

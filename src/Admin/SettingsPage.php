@@ -10,7 +10,6 @@ namespace CB\SEO\Admin;
 
 use CB\Core\UI\Card;
 use CB\Core\UI\Icon;
-use CB\Core\UI\MasterSwitch;
 use CB\Core\UI\Notice;
 use CB\SEO\Governance\Audit;
 use CB\SEO\Metadata\SettingsRepository;
@@ -142,28 +141,6 @@ final class SettingsPage {
 		<div class="wrap cb-core-wrap cb-core-wrap--narrow cb-core-seo-wrap">
 			<h1 class="cb-core-title"><?php esc_html_e( 'SEO', 'core-blueprint-seo' ); ?></h1>
 			<p class="cb-core-intro"><?php esc_html_e( 'Governed search metadata with WordPress-first fallbacks and builder-independent administration.', 'core-blueprint-seo' ); ?></p>
-
-			<div class="cb-core-master-switch-shell">
-				<?php
-				echo MasterSwitch::render( [ // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Foundation renderer is escape-clean.
-					'name'       => 'seo',
-					'aria_label' => __( 'Toggle SEO', 'core-blueprint-seo' ),
-					'active'     => $enabled ? 'on' : 'off',
-					'states'     => [
-						'on' => [
-							'tone'        => 'success',
-							'label'       => __( 'On - SEO active', 'core-blueprint-seo' ),
-							'description' => __( 'Configured SEO, social metadata and structured data can be emitted on supported public content.', 'core-blueprint-seo' ),
-						],
-						'off' => [
-							'tone'        => 'idle',
-							'label'       => __( 'Off - SEO dormant', 'core-blueprint-seo' ),
-							'description' => __( 'SEO output is disabled. All templates, social settings and per-object metadata remain stored.', 'core-blueprint-seo' ),
-						],
-					],
-				] );
-				?>
-			</div>
 
 			<?php self::render_notice(); ?>
 			<?php self::render_conflict_notice( $enabled ); ?>
@@ -515,8 +492,8 @@ final class SettingsPage {
 		$import_blocked = State::is_enabled() && SeoPluginConflictDetector::seopress_is_active();
 		ob_start();
 		?>
-		<section class="cb-seo-tools-section">
-			<h3><?php esc_html_e( 'SEOPress migration', 'core-blueprint-seo' ); ?></h3>
+		<section class="cb-seo-tools-section" aria-labelledby="cb-seo-migration-title">
+			<h3 id="cb-seo-migration-title"><?php esc_html_e( 'SEOPress migration', 'core-blueprint-seo' ); ?></h3>
 			<p><?php esc_html_e( 'Import supported SEO metadata from SEOPress without deleting or modifying the source data. Existing Core Blueprint SEO values always win.', 'core-blueprint-seo' ); ?></p>
 
 			<?php if ( ! $preview['detected'] ) : ?>
@@ -527,12 +504,12 @@ final class SettingsPage {
 				] );
 				?>
 			<?php else : ?>
-				<table class="widefat striped cb-core-kv cb-seo-migration-preview">
+				<table class="widefat cb-core-kv cb-seo-migration-preview" aria-labelledby="cb-seo-migration-title">
 					<tbody>
-						<tr><th><?php esc_html_e( 'Posts/CPTs with SEOPress metadata', 'core-blueprint-seo' ); ?></th><td><?php echo esc_html( (string) $preview['post_objects'] ); ?></td></tr>
-						<tr><th><?php esc_html_e( 'Terms with SEOPress metadata', 'core-blueprint-seo' ); ?></th><td><?php echo esc_html( (string) $preview['term_objects'] ); ?></td></tr>
-						<tr><th><?php esc_html_e( 'Supported global templates', 'core-blueprint-seo' ); ?></th><td><?php echo esc_html( (string) $preview['templates'] ); ?></td></tr>
-						<tr><th><?php esc_html_e( 'Templates with unsupported variables', 'core-blueprint-seo' ); ?></th><td><?php echo esc_html( (string) $preview['unsupported_templates'] ); ?></td></tr>
+						<tr><th scope="row"><?php esc_html_e( 'Posts/CPTs with SEOPress metadata', 'core-blueprint-seo' ); ?></th><td><?php echo esc_html( (string) $preview['post_objects'] ); ?></td></tr>
+						<tr><th scope="row"><?php esc_html_e( 'Terms with SEOPress metadata', 'core-blueprint-seo' ); ?></th><td><?php echo esc_html( (string) $preview['term_objects'] ); ?></td></tr>
+						<tr><th scope="row"><?php esc_html_e( 'Supported global templates', 'core-blueprint-seo' ); ?></th><td><?php echo esc_html( (string) $preview['templates'] ); ?></td></tr>
+						<tr><th scope="row"><?php esc_html_e( 'Templates with unsupported variables', 'core-blueprint-seo' ); ?></th><td><?php echo esc_html( (string) $preview['unsupported_templates'] ); ?></td></tr>
 					</tbody>
 				</table>
 				<p class="description"><?php esc_html_e( 'Imported fields include titles, descriptions, canonicals, restrictive robots directives and social overrides. Facebook social values are preferred, with X/Twitter as fallback. Redirects, analytics, schema configuration and image URLs without a WordPress attachment ID are intentionally not migrated.', 'core-blueprint-seo' ); ?></p>

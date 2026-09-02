@@ -1,6 +1,6 @@
 # Core Blueprint SEO
 
-Version: `1.0.0-rc1.1`
+Version: `1.0.0-rc3`
 
 Core Blueprint SEO is the privacy-first SEO and discovery extension for Core Blueprint. It improves how public WordPress content is described, indexed, shared and discovered without analytics, visitor tracking, advertising integrations or Google SDKs.
 
