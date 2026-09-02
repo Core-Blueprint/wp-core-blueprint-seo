@@ -9,10 +9,11 @@ declare(strict_types=1);
 namespace CB\SEO;
 
 use CB\Core\Log\AuditLog;
+use CB\Core\Modules\ModuleStateInterface;
 
 defined( 'ABSPATH' ) || exit;
 
-final class State {
+final class State implements ModuleStateInterface {
 
 	public static function is_enabled(): bool {
 		return '1' === (string) get_option( CB_SEO_ENABLED_OPT, '1' );
