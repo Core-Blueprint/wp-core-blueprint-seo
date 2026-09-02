@@ -1,0 +1,55 @@
+name: SEO rc4 validation
+
+on:
+  push:
+    branches:
+      - feature/wp-native-seo-importer
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: PHP syntax
+        run: find . -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Importer semantic smoke
+        run: |
+          php <<'PHP'
+          <?php
+          define('ABSPATH', __DIR__ . '/');
+          require __DIR__ . '/src/Migration/WordPressMetadataImporter.php';
+
+          $method = new ReflectionMethod(CB\SEO\Migration\WordPressMetadataImporter::class, 'infer_target');
+          $method->setAccessible(true);
+
+          $cases = [
+              '_generic_seo_title' => ['title', 'automatic'],
+              '_legacy_meta_description' => ['description', 'automatic'],
+              '_custom_title' => ['title', 'review'],
+              '_legacy_canonical_url' => ['canonical', 'automatic'],
+              '_legacy_robots_noindex' => ['noindex', 'automatic'],
+              '_legacy_social_twitter_title' => ['social_title', 'automatic'],
+              '_legacy_social_fb_img_attachment_id' => ['social_image_id', 'automatic'],
+          ];
+
+          foreach ($cases as $key => $expected) {
+              $actual = $method->invoke(null, $key);
+              if (!is_array($actual) || $actual['target'] !== $expected[0] || $actual['confidence'] !== $expected[1]) {
+                  fwrite(STDERR, "Unexpected inference for {$key}: " . var_export($actual, true) . PHP_EOL);
+                  exit(1);
+              }
+          }
+
+          if (null !== $method->invoke(null, '_thumbnail_id')) {
+              fwrite(STDERR, "Unrelated WordPress metadata was classified as SEO metadata." . PHP_EOL);
+              exit(1);
+          }
+
+          echo "Importer semantic smoke passed." . PHP_EOL;
+          PHP
