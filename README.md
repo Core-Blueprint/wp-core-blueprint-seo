@@ -1,6 +1,6 @@
 # Core Blueprint SEO
 
-Version: `1.0.0-rc3`
+Version: `1.0.0-rc4`
 
 Core Blueprint SEO is the privacy-first SEO and discovery extension for Core Blueprint. It improves how public WordPress content is described, indexed, shared and discovered without analytics, visitor tracking, advertising integrations or Google SDKs.
 
@@ -18,8 +18,17 @@ Core Blueprint SEO is the privacy-first SEO and discovery extension for Core Blu
 - fail-closed AI Discovery handling for Core Blueprint Access-managed content;
 - builder-agnostic rendered frontend analyzer with focus-keyword checks;
 - detection of overlapping SEO plugins;
-- non-destructive SEOPress migration with preview;
+- vendor-neutral import of compatible SEO metadata already stored in WordPress post/term meta;
+- explicit review/mapping for ambiguous metadata fields, with existing Core Blueprint values always preserved;
 - Core Blueprint governance/audit events.
+
+## WordPress metadata import
+
+The Import screen scans normal WordPress post and term metadata for field names with recognizable SEO semantics. Discovery is based on the stored metadata itself rather than the identity of the plugin or system that created it.
+
+Strong, unambiguous matches can be preselected automatically. Ambiguous candidates remain disabled until an administrator explicitly maps them to a Core Blueprint SEO field. Source metadata is never changed or deleted, and existing Core Blueprint SEO values always win.
+
+Global plugin settings and title-template options are intentionally not guessed: WordPress does not define a canonical SEO option schema that would make those values safely portable between independent implementations.
 
 ## Builder independence
 
