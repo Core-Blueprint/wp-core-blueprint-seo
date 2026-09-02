@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.0-rc3 — 2026-09-02
+
+- Removed the duplicate SEO settings master switch. Activation remains controlled by the Base dashboard through the existing SEO state and audit events; dormant settings and warnings remain available.
+- Declared the public `disclosure` component so post-type and taxonomy sections receive Base-owned layout, chevrons, open/focus states and light/dark styling.
+- Aligned the SEOPress migration preview with the public `kv-table` contract: removed WordPress zebra striping, added row-header semantics and kept only column layout in SEO CSS.
+- Corrected the Tools section heading contrast and content/action spacing using public design tokens.
+- No metadata, indexing, discovery, schema, analysis, settings persistence or import behavior changed.
+
 ## 1.0.0-rc1.1 — 2026-08-30
 
 - Removed the retired pre-v1 `cb_core_status_tiles` registration and dedicated dead Dashboard `StatusTile` class.

@@ -31,7 +31,7 @@ final class Bootstrap {
 		Lifecycle::maybe_upgrade();
 
 		// The settings surface remains available while SEO is disabled because the
-		// Base dashboard and the settings page both operate on the canonical State.
+		// Base dashboard controls activation through the canonical State.
 		add_action( 'cb_core_register_extensions', [ self::class, 'register_extension' ] );
 		add_action( 'cb_core_register_pages', [ self::class, 'register_page' ] );
 		add_filter( 'plugin_action_links_' . CB_SEO_BASENAME, [ SettingsPage::class, 'plugin_action_links' ] );
@@ -114,7 +114,7 @@ final class Bootstrap {
 			new Seo(),
 			[
 				'components' => [
-					'master-switch',
+					'disclosure',
 					'notices',
 					'nav-tabs',
 					'cards',
