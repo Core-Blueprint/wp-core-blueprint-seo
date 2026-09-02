@@ -21,7 +21,7 @@ use CB\SEO\Discovery\SettingsRepository as DiscoverySettingsRepository;
 use CB\SEO\Discovery\AccessGuard;
 use CB\SEO\State;
 use CB\SEO\Compatibility\SeoPluginConflictDetector;
-use CB\SEO\Migration\SeoPressImporter;
+use CB\SEO\Migration\WordPressMetadataImporter;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -29,7 +29,7 @@ final class SettingsPage {
 	private const NONCE_ACTION = 'cb_seo_save_metadata_settings';
 	private const NONCE_NAME   = 'cb_seo_settings_nonce';
 	private const SECTIONS     = [ 'post-types', 'taxonomies', 'variables' ];
-	private const TABS         = [ 'search-appearance', 'indexing', 'social-schema', 'ai-discovery', 'tools' ];
+	private const TABS         = [ 'search-appearance', 'indexing', 'social-schema', 'ai-discovery', 'import' ];
 
 	/** @param string[] $links */
 	public static function plugin_action_links( array $links ): array {
@@ -53,27 +53,30 @@ final class SettingsPage {
 			return;
 		}
 		$action = sanitize_key( wp_unslash( $_POST['cb_seo_action'] ) );
-		if ( ! in_array( $action, [ 'save_metadata_templates', 'save_presentation_settings', 'save_discovery_settings', 'save_indexing_settings', 'import_seopress' ], true ) ) {
+		if ( ! in_array( $action, [ 'save_metadata_templates', 'save_presentation_settings', 'save_discovery_settings', 'save_indexing_settings', 'import_wordpress_metadata' ], true ) ) {
 			return;
 		}
 		check_admin_referer( self::NONCE_ACTION, self::NONCE_NAME );
 
-		if ( 'import_seopress' === $action ) {
-			if ( State::is_enabled() && SeoPluginConflictDetector::seopress_is_active() ) {
-				wp_safe_redirect( add_query_arg( [ 'page' => 'core-blueprint-seo', 'tab' => 'tools', 'cb_seo_notice' => 'seopress-import-blocked' ], admin_url( 'admin.php' ) ) );
-				exit;
+		if ( 'import_wordpress_metadata' === $action ) {
+			$raw = isset( $_POST['cb_seo_import_sources'] ) && is_array( $_POST['cb_seo_import_sources'] ) ? $_POST['cb_seo_import_sources'] : []; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- importer validates discovered keys and target identifiers.
+			$report = WordPressMetadataImporter::import( $raw );
+			if ( $report['fields_imported'] > 0 ) {
+				AnalysisRepository::delete_all_snapshots();
 			}
-			$report = SeoPressImporter::import();
-			AnalysisRepository::delete_all_snapshots();
-			Audit::log( 'seo_seopress_imported', $report );
+			if ( $report['mappings_used'] > 0 ) {
+				Audit::log( 'seo_metadata_imported', $report );
+			}
 			wp_safe_redirect(
 				add_query_arg(
 					[
 						'page'                    => 'core-blueprint-seo',
-						'tab'                     => 'tools',
-						'cb_seo_notice'           => 'seopress-imported',
+						'tab'                     => 'import',
+						'cb_seo_notice'           => $report['mappings_used'] > 0 ? 'metadata-imported' : 'metadata-import-empty',
 						'cb_seo_imported_objects' => $report['posts_changed'] + $report['terms_changed'],
-						'cb_seo_imported_fields'  => $report['fields_imported'] + $report['templates_imported'] + $report['indexing_rules_imported'],
+						'cb_seo_imported_fields'  => $report['fields_imported'],
+						'cb_seo_import_mappings'  => $report['mappings_used'],
+						'cb_seo_import_skipped'   => $report['skipped_existing'],
 					],
 					admin_url( 'admin.php' )
 				)
@@ -186,8 +189,8 @@ final class SettingsPage {
 			} else {
 				echo Card::render( [ // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- method escapes fields.
 					'variant' => Card::VARIANT_SPACIOUS,
-					'title'   => __( 'Tools', 'core-blueprint-seo' ),
-					'body'    => self::tools_body(),
+					'title'   => __( 'Import', 'core-blueprint-seo' ),
+					'body'    => self::import_body(),
 				] );
 			}
 			?>
@@ -202,7 +205,7 @@ final class SettingsPage {
 			'indexing'          => __( 'Indexing', 'core-blueprint-seo' ),
 			'social-schema'     => __( 'Social & Schema', 'core-blueprint-seo' ),
 			'ai-discovery'      => __( 'AI Discovery', 'core-blueprint-seo' ),
-			'tools'             => __( 'Tools', 'core-blueprint-seo' ),
+			'import'            => __( 'Import', 'core-blueprint-seo' ),
 		];
 		?>
 		<nav class="nav-tab-wrapper cb-core-tab-wrapper cb-seo-primary-tabs" aria-label="<?php esc_attr_e( 'SEO sections', 'core-blueprint-seo' ); ?>">
@@ -270,21 +273,25 @@ final class SettingsPage {
 			echo Notice::render( [ 'variant' => Notice::SUCCESS, 'message' => __( 'AI discovery settings saved.', 'core-blueprint-seo' ) ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		} elseif ( 'discovery-unchanged' === $notice ) {
 			echo Notice::render( [ 'variant' => Notice::INFO, 'message' => __( 'No AI discovery changes were detected.', 'core-blueprint-seo' ) ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		} elseif ( 'seopress-import-blocked' === $notice ) {
-			echo Notice::render( [ // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Foundation renderer is escape-clean.
-				'variant' => Notice::WARNING,
-				'message' => __( 'SEOPress is still active while Core Blueprint SEO output is enabled. Temporarily set Core Blueprint SEO to dormant before importing, then disable SEOPress and re-enable Core Blueprint SEO after validation.', 'core-blueprint-seo' ),
-			] );
-		} elseif ( 'seopress-imported' === $notice ) {
-			$objects = isset( $_GET['cb_seo_imported_objects'] ) ? absint( $_GET['cb_seo_imported_objects'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only redirect feedback.
-			$fields  = isset( $_GET['cb_seo_imported_fields'] ) ? absint( $_GET['cb_seo_imported_fields'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only redirect feedback.
+		} elseif ( 'metadata-import-empty' === $notice ) {
+			echo Notice::render( [
+				'variant' => Notice::INFO,
+				'message' => __( 'No valid SEO metadata mappings were selected, so nothing was imported.', 'core-blueprint-seo' ),
+			] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		} elseif ( 'metadata-imported' === $notice ) {
+			$objects  = isset( $_GET['cb_seo_imported_objects'] ) ? absint( $_GET['cb_seo_imported_objects'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only redirect feedback.
+			$fields   = isset( $_GET['cb_seo_imported_fields'] ) ? absint( $_GET['cb_seo_imported_fields'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only redirect feedback.
+			$mappings = isset( $_GET['cb_seo_import_mappings'] ) ? absint( $_GET['cb_seo_import_mappings'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only redirect feedback.
+			$skipped  = isset( $_GET['cb_seo_import_skipped'] ) ? absint( $_GET['cb_seo_import_skipped'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only redirect feedback.
 			echo Notice::render( [ // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Foundation renderer is escape-clean.
 				'variant' => Notice::SUCCESS,
 				'message' => sprintf(
-					/* translators: 1: changed objects, 2: imported fields/settings. */
-					__( 'SEOPress migration completed. %1$d content objects changed and %2$d fields or settings were imported. Existing Core Blueprint SEO values were preserved.', 'core-blueprint-seo' ),
+					/* translators: 1: changed objects, 2: imported fields, 3: mappings used, 4: existing values preserved. */
+					__( 'SEO metadata import completed. %1$d content objects changed, %2$d fields were imported through %3$d mappings, and %4$d existing Core Blueprint values were preserved.', 'core-blueprint-seo' ),
 					$objects,
-					$fields
+					$fields,
+					$mappings,
+					$skipped
 				),
 			] );
 		} elseif ( 'unchanged' === $notice ) {
@@ -487,49 +494,87 @@ final class SettingsPage {
 		return (string) ob_get_clean();
 	}
 
-	private static function tools_body(): string {
-		$preview = SeoPressImporter::preview();
-		$import_blocked = State::is_enabled() && SeoPluginConflictDetector::seopress_is_active();
+	private static function import_body(): string {
+		$preview = WordPressMetadataImporter::preview();
+		$targets = self::import_target_labels();
 		ob_start();
 		?>
-		<section class="cb-seo-tools-section" aria-labelledby="cb-seo-migration-title">
-			<h3 id="cb-seo-migration-title"><?php esc_html_e( 'SEOPress migration', 'core-blueprint-seo' ); ?></h3>
-			<p><?php esc_html_e( 'Import supported SEO metadata from SEOPress without deleting or modifying the source data. Existing Core Blueprint SEO values always win.', 'core-blueprint-seo' ); ?></p>
+		<section class="cb-seo-import-section" aria-labelledby="cb-seo-import-title">
+			<h3 id="cb-seo-import-title"><?php esc_html_e( 'Import existing SEO metadata', 'core-blueprint-seo' ); ?></h3>
+			<p><?php esc_html_e( 'Core Blueprint scans WordPress post and term metadata for field names with recognizable SEO semantics. Discovery is vendor-neutral: it does not identify or target plugin brands.', 'core-blueprint-seo' ); ?></p>
+			<p class="description"><?php esc_html_e( 'Source metadata is never changed or deleted, and existing Core Blueprint SEO values always win. Global plugin settings and templates are intentionally not guessed because WordPress has no canonical SEO option schema.', 'core-blueprint-seo' ); ?></p>
 
 			<?php if ( ! $preview['detected'] ) : ?>
 				<?php
 				echo Notice::render( [ // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Foundation renderer is escape-clean.
 					'variant' => Notice::INFO,
-					'message' => __( 'No SEOPress metadata or title-template configuration was detected.', 'core-blueprint-seo' ),
+					'message' => __( 'No compatible SEO metadata candidates were discovered in WordPress post or term metadata.', 'core-blueprint-seo' ),
 				] );
 				?>
 			<?php else : ?>
-				<table class="widefat cb-core-kv cb-seo-migration-preview" aria-labelledby="cb-seo-migration-title">
-					<tbody>
-						<tr><th scope="row"><?php esc_html_e( 'Posts/CPTs with SEOPress metadata', 'core-blueprint-seo' ); ?></th><td><?php echo esc_html( (string) $preview['post_objects'] ); ?></td></tr>
-						<tr><th scope="row"><?php esc_html_e( 'Terms with SEOPress metadata', 'core-blueprint-seo' ); ?></th><td><?php echo esc_html( (string) $preview['term_objects'] ); ?></td></tr>
-						<tr><th scope="row"><?php esc_html_e( 'Supported global templates', 'core-blueprint-seo' ); ?></th><td><?php echo esc_html( (string) $preview['templates'] ); ?></td></tr>
-						<tr><th scope="row"><?php esc_html_e( 'Templates with unsupported variables', 'core-blueprint-seo' ); ?></th><td><?php echo esc_html( (string) $preview['unsupported_templates'] ); ?></td></tr>
-					</tbody>
-				</table>
-				<p class="description"><?php esc_html_e( 'Imported fields include titles, descriptions, canonicals, restrictive robots directives and social overrides. Facebook social values are preferred, with X/Twitter as fallback. Redirects, analytics, schema configuration and image URLs without a WordPress attachment ID are intentionally not migrated.', 'core-blueprint-seo' ); ?></p>
-				<?php if ( $import_blocked ) : ?>
-					<?php
-					echo Notice::render( [ // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Foundation renderer is escape-clean.
-						'variant' => Notice::WARNING,
-						'message' => __( 'To prevent duplicate frontend metadata, set Core Blueprint SEO to dormant before importing while SEOPress is active.', 'core-blueprint-seo' ),
-					] );
-					?>
-				<?php endif; ?>
-				<form method="post" class="cb-core-form-scope cb-seo-migration-form">
+				<form method="post" class="cb-core-form-scope cb-seo-import-form">
 					<?php wp_nonce_field( self::NONCE_ACTION, self::NONCE_NAME ); ?>
-					<input type="hidden" name="cb_seo_action" value="import_seopress">
-					<button type="submit" class="button button-primary cb-core-button cb-core-button--primary" <?php disabled( $import_blocked ); ?>><?php esc_html_e( 'Import SEOPress data', 'core-blueprint-seo' ); ?></button>
+					<input type="hidden" name="cb_seo_action" value="import_wordpress_metadata">
+
+					<div class="cb-seo-import-overview">
+						<span class="cb-core-badge cb-core-badge-standard"><?php echo esc_html( sprintf( __( '%d automatic', 'core-blueprint-seo' ), $preview['automatic_mappings'] ) ); ?></span>
+						<span class="cb-core-badge cb-core-badge-neutral"><?php echo esc_html( sprintf( __( '%d review', 'core-blueprint-seo' ), $preview['review_mappings'] ) ); ?></span>
+					</div>
+
+					<div class="cb-seo-import-list">
+						<?php foreach ( $preview['candidates'] as $index => $candidate ) :
+							$select_id = 'cb-seo-import-target-' . absint( $index );
+							$is_automatic = 'automatic' === $candidate['confidence'] && '' !== $candidate['default_target'];
+							?>
+							<div class="cb-seo-import-row">
+								<div class="cb-seo-import-source">
+									<div class="cb-seo-import-source__key"><code><?php echo esc_html( $candidate['key'] ); ?></code></div>
+									<div class="cb-seo-import-source__meta">
+										<?php echo esc_html( sprintf( __( 'Posts/CPTs: %1$d · Terms: %2$d', 'core-blueprint-seo' ), $candidate['post_objects'], $candidate['term_objects'] ) ); ?>
+										<span class="cb-core-badge <?php echo $is_automatic ? 'cb-core-badge-standard' : 'cb-core-badge-neutral'; ?>"><?php echo esc_html( $is_automatic ? __( 'Automatic', 'core-blueprint-seo' ) : __( 'Review', 'core-blueprint-seo' ) ); ?></span>
+									</div>
+								</div>
+								<div class="cb-seo-import-target">
+									<input type="hidden" name="cb_seo_import_sources[<?php echo esc_attr( (string) $index ); ?>][key]" value="<?php echo esc_attr( $candidate['key'] ); ?>">
+									<label for="<?php echo esc_attr( $select_id ); ?>"><?php esc_html_e( 'Map to', 'core-blueprint-seo' ); ?></label>
+									<select id="<?php echo esc_attr( $select_id ); ?>" name="cb_seo_import_sources[<?php echo esc_attr( (string) $index ); ?>][target]">
+										<option value=""><?php esc_html_e( 'Do not import', 'core-blueprint-seo' ); ?></option>
+										<?php foreach ( $targets as $target_id => $target_label ) : ?>
+											<option value="<?php echo esc_attr( $target_id ); ?>" <?php selected( $candidate['default_target'], $target_id ); ?>><?php echo esc_html( $target_label ); ?></option>
+										<?php endforeach; ?>
+									</select>
+									<?php if ( '' === $candidate['default_target'] && '' !== $candidate['suggested_target'] && isset( $targets[ $candidate['suggested_target'] ] ) ) : ?>
+										<p class="description"><?php echo esc_html( sprintf( __( 'Suggested: %s. Review before importing.', 'core-blueprint-seo' ), $targets[ $candidate['suggested_target'] ] ) ); ?></p>
+									<?php endif; ?>
+								</div>
+							</div>
+						<?php endforeach; ?>
+					</div>
+
+					<p class="description cb-seo-import-note"><?php esc_html_e( 'Automatic mappings are preselected only when the semantic match is strong and unambiguous. Review candidates remain disabled until you explicitly map them. If multiple source fields target the same Core Blueprint field on one object, the first non-empty mapped source wins and later conflicts are skipped.', 'core-blueprint-seo' ); ?></p>
+					<div class="cb-seo-save-row"><button type="submit" class="button button-primary cb-core-button cb-core-button--primary"><?php esc_html_e( 'Import selected metadata', 'core-blueprint-seo' ); ?></button></div>
 				</form>
 			<?php endif; ?>
 		</section>
 		<?php
 		return (string) ob_get_clean();
+	}
+
+	/** @return array<string,string> */
+	private static function import_target_labels(): array {
+		return [
+			'title'              => __( 'SEO title', 'core-blueprint-seo' ),
+			'description'        => __( 'Meta description', 'core-blueprint-seo' ),
+			'canonical'          => __( 'Canonical URL', 'core-blueprint-seo' ),
+			'noindex'            => __( 'Robots: noindex', 'core-blueprint-seo' ),
+			'nofollow'           => __( 'Robots: nofollow', 'core-blueprint-seo' ),
+			'noimageindex'       => __( 'Robots: noimageindex', 'core-blueprint-seo' ),
+			'noarchive'          => __( 'Robots: noarchive', 'core-blueprint-seo' ),
+			'nosnippet'          => __( 'Robots: nosnippet', 'core-blueprint-seo' ),
+			'social_title'       => __( 'Social title', 'core-blueprint-seo' ),
+			'social_description' => __( 'Social description', 'core-blueprint-seo' ),
+			'social_image_id'    => __( 'Social image attachment ID', 'core-blueprint-seo' ),
+		];
 	}
 
 	private static function render_settings_image_picker( string $name, int $attachment_id, string $label, string $description ): void {
