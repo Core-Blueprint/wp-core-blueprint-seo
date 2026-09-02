@@ -31,6 +31,8 @@ jobs:
           $cases = [
               '_generic_seo_title' => ['title', 'automatic'],
               '_legacy_meta_description' => ['description', 'automatic'],
+              '_legacy_seo_metatitle' => ['title', 'automatic'],
+              '_legacy_wpseo_metadesc' => ['description', 'automatic'],
               '_custom_title' => ['title', 'review'],
               '_legacy_canonical_url' => ['canonical', 'automatic'],
               '_legacy_robots_noindex' => ['noindex', 'automatic'],
