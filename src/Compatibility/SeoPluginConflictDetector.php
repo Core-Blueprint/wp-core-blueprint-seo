@@ -11,20 +11,15 @@ namespace CB\SEO\Compatibility;
 defined( 'ABSPATH' ) || exit;
 
 final class SeoPluginConflictDetector {
-	public static function seopress_is_active(): bool {
-		$conflicts = self::active_conflicts();
-		return isset( $conflicts['wp-seopress/seopress.php'] ) || isset( $conflicts['wp-seopress-pro/seopress-pro.php'] );
-	}
-
 	/** @return array<string,string> plugin basename => display name */
 	public static function active_conflicts(): array {
 		$known = [
-			'wp-seopress/seopress.php'                 => 'SEOPress',
-			'wp-seopress-pro/seopress-pro.php'         => 'SEOPress PRO',
-			'wordpress-seo/wp-seo.php'                 => 'Yoast SEO',
-			'seo-by-rank-math/rank-math.php'           => 'Rank Math SEO',
+			'wp-seopress/seopress.php'                    => 'SEOPress',
+			'wp-seopress-pro/seopress-pro.php'            => 'SEOPress PRO',
+			'wordpress-seo/wp-seo.php'                    => 'Yoast SEO',
+			'seo-by-rank-math/rank-math.php'              => 'Rank Math SEO',
 			'all-in-one-seo-pack/all_in_one_seo_pack.php' => 'All in One SEO',
-			'slim-seo/slim-seo.php'                    => 'Slim SEO',
+			'slim-seo/slim-seo.php'                       => 'Slim SEO',
 		];
 
 		/**
