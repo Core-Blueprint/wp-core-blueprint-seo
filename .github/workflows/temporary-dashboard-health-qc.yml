@@ -1,0 +1,33 @@
+name: Temporary SEO Dashboard Health QC
+
+on:
+  push:
+    branches:
+      - fix/seo-dashboard-health
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  health-qc:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+      - name: Lint health integration
+        run: |
+          php -l src/Bootstrap.php
+          php -l tests/dashboard-health-regression.php
+      - name: Run dashboard health regression
+        run: php tests/dashboard-health-regression.php
+      - name: Verify existing translation messages
+        run: |
+          for file in languages/core-blueprint-seo.pot languages/*.po; do
+            grep -Fq 'msgid "SEO enabled"' "$file"
+            grep -Fq 'msgid "SEO disabled"' "$file"
+            grep -Fq 'msgid "Another SEO plugin is active"' "$file"
+          done
