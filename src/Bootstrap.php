@@ -100,9 +100,9 @@ final class Bootstrap {
 				'order'      => 30,
 			],
 			[
-				'id'         => 'tools',
-				'label'      => __( 'Tools', 'core-blueprint-seo' ),
-				'url'        => add_query_arg( 'tab', 'tools', $base_url ),
+				'id'         => 'import',
+				'label'      => __( 'Import', 'core-blueprint-seo' ),
+				'url'        => add_query_arg( 'tab', 'import', $base_url ),
 				'capability' => 'manage_options',
 				'order'      => 40,
 			],
@@ -159,7 +159,7 @@ final class Bootstrap {
 		$labels['seo_schema_settings_updated']    = $translate ? __( 'SEO structured data settings updated', 'core-blueprint-seo' ) : 'SEO structured data settings updated';
 		$labels['seo_discovery_settings_updated'] = $translate ? __( 'SEO AI discovery settings updated', 'core-blueprint-seo' ) : 'SEO AI discovery settings updated';
 		$labels['seo_indexing_settings_updated']  = $translate ? __( 'SEO indexing policy updated', 'core-blueprint-seo' ) : 'SEO indexing policy updated';
-		$labels['seo_seopress_imported']          = $translate ? __( 'SEOPress data imported', 'core-blueprint-seo' ) : 'SEOPress data imported';
+		$labels['seo_metadata_imported']          = $translate ? __( 'SEO metadata imported', 'core-blueprint-seo' ) : 'SEO metadata imported';
 		return $labels;
 	}
 }

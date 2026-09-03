@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.0.0-rc4 — 2026-09-02
+
+- Replaced the vendor-specific SEOPress migration surface with a vendor-neutral WordPress metadata importer.
+- Added semantic discovery for compatible SEO fields stored in normal post and term metadata without identifying or targeting the plugin that created them.
+- Added explicit source-to-target mapping with conservative defaults: only strong, unambiguous matches are preselected; review candidates remain opt-in.
+- Preserved existing Core Blueprint SEO values, left all source metadata untouched and invalidated analysis snapshots only when metadata was actually imported.
+- Deliberately stopped importing vendor-specific global options/templates because WordPress has no canonical SEO option schema that makes those settings safely portable.
+- Replaced the SEOPress-specific governance event with the generic `seo_metadata_imported` event.
+- Renamed the SEO Tools shortcut/tab to Import and removed the obsolete vendor-specific importer implementation.
+
+### Import safety
+
+- Existing Core Blueprint SEO values always win.
+- Source post/term metadata is read-only and is never deleted or modified.
+- Restrictive robots fields are imported only when the source value is explicitly truthy.
+- Social images are accepted only when the source resolves to an existing WordPress attachment ID.
+- Multiple source fields mapped to one Core Blueprint target are resolved conservatively: the first non-empty value wins and later conflicts are skipped.
+- Ambiguous field names are never silently imported.
+
 ## 1.0.0-rc3 — 2026-09-02
 
 - Removed the duplicate SEO settings master switch. Activation remains controlled by the Base dashboard through the existing SEO state and audit events; dormant settings and warnings remain available.

@@ -26,7 +26,7 @@ final class Requirements {
 			'\\CB\\Core\\Admin\\PageRegistry',
 			'\\CB\\Core\\ExtensionRegistry',
 			'\\CB\\Core\\Modules\\ActivationRegistry',
-			'\\CB\\Core\\UI\\MasterSwitch',
+			'\\CB\\Core\\Modules\\ModuleStateInterface',
 			'\\CB\\Core\\UI\\Notice',
 			'\\CB\\Core\\UI\\Card',
 			'\\CB\\Core\\Log\\AuditLog',
