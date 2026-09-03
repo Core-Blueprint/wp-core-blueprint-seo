@@ -16,6 +16,7 @@ use CB\SEO\Admin\SettingsPage;
 use CB\SEO\Admin\Assets;
 use CB\SEO\Admin\Editor\SeoMetaBox;
 use CB\SEO\Admin\Editor\TermFields;
+use CB\SEO\Compatibility\SeoPluginConflictDetector;
 use CB\SEO\Metadata\Runtime;
 use CB\SEO\Indexing\Runtime as IndexingRuntime;
 use CB\SEO\Social\Runtime as SocialRuntime;
@@ -43,6 +44,7 @@ final class Bootstrap {
 
 		// Public Base Foundation boundaries consumed by extensions.
 		add_filter( 'cb_core_module_activation_definitions', [ self::class, 'register_module_activation' ] );
+		add_filter( 'cb_core_module_status_definitions', [ self::class, 'register_status_definition' ] );
 		add_filter( 'cb_core_event_labels', [ self::class, 'register_event_labels' ] );
 		add_action( 'cb_core_dashboard_register_cards', [ self::class, 'register_dashboard_shortcuts' ] );
 
@@ -134,6 +136,45 @@ final class Bootstrap {
 			'capability' => 'manage_options',
 		];
 		return $definitions;
+	}
+
+	/** @param array<string,array<string,mixed>> $definitions
+	 *  @return array<string,array<string,mixed>>
+	 */
+	public static function register_status_definition( array $definitions ): array {
+		$definitions['seo'] = [
+			'provider' => [ self::class, 'extension_status' ],
+			'label'    => __( 'SEO', 'core-blueprint-seo' ),
+			'url'      => admin_url( 'admin.php?page=core-blueprint-seo' ),
+		];
+		return $definitions;
+	}
+
+	/** @return array{state:string,detail:string,url:string} */
+	public static function extension_status(): array {
+		$url = admin_url( 'admin.php?page=core-blueprint-seo' );
+
+		if ( ! State::is_enabled() ) {
+			return [
+				'state'  => 'off',
+				'detail' => __( 'SEO disabled', 'core-blueprint-seo' ),
+				'url'    => $url,
+			];
+		}
+
+		if ( SeoPluginConflictDetector::active_conflicts() ) {
+			return [
+				'state'  => 'warn',
+				'detail' => __( 'Another SEO plugin is active', 'core-blueprint-seo' ),
+				'url'    => $url,
+			];
+		}
+
+		return [
+			'state'  => 'ok',
+			'detail' => __( 'SEO enabled', 'core-blueprint-seo' ),
+			'url'    => $url,
+		];
 	}
 
 	/** @param array<string,string> $labels */
