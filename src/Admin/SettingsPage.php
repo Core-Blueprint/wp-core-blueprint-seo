@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace CB\SEO\Admin;
 
+use CB\Core\Admin\SettingsRegistry;
 use CB\Core\UI\Card;
 use CB\Core\UI\Icon;
 use CB\Core\UI\Notice;
@@ -33,7 +34,7 @@ final class SettingsPage {
 
 	/** @param string[] $links */
 	public static function plugin_action_links( array $links ): array {
-		$url = admin_url( 'admin.php?page=core-blueprint-seo' );
+		$url = SettingsRegistry::url( 'core-blueprint-seo' );
 		array_unshift(
 			$links,
 			sprintf(
@@ -68,17 +69,16 @@ final class SettingsPage {
 				Audit::log( 'seo_metadata_imported', $report );
 			}
 			wp_safe_redirect(
-				add_query_arg(
+				SettingsRegistry::url(
+					'core-blueprint-seo',
 					[
-						'page'                    => 'core-blueprint-seo',
 						'tab'                     => 'import',
 						'cb_seo_notice'           => $report['mappings_used'] > 0 ? 'metadata-imported' : 'metadata-import-empty',
 						'cb_seo_imported_objects' => $report['posts_changed'] + $report['terms_changed'],
 						'cb_seo_imported_fields'  => $report['fields_imported'],
 						'cb_seo_import_mappings'  => $report['mappings_used'],
 						'cb_seo_import_skipped'   => $report['skipped_existing'],
-					],
-					admin_url( 'admin.php' )
+					]
 				)
 			);
 			exit;
@@ -91,7 +91,7 @@ final class SettingsPage {
 				AnalysisRepository::delete_all_snapshots();
 				Audit::log( 'seo_indexing_settings_updated' );
 			}
-			wp_safe_redirect( add_query_arg( [ 'page' => 'core-blueprint-seo', 'tab' => 'indexing', 'cb_seo_notice' => $changed ? 'indexing-saved' : 'indexing-unchanged' ], admin_url( 'admin.php' ) ) );
+			wp_safe_redirect( SettingsRegistry::url( 'core-blueprint-seo', [ 'tab' => 'indexing', 'cb_seo_notice' => $changed ? 'indexing-saved' : 'indexing-unchanged' ] ) );
 			exit;
 		}
 
@@ -101,7 +101,7 @@ final class SettingsPage {
 			if ( $changed ) {
 				Audit::log( 'seo_discovery_settings_updated' );
 			}
-			wp_safe_redirect( add_query_arg( [ 'page' => 'core-blueprint-seo', 'tab' => 'ai-discovery', 'cb_seo_notice' => $changed ? 'discovery-saved' : 'discovery-unchanged' ], admin_url( 'admin.php' ) ) );
+			wp_safe_redirect( SettingsRegistry::url( 'core-blueprint-seo', [ 'tab' => 'ai-discovery', 'cb_seo_notice' => $changed ? 'discovery-saved' : 'discovery-unchanged' ] ) );
 			exit;
 		}
 
@@ -117,7 +117,7 @@ final class SettingsPage {
 				Audit::log( 'seo_schema_settings_updated' );
 			}
 			$changed = $social_changed || $schema_changed;
-			wp_safe_redirect( add_query_arg( [ 'page' => 'core-blueprint-seo', 'tab' => 'social-schema', 'cb_seo_notice' => $changed ? 'presentation-saved' : 'presentation-unchanged' ], admin_url( 'admin.php' ) ) );
+			wp_safe_redirect( SettingsRegistry::url( 'core-blueprint-seo', [ 'tab' => 'social-schema', 'cb_seo_notice' => $changed ? 'presentation-saved' : 'presentation-unchanged' ] ) );
 			exit;
 		}
 
@@ -130,7 +130,7 @@ final class SettingsPage {
 		if ( $changed ) {
 			Audit::log( 'seo_metadata_settings_updated' );
 		}
-		wp_safe_redirect( add_query_arg( [ 'page' => 'core-blueprint-seo', 'tab' => 'search-appearance', 'section' => $section, 'cb_seo_notice' => $changed ? 'saved' : 'unchanged' ], admin_url( 'admin.php' ) ) );
+		wp_safe_redirect( SettingsRegistry::url( 'core-blueprint-seo', [ 'tab' => 'search-appearance', 'section' => $section, 'cb_seo_notice' => $changed ? 'saved' : 'unchanged' ] ) );
 		exit;
 	}
 
@@ -222,14 +222,11 @@ final class SettingsPage {
 	}
 
 	private static function tab_url( string $tab ): string {
-		$args = [
-			'page' => 'core-blueprint-seo',
-			'tab'  => $tab,
-		];
+		$args = [ 'tab' => $tab ];
 		if ( 'search-appearance' === $tab ) {
 			$args['section'] = self::active_section();
 		}
-		return add_query_arg( $args, admin_url( 'admin.php' ) );
+		return SettingsRegistry::url( 'core-blueprint-seo', $args );
 	}
 
 	private static function render_conflict_notice( bool $enabled ): void {

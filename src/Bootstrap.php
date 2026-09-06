@@ -8,10 +8,9 @@ declare(strict_types=1);
 
 namespace CB\SEO;
 
-use CB\Core\Admin\PageRegistry;
+use CB\Core\Admin\SettingsRegistry;
 use CB\Core\Dashboard\CardRegistry;
 use CB\Core\ExtensionRegistry;
-use CB\SEO\Admin\Pages\Seo;
 use CB\SEO\Admin\SettingsPage;
 use CB\SEO\Admin\Assets;
 use CB\SEO\Admin\Editor\SeoMetaBox;
@@ -34,7 +33,7 @@ final class Bootstrap {
 		// The settings surface remains available while SEO is disabled because the
 		// Base dashboard controls activation through the canonical State.
 		add_action( 'cb_core_register_extensions', [ self::class, 'register_extension' ] );
-		add_action( 'cb_core_register_pages', [ self::class, 'register_page' ] );
+		add_action( 'cb_core_register_settings', [ self::class, 'register_settings' ] );
 		add_filter( 'plugin_action_links_' . CB_SEO_BASENAME, [ SettingsPage::class, 'plugin_action_links' ] );
 		add_action( 'admin_init', [ SettingsPage::class, 'handle_save' ] );
 		add_action( 'admin_enqueue_scripts', [ Assets::class, 'enqueue' ] );
@@ -68,9 +67,34 @@ final class Bootstrap {
 			'id'           => 'core-blueprint-seo',
 			'plugin_file'  => CB_SEO_BASENAME,
 			'requires_api' => '1.0',
-			'menu_url'     => admin_url( 'admin.php?page=core-blueprint-seo' ),
+			'menu_url'     => SettingsRegistry::url( 'core-blueprint-seo' ),
 			'status_id'    => 'seo',
 		] );
+	}
+
+	public static function register_settings(): void {
+		SettingsRegistry::register(
+			'core-blueprint-seo',
+			[
+				'label'        => __( 'SEO', 'core-blueprint-seo' ),
+				'description'  => __( 'Governed search metadata with WordPress-first fallbacks and builder-independent administration.', 'core-blueprint-seo' ),
+				'group'        => SettingsRegistry::GROUP_CONTENT_PUBLISHING,
+				'capability'   => 'manage_options',
+				'renderer'     => [ SettingsPage::class, 'render' ],
+				'requirements' => [
+					'components' => [
+						'disclosure',
+						'notices',
+						'nav-tabs',
+						'cards',
+						'fields',
+						'form-controls',
+						'badges',
+						'kv-table',
+					],
+				],
+			]
+		);
 	}
 
 	public static function register_dashboard_shortcuts(): void {
@@ -78,55 +102,36 @@ final class Bootstrap {
 			return;
 		}
 
-		$base_url = admin_url( 'admin.php?page=core-blueprint-seo' );
 		CardRegistry::register_shortcuts( 'core-blueprint-seo', [
 			[
 				'id'         => 'indexing',
 				'label'      => __( 'Indexing', 'core-blueprint-seo' ),
-				'url'        => add_query_arg( 'tab', 'indexing', $base_url ),
+				'url'        => SettingsRegistry::url( 'core-blueprint-seo', [ 'tab' => 'indexing' ] ),
 				'capability' => 'manage_options',
 				'order'      => 10,
 			],
 			[
 				'id'         => 'social-schema',
 				'label'      => __( 'Social & Schema', 'core-blueprint-seo' ),
-				'url'        => add_query_arg( 'tab', 'social-schema', $base_url ),
+				'url'        => SettingsRegistry::url( 'core-blueprint-seo', [ 'tab' => 'social-schema' ] ),
 				'capability' => 'manage_options',
 				'order'      => 20,
 			],
 			[
 				'id'         => 'ai-discovery',
 				'label'      => __( 'AI Discovery', 'core-blueprint-seo' ),
-				'url'        => add_query_arg( 'tab', 'ai-discovery', $base_url ),
+				'url'        => SettingsRegistry::url( 'core-blueprint-seo', [ 'tab' => 'ai-discovery' ] ),
 				'capability' => 'manage_options',
 				'order'      => 30,
 			],
 			[
 				'id'         => 'import',
 				'label'      => __( 'Import', 'core-blueprint-seo' ),
-				'url'        => add_query_arg( 'tab', 'import', $base_url ),
+				'url'        => SettingsRegistry::url( 'core-blueprint-seo', [ 'tab' => 'import' ] ),
 				'capability' => 'manage_options',
 				'order'      => 40,
 			],
 		] );
-	}
-
-	public static function register_page(): void {
-		PageRegistry::register(
-			new Seo(),
-			[
-				'components' => [
-					'disclosure',
-					'notices',
-					'nav-tabs',
-					'cards',
-					'fields',
-					'form-controls',
-					'badges',
-					'kv-table',
-				],
-			]
-		);
 	}
 
 	/** @param array<string,array{state:class-string,capability:string}> $definitions */
@@ -145,14 +150,14 @@ final class Bootstrap {
 		$definitions['seo'] = [
 			'provider' => [ self::class, 'extension_status' ],
 			'label'    => __( 'SEO', 'core-blueprint-seo' ),
-			'url'      => admin_url( 'admin.php?page=core-blueprint-seo' ),
+			'url'      => SettingsRegistry::url( 'core-blueprint-seo' ),
 		];
 		return $definitions;
 	}
 
 	/** @return array{state:string,detail:string,url:string} */
 	public static function extension_status(): array {
-		$url = admin_url( 'admin.php?page=core-blueprint-seo' );
+		$url = SettingsRegistry::url( 'core-blueprint-seo' );
 
 		if ( ! State::is_enabled() ) {
 			return [

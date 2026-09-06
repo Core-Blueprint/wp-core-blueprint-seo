@@ -8,12 +8,14 @@ declare(strict_types=1);
 
 namespace CB\SEO\Admin;
 
+use CB\Core\Admin\SettingsRegistry;
+
 defined( 'ABSPATH' ) || exit;
 
 final class Assets {
 	public static function enqueue( string $hook ): void {
 		$native_editor = in_array( $hook, [ 'post.php', 'post-new.php', 'edit-tags.php', 'term.php' ], true );
-		$seo_settings  = 'core-blueprint_page_core-blueprint-seo' === $hook;
+		$seo_settings  = self::is_settings_screen();
 
 		if ( $native_editor ) {
 			wp_enqueue_style(
@@ -49,8 +51,8 @@ final class Assets {
 			return;
 		}
 
-		// PageRegistry owns shared Core Admin presentation. SEO contributes only
-		// feature-specific settings composition and behavior.
+		// Base owns shared Core Admin presentation through SettingsRegistry.
+		// SEO contributes only feature-specific settings composition and behavior.
 		wp_enqueue_style(
 			'core-blueprint-seo-admin',
 			CB_SEO_URL . 'assets/css/seo-admin.css',
@@ -65,5 +67,23 @@ final class Assets {
 			CB_SEO_VERSION,
 			true
 		);
+	}
+
+	private static function is_settings_screen(): bool {
+		$canonical_url = SettingsRegistry::url( 'core-blueprint-seo' );
+		$query         = wp_parse_url( $canonical_url, PHP_URL_QUERY );
+		$args          = [];
+
+		if ( is_string( $query ) && '' !== $query ) {
+			parse_str( $query, $args );
+		}
+
+		$settings_page = isset( $args['page'] ) ? sanitize_key( (string) $args['page'] ) : '';
+		$current_page  = isset( $_GET['page'] ) ? sanitize_key( (string) wp_unslash( $_GET['page'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- admin routing only.
+		$extension_id  = isset( $_GET['extension'] ) ? sanitize_key( (string) wp_unslash( $_GET['extension'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- admin routing only.
+
+		return '' !== $settings_page
+			&& $settings_page === $current_page
+			&& 'core-blueprint-seo' === $extension_id;
 	}
 }

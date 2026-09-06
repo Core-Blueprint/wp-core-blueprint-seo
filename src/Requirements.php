@@ -22,8 +22,7 @@ final class Requirements {
 		}
 
 		$required_classes = [
-			'\\CB\\Core\\Admin\\Page',
-			'\\CB\\Core\\Admin\\PageRegistry',
+			'\\CB\\Core\\Admin\\SettingsRegistry',
 			'\\CB\\Core\\ExtensionRegistry',
 			'\\CB\\Core\\Modules\\ActivationRegistry',
 			'\\CB\\Core\\Modules\\ModuleStateInterface',
