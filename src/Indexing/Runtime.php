@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace CB\SEO\Indexing;
 
-use CB\SEO\Metadata\Repository;
 use WP_Post;
 use WP_Term;
 
@@ -65,7 +64,7 @@ final class Runtime {
 	 */
 	public static function filter_sitemap_post_types( array $post_types ): array {
 		foreach ( array_keys( $post_types ) as $post_type ) {
-			if ( ! SettingsRepository::post_type_in_sitemap( (string) $post_type ) ) {
+			if ( ! SitemapPolicy::post_type_allowed( (string) $post_type ) ) {
 				unset( $post_types[ $post_type ] );
 			}
 		}
@@ -77,7 +76,7 @@ final class Runtime {
 	 */
 	public static function filter_sitemap_taxonomies( array $taxonomies ): array {
 		foreach ( array_keys( $taxonomies ) as $taxonomy ) {
-			if ( ! SettingsRepository::taxonomy_in_sitemap( (string) $taxonomy ) ) {
+			if ( ! SitemapPolicy::taxonomy_allowed( (string) $taxonomy ) ) {
 				unset( $taxonomies[ $taxonomy ] );
 			}
 		}
@@ -88,42 +87,21 @@ final class Runtime {
 	 *  @return array<string,mixed>
 	 */
 	public static function filter_post_sitemap_query( array $args, string $post_type ): array {
-		if ( ! SettingsRepository::post_type_in_sitemap( $post_type ) ) {
+		if ( ! SitemapPolicy::post_type_allowed( $post_type ) ) {
 			$args['post__in'] = [ 0 ];
 			return $args;
 		}
-		return self::exclude_noindex( $args, Repository::NOINDEX_KEY );
+		return SitemapPolicy::exclude_noindex_posts( $args );
 	}
 
 	/** @param array<string,mixed> $args
 	 *  @return array<string,mixed>
 	 */
 	public static function filter_term_sitemap_query( array $args, string $taxonomy ): array {
-		if ( ! SettingsRepository::taxonomy_in_sitemap( $taxonomy ) ) {
+		if ( ! SitemapPolicy::taxonomy_allowed( $taxonomy ) ) {
 			$args['include'] = [ 0 ];
 			return $args;
 		}
-		return self::exclude_noindex( $args, Repository::NOINDEX_KEY );
-	}
-
-	/** @param array<string,mixed> $args
-	 *  @return array<string,mixed>
-	 */
-	private static function exclude_noindex( array $args, string $meta_key ): array {
-		$meta_query = isset( $args['meta_query'] ) && is_array( $args['meta_query'] ) ? $args['meta_query'] : [];
-		$meta_query[] = [
-			'relation' => 'OR',
-			[
-				'key'     => $meta_key,
-				'compare' => 'NOT EXISTS',
-			],
-			[
-				'key'     => $meta_key,
-				'value'   => '1',
-				'compare' => '!=',
-			],
-		];
-		$args['meta_query'] = $meta_query;
-		return $args;
+		return SitemapPolicy::exclude_noindex_terms( $args );
 	}
 }
