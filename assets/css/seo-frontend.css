@@ -1,0 +1,50 @@
+.cb-seo-sitemap {
+	display: grid;
+	grid-template-columns: repeat(var(--cb-seo-sitemap-columns, 2), minmax(0, 1fr));
+	gap: 2rem;
+}
+
+.cb-seo-sitemap--columns-1 { --cb-seo-sitemap-columns: 1; }
+.cb-seo-sitemap--columns-2 { --cb-seo-sitemap-columns: 2; }
+.cb-seo-sitemap--columns-3 { --cb-seo-sitemap-columns: 3; }
+.cb-seo-sitemap--columns-4 { --cb-seo-sitemap-columns: 4; }
+
+.cb-seo-sitemap__section,
+.cb-seo-sitemap__list {
+	min-width: 0;
+}
+
+.cb-seo-sitemap__heading {
+	margin: 0 0 .75rem;
+}
+
+.cb-seo-sitemap__list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.cb-seo-sitemap__list .cb-seo-sitemap__list {
+	margin-top: .4rem;
+	padding-inline-start: 1.25rem;
+}
+
+.cb-seo-sitemap__item + .cb-seo-sitemap__item {
+	margin-top: .4rem;
+}
+
+.cb-seo-sitemap__link {
+	color: inherit;
+	text-decoration: none;
+}
+
+.cb-seo-sitemap__link:hover,
+.cb-seo-sitemap__link:focus-visible {
+	text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+	.cb-seo-sitemap {
+		--cb-seo-sitemap-columns: 1;
+	}
+}
