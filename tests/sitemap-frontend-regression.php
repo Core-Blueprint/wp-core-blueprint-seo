@@ -60,6 +60,7 @@ namespace {
 	function wp_enqueue_style( string $handle, string $src, array $deps = [], string|bool|null $version = false ): void {
 		$GLOBALS['cb_test_styles'][ $handle ] = [ $src, $version ];
 	}
+	function add_action( string $hook, callable $callback, int $priority = 10, int $accepted_args = 1 ): void {}
 	function add_shortcode( string $tag, callable $callback ): void { $GLOBALS['cb_test_shortcodes'][ $tag ] = $callback; }
 	function shortcode_atts( array $defaults, array $attributes, string $tag = '' ): array { return array_merge( $defaults, $attributes ); }
 	function get_post_types( array $args = [], string $output = 'names' ): array {
