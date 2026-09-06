@@ -91,14 +91,12 @@ final class Sitemap extends Element {
 
 		$this->controls['headingTypography'] = [
 			'tab'   => 'style',
-			'group' => 'typography',
 			'label' => esc_html__( 'Section headings', 'core-blueprint-seo' ),
 			'type'  => 'typography',
 			'css'   => [ [ 'property' => 'typography', 'selector' => '.cb-seo-sitemap__heading' ] ],
 		];
 		$this->controls['linkTypography'] = [
 			'tab'   => 'style',
-			'group' => 'typography',
 			'label' => esc_html__( 'Links', 'core-blueprint-seo' ),
 			'type'  => 'typography',
 			'css'   => [ [ 'property' => 'typography', 'selector' => '.cb-seo-sitemap__link' ] ],
