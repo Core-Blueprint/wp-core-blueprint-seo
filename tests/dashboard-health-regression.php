@@ -14,6 +14,36 @@ namespace {
 	}
 }
 
+namespace CB\Core\Admin {
+	final class SettingsRegistry {
+		public const GROUP_CONTENT_PUBLISHING = 'content-publishing';
+
+		/** @var array{id:string,definition:array<string,mixed>}|null */
+		public static ?array $registered = null;
+
+		/** @param array<string,mixed> $definition */
+		public static function register( string $extension_id, array $definition ): bool {
+			self::$registered = [
+				'id'         => $extension_id,
+				'definition' => $definition,
+			];
+			return true;
+		}
+
+		/** @param array<string,scalar> $query */
+		public static function url( string $extension_id, array $query = [] ): string {
+			$args = array_merge(
+				[
+					'page'      => 'core-blueprint-settings',
+					'extension' => $extension_id,
+				],
+				$query
+			);
+			return \admin_url( 'admin.php?' . http_build_query( $args ) );
+		}
+	}
+}
+
 namespace CB\Core {
 	final class ExtensionRegistry {
 		/** @var array<string,mixed>|null */
@@ -40,6 +70,7 @@ namespace CB\SEO\Compatibility {
 }
 
 namespace CB\SEO {
+	use CB\Core\Admin\SettingsRegistry;
 	use CB\Core\ExtensionRegistry;
 	use CB\SEO\Compatibility\SeoPluginConflictDetector;
 
@@ -65,10 +96,19 @@ namespace CB\SEO {
 	$definition = ExtensionRegistry::$registered;
 	cb_seo_health_expect( is_array( $definition ), 'SEO must register with ExtensionRegistry.' );
 	cb_seo_health_expect( 'seo' === ( $definition['status_id'] ?? '' ), 'SEO extension registration must reference status_id seo.' );
+	cb_seo_health_expect( str_contains( (string) ( $definition['menu_url'] ?? '' ), 'extension=core-blueprint-seo' ), 'SEO extension menu URL must target the Settings Hub provider.' );
+
+	Bootstrap::register_settings();
+	$settings_provider = SettingsRegistry::$registered;
+	cb_seo_health_expect( is_array( $settings_provider ), 'SEO must register with SettingsRegistry.' );
+	cb_seo_health_expect( 'core-blueprint-seo' === ( $settings_provider['id'] ?? '' ), 'SEO Settings Hub provider must use the ExtensionRegistry identity.' );
+	cb_seo_health_expect( SettingsRegistry::GROUP_CONTENT_PUBLISHING === ( $settings_provider['definition']['group'] ?? '' ), 'SEO Settings Hub provider must use Content & Publishing.' );
+	cb_seo_health_expect( 'manage_options' === ( $settings_provider['definition']['capability'] ?? '' ), 'SEO Settings Hub provider must preserve manage_options.' );
 
 	$status_definitions = Bootstrap::register_status_definition( [] );
 	cb_seo_health_expect( isset( $status_definitions['seo'] ), 'SEO must register a matching status definition.' );
 	cb_seo_health_expect( [ Bootstrap::class, 'extension_status' ] === $status_definitions['seo']['provider'], 'SEO status definition must use the canonical provider.' );
+	cb_seo_health_expect( str_contains( (string) ( $status_definitions['seo']['url'] ?? '' ), 'extension=core-blueprint-seo' ), 'SEO status URL must target the Settings Hub provider.' );
 
 	State::$enabled = false;
 	$status = Bootstrap::extension_status();
@@ -88,6 +128,7 @@ namespace CB\SEO {
 	$status_hook = strpos( $source, "add_filter( 'cb_core_module_status_definitions'" );
 	$state_gate  = strpos( $source, 'if ( ! State::is_enabled() )' );
 	cb_seo_health_expect( false !== $status_hook && false !== $state_gate && $status_hook < $state_gate, 'Status provider must remain registered while SEO is deliberately disabled.' );
+	cb_seo_health_expect( false === strpos( $source, 'cb_core_register_pages' ) && false === strpos( $source, 'PageRegistry::register' ), 'Retired PageRegistry settings registration must be absent.' );
 
 	echo "SEO dashboard health: PASS\n";
 }
