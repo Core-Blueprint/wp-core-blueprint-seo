@@ -8,13 +8,24 @@ declare(strict_types=1);
 
 namespace CB\SEO\Frontend;
 
+use CB\SEO\State;
+
 defined( 'ABSPATH' ) || exit;
 
 final class Assets {
+	private static bool $booted   = false;
 	private static bool $enqueued = false;
 
+	public static function boot(): void {
+		if ( self::$booted ) {
+			return;
+		}
+		self::$booted = true;
+		add_action( 'wp_enqueue_scripts', [ self::class, 'enqueue' ] );
+	}
+
 	public static function enqueue(): void {
-		if ( self::$enqueued ) {
+		if ( self::$enqueued || ! State::is_enabled() ) {
 			return;
 		}
 
