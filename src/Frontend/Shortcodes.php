@@ -20,6 +20,7 @@ final class Shortcodes {
 			return;
 		}
 		self::$booted = true;
+		Assets::boot();
 		add_shortcode( 'cb_seo_sitemap', [ self::class, 'sitemap' ] );
 	}
 
