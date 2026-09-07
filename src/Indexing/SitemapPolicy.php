@@ -20,6 +20,13 @@ final class SitemapPolicy {
 			return false;
 		}
 
+		// WordPress always provides this API in plugin runtime. Keeping the
+		// policy permissive when it is absent lets isolated/static consumers use
+		// the stored policy without pretending they have a complete WP registry.
+		if ( ! function_exists( 'get_post_type_object' ) ) {
+			return true;
+		}
+
 		$object = get_post_type_object( $post_type );
 		if ( ! $object instanceof WP_Post_Type ) {
 			return false;
