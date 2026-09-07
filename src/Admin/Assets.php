@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace CB\SEO\Admin;
 
 use CB\Core\Admin\SettingsRegistry;
+use CB\Core\UI\AdminTheme;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -16,6 +17,12 @@ final class Assets {
 	public static function enqueue( string $hook ): void {
 		$native_editor = in_array( $hook, [ 'post.php', 'post-new.php', 'edit-tags.php', 'term.php' ], true );
 		$seo_settings  = self::is_settings_screen();
+
+		if ( $seo_settings ) {
+			// Base owns the global Light/Dark state. SEO only declares that its
+			// provider surface is compatible with the canonical Admin Theme contract.
+			AdminTheme::register_screen( $hook );
+		}
 
 		if ( $native_editor ) {
 			wp_enqueue_style(
