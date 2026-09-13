@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+PACKAGE="core-blueprint-seo"
+ENTRY="$ROOT/core-blueprint-seo.php"
+DIST="$ROOT/dist"
+STAGE="$(mktemp -d)"
+LOCALES=(nl_NL de_DE fr_FR es_ES it_IT pt_PT)
+trap 'rm -rf "$STAGE"' EXIT
+
+fail() {
+  printf 'SEO release build failed: %s\n' "$*" >&2
+  exit 1
+}
+
+for command in php python3 wp msgfmt node zip unzip sha256sum; do
+  command -v "$command" >/dev/null 2>&1 || fail "missing required command: $command"
+done
+
+VERSION="$(php -r '$s=file_get_contents($argv[1]); preg_match("/Version:\\s+([^\\r\\n]+)/", $s, $m); echo trim($m[1] ?? "");' "$ENTRY")"
+CONSTANT_VERSION="$(php -r '$s=file_get_contents($argv[1]); preg_match("/define\\(\\s*[\"\\x27]CB_SEO_VERSION[\"\\x27]\\s*,\\s*[\"\\x27]([^\"\\x27]+)[\"\\x27]\\s*\\)/", $s, $m); echo trim($m[1] ?? "");' "$ENTRY")"
+[[ -n "$VERSION" ]] || fail "could not resolve plugin Version header"
+[[ "$VERSION" == "$CONSTANT_VERSION" ]] || fail "Version header and CB_SEO_VERSION differ"
+
+"$ROOT/tools/i18n/check"
+
+for test in "$ROOT"/tests/*-regression.php; do
+  [[ -f "$test" ]] || fail "no SEO product regressions found"
+  php "$test"
+done
+
+PACKAGE_ROOT="$STAGE/$PACKAGE"
+mkdir -p "$DIST" "$PACKAGE_ROOT"
+ZIP="$DIST/$PACKAGE-$VERSION.zip"
+CHECKSUM="$ZIP.sha256"
+rm -f "$ZIP" "$CHECKSUM"
+
+for path in core-blueprint-seo.php uninstall.php README.md CHANGELOG.md; do
+  [[ -f "$ROOT/$path" ]] || fail "required release file is missing: $path"
+  cp "$ROOT/$path" "$PACKAGE_ROOT/"
+done
+for path in src assets languages; do
+  [[ -d "$ROOT/$path" ]] || fail "required release directory is missing: $path"
+  cp -R "$ROOT/$path" "$PACKAGE_ROOT/"
+done
+
+while IFS= read -r -d '' file; do
+  php -l "$file" >/dev/null || fail "PHP lint failed: $file"
+done < <(find "$PACKAGE_ROOT" -type f -name '*.php' -print0)
+
+while IFS= read -r -d '' file; do
+  node --check "$file" >/dev/null || fail "JavaScript syntax failed: $file"
+done < <(find "$PACKAGE_ROOT/assets" -type f -name '*.js' -print0)
+
+POT="$PACKAGE_ROOT/languages/core-blueprint-seo.pot"
+[[ -s "$POT" ]] || fail "release package is missing canonical POT"
+for locale in "${LOCALES[@]}"; do
+  for ext in po mo; do
+    catalog="$PACKAGE_ROOT/languages/core-blueprint-seo-${locale}.${ext}"
+    [[ -s "$catalog" ]] || fail "release package is missing ${locale}.${ext} catalog"
+  done
+done
+
+find "$PACKAGE_ROOT" -exec touch -t 198001010000 {} +
+(
+  cd "$STAGE"
+  zip -X -q "$ZIP" "$PACKAGE/"
+  find "$PACKAGE" -type f -print | LC_ALL=C sort | zip -X -q "$ZIP" -@
+)
+
+unzip -tqq "$ZIP"
+ZIP_ENTRIES="$(unzip -Z1 "$ZIP")"
+FIRST_ENTRY="${ZIP_ENTRIES%%$'\n'*}"
+[[ "$FIRST_ENTRY" == "$PACKAGE/" ]] || fail "release ZIP root is not $PACKAGE/"
+
+if grep -Eq '(^|/)(\.git|\.github|tests|tools|docs|dist|build)(/|$)' <<<"$ZIP_ENTRIES"; then
+  fail "development-only files leaked into the release ZIP"
+fi
+
+for required in "$PACKAGE/core-blueprint-seo.php" "$PACKAGE/uninstall.php" "$PACKAGE/languages/core-blueprint-seo.pot"; do
+  grep -Fxq "$required" <<<"$ZIP_ENTRIES" || fail "required release file missing from ZIP: $required"
+done
+for locale in "${LOCALES[@]}"; do
+  for ext in po mo; do
+    required="$PACKAGE/languages/core-blueprint-seo-${locale}.${ext}"
+    grep -Fxq "$required" <<<"$ZIP_ENTRIES" || fail "required catalog missing from ZIP: $required"
+  done
+done
+
+sha256sum "$ZIP" > "$CHECKSUM"
+SHA256="$(awk '{print $1}' "$CHECKSUM")"
+printf 'SEO release build: PASS\nPackage: %s\nCanonical root: %s/\nSHA-256: %s\n' "$ZIP" "$PACKAGE" "$SHA256"
