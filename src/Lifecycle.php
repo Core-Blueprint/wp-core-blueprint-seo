@@ -32,14 +32,7 @@ final class Lifecycle {
 		$errors = Requirements::unmet();
 
 		if ( ! empty( $errors ) ) {
-			deactivate_plugins( plugin_basename( CB_SEO_FILE ) );
-			wp_die(
-				'<strong>Core Blueprint SEO could not be activated:</strong><ul><li>'
-				. implode( '</li><li>', array_map( 'esc_html', $errors ) )
-				. '</li></ul>',
-				'Core Blueprint SEO - Activation Error',
-				[ 'back_link' => true ]
-			);
+			self::fail_activation( implode( ' ', $errors ) );
 		}
 
 		// Fresh installs default to enabled. Reactivation preserves an explicit
@@ -61,6 +54,21 @@ final class Lifecycle {
 		// Deactivation removes the runtime by virtue of WordPress unloading the
 		// plugin; deletion is handled by uninstall.php.
 		self::audit( 'seo_extension_deactivated' );
+	}
+
+	private static function fail_activation( string $message ): void {
+		if ( ! function_exists( 'deactivate_plugins' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+		deactivate_plugins( CB_SEO_BASENAME );
+		wp_die(
+			esc_html( $message ),
+			esc_html( 'Core Blueprint dependency required' ),
+			[
+				'link_url'  => admin_url( 'plugins.php' ),
+				'link_text' => __( 'Plugins' ),
+			]
+		);
 	}
 
 	private static function audit( string $event ): void {
