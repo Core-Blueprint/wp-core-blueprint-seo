@@ -1,0 +1,10 @@
+{
+  "product": "Core Blueprint SEO",
+  "domain": "core-blueprint-seo",
+  "main_file": "core-blueprint-seo.php",
+  "version_constant": "CB_SEO_VERSION",
+  "exclude": [".git", ".github", "docs", "languages", "tests", "tools", "dist", "build"],
+  "skip_js": false,
+  "commit_mo": true,
+  "source_paths": ["core-blueprint-seo.php", "src", "assets", "uninstall.php"]
+}
