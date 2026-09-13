@@ -26,7 +26,10 @@ if ( defined( 'CB_SEO_FILE' ) || defined( 'CB_SEO_VERSION' ) ) {
 	return;
 }
 
+define( 'CB_SEO_NAME', 'Core Blueprint SEO' );
 define( 'CB_SEO_VERSION', '1.0.0-rc1' );
+define( 'CB_SEO_MIN_PHP', '8.4' );
+define( 'CB_SEO_REQUIRED_API', '1.0' );
 define( 'CB_SEO_FILE', __FILE__ );
 define( 'CB_SEO_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CB_SEO_URL', plugin_dir_url( __FILE__ ) );
@@ -37,6 +40,36 @@ define( 'CB_SEO_SOCIAL_SETTINGS_OPT', 'cb_seo_social_settings' );
 define( 'CB_SEO_SCHEMA_SETTINGS_OPT', 'cb_seo_schema_settings' );
 define( 'CB_SEO_DISCOVERY_SETTINGS_OPT', 'cb_seo_discovery_settings' );
 define( 'CB_SEO_INDEXING_SETTINGS_OPT', 'cb_seo_indexing_settings' );
+
+/* Bootstrap v1 earliest-safe PHP boundary. */
+if ( version_compare( PHP_VERSION, CB_SEO_MIN_PHP, '<' ) ) {
+	register_activation_hook( __FILE__, static function () {
+		if ( ! function_exists( 'deactivate_plugins' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+		deactivate_plugins( CB_SEO_BASENAME );
+		wp_die(
+			esc_html( sprintf( '%s requires PHP %s or newer. This server runs PHP %s.', CB_SEO_NAME, CB_SEO_MIN_PHP, PHP_VERSION ) ),
+			esc_html( 'Core Blueprint dependency required' ),
+			[
+				'link_url'  => admin_url( 'plugins.php' ),
+				'link_text' => __( 'Plugins' ),
+			]
+		);
+	} );
+
+	add_action( 'admin_notices', static function () {
+		if ( ! current_user_can( 'activate_plugins' ) ) {
+			return;
+		}
+		printf(
+			'<div class="notice notice-error"><p><strong>%s</strong> %s</p></div>',
+			esc_html( CB_SEO_NAME . ':' ),
+			esc_html( sprintf( 'PHP %s or newer is required. This server runs PHP %s.', CB_SEO_MIN_PHP, PHP_VERSION ) )
+		);
+	} );
+	return;
+}
 
 spl_autoload_register( static function ( string $class ): void {
 	$prefix = 'CB\\SEO\\';
@@ -66,12 +99,32 @@ add_action( 'init', static function (): void {
 	);
 }, 1 );
 
+/* SEO retains its existing plugins_loaded:1 lifecycle timing. */
 add_action( 'plugins_loaded', static function (): void {
-	if ( ! \CB\SEO\Requirements::base_ready() ) {
+	if ( ! \CB\SEO\Requirements::runtime_ready() ) {
 		if ( is_admin() ) {
 			add_action( 'admin_notices', static function (): void {
+				if ( ! current_user_can( 'activate_plugins' ) ) {
+					return;
+				}
+				printf(
+					'<div class="notice notice-error"><p><strong>%s</strong> %s</p></div>',
+					esc_html__( 'Core Blueprint SEO:', 'core-blueprint-seo' ),
+					esc_html( \CB\SEO\Requirements::operator_message() )
+				);
+			} );
+		}
+		return;
+	}
+
+	if ( ! \CB\SEO\Requirements::base_contracts_ready() ) {
+		if ( is_admin() ) {
+			add_action( 'admin_notices', static function (): void {
+				if ( ! current_user_can( 'activate_plugins' ) ) {
+					return;
+				}
 				echo '<div class="notice notice-error"><p><strong>Core Blueprint SEO:</strong> ';
-				echo esc_html__( 'A compatible Core Blueprint Base installation with API 1.0 or newer is required. Activate or update Core Blueprint Base first.', 'core-blueprint-seo' );
+				echo esc_html__( 'Required public Core Blueprint Base services are unavailable. Update Core Blueprint Base first.', 'core-blueprint-seo' );
 				echo '</p></div>';
 			} );
 		}
