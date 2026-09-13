@@ -12,6 +12,7 @@
  * Domain Path: /languages
  * Requires at least: 7.0
  * Requires PHP:      8.4
+ * Requires Plugins: core-blueprint
  *
  * @package Core_Blueprint_SEO
  */
@@ -49,8 +50,8 @@ if ( version_compare( PHP_VERSION, CB_SEO_MIN_PHP, '<' ) ) {
 		}
 		deactivate_plugins( CB_SEO_BASENAME );
 		wp_die(
-			esc_html( sprintf( '%s requires PHP %s or newer. This server runs PHP %s.', CB_SEO_NAME, CB_SEO_MIN_PHP, PHP_VERSION ) ),
-			esc_html( 'Core Blueprint dependency required' ),
+			esc_html( sprintf( 'PHP %1$s or newer is required. This server runs PHP %2$s.', CB_SEO_MIN_PHP, PHP_VERSION ) ),
+			esc_html( 'Core Blueprint requirements not met' ),
 			[
 				'link_url'  => admin_url( 'plugins.php' ),
 				'link_text' => __( 'Plugins' ),
@@ -65,7 +66,7 @@ if ( version_compare( PHP_VERSION, CB_SEO_MIN_PHP, '<' ) ) {
 		printf(
 			'<div class="notice notice-error"><p><strong>%s</strong> %s</p></div>',
 			esc_html( CB_SEO_NAME . ':' ),
-			esc_html( sprintf( 'PHP %s or newer is required. This server runs PHP %s.', CB_SEO_MIN_PHP, PHP_VERSION ) )
+			esc_html( sprintf( 'PHP %1$s or newer is required. This server runs PHP %2$s.', CB_SEO_MIN_PHP, PHP_VERSION ) )
 		);
 	} );
 	return;
@@ -124,7 +125,7 @@ add_action( 'plugins_loaded', static function (): void {
 					return;
 				}
 				echo '<div class="notice notice-error"><p><strong>Core Blueprint SEO:</strong> ';
-				echo esc_html__( 'Required public Core Blueprint Base services are unavailable. Update Core Blueprint Base first.', 'core-blueprint-seo' );
+				echo esc_html__( 'Required Core Blueprint Base contracts are unavailable.', 'core-blueprint-seo' );
 				echo '</p></div>';
 			} );
 		}

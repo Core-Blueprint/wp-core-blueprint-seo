@@ -63,7 +63,7 @@ final class Lifecycle {
 		deactivate_plugins( CB_SEO_BASENAME );
 		wp_die(
 			esc_html( $message ),
-			esc_html( 'Core Blueprint dependency required' ),
+			esc_html( 'Core Blueprint requirements not met' ),
 			[
 				'link_url'  => admin_url( 'plugins.php' ),
 				'link_text' => __( 'Plugins' ),
