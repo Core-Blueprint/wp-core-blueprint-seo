@@ -88,11 +88,6 @@ final class Requirements {
 		return true;
 	}
 
-	/** Backward-compatible product readiness helper. */
-	public static function base_ready(): bool {
-		return self::runtime_ready() && self::base_contracts_ready();
-	}
-
 	public static function operator_message(): string {
 		$issue = self::primary_issue();
 
