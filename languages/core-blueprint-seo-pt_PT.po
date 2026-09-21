@@ -79,7 +79,7 @@ msgstr "Todas as %d imagens têm atributos alt"
 
 #: src/Admin/SettingsPage.php:660
 msgid "All post-type and taxonomy templates are saved together."
-msgstr "Todos os modelos de tipos de conteúdo e taxonomias são guardados em conjunto."
+msgstr ""
 "Todos os modelos de tipos de conteÃºdo e taxonomias sÃ£o guardados em "
 "conjunto."
 
@@ -150,12 +150,12 @@ msgstr ""
 
 #: src/Admin/Editor/SeoMetaBox.php:113
 msgid "Block this content from search engine indexes (noindex)"
-msgstr "Impedir que os motores de pesquisa indexem este conteúdo (noindex)"
+msgstr ""
 "Bloquear a indexaÃ§Ã£o deste conteÃºdo pelos motores de pesquisa (noindex)"
 
 #: src/Admin/Editor/TermFields.php:50 src/Admin/Editor/TermFields.php:95
 msgid "Block this term archive from search engine indexes (noindex)"
-msgstr "Impedir que os motores de pesquisa indexem este arquivo de termos (noindex)"
+msgstr ""
 "Bloquear a indexaÃ§Ã£o deste arquivo de termo pelos motores de pesquisa "
 "(noindex)"
 
@@ -238,7 +238,7 @@ msgstr ""
 
 #: src/Analysis/DocumentFetcher.php:25
 msgid "Core Blueprint could not resolve a public URL for this content."
-msgstr "O Core Blueprint não conseguiu determinar um URL público para este conteúdo."
+msgstr ""
 "O Core Blueprint não conseguiu determinar um URL público para este conteúdo."
 
 #: src/Admin/SettingsPage.php:504
@@ -291,7 +291,7 @@ msgstr ""
 
 #: src/Admin/Editor/SeoMetaBox.php:114
 msgid "Do not ask search engines to follow links on this content (nofollow)"
-msgstr "Não pedir aos motores de pesquisa que sigam as ligações deste conteúdo (nofollow)"
+msgstr ""
 "Pedir aos motores de pesquisa que nÃ£o sigam as ligaÃ§Ãµes deste conteÃºdo "
 "(nofollow)"
 
@@ -320,7 +320,7 @@ msgstr "NÃ£o disponibilizar uma cÃ³pia em cache deste conteÃºdo (noarchive
 
 #: src/Admin/Editor/TermFields.php:53 src/Admin/Editor/TermFields.php:98
 msgid "Do not provide a cached copy of this term archive (noarchive)"
-msgstr "Não fornecer uma cópia em cache deste arquivo de termos (noarchive)"
+msgstr ""
 "NÃ£o disponibilizar uma cÃ³pia em cache deste arquivo de termo (noarchive)"
 
 #: src/Admin/Editor/SeoMetaBox.php:117
@@ -329,7 +329,7 @@ msgstr "NÃ£o mostrar um excerto de texto para este conteÃºdo (nosnippet)"
 
 #: src/Admin/Editor/TermFields.php:54 src/Admin/Editor/TermFields.php:99
 msgid "Do not show a text snippet for this term archive (nosnippet)"
-msgstr "Não mostrar um excerto de texto para este arquivo de termos (nosnippet)"
+msgstr ""
 "NÃ£o mostrar um excerto de texto para este arquivo de termo (nosnippet)"
 
 #: src/Admin/SettingsPage.php:481
@@ -445,7 +445,7 @@ msgstr "Títulos H1 encontrados: %d"
 
 #: src/Admin/Editor/AnalysisPanel.php:186
 msgid "H1 keyword check was not evaluated because no H1 heading is published."
-msgstr "A verificação da palavra-chave no H1 não foi avaliada porque não existe nenhum cabeçalho H1 publicado."
+msgstr ""
 "A verificação H1 da palavra-chave de foco não foi avaliada porque não existe"
 " nenhum título H1 publicado."
 
@@ -581,7 +581,7 @@ msgstr "Deixe vazio para usar o título do site WordPress."
 
 #: src/Analysis/DocumentFetcher.php:20
 msgid "Live analysis is available after this content has been published."
-msgstr "A análise em tempo real está disponível depois de este conteúdo ser publicado."
+msgstr ""
 "A análise pública fica disponível depois de este conteúdo ser publicado."
 
 #: src/Admin/SettingsPage.php:464
@@ -655,18 +655,18 @@ msgstr "NÃ£o foram detetadas alteraÃ§Ãµes nos modelos de metadados."
 
 #: src/Admin/SettingsPage.php:267
 msgid "No search visibility changes were detected."
-msgstr "Não foram detetadas alterações na visibilidade nos motores de pesquisa."
+msgstr ""
 "Não foram detetadas alterações à visibilidade nos motores de pesquisa."
 
 #: src/Admin/SettingsPage.php:271
 msgid "No social or structured data changes were detected."
-msgstr "Não foram detetadas alterações nos dados sociais ou estruturados."
+msgstr ""
 "Não foram detetadas alterações nos metadados sociais nem nos dados "
 "estruturados."
 
 #: src/Admin/SettingsPage.php:279
 msgid "No valid SEO metadata mappings were selected, so nothing was imported."
-msgstr "Não foram selecionados mapeamentos válidos de metadados SEO, pelo que nada foi importado."
+msgstr ""
 "Não foram selecionados mapeamentos válidos de metadados SEO, pelo que nada "
 "foi importado."
 
@@ -1161,7 +1161,7 @@ msgstr ""
 
 #: src/Analysis/HtmlDocument.php:27
 msgid "The WordPress HTML API is required for rendered-page analysis."
-msgstr "A API HTML do WordPress é necessária para a análise da página renderizada."
+msgstr ""
 "A API HTML do WordPress é necessária para analisar páginas renderizadas."
 
 #: src/Admin/Editor/SeoMetaBox.php:112
@@ -1215,13 +1215,13 @@ msgstr ""
 
 #: src/Admin/SettingsPage.php:429
 msgid "Used as the Organization logo or Person image in structured data."
-msgstr "Utilizado como logótipo da organização ou imagem da pessoa nos dados estruturados."
+msgstr ""
 "Usado como logótipo da organização ou imagem da pessoa nos dados "
 "estruturados."
 
 #: src/Admin/SettingsPage.php:412
 msgid "Used when content has no explicit social image or featured image."
-msgstr "Utilizado quando o conteúdo não tem uma imagem social explícita nem uma imagem de destaque."
+msgstr ""
 "Usado quando o conteúdo não tem uma imagem social explícita nem imagem de "
 "destaque."
 
@@ -1268,24 +1268,6 @@ msgstr ""
 #: core-blueprint-seo.php
 msgid "Core Blueprint SEO"
 msgstr "Core Blueprint SEO"
-
-msgid "SEO metadata import completed. %1$d content objects changed, %2$d fields were imported through %3$d mappings, and %4$d existing Core Blueprint values were preserved."
-msgstr "Importação de metadados SEO concluída. Foram alterados %1$d objetos de conteúdo, importados %2$d campos através de %3$d mapeamentos e preservados %4$d valores existentes do Core Blueprint."
-
-msgid "Core Blueprint discovers existing WordPress metadata by field semantics rather than vendor-specific import profiles. Stored field names are shown as-is so you can review the source before importing."
-msgstr "O Core Blueprint deteta metadados WordPress existentes com base na semântica dos campos, em vez de perfis de importação específicos de fornecedores. Os nomes dos campos guardados são apresentados tal como estão, para permitir a revisão da origem antes da importação."
-
-msgid "Source metadata is never changed or deleted, and existing Core Blueprint SEO values always win. Global plugin settings and templates are intentionally not guessed because WordPress has no canonical SEO option schema."
-msgstr "Os metadados de origem nunca são alterados nem eliminados, e os valores existentes do Core Blueprint SEO têm sempre prioridade. As definições globais de plugins e os modelos não são deliberadamente inferidos, porque o WordPress não possui um esquema canónico de opções SEO."
-
-msgid "No compatible SEO metadata candidates were discovered in WordPress post or term metadata."
-msgstr "Não foram detetados candidatos compatíveis de metadados SEO nos metadados de conteúdos ou termos do WordPress."
-
-msgid "Automatic mappings are preselected only when the semantic match is strong and unambiguous. Review candidates remain disabled until you explicitly map them. If multiple source fields target the same Core Blueprint field on one object, the first non-empty mapped source wins and later conflicts are skipped."
-msgstr "Os mapeamentos automáticos só são pré-selecionados quando a correspondência semântica é forte e inequívoca. Os candidatos para revisão permanecem desativados até serem mapeados explicitamente. Se vários campos de origem apontarem para o mesmo campo do Core Blueprint num objeto, prevalece a primeira origem mapeada não vazia e os conflitos posteriores são ignorados."
-
-msgid "Governed search metadata with WordPress-first fallbacks and builder-independent administration."
-msgstr "Metadados de pesquisa governados com alternativas WordPress-first e administração independente do builder."
 
 msgid "No sitemap content is available for the current settings."
 msgstr "Não existe conteúdo de sitemap disponível para as definições atuais."
