@@ -1366,3 +1366,6 @@ msgstr "Metadati SEO governati e controlli di indicizzazione per Core Blueprint 
 
 msgid "Core Blueprint"
 msgstr "Core Blueprint"
+
+msgid "https://coreblueprint.io"
+msgstr "https://coreblueprint.io"
