@@ -80,7 +80,7 @@ msgstr "Les %d images ont un attribut alt"
 
 #: src/Admin/SettingsPage.php:660
 msgid "All post-type and taxonomy templates are saved together."
-msgstr "Tous les modèles de types de publication et de taxonomies sont enregistrés ensemble."
+msgstr ""
 "Tous les modÃ¨les de types de contenu et de taxonomies sont enregistrÃ©s "
 "ensemble."
 
@@ -153,12 +153,12 @@ msgstr ""
 
 #: src/Admin/Editor/SeoMetaBox.php:113
 msgid "Block this content from search engine indexes (noindex)"
-msgstr "Empêcher l’indexation de ce contenu par les moteurs de recherche (noindex)"
+msgstr ""
 "Bloquer lâindexation de ce contenu par les moteurs de recherche (noindex)"
 
 #: src/Admin/Editor/TermFields.php:50 src/Admin/Editor/TermFields.php:95
 msgid "Block this term archive from search engine indexes (noindex)"
-msgstr "Empêcher l’indexation de cette archive de terme par les moteurs de recherche (noindex)"
+msgstr ""
 "Bloquer lâindexation de cette archive de terme par les moteurs de "
 "recherche (noindex)"
 
@@ -294,7 +294,7 @@ msgstr ""
 
 #: src/Admin/Editor/SeoMetaBox.php:114
 msgid "Do not ask search engines to follow links on this content (nofollow)"
-msgstr "Ne pas demander aux moteurs de recherche de suivre les liens de ce contenu (nofollow)"
+msgstr ""
 "Demander aux moteurs de recherche de ne pas suivre les liens de ce contenu "
 "(nofollow)"
 
@@ -323,7 +323,7 @@ msgstr "Ne pas fournir de copie en cache de ce contenu (noarchive)"
 
 #: src/Admin/Editor/TermFields.php:53 src/Admin/Editor/TermFields.php:98
 msgid "Do not provide a cached copy of this term archive (noarchive)"
-msgstr "Ne pas fournir de copie en cache de cette archive de terme (noarchive)"
+msgstr ""
 "Ne pas fournir de copie en cache de cette archive de terme (noarchive)"
 
 #: src/Admin/Editor/SeoMetaBox.php:117
@@ -332,7 +332,7 @@ msgstr "Ne pas afficher dâextrait de texte pour ce contenu (nosnippet)"
 
 #: src/Admin/Editor/TermFields.php:54 src/Admin/Editor/TermFields.php:99
 msgid "Do not show a text snippet for this term archive (nosnippet)"
-msgstr "Ne pas afficher d’extrait de texte pour cette archive de terme (nosnippet)"
+msgstr ""
 "Ne pas afficher dâextrait de texte pour cette archive de terme (nosnippet)"
 
 #: src/Admin/SettingsPage.php:481
@@ -448,7 +448,7 @@ msgstr "Titres H1 trouvés : %d"
 
 #: src/Admin/Editor/AnalysisPanel.php:186
 msgid "H1 keyword check was not evaluated because no H1 heading is published."
-msgstr "La vérification du mot-clé dans le H1 n’a pas été effectuée car aucun titre H1 n’est publié."
+msgstr ""
 "La vérification du mot-clé principal dans le H1 n’a pas été évaluée, car "
 "aucun titre H1 n’est publié."
 
@@ -653,23 +653,23 @@ msgstr "Aucune analyse en ligne n’a encore été exécutée."
 
 #: src/Admin/SettingsPage.php:300
 msgid "No metadata template changes were detected."
-msgstr "Aucune modification des modèles de métadonnées n’a été détectée."
+msgstr ""
 "Aucune modification des modÃ¨les de mÃ©tadonnÃ©es nâa Ã©tÃ© dÃ©tectÃ©e."
 
 #: src/Admin/SettingsPage.php:267
 msgid "No search visibility changes were detected."
-msgstr "Aucune modification de la visibilité dans les moteurs de recherche n’a été détectée."
+msgstr ""
 "Aucune modification de visibilité dans les moteurs de recherche détectée."
 
 #: src/Admin/SettingsPage.php:271
 msgid "No social or structured data changes were detected."
-msgstr "Aucune modification des données sociales ou structurées n’a été détectée."
+msgstr ""
 "Aucune modification des métadonnées sociales ou des données structurées n’a "
 "été détectée."
 
 #: src/Admin/SettingsPage.php:279
 msgid "No valid SEO metadata mappings were selected, so nothing was imported."
-msgstr "Aucun mappage valide de métadonnées SEO n’a été sélectionné, rien n’a donc été importé."
+msgstr ""
 "Aucune correspondance de métadonnées SEO valide n’a été sélectionnée ; rien "
 "n’a donc été importé."
 
@@ -1026,7 +1026,7 @@ msgstr "Métadonnées sociales et données structurées"
 
 #: src/Admin/SettingsPage.php:269
 msgid "Social and structured data settings saved."
-msgstr "Les réglages des données sociales et structurées ont été enregistrés."
+msgstr ""
 "Réglages des métadonnées sociales et des données structurées enregistrés."
 
 #: src/Admin/Editor/TermFields.php:65 src/Admin/Editor/TermFields.php:113
@@ -1131,7 +1131,7 @@ msgstr "Le mot-clé principal n’apparaît pas dans l’URL"
 
 #: src/Admin/Editor/AnalysisPanel.php:175
 msgid "The focus keyword does not appear in the visible page content"
-msgstr "Le mot-clé cible n’apparaît pas dans le contenu visible de la page"
+msgstr ""
 "Le mot-clé principal n’apparaît pas dans le contenu visible de la page"
 
 #: src/Admin/Editor/AnalysisPanel.php:146
@@ -1218,13 +1218,13 @@ msgstr ""
 
 #: src/Admin/SettingsPage.php:429
 msgid "Used as the Organization logo or Person image in structured data."
-msgstr "Utilisé comme logo de l’organisation ou image de la personne dans les données structurées."
+msgstr ""
 "Utilisé comme logo de l’organisation ou image de la personne dans les "
 "données structurées."
 
 #: src/Admin/SettingsPage.php:412
 msgid "Used when content has no explicit social image or featured image."
-msgstr "Utilisé lorsque le contenu ne comporte aucune image sociale explicite ni image mise en avant."
+msgstr ""
 "Utilisé lorsque le contenu n’a ni image sociale explicite ni image mise en "
 "avant."
 
@@ -1272,24 +1272,6 @@ msgstr ""
 #: core-blueprint-seo.php
 msgid "Core Blueprint SEO"
 msgstr "Core Blueprint SEO"
-
-msgid "SEO metadata import completed. %1$d content objects changed, %2$d fields were imported through %3$d mappings, and %4$d existing Core Blueprint values were preserved."
-msgstr "Import des métadonnées SEO terminé. %1$d objets de contenu ont été modifiés, %2$d champs ont été importés via %3$d mappages et %4$d valeurs Core Blueprint existantes ont été conservées."
-
-msgid "Core Blueprint discovers existing WordPress metadata by field semantics rather than vendor-specific import profiles. Stored field names are shown as-is so you can review the source before importing."
-msgstr "Core Blueprint détecte les métadonnées WordPress existantes selon la sémantique des champs plutôt qu’à partir de profils d’importation propres à un fournisseur. Les noms de champs enregistrés sont affichés tels quels afin que la source puisse être vérifiée avant l’importation."
-
-msgid "Source metadata is never changed or deleted, and existing Core Blueprint SEO values always win. Global plugin settings and templates are intentionally not guessed because WordPress has no canonical SEO option schema."
-msgstr "Les métadonnées source ne sont jamais modifiées ni supprimées, et les valeurs Core Blueprint SEO existantes sont toujours prioritaires. Les réglages globaux des extensions et les modèles ne sont volontairement pas devinés, car WordPress ne possède aucun schéma canonique d’options SEO."
-
-msgid "No compatible SEO metadata candidates were discovered in WordPress post or term metadata."
-msgstr "Aucun candidat de métadonnées SEO compatible n’a été détecté dans les métadonnées de publications ou de termes WordPress."
-
-msgid "Automatic mappings are preselected only when the semantic match is strong and unambiguous. Review candidates remain disabled until you explicitly map them. If multiple source fields target the same Core Blueprint field on one object, the first non-empty mapped source wins and later conflicts are skipped."
-msgstr "Les mappages automatiques ne sont présélectionnés que lorsque la correspondance sémantique est forte et sans ambiguïté. Les candidats à vérifier restent désactivés jusqu’à leur mappage explicite. Si plusieurs champs source ciblent le même champ Core Blueprint sur un objet, la première source mappée non vide est retenue et les conflits suivants sont ignorés."
-
-msgid "Governed search metadata with WordPress-first fallbacks and builder-independent administration."
-msgstr "Métadonnées de recherche gouvernées avec des solutions de repli WordPress-first et une administration indépendante du builder."
 
 msgid "No sitemap content is available for the current settings."
 msgstr "Aucun contenu de sitemap n’est disponible pour les réglages actuels."
