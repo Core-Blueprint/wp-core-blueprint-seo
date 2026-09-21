@@ -79,7 +79,7 @@ msgstr "Alle %d afbeeldingen hebben een alt-attribuut"
 
 #: src/Admin/SettingsPage.php:660
 msgid "All post-type and taxonomy templates are saved together."
-msgstr ""
+msgstr "Alle templates voor berichttypen en taxonomieën worden samen opgeslagen."
 "Alle templates voor berichttypen en taxonomieÃ«n worden samen opgeslagen."
 
 #: src/Admin/SettingsPage.php:351
@@ -435,7 +435,7 @@ msgstr "Aantal gevonden H1-koppen: %d"
 
 #: src/Admin/Editor/AnalysisPanel.php:186
 msgid "H1 keyword check was not evaluated because no H1 heading is published."
-msgstr ""
+msgstr "De H1-zoekwoordcontrole is niet uitgevoerd omdat er geen H1-kop is gepubliceerd."
 "De H1-controle voor de focuszoekterm is niet uitgevoerd omdat er geen H1-kop"
 " is gepubliceerd."
 
@@ -647,13 +647,13 @@ msgstr "Geen wijzigingen in zoekzichtbaarheid gedetecteerd."
 
 #: src/Admin/SettingsPage.php:271
 msgid "No social or structured data changes were detected."
-msgstr ""
+msgstr "Er zijn geen wijzigingen in sociale of gestructureerde data gedetecteerd."
 "Er zijn geen wijzigingen in socialmetadata of gestructureerde data "
 "gedetecteerd."
 
 #: src/Admin/SettingsPage.php:279
 msgid "No valid SEO metadata mappings were selected, so nothing was imported."
-msgstr ""
+msgstr "Er zijn geen geldige SEO-metadatatoewijzingen geselecteerd, dus er is niets geïmporteerd."
 "Er zijn geen geldige mappings voor SEO-metadata geselecteerd, dus er is "
 "niets geïmporteerd."
 
@@ -1146,7 +1146,7 @@ msgstr ""
 
 #: src/Analysis/HtmlDocument.php:27
 msgid "The WordPress HTML API is required for rendered-page analysis."
-msgstr ""
+msgstr "De WordPress HTML API is vereist voor analyse van de gerenderde pagina."
 "De WordPress HTML-API is vereist voor analyse van gerenderde pagina’s."
 
 #: src/Admin/Editor/SeoMetaBox.php:112
@@ -1199,13 +1199,13 @@ msgstr ""
 
 #: src/Admin/SettingsPage.php:429
 msgid "Used as the Organization logo or Person image in structured data."
-msgstr ""
+msgstr "Wordt gebruikt als organisatielogo of persoonsafbeelding in gestructureerde data."
 "Wordt in gestructureerde data gebruikt als organisatielogo of "
 "persoonsafbeelding."
 
 #: src/Admin/SettingsPage.php:412
 msgid "Used when content has no explicit social image or featured image."
-msgstr ""
+msgstr "Wordt gebruikt wanneer content geen expliciete sociale afbeelding of uitgelichte afbeelding heeft."
 "Wordt gebruikt wanneer content geen expliciete social-afbeelding of "
 "uitgelichte afbeelding heeft."
 
@@ -1248,3 +1248,7 @@ msgid ""
 msgstr ""
 "Je kunt de metadata hieronder voorbereiden terwijl de module inactief is. Er"
 " wordt niets op de frontend uitgegeven totdat SEO is ingeschakeld."
+
+#: core-blueprint-seo.php
+msgid "Core Blueprint SEO"
+msgstr "Core Blueprint SEO"
