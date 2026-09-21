@@ -1,10 +1,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Core Blueprint SEO 1.0.0-rc4\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-02 21:43+0000\n"
-"PO-Revision-Date: 2026-09-02 21:43+0000\n"
+"Project-Id-Version: Core Blueprint SEO 1.0.0-rc1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-core-blueprint-"
+"seo\n"
+"POT-Creation-Date: 2026-09-14 18:31+0000\n"
+"PO-Revision-Date: 2026-09-14 18:31+0000\n"
 "Last-Translator: Core Blueprint\n"
 "Language-Team: es_ES\n"
 "Language: es_ES\n"
@@ -12,102 +13,44 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Generated-By: Core Blueprint rc4 i18n refresh\n"
+"Generated-By: Core Blueprint i18n tooling 1.1.0\n"
 
-#: src/Admin/SettingsPage.php:520
-#, php-format
-msgid "%d automatic"
-msgstr "%d automáticos"
+#. Plugin Name of the plugin
+#: core-blueprint-seo.php
+msgid "Core Blueprint SEO"
+msgstr "Core Blueprint SEO"
 
-#: src/Admin/Editor/AnalysisPanel.php:151
-#, php-format, python-format
-msgid "%d images are missing an alt attribute"
-msgstr "A %d imágenes les falta un atributo alt"
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: core-blueprint-seo.php
+msgid "https://coreblueprint.io"
+msgstr "https://coreblueprint.io"
 
-#: src/Admin/SettingsPage.php:521
-#, php-format
-msgid "%d review"
-msgstr "%d para revisar"
-
-#: src/Admin/SettingsPage.php:251
-#, php-format, python-format
+#. Description of the plugin
+#: core-blueprint-seo.php
 msgid ""
-"%s can emit overlapping titles, canonicals, robots directives, social "
-"metadata or structured data. Keep only one SEO output provider active when "
-"validating the frontend."
+"Governed SEO metadata and indexing controls for Core Blueprint with "
+"WordPress-first fallbacks and builder-independent administration."
 msgstr ""
-"%s puede emitir títulos, canónicas, directivas robots, metadatos sociales o "
-"datos estructurados duplicados. Mantén activo un solo proveedor de salida "
-"SEO al validar el sitio público."
+"Metadatos SEO gobernados y controles de indexación para Core Blueprint con "
+"alternativas WordPress-first y administración independiente del builder."
 
-#: src/Admin/Editor/AnalysisPanel.php:150
-msgid "1 image is missing an alt attribute"
-msgstr "A 1 imagen le falta un atributo alt"
+#. Author of the plugin
+#: core-blueprint-seo.php
+msgid "Core Blueprint"
+msgstr "Core Blueprint"
 
-#: core-blueprint-seo.php:74
-msgid ""
-"A compatible Core Blueprint Base installation with API 1.0 or newer is "
-"required. Activate or update Core Blueprint Base first."
-msgstr ""
-"Se requiere una instalación compatible de Core Blueprint Base con la API 1.0"
-" o posterior. Activa o actualiza primero Core Blueprint Base."
+#: core-blueprint-seo.php:113
+msgid "Core Blueprint SEO:"
+msgstr "Core Blueprint SEO:"
 
-#: src/Admin/SettingsPage.php:746
-msgid "A typographic dash separator."
-msgstr "Un guion tipogrÃ¡fico utilizado como separador."
-
-#: src/Admin/SettingsPage.php:449
-msgid "Access-managed content is protected from AI discovery"
-msgstr ""
-"El contenido gestionado por Access está protegido frente al descubrimiento "
-"por IA"
-
-#: src/Admin/SettingsPage.php:186
-msgid "AI discovery"
-msgstr "Descubrimiento por IA"
-
-#: src/Admin/SettingsPage.php:207 src/Bootstrap.php:97
-msgid "AI Discovery"
-msgstr "Descubrimiento con IA"
-
-#: src/Admin/SettingsPage.php:273
-msgid "AI discovery settings saved."
-msgstr "Ajustes de descubrimiento por IA guardados."
-
-#: src/Admin/Editor/AnalysisPanel.php:147
-#, php-format, python-format
-msgid "All %d images have alt attributes"
-msgstr "Las %d imágenes tienen atributos alt"
-
-#: src/Admin/SettingsPage.php:660
-msgid "All post-type and taxonomy templates are saved together."
-msgstr ""
-"Todas las plantillas de tipos de contenido y taxonomÃ­as se guardan juntas."
-
-#: src/Admin/SettingsPage.php:351
-msgid "Allow author archives to be indexed"
-msgstr "Permitir indexar los archivos de autor"
-
-#: src/Admin/SettingsPage.php:356
-msgid "Allow date archives to be indexed"
-msgstr "Permitir indexar los archivos por fecha"
-
-#: src/Admin/SettingsPage.php:385
-#, php-format, python-format
-msgid "Allow search engines to index %s"
-msgstr "Permitir que los motores de búsqueda indexen %s"
+#: core-blueprint-seo.php:128
+msgid "Required Core Blueprint Base contracts are unavailable."
+msgstr "Los contratos requeridos de Core Blueprint Base no están disponibles."
 
 #: src/Admin/Editor/AnalysisPanel.php:22
 msgid "Analysis failed."
 msgstr "El análisis ha fallado."
-
-#: src/Admin/Editor/AnalysisPanel.php:74
-msgid "Analysis source:"
-msgstr "Fuente del análisis:"
-
-#: src/Admin/Editor/AnalysisPanel.php:30
-msgid "Analyze live page"
-msgstr "Analizar página pública"
 
 #: src/Admin/Editor/AnalysisPanel.php:23
 msgid ""
@@ -120,23 +63,961 @@ msgstr ""
 "actualiza la página antes del análisis si quieres incluir los cambios "
 "recientes."
 
+#: src/Admin/Editor/AnalysisPanel.php:25
+msgid "Focus keyword"
+msgstr "Palabra clave objetivo"
+
+#: src/Admin/Editor/AnalysisPanel.php:26
+msgid "Example: wordpress maintenance"
+msgstr "Ejemplo: mantenimiento wordpress"
+
+#: src/Admin/Editor/AnalysisPanel.php:28
+msgid ""
+"The keyword is used for guidance only. Core Blueprint does not treat keyword "
+"density as a search-engine ranking formula."
+msgstr ""
+"La palabra clave se utiliza solo como orientación. Core Blueprint no "
+"considera la densidad de palabras clave una fórmula de posicionamiento en "
+"buscadores."
+
 #: src/Admin/Editor/AnalysisPanel.php:30
 msgid "Analyzing…"
 msgstr "Analizando…"
 
-#: src/Admin/SettingsPage.php:248
+#: src/Admin/Editor/AnalysisPanel.php:30
+msgid "Analyze live page"
+msgstr "Analizar página pública"
+
+#: src/Admin/Editor/AnalysisPanel.php:33
+msgid ""
+"Publish this content before running the live analysis. Draft analysis will "
+"be added separately so the public renderer remains the source of truth."
+msgstr ""
+"Publica este contenido antes de ejecutar el análisis público. El análisis de "
+"borradores se añadirá por separado para que el renderizado público siga "
+"siendo la fuente de referencia."
+
+#: src/Admin/Editor/AnalysisPanel.php:40
+msgid "No live analysis has been run yet."
+msgstr "Todavía no se ha ejecutado ningún análisis público."
+
+#: src/Admin/Editor/AnalysisPanel.php:74
+msgid "Analysis source:"
+msgstr "Fuente del análisis:"
+
+#: src/Admin/Editor/AnalysisPanel.php:75
+msgid "Rendered frontend"
+msgstr "Frontend renderizado"
+
+#: src/Admin/Editor/AnalysisPanel.php:80
+msgid "Content changed since this analysis."
+msgstr "El contenido ha cambiado desde este análisis."
+
+#: src/Admin/Editor/AnalysisPanel.php:87
+#, php-format
+msgid "Exact phrase occurrences in visible content: %d"
+msgstr "Apariciones exactas de la frase en el contenido visible: %d"
+
+#: src/Admin/Editor/AnalysisPanel.php:94
+msgid "Needs attention"
+msgstr "Requiere atención"
+
+#: src/Admin/Editor/AnalysisPanel.php:95
+msgid "Optimisation"
+msgstr "Optimización"
+
+#: src/Admin/Editor/AnalysisPanel.php:96
+msgid "Good"
+msgstr "Correcto"
+
+#: src/Admin/Editor/AnalysisPanel.php:98
+msgid "Content overview"
+msgstr "Resumen del contenido"
+
+#: src/Admin/Editor/AnalysisPanel.php:99
+#, php-format
+msgid "Visible words: %d"
+msgstr "Palabras visibles: %d"
+
+#: src/Admin/Editor/AnalysisPanel.php:100
+#, php-format
+msgid "Internal links: %d"
+msgstr "Enlaces internos: %d"
+
+#: src/Admin/Editor/AnalysisPanel.php:101
+#, php-format
+msgid "External links: %d"
+msgstr "Enlaces externos: %d"
+
+#: src/Admin/Editor/AnalysisPanel.php:102
+#, php-format
+msgid "Images: %d"
+msgstr "Imágenes: %d"
+
+#: src/Admin/Editor/AnalysisPanel.php:115
+msgid "HTTP status is 200"
+msgstr "El estado HTTP es 200"
+
+#: src/Admin/Editor/AnalysisPanel.php:117
+#, php-format
+msgid "HTTP status is %d"
+msgstr "El estado HTTP es %d"
+
+#: src/Admin/Editor/AnalysisPanel.php:128
+msgid "Document title is present"
+msgstr "El título del documento está presente"
+
+#: src/Admin/Editor/AnalysisPanel.php:128
+msgid "Document title is missing"
+msgstr "Falta el título del documento"
+
+#: src/Admin/Editor/AnalysisPanel.php:129
+msgid "Meta description is present"
+msgstr "La metadescripción está presente"
+
+#: src/Admin/Editor/AnalysisPanel.php:129
+msgid "Meta description is missing"
+msgstr "Falta la meta descripción"
+
+#: src/Admin/Editor/AnalysisPanel.php:130
+msgid "Page is indexable"
+msgstr "La página es indexable"
+
+#: src/Admin/Editor/AnalysisPanel.php:130
+msgid "Page is marked noindex"
+msgstr "La página está marcada como noindex"
+
+#: src/Admin/Editor/AnalysisPanel.php:131
+msgid "Canonical URL is present"
+msgstr "La URL canónica está presente"
+
+#: src/Admin/Editor/AnalysisPanel.php:131
+msgid "Canonical URL is missing"
+msgstr "Falta la URL canónica"
+
+#: src/Admin/Editor/AnalysisPanel.php:135
+msgid "Exactly one H1 heading is present"
+msgstr "Hay exactamente un encabezado H1"
+
+#: src/Admin/Editor/AnalysisPanel.php:137
+#, php-format
+msgid "H1 headings found: %d"
+msgstr "Encabezados H1 encontrados: %d"
+
+#: src/Admin/Editor/AnalysisPanel.php:140
+msgid "Heading hierarchy has no skipped levels"
+msgstr "La jerarquía de encabezados no salta niveles"
+
+#: src/Admin/Editor/AnalysisPanel.php:140
+msgid "Heading hierarchy skips one or more levels"
+msgstr "La jerarquía de encabezados omite uno o más niveles"
+
+#: src/Admin/Editor/AnalysisPanel.php:146
+msgid "The image has an alt attribute"
+msgstr "La imagen tiene un atributo alt"
+
+#: src/Admin/Editor/AnalysisPanel.php:147
+#, php-format
+msgid "All %d images have alt attributes"
+msgstr "Las %d imágenes tienen atributos alt"
+
+#: src/Admin/Editor/AnalysisPanel.php:150
+msgid "1 image is missing an alt attribute"
+msgstr "A 1 imagen le falta un atributo alt"
+
+#: src/Admin/Editor/AnalysisPanel.php:151
+#, php-format
+msgid "%d images are missing an alt attribute"
+msgstr "A %d imágenes les falta un atributo alt"
+
+#: src/Admin/Editor/AnalysisPanel.php:169
+msgid "Focus keyword appears in the document title"
+msgstr "La palabra clave principal aparece en el título del documento"
+
+#: src/Admin/Editor/AnalysisPanel.php:169
+msgid "Consider using the focus keyword in the document title"
+msgstr "Considera usar la palabra clave objetivo en el título del documento"
+
+#: src/Admin/Editor/AnalysisPanel.php:170
+msgid "Focus keyword appears in the meta description"
+msgstr "La palabra clave principal aparece en la meta descripción"
+
+#: src/Admin/Editor/AnalysisPanel.php:170
+msgid "Consider using the focus keyword in the meta description"
+msgstr "Considera usar la palabra clave objetivo en la metadescripción"
+
+#: src/Admin/Editor/AnalysisPanel.php:171
+msgid "Focus keyword appears in the URL"
+msgstr "La palabra clave principal aparece en la URL"
+
+#: src/Admin/Editor/AnalysisPanel.php:171
+msgid "The focus keyword does not appear in the URL"
+msgstr "La palabra clave objetivo no aparece en la URL"
+
+#: src/Admin/Editor/AnalysisPanel.php:172
+msgid "Focus keyword appears in an H1 heading"
+msgstr "La palabra clave principal aparece en un encabezado H1"
+
+#: src/Admin/Editor/AnalysisPanel.php:172
+msgid "Consider using the focus keyword in the H1 heading"
+msgstr "Considera usar la palabra clave objetivo en el encabezado H1"
+
+#: src/Admin/Editor/AnalysisPanel.php:173
+msgid "Focus keyword appears near the start of the visible content"
+msgstr ""
+"La palabra clave principal aparece cerca del inicio del contenido visible"
+
+#: src/Admin/Editor/AnalysisPanel.php:173
+msgid ""
+"Consider mentioning the focus keyword near the start of the visible content"
+msgstr ""
+"Considera mencionar la palabra clave objetivo cerca del inicio del contenido "
+"visible"
+
+#: src/Admin/Editor/AnalysisPanel.php:174
+msgid "Focus keyword appears in a subheading"
+msgstr "La palabra clave principal aparece en un subtítulo"
+
+#: src/Admin/Editor/AnalysisPanel.php:174
+msgid "Consider using the focus keyword in a subheading"
+msgstr "Considera usar la palabra clave objetivo en un subtítulo"
+
+#: src/Admin/Editor/AnalysisPanel.php:175
+msgid "Focus keyword appears in the visible page content"
+msgstr ""
+"La palabra clave principal aparece en el contenido visible de la página"
+
+#: src/Admin/Editor/AnalysisPanel.php:175
+msgid "The focus keyword does not appear in the visible page content"
+msgstr ""
+"La palabra clave objetivo no aparece en el contenido visible de la página"
+
+#: src/Admin/Editor/AnalysisPanel.php:182
+msgid ""
+"Meta description keyword check was not evaluated because no meta description "
+"is published."
+msgstr ""
+"La comprobación de la palabra clave en la meta descripción no se evaluó "
+"porque no hay ninguna meta descripción publicada."
+
+#: src/Admin/Editor/AnalysisPanel.php:186
+msgid "H1 keyword check was not evaluated because no H1 heading is published."
+msgstr ""
+"La comprobación H1 de la palabra clave objetivo no se evaluó porque no hay "
+"ningún encabezado H1 publicado."
+
+#: src/Admin/Editor/AnalysisPanel.php:199
+#, php-format
+msgid "Focus keyword checks: %1$d/%2$d"
+msgstr "Comprobaciones de la palabra clave objetivo: %1$d/%2$d"
+
+#: src/Admin/Editor/SeoMetaBox.php:37
+msgid "SEO — Search appearance"
+msgstr "SEO — Apariencia en búsqueda"
+
+#: src/Admin/Editor/SeoMetaBox.php:45
+msgid "SEO — Analysis"
+msgstr "SEO — Análisis"
+
+#: src/Admin/Editor/SeoMetaBox.php:53
+msgid "SEO — Indexing"
+msgstr "SEO — Indexación"
+
+#: src/Admin/Editor/SeoMetaBox.php:61
+msgid "SEO — Social appearance"
+msgstr "SEO — Apariencia social"
+
+#: src/Admin/Editor/SeoMetaBox.php:76 src/Admin/Editor/TermFields.php:39
+#: src/Admin/Editor/TermFields.php:79 src/Admin/SettingsPage.php:563
+msgid "SEO title"
+msgstr "TÃ­tulo SEO"
+
+#: src/Admin/Editor/SeoMetaBox.php:77 src/Admin/Editor/SeoMetaBox.php:83
+msgid "Use the configured post-type template"
+msgstr "Usar la plantilla configurada para este tipo de contenido"
+
+#: src/Admin/Editor/SeoMetaBox.php:79
+msgid ""
+"Leave empty to use the global template for this post type. If no template "
+"exists, WordPress keeps its normal document title."
+msgstr ""
+"DÃ©jalo vacÃ­o para usar la plantilla global de este tipo de contenido. Si no "
+"existe ninguna plantilla, WordPress mantiene su tÃ­tulo de documento normal."
+
+#: src/Admin/Editor/SeoMetaBox.php:82 src/Admin/Editor/TermFields.php:44
+#: src/Admin/Editor/TermFields.php:86 src/Admin/SettingsPage.php:564
+msgid "Meta description"
+msgstr "MetadescripciÃ³n"
+
+#: src/Admin/Editor/SeoMetaBox.php:85
+msgid ""
+"Leave empty to use the global template. Core Blueprint emits no fallback "
+"description when neither an override nor a template is configured."
+msgstr ""
+"DÃ©jalo vacÃ­o para usar la plantilla global. Core Blueprint no publica una "
+"descripciÃ³n alternativa cuando no hay ni una personalizaciÃ³n ni una "
+"plantilla configurada."
+
+#: src/Admin/Editor/SeoMetaBox.php:89
+msgid "Resolved preview"
+msgstr "Vista previa resuelta"
+
+#: src/Admin/Editor/SeoMetaBox.php:90
+msgid "WordPress default title"
+msgstr "TÃ­tulo predeterminado de WordPress"
+
+#: src/Admin/Editor/SeoMetaBox.php:91
+msgid "No Core Blueprint meta description"
+msgstr "Sin metadescripciÃ³n de Core Blueprint"
+
+#: src/Admin/Editor/SeoMetaBox.php:111 src/Admin/Editor/TermFields.php:49
+#: src/Admin/Editor/TermFields.php:93
+msgid "Search engine directives"
+msgstr "Directivas para motores de bÃºsqueda"
+
+#: src/Admin/Editor/SeoMetaBox.php:112
+msgid ""
+"These are restrictive per-content overrides. Leave them unchecked to keep "
+"the normal WordPress or global SEO policy."
+msgstr ""
+"Son restricciones especÃ­ficas para este contenido. DÃ©jalas desmarcadas para "
+"mantener la polÃ­tica normal de WordPress o la polÃ­tica SEO global."
+
+#: src/Admin/Editor/SeoMetaBox.php:113
+msgid "Block this content from search engine indexes (noindex)"
+msgstr ""
+"Bloquear la indexaciÃ³n de este contenido por los motores de bÃºsqueda "
+"(noindex)"
+
+#: src/Admin/Editor/SeoMetaBox.php:114
+msgid "Do not ask search engines to follow links on this content (nofollow)"
+msgstr ""
+"Pedir a los motores de bÃºsqueda que no sigan los enlaces de este contenido "
+"(nofollow)"
+
+#: src/Admin/Editor/SeoMetaBox.php:115
+msgid "Do not index images from this content (noimageindex)"
+msgstr "No indexar las imÃ¡genes de este contenido (noimageindex)"
+
+#: src/Admin/Editor/SeoMetaBox.php:116
+msgid "Do not provide a cached copy of this content (noarchive)"
+msgstr "No proporcionar una copia en cachÃ© de este contenido (noarchive)"
+
+#: src/Admin/Editor/SeoMetaBox.php:117
+msgid "Do not show a text snippet for this content (nosnippet)"
+msgstr "No mostrar un fragmento de texto para este contenido (nosnippet)"
+
+#: src/Admin/Editor/SeoMetaBox.php:118
+msgid ""
+"Content marked noindex is also excluded from the WordPress XML sitemap while "
+"Core Blueprint SEO is active."
+msgstr ""
+"El contenido marcado como noindex tambiÃ©n se excluye del sitemap XML de "
+"WordPress mientras Core Blueprint SEO estÃ© activo."
+
+#: src/Admin/Editor/SeoMetaBox.php:122 src/Admin/Editor/TermFields.php:59
+#: src/Admin/Editor/TermFields.php:105 src/Admin/SettingsPage.php:565
+msgid "Canonical URL"
+msgstr "URL canÃ³nica"
+
+#: src/Admin/Editor/SeoMetaBox.php:123
+msgid "Use the normal WordPress canonical"
+msgstr "Usar la URL canÃ³nica normal de WordPress"
+
+#: src/Admin/Editor/SeoMetaBox.php:124
+msgid ""
+"Optional absolute HTTP(S) URL. Leave empty to keep the normal WordPress/site "
+"canonical behaviour."
+msgstr ""
+"URL HTTP(S) absoluta opcional. DÃ©jalo vacÃ­o para mantener el comportamiento "
+"canÃ³nico normal de WordPress/del sitio."
+
+#: src/Admin/Editor/SeoMetaBox.php:134
+msgid ""
+"Optional Open Graph and X/Twitter overrides. Empty fields inherit the "
+"resolved SEO metadata."
+msgstr ""
+"Anulaciones opcionales de Open Graph y X/Twitter. Los campos vacíos heredan "
+"los metadatos SEO resueltos."
+
+#: src/Admin/Editor/SeoMetaBox.php:136 src/Admin/Editor/TermFields.php:115
+#: src/Admin/SettingsPage.php:571
+msgid "Social title"
+msgstr "Título social"
+
+#: src/Admin/Editor/SeoMetaBox.php:137
+msgid "Use the resolved SEO title"
+msgstr "Usar el título SEO resuelto"
+
+#: src/Admin/Editor/SeoMetaBox.php:140 src/Admin/Editor/TermFields.php:117
+#: src/Admin/SettingsPage.php:572
+msgid "Social description"
+msgstr "Descripción social"
+
+#: src/Admin/Editor/SeoMetaBox.php:141
+msgid "Use the resolved SEO description"
+msgstr "Usar la descripción SEO resuelta"
+
+#: src/Admin/Editor/SeoMetaBox.php:143
+msgid "Social image"
+msgstr "Imagen social"
+
+#: src/Admin/Editor/SeoMetaBox.php:228 src/Admin/Editor/TermFields.php:202
+#: src/Admin/SettingsPage.php:584
+msgid "Choose image"
+msgstr "Elegir imagen"
+
+#: src/Admin/Editor/SeoMetaBox.php:229 src/Admin/Editor/TermFields.php:202
+#: src/Admin/SettingsPage.php:584
+msgid "Remove image"
+msgstr "Eliminar imagen"
+
+#: src/Admin/Editor/SeoMetaBox.php:231
+msgid ""
+"If empty, Core Blueprint uses the featured image and then the configured "
+"default social image."
+msgstr ""
+"Si está vacío, Core Blueprint usa primero la imagen destacada y después la "
+"imagen social predeterminada configurada."
+
+#: src/Admin/Editor/TermFields.php:41 src/Admin/Editor/TermFields.php:82
+msgid ""
+"Optional. Leave empty to use the taxonomy template or the normal WordPress "
+"title."
+msgstr ""
+"Opcional. DÃ©jalo vacÃ­o para usar la plantilla de taxonomÃ­a o el tÃ­tulo "
+"normal de WordPress."
+
+#: src/Admin/Editor/TermFields.php:46 src/Admin/Editor/TermFields.php:89
+msgid "Optional. Leave empty to use the taxonomy template."
+msgstr "Opcional. DÃ©jalo vacÃ­o para usar la plantilla de taxonomÃ­a."
+
+#: src/Admin/Editor/TermFields.php:50 src/Admin/Editor/TermFields.php:95
+msgid "Block this term archive from search engine indexes (noindex)"
+msgstr ""
+"Bloquear la indexaciÃ³n de este archivo de tÃ©rmino por los motores de "
+"bÃºsqueda (noindex)"
+
+#: src/Admin/Editor/TermFields.php:51 src/Admin/Editor/TermFields.php:96
+msgid ""
+"Do not ask search engines to follow links on this term archive (nofollow)"
+msgstr ""
+"Pedir a los motores de bÃºsqueda que no sigan los enlaces de este archivo de "
+"tÃ©rmino (nofollow)"
+
+#: src/Admin/Editor/TermFields.php:52 src/Admin/Editor/TermFields.php:97
+msgid "Do not index images from this term archive (noimageindex)"
+msgstr "No indexar las imÃ¡genes de este archivo de tÃ©rmino (noimageindex)"
+
+#: src/Admin/Editor/TermFields.php:53 src/Admin/Editor/TermFields.php:98
+msgid "Do not provide a cached copy of this term archive (noarchive)"
+msgstr ""
+"No proporcionar una copia en cachÃ© de este archivo de tÃ©rmino (noarchive)"
+
+#: src/Admin/Editor/TermFields.php:54 src/Admin/Editor/TermFields.php:99
+msgid "Do not show a text snippet for this term archive (nosnippet)"
+msgstr ""
+"No mostrar un fragmento de texto para este archivo de tÃ©rmino (nosnippet)"
+
+#: src/Admin/Editor/TermFields.php:55 src/Admin/Editor/TermFields.php:100
+msgid ""
+"Unchecked directives inherit the normal WordPress or global SEO policy. "
+"noindex also removes this term from the WordPress XML sitemap."
+msgstr ""
+"Las directivas desmarcadas heredan la polÃ­tica normal de WordPress o la polÃ­"
+"tica SEO global. noindex tambiÃ©n elimina este tÃ©rmino del sitemap XML de "
+"WordPress."
+
+#: src/Admin/Editor/TermFields.php:60 src/Admin/Editor/TermFields.php:107
+msgid "Optional absolute HTTP(S) URL"
+msgstr "URL HTTP(S) absoluta opcional"
+
+#: src/Admin/Editor/TermFields.php:61 src/Admin/Editor/TermFields.php:108
+msgid ""
+"Leave empty to keep the normal site behaviour. Core Blueprint only emits a "
+"term canonical when an explicit override is configured."
+msgstr ""
+"DÃ©jalo vacÃ­o para mantener el comportamiento normal del sitio. Core "
+"Blueprint solo emite una URL canÃ³nica de tÃ©rmino cuando se configura una "
+"sustituciÃ³n explÃ­cita."
+
+#: src/Admin/Editor/TermFields.php:65 src/Admin/Editor/TermFields.php:113
+msgid "Social appearance"
+msgstr "Apariencia social"
+
+#: src/Admin/Editor/TermFields.php:66
+msgid "Social title (optional)"
+msgstr "Título social (opcional)"
+
+#: src/Admin/Editor/TermFields.php:67
+msgid "Social description (optional)"
+msgstr "Descripción social (opcional)"
+
+#: src/Admin/Editor/TermFields.php:69 src/Admin/Editor/TermFields.php:120
+msgid ""
+"Open Graph and X/Twitter overrides. Empty values inherit the resolved SEO "
+"metadata."
+msgstr ""
+"Anulaciones de Open Graph y X/Twitter. Los valores vacíos heredan los "
+"metadatos SEO resueltos."
+
+#: src/Admin/SettingsPage.php:43
+msgid "Settings"
+msgstr "Ajustes"
+
+#: src/Admin/SettingsPage.php:145 src/Bootstrap.php:79 src/Bootstrap.php:152
+msgid "SEO"
+msgstr "SEO"
+
+#: src/Admin/SettingsPage.php:146 src/Bootstrap.php:80
+msgid ""
+"Governed search metadata with WordPress-first fallbacks and builder-"
+"independent administration."
+msgstr ""
+"Metadatos de bÃºsqueda gobernados con alternativas WordPress-first y "
+"administraciÃ³n independiente del constructor."
+
+#: src/Admin/SettingsPage.php:155
+msgid "SEO output is disabled"
+msgstr "La salida SEO estÃ¡ desactivada"
+
+#: src/Admin/SettingsPage.php:156
+msgid ""
+"You can prepare metadata below while the module is dormant. Nothing is "
+"emitted on the frontend until SEO is enabled."
+msgstr ""
+"Puedes preparar los metadatos a continuaciÃ³n mientras el mÃ³dulo "
+"estÃ¡ inactivo. No se publica nada en el frontend hasta que SEO estÃ© "
+"activado."
+
+#: src/Admin/SettingsPage.php:168
+msgid "Metadata templates"
+msgstr "Plantillas de metadatos"
+
+#: src/Admin/SettingsPage.php:174
+msgid "Search visibility"
+msgstr "Visibilidad en buscadores"
+
+#: src/Admin/SettingsPage.php:180
+msgid "Social and structured data"
+msgstr "Metadatos sociales y datos estructurados"
+
+#: src/Admin/SettingsPage.php:186
+msgid "AI discovery"
+msgstr "Descubrimiento por IA"
+
+#: src/Admin/SettingsPage.php:192 src/Admin/SettingsPage.php:208
+#: src/Bootstrap.php:129
+msgid "Import"
+msgstr "Importar"
+
+#: src/Admin/SettingsPage.php:204
+msgid "Search appearance"
+msgstr "Apariencia en buscadores"
+
+#: src/Admin/SettingsPage.php:205 src/Bootstrap.php:108
+msgid "Indexing"
+msgstr "Indexación"
+
+#: src/Admin/SettingsPage.php:206 src/Bootstrap.php:115
+msgid "Social & Schema"
+msgstr "Social y Schema"
+
+#: src/Admin/SettingsPage.php:207 src/Bootstrap.php:122
+msgid "AI Discovery"
+msgstr "Descubrimiento con IA"
+
+#: src/Admin/SettingsPage.php:211
+msgid "SEO sections"
+msgstr "Secciones SEO"
+
+#: src/Admin/SettingsPage.php:245 src/Bootstrap.php:173
 msgid "Another SEO plugin is active"
 msgstr "Hay otro plugin SEO activo"
 
-#: src/Admin/SettingsPage.php:346
+#. translators: %s: comma-separated plugin names.
+#: src/Admin/SettingsPage.php:248
+#, php-format
+msgid ""
+"%s can emit overlapping titles, canonicals, robots directives, social "
+"metadata or structured data. Keep only one SEO output provider active when "
+"validating the frontend."
+msgstr ""
+"%s puede emitir títulos, canónicas, directivas robots, metadatos sociales o "
+"datos estructurados duplicados. Mantén activo un solo proveedor de salida "
+"SEO al validar el sitio público."
+
+#: src/Admin/SettingsPage.php:259
+msgid "SEO metadata templates saved."
+msgstr "Plantillas de metadatos SEO guardadas."
+
+#: src/Admin/SettingsPage.php:262
+msgid "Search visibility settings saved."
+msgstr "Ajustes de visibilidad en buscadores guardados."
+
+#: src/Admin/SettingsPage.php:264
+msgid "No search visibility changes were detected."
+msgstr "No se detectaron cambios en la visibilidad en buscadores."
+
+#: src/Admin/SettingsPage.php:266
+msgid "Social and structured data settings saved."
+msgstr "Ajustes de metadatos sociales y datos estructurados guardados."
+
+#: src/Admin/SettingsPage.php:268
+msgid "No social or structured data changes were detected."
+msgstr ""
+"No se detectaron cambios en los metadatos sociales ni en los datos "
+"estructurados."
+
+#: src/Admin/SettingsPage.php:270
+msgid "AI discovery settings saved."
+msgstr "Ajustes de descubrimiento por IA guardados."
+
+#: src/Admin/SettingsPage.php:272
+msgid "No AI discovery changes were detected."
+msgstr "No se detectaron cambios en el descubrimiento por IA."
+
+#: src/Admin/SettingsPage.php:276
+msgid "No valid SEO metadata mappings were selected, so nothing was imported."
+msgstr ""
+"No se seleccionaron asignaciones de metadatos SEO válidas, por lo que no se "
+"importó nada."
+
+#. translators: 1: changed objects, 2: imported fields, 3: mappings used, 4: existing values preserved.
+#: src/Admin/SettingsPage.php:287
+#, php-format
+msgid ""
+"SEO metadata import completed. %1$d content objects changed, %2$d fields "
+"were imported through %3$d mappings, and %4$d existing Core Blueprint values "
+"were preserved."
+msgstr ""
+"Importación de metadatos SEO completada. Se modificaron %1$d objetos de "
+"contenido, se importaron %2$d campos mediante %3$d asignaciones y se "
+"conservaron %4$d valores existentes de Core Blueprint."
+
+#: src/Admin/SettingsPage.php:297
+msgid "No metadata template changes were detected."
+msgstr "No se detectaron cambios en las plantillas de metadatos."
+
+#: src/Admin/SettingsPage.php:320
+msgid ""
+"Control which public content groups search engines may index and which "
+"groups WordPress publishes in its XML sitemap."
+msgstr ""
+"Controla qué grupos de contenido público pueden indexar los motores de "
+"búsqueda y qué grupos publica WordPress en su mapa del sitio XML."
+
+#: src/Admin/SettingsPage.php:321
+msgid ""
+"Individual SEO controls can add restrictions, but they cannot override a "
+"content group that is disabled here."
+msgstr ""
+"Los controles SEO individuales pueden añadir restricciones, pero no pueden "
+"volver a activar un grupo de contenido deshabilitado aquí."
+
+#: src/Admin/SettingsPage.php:324 src/Admin/SettingsPage.php:610
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:29
+msgid "Post types"
+msgstr "Tipos de contenido"
+
+#: src/Admin/SettingsPage.php:325 src/Admin/SettingsPage.php:611
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:38
+msgid "Taxonomies"
+msgstr "TaxonomÃ­as"
+
+#: src/Admin/SettingsPage.php:330
+msgid ""
+"When indexing is disabled, Core Blueprint also removes that content group "
+"from XML sitemaps. Disabling only the sitemap keeps public pages indexable "
+"but stops advertising them through the WordPress sitemap."
+msgstr ""
+"Cuando se desactiva la indexación, Core Blueprint también elimina ese grupo "
+"de contenido de los mapas del sitio XML. Desactivar solo el mapa del sitio "
+"mantiene las páginas públicas indexables, pero evita que WordPress las "
+"anuncie mediante el mapa del sitio."
+
+#: src/Admin/SettingsPage.php:331
+msgid "Save search visibility"
+msgstr "Guardar visibilidad"
+
+#: src/Admin/SettingsPage.php:343
 msgid "Archive pages"
 msgstr "Páginas de archivo"
 
-#: src/Admin/SettingsPage.php:534
+#: src/Admin/SettingsPage.php:344
+msgid ""
+"Control indexability for WordPress archive contexts that are not individual "
+"post types or taxonomies."
+msgstr ""
+"Controla la indexabilidad de los contextos de archivo de WordPress que no "
+"son tipos de contenido individuales ni taxonomías."
+
+#: src/Admin/SettingsPage.php:348
+msgid "Allow author archives to be indexed"
+msgstr "Permitir indexar los archivos de autor"
+
+#: src/Admin/SettingsPage.php:353
+msgid "Allow date archives to be indexed"
+msgstr "Permitir indexar los archivos por fecha"
+
+#: src/Admin/SettingsPage.php:355
+msgid ""
+"Search results and 404 pages remain noindex in line with WordPress defaults."
+msgstr ""
+"Los resultados de búsqueda y las páginas 404 permanecen en noindex de "
+"acuerdo con los valores predeterminados de WordPress."
+
+#: src/Admin/SettingsPage.php:368
+msgid "Content"
+msgstr "Contenido"
+
+#: src/Admin/SettingsPage.php:369
+msgid "Index"
+msgstr "Indexación"
+
+#: src/Admin/SettingsPage.php:370 src/Frontend/Sitemap.php:51
+msgid "Sitemap"
+msgstr "Mapa del sitio"
+
+#: src/Admin/SettingsPage.php:382
+#, php-format
+msgid "Allow search engines to index %s"
+msgstr "Permitir que los motores de búsqueda indexen %s"
+
+#: src/Admin/SettingsPage.php:387
+#, php-format
+msgid "Include %s in the XML sitemap"
+msgstr "Incluir %s en el mapa del sitio XML"
+
+#: src/Admin/SettingsPage.php:406
+msgid "Social metadata"
+msgstr "Metadatos sociales"
+
+#: src/Admin/SettingsPage.php:407
+msgid "Emit Open Graph and X/Twitter metadata"
+msgstr "Emitir metadatos de Open Graph y X/Twitter"
+
+#: src/Admin/SettingsPage.php:408
+msgid ""
+"Disabled by default on upgrade so existing SEO plugins are not duplicated. "
+"Per-content social overrides remain stored either way."
+msgstr ""
+"Desactivado por defecto tras una actualización para evitar duplicar la "
+"salida de plugins SEO existentes. Las anulaciones sociales por contenido "
+"permanecen guardadas."
+
+#: src/Admin/SettingsPage.php:409
+msgid "Default social image"
+msgstr "Imagen social predeterminada"
+
+#: src/Admin/SettingsPage.php:409
+msgid "Used when content has no explicit social image or featured image."
+msgstr ""
+"Se usa cuando el contenido no tiene una imagen social explícita ni imagen "
+"destacada."
+
+#: src/Admin/SettingsPage.php:413
+msgid "Structured data"
+msgstr "Datos estructurados"
+
+#: src/Admin/SettingsPage.php:414
+msgid "Emit Core Blueprint JSON-LD"
+msgstr "Emitir JSON-LD de Core Blueprint"
+
+#: src/Admin/SettingsPage.php:415
+msgid ""
+"Outputs one small schema.org graph for the site identity, website and "
+"current page. Other Core Blueprint extensions can add their own nodes "
+"through the shared graph filter."
+msgstr ""
+"Emite un grafo schema.org compacto para la identidad del sitio, el sitio web "
+"y la página actual. Otras extensiones de Core Blueprint pueden añadir sus "
+"propios nodos mediante el filtro de grafo compartido."
+
+#: src/Admin/SettingsPage.php:418
+msgid "Site identity type"
+msgstr "Tipo de identidad del sitio"
+
+#: src/Admin/SettingsPage.php:419
+msgid "Organization"
+msgstr "Organización"
+
+#: src/Admin/SettingsPage.php:419
+msgid "Person"
+msgstr "Persona"
+
+#: src/Admin/SettingsPage.php:422
+msgid "Site identity name"
+msgstr "Nombre de identidad del sitio"
+
+#: src/Admin/SettingsPage.php:424
+msgid "Leave empty to use the WordPress site title."
+msgstr "Déjalo vacío para usar el título del sitio de WordPress."
+
+#: src/Admin/SettingsPage.php:426
+msgid "Identity logo or image"
+msgstr "Logotipo o imagen de identidad"
+
+#: src/Admin/SettingsPage.php:426
+msgid "Used as the Organization logo or Person image in structured data."
+msgstr ""
+"Se usa como logotipo de la organización o imagen de la persona en los datos "
+"estructurados."
+
+#: src/Admin/SettingsPage.php:429
+msgid "Save social and structured data"
+msgstr "Guardar metadatos sociales y datos estructurados"
+
+#: src/Admin/SettingsPage.php:446
+msgid "Access-managed content is protected from AI discovery"
+msgstr ""
+"El contenido gestionado por Access está protegido frente al descubrimiento "
+"por IA"
+
+#. translators: %s: comma-separated post type slugs.
+#: src/Admin/SettingsPage.php:449
+#, php-format
+msgid ""
+"For privacy, Core Blueprint SEO excludes selected Access-managed content "
+"types until Core Blueprint Access explicitly confirms anonymous public "
+"discovery: %s."
+msgstr ""
+"Por privacidad, Core Blueprint SEO excluye los tipos de contenido "
+"seleccionados gestionados por Access hasta que Core Blueprint Access "
+"confirme explícitamente el descubrimiento público anónimo: %s."
+
+#: src/Admin/SettingsPage.php:461
+msgid "llms.txt"
+msgstr "llms.txt"
+
+#: src/Admin/SettingsPage.php:462
+msgid "Publish an AI discovery document at /llms.txt"
+msgstr "Publicar un documento de descubrimiento por IA en /llms.txt"
+
+#: src/Admin/SettingsPage.php:463
+msgid ""
+"The document lists selected public and indexable WordPress content. It is "
+"disabled by default on upgrade and does not affect search rankings."
+msgstr ""
+"El documento enumera el contenido público e indexable de WordPress "
+"seleccionado. Tras una actualización está desactivado por defecto y no "
+"afecta al posicionamiento en buscadores."
+
+#: src/Admin/SettingsPage.php:468
+msgid "Included content"
+msgstr "Contenido incluido"
+
+#: src/Admin/SettingsPage.php:469
+msgid ""
+"Only published, publicly viewable, non-password-protected content is "
+"eligible. Content explicitly marked noindex is always excluded."
+msgstr ""
+"Solo es apto el contenido publicado, visible públicamente y no protegido con "
+"contraseña. El contenido marcado explícitamente como noindex siempre se "
+"excluye."
+
+#: src/Admin/SettingsPage.php:478
+msgid "Document detail"
+msgstr "Detalle del documento"
+
+#: src/Admin/SettingsPage.php:479
+msgid "Include descriptions when available"
+msgstr "Incluir descripciones cuando estén disponibles"
+
+#: src/Admin/SettingsPage.php:480
+msgid ""
+"Core Blueprint uses the resolved SEO description first and falls back only "
+"to an explicit WordPress excerpt. Builder content is not parsed."
+msgstr ""
+"Core Blueprint utiliza primero la descripción SEO resuelta y solo recurre a "
+"un extracto explícito de WordPress. El contenido del builder no se analiza."
+
+#: src/Admin/SettingsPage.php:482
+msgid "Maximum listed items"
+msgstr "Máximo de elementos listados"
+
+#: src/Admin/SettingsPage.php:484
+msgid ""
+"Hard limit across all selected content types to keep the document compact."
+msgstr ""
+"Límite estricto para todos los tipos de contenido seleccionados a fin de "
+"mantener el documento compacto."
+
+#: src/Admin/SettingsPage.php:488
+msgid "Save AI discovery"
+msgstr "Guardar descubrimiento por IA"
+
+#: src/Admin/SettingsPage.php:500
+msgid "Import existing SEO metadata"
+msgstr "Importar metadatos SEO existentes"
+
+#: src/Admin/SettingsPage.php:501
+msgid ""
+"Core Blueprint discovers existing WordPress metadata by field semantics "
+"rather than vendor-specific import profiles. Stored field names are shown as-"
+"is so you can review the source before importing."
+msgstr ""
+"Core Blueprint detecta metadatos de WordPress existentes por la semántica de "
+"los campos en lugar de usar perfiles de importación específicos de "
+"proveedores. Los nombres de campo almacenados se muestran tal cual para que "
+"puedas revisar el origen antes de importar."
+
+#: src/Admin/SettingsPage.php:502
+msgid ""
+"Source metadata is never changed or deleted, and existing Core Blueprint SEO "
+"values always win. Global plugin settings and templates are intentionally "
+"not guessed because WordPress has no canonical SEO option schema."
+msgstr ""
+"Los metadatos de origen nunca se modifican ni se eliminan, y los valores SEO "
+"existentes de Core Blueprint siempre tienen prioridad. Los ajustes globales "
+"de plugins y las plantillas no se deducen deliberadamente porque WordPress "
+"no dispone de un esquema canónico de opciones SEO."
+
+#: src/Admin/SettingsPage.php:508
+msgid ""
+"No compatible SEO metadata candidates were discovered in WordPress post or "
+"term metadata."
+msgstr ""
+"No se han detectado candidatos de metadatos SEO compatibles en los metadatos "
+"de entradas o términos de WordPress."
+
+#: src/Admin/SettingsPage.php:517
+#, php-format
+msgid "%d automatic"
+msgstr "%d automáticos"
+
+#: src/Admin/SettingsPage.php:518
+#, php-format
+msgid "%d review"
+msgstr "%d para revisar"
+
+#: src/Admin/SettingsPage.php:530
+#, php-format
+msgid "Posts/CPTs: %1$d · Terms: %2$d"
+msgstr "Entradas/CPT: %1$d · Términos: %2$d"
+
+#: src/Admin/SettingsPage.php:531
 msgid "Automatic"
 msgstr "Automático"
 
-#: src/Admin/SettingsPage.php:554
+#: src/Admin/SettingsPage.php:531
+msgid "Review"
+msgstr "Revisar"
+
+#: src/Admin/SettingsPage.php:536
+msgid "Map to"
+msgstr "Asignar a"
+
+#: src/Admin/SettingsPage.php:538
+msgid "Do not import"
+msgstr "No importar"
+
+#: src/Admin/SettingsPage.php:544
+#, php-format
+msgid "Suggested: %s. Review before importing."
+msgstr "Sugerencia: %s. Revisa antes de importar."
+
+#: src/Admin/SettingsPage.php:551
 msgid ""
 "Automatic mappings are preselected only when the semantic match is strong "
 "and unambiguous. Review candidates remain disabled until you explicitly map "
@@ -151,959 +1032,35 @@ msgstr ""
 "utiliza el primer origen asignado que no esté vacío y se omiten los "
 "conflictos posteriores."
 
-#: src/Admin/Editor/SeoMetaBox.php:113
-msgid "Block this content from search engine indexes (noindex)"
-msgstr ""
-"Bloquear la indexaciÃ³n de este contenido por los motores de bÃºsqueda "
-"(noindex)"
-
-#: src/Admin/Editor/TermFields.php:50 src/Admin/Editor/TermFields.php:95
-msgid "Block this term archive from search engine indexes (noindex)"
-msgstr ""
-"Bloquear la indexaciÃ³n de este archivo de tÃ©rmino por los motores de "
-"bÃºsqueda (noindex)"
-
-#: src/Admin/Editor/SeoMetaBox.php:122 src/Admin/Editor/TermFields.php:59
-#: src/Admin/Editor/TermFields.php:105 src/Admin/SettingsPage.php:568
-msgid "Canonical URL"
-msgstr "URL canÃ³nica"
-
-#: src/Admin/Editor/AnalysisPanel.php:131
-msgid "Canonical URL is missing"
-msgstr "Falta la URL canónica"
-
-#: src/Admin/Editor/AnalysisPanel.php:131
-msgid "Canonical URL is present"
-msgstr "La URL canónica está presente"
-
-#: src/Admin/Editor/SeoMetaBox.php:228 src/Admin/Editor/TermFields.php:202
-#: src/Admin/SettingsPage.php:587
-msgid "Choose image"
-msgstr "Elegir imagen"
-
-#: src/Admin/Editor/AnalysisPanel.php:173
-msgid ""
-"Consider mentioning the focus keyword near the start of the visible content"
-msgstr ""
-"Considera mencionar la palabra clave objetivo cerca del inicio del contenido"
-" visible"
-
-#: src/Admin/Editor/AnalysisPanel.php:174
-msgid "Consider using the focus keyword in a subheading"
-msgstr "Considera usar la palabra clave objetivo en un subtítulo"
-
-#: src/Admin/Editor/AnalysisPanel.php:169
-msgid "Consider using the focus keyword in the document title"
-msgstr "Considera usar la palabra clave objetivo en el título del documento"
-
-#: src/Admin/Editor/AnalysisPanel.php:172
-msgid "Consider using the focus keyword in the H1 heading"
-msgstr "Considera usar la palabra clave objetivo en el encabezado H1"
-
-#: src/Admin/Editor/AnalysisPanel.php:170
-msgid "Consider using the focus keyword in the meta description"
-msgstr "Considera usar la palabra clave objetivo en la metadescripción"
-
-#: src/Admin/SettingsPage.php:371
-msgid "Content"
-msgstr "Contenido"
-
-#: src/Admin/Editor/AnalysisPanel.php:80
-msgid "Content changed since this analysis."
-msgstr "El contenido ha cambiado desde este análisis."
-
-#: src/Admin/Editor/SeoMetaBox.php:118
-msgid ""
-"Content marked noindex is also excluded from the WordPress XML sitemap while"
-" Core Blueprint SEO is active."
-msgstr ""
-"El contenido marcado como noindex tambiÃ©n se excluye del sitemap XML de "
-"WordPress mientras Core Blueprint SEO estÃ© activo."
-
-#: src/Admin/Editor/AnalysisPanel.php:98
-msgid "Content overview"
-msgstr "Resumen del contenido"
-
-#: src/Admin/SettingsPage.php:347
-msgid ""
-"Control indexability for WordPress archive contexts that are not individual "
-"post types or taxonomies."
-msgstr ""
-"Controla la indexabilidad de los contextos de archivo de WordPress que no "
-"son tipos de contenido individuales ni taxonomías."
-
-#: src/Admin/SettingsPage.php:323
-msgid ""
-"Control which public content groups search engines may index and which "
-"groups WordPress publishes in its XML sitemap."
-msgstr ""
-"Controla qué grupos de contenido público pueden indexar los motores de "
-"búsqueda y qué grupos publica WordPress en su mapa del sitio XML."
-
-#: src/Analysis/DocumentFetcher.php:25
-msgid "Core Blueprint could not resolve a public URL for this content."
-msgstr ""
-"Core Blueprint no pudo determinar una URL pública para este contenido."
-
-#: src/Admin/SettingsPage.php:504
-msgid ""
-"Core Blueprint discovers existing WordPress metadata by field semantics "
-"rather than vendor-specific import profiles. Stored field names are shown "
-"as-is so you can review the source before importing."
-msgstr ""
-"Core Blueprint detecta metadatos de WordPress existentes por la semántica de"
-" los campos en lugar de usar perfiles de importación específicos de "
-"proveedores. Los nombres de campo almacenados se muestran tal cual para que "
-"puedas revisar el origen antes de importar."
-
-#: src/Admin/SettingsPage.php:483
-msgid ""
-"Core Blueprint uses the resolved SEO description first and falls back only "
-"to an explicit WordPress excerpt. Builder content is not parsed."
-msgstr ""
-"Core Blueprint utiliza primero la descripción SEO resuelta y solo recurre a "
-"un extracto explícito de WordPress. El contenido del builder no se analiza."
-
-#: src/Admin/SettingsPage.php:750
-msgid "Current taxonomy term description."
-msgstr "DescripciÃ³n actual del tÃ©rmino de taxonomÃ­a."
-
-#: src/Admin/SettingsPage.php:749
-msgid "Current term name."
-msgstr "Nombre actual del tÃ©rmino."
-
-#: src/Admin/SettingsPage.php:699
-msgid "Custom"
-msgstr "Personalizado"
-
-#: src/Admin/SettingsPage.php:412
-msgid "Default social image"
-msgstr "Imagen social predeterminada"
-
-#: src/Admin/SettingsPage.php:713
-msgid "Description template"
-msgstr "Plantilla de descripciÃ³n"
-
-#: src/Admin/SettingsPage.php:411
-msgid ""
-"Disabled by default on upgrade so existing SEO plugins are not duplicated. "
-"Per-content social overrides remain stored either way."
-msgstr ""
-"Desactivado por defecto tras una actualización para evitar duplicar la "
-"salida de plugins SEO existentes. Las anulaciones sociales por contenido "
-"permanecen guardadas."
-
-#: src/Admin/Editor/SeoMetaBox.php:114
-msgid "Do not ask search engines to follow links on this content (nofollow)"
-msgstr ""
-"Pedir a los motores de bÃºsqueda que no sigan los enlaces de este contenido "
-"(nofollow)"
-
-#: src/Admin/Editor/TermFields.php:51 src/Admin/Editor/TermFields.php:96
-msgid ""
-"Do not ask search engines to follow links on this term archive (nofollow)"
-msgstr ""
-"Pedir a los motores de bÃºsqueda que no sigan los enlaces de este archivo de"
-" tÃ©rmino (nofollow)"
-
-#: src/Admin/SettingsPage.php:541
-msgid "Do not import"
-msgstr "No importar"
-
-#: src/Admin/Editor/SeoMetaBox.php:115
-msgid "Do not index images from this content (noimageindex)"
-msgstr "No indexar las imÃ¡genes de este contenido (noimageindex)"
-
-#: src/Admin/Editor/TermFields.php:52 src/Admin/Editor/TermFields.php:97
-msgid "Do not index images from this term archive (noimageindex)"
-msgstr "No indexar las imÃ¡genes de este archivo de tÃ©rmino (noimageindex)"
-
-#: src/Admin/Editor/SeoMetaBox.php:116
-msgid "Do not provide a cached copy of this content (noarchive)"
-msgstr "No proporcionar una copia en cachÃ© de este contenido (noarchive)"
-
-#: src/Admin/Editor/TermFields.php:53 src/Admin/Editor/TermFields.php:98
-msgid "Do not provide a cached copy of this term archive (noarchive)"
-msgstr ""
-"No proporcionar una copia en cachÃ© de este archivo de tÃ©rmino (noarchive)"
-
-#: src/Admin/Editor/SeoMetaBox.php:117
-msgid "Do not show a text snippet for this content (nosnippet)"
-msgstr "No mostrar un fragmento de texto para este contenido (nosnippet)"
-
-#: src/Admin/Editor/TermFields.php:54 src/Admin/Editor/TermFields.php:99
-msgid "Do not show a text snippet for this term archive (nosnippet)"
-msgstr ""
-"No mostrar un fragmento de texto para este archivo de tÃ©rmino (nosnippet)"
-
-#: src/Admin/SettingsPage.php:481
-msgid "Document detail"
-msgstr "Detalle del documento"
-
-#: src/Admin/Editor/AnalysisPanel.php:128
-msgid "Document title is missing"
-msgstr "Falta el título del documento"
-
-#: src/Admin/Editor/AnalysisPanel.php:128
-msgid "Document title is present"
-msgstr "El título del documento está presente"
-
-#: src/Admin/SettingsPage.php:417
-msgid "Emit Core Blueprint JSON-LD"
-msgstr "Emitir JSON-LD de Core Blueprint"
-
-#: src/Admin/SettingsPage.php:410
-msgid "Emit Open Graph and X/Twitter metadata"
-msgstr "Emitir metadatos de Open Graph y X/Twitter"
-
-#: src/Admin/Editor/AnalysisPanel.php:87
-#, php-format, python-format
-msgid "Exact phrase occurrences in visible content: %d"
-msgstr "Apariciones exactas de la frase en el contenido visible: %d"
-
-#: src/Admin/Editor/AnalysisPanel.php:135
-msgid "Exactly one H1 heading is present"
-msgstr "Hay exactamente un encabezado H1"
-
-#: src/Admin/Editor/AnalysisPanel.php:26
-msgid "Example: wordpress maintenance"
-msgstr "Ejemplo: mantenimiento wordpress"
-
-#: src/Admin/SettingsPage.php:747
-msgid ""
-"Explicit WordPress post excerpt. Builder content is intentionally not "
-"parsed."
-msgstr ""
-"Extracto explÃ­cito de WordPress. El contenido del constructor no se analiza"
-" intencionadamente."
-
-#: src/Admin/Editor/AnalysisPanel.php:101
-#, php-format, python-format
-msgid "External links: %d"
-msgstr "Enlaces externos: %d"
-
-#: src/Admin/Editor/AnalysisPanel.php:25
-msgid "Focus keyword"
-msgstr "Palabra clave objetivo"
-
-#: src/Admin/Editor/AnalysisPanel.php:174
-msgid "Focus keyword appears in a subheading"
-msgstr "La palabra clave principal aparece en un subtítulo"
-
-#: src/Admin/Editor/AnalysisPanel.php:172
-msgid "Focus keyword appears in an H1 heading"
-msgstr "La palabra clave principal aparece en un encabezado H1"
-
-#: src/Admin/Editor/AnalysisPanel.php:169
-msgid "Focus keyword appears in the document title"
-msgstr "La palabra clave principal aparece en el título del documento"
-
-#: src/Admin/Editor/AnalysisPanel.php:170
-msgid "Focus keyword appears in the meta description"
-msgstr "La palabra clave principal aparece en la meta descripción"
-
-#: src/Admin/Editor/AnalysisPanel.php:171
-msgid "Focus keyword appears in the URL"
-msgstr "La palabra clave principal aparece en la URL"
-
-#: src/Admin/Editor/AnalysisPanel.php:175
-msgid "Focus keyword appears in the visible page content"
-msgstr ""
-"La palabra clave principal aparece en el contenido visible de la página"
-
-#: src/Admin/Editor/AnalysisPanel.php:173
-msgid "Focus keyword appears near the start of the visible content"
-msgstr ""
-"La palabra clave principal aparece cerca del inicio del contenido visible"
-
-#: src/Admin/Editor/AnalysisPanel.php:199
-#, php-format
-msgid "Focus keyword checks: %1$d/%2$d"
-msgstr "Comprobaciones de la palabra clave objetivo: %1$d/%2$d"
-
-#: src/Admin/SettingsPage.php:452
-#, php-format, python-format
-msgid ""
-"For privacy, Core Blueprint SEO excludes selected Access-managed content "
-"types until Core Blueprint Access explicitly confirms anonymous public "
-"discovery: %s."
-msgstr ""
-"Por privacidad, Core Blueprint SEO excluye los tipos de contenido "
-"seleccionados gestionados por Access hasta que Core Blueprint Access "
-"confirme explícitamente el descubrimiento público anónimo: %s."
-
-#: src/Admin/Editor/AnalysisPanel.php:96
-msgid "Good"
-msgstr "Correcto"
-
-#: src/Admin/SettingsPage.php:146
-msgid ""
-"Governed search metadata with WordPress-first fallbacks and builder-"
-"independent administration."
-msgstr ""
-"Metadatos de bÃºsqueda gobernados con alternativas WordPress-first y "
-"administraciÃ³n independiente del constructor."
-
-#: src/Admin/Editor/AnalysisPanel.php:137
-#, php-format, python-format
-msgid "H1 headings found: %d"
-msgstr "Encabezados H1 encontrados: %d"
-
-#: src/Admin/Editor/AnalysisPanel.php:186
-msgid "H1 keyword check was not evaluated because no H1 heading is published."
-msgstr ""
-"La comprobación H1 de la palabra clave objetivo no se evaluó porque no hay "
-"ningún encabezado H1 publicado."
-
-#: src/Admin/SettingsPage.php:487
-msgid ""
-"Hard limit across all selected content types to keep the document compact."
-msgstr ""
-"Límite estricto para todos los tipos de contenido seleccionados a fin de "
-"mantener el documento compacto."
-
-#: src/Admin/Editor/AnalysisPanel.php:140
-msgid "Heading hierarchy has no skipped levels"
-msgstr "La jerarquía de encabezados no salta niveles"
-
-#: src/Admin/Editor/AnalysisPanel.php:140
-msgid "Heading hierarchy skips one or more levels"
-msgstr "La jerarquía de encabezados omite uno o más niveles"
-
-#: src/Admin/Editor/AnalysisPanel.php:117
-#, php-format, python-format
-msgid "HTTP status is %d"
-msgstr "El estado HTTP es %d"
-
-#: src/Admin/Editor/AnalysisPanel.php:115
-msgid "HTTP status is 200"
-msgstr "El estado HTTP es 200"
-
-#: src/Admin/SettingsPage.php:429
-msgid "Identity logo or image"
-msgstr "Logotipo o imagen de identidad"
-
-#: src/Admin/Editor/SeoMetaBox.php:231
-msgid ""
-"If empty, Core Blueprint uses the featured image and then the configured "
-"default social image."
-msgstr ""
-"Si está vacío, Core Blueprint usa primero la imagen destacada y después la "
-"imagen social predeterminada configurada."
-
-#: src/Admin/Editor/AnalysisPanel.php:102
-#, php-format, python-format
-msgid "Images: %d"
-msgstr "Imágenes: %d"
-
-#: src/Admin/SettingsPage.php:192 src/Admin/SettingsPage.php:208
-#: src/Bootstrap.php:104
-msgid "Import"
-msgstr "Importar"
-
-#: src/Admin/SettingsPage.php:503
-msgid "Import existing SEO metadata"
-msgstr "Importar metadatos SEO existentes"
-
-#: src/Admin/SettingsPage.php:555
+#: src/Admin/SettingsPage.php:552
 msgid "Import selected metadata"
 msgstr "Importar metadatos seleccionados"
 
-#: src/Admin/SettingsPage.php:390
-#, php-format, python-format
-msgid "Include %s in the XML sitemap"
-msgstr "Incluir %s en el mapa del sitio XML"
+#: src/Admin/SettingsPage.php:566
+msgid "Robots: noindex"
+msgstr "Robots: noindex"
 
-#: src/Admin/SettingsPage.php:482
-msgid "Include descriptions when available"
-msgstr "Incluir descripciones cuando estén disponibles"
-
-#: src/Admin/SettingsPage.php:471
-msgid "Included content"
-msgstr "Contenido incluido"
-
-#: src/Admin/SettingsPage.php:372
-msgid "Index"
-msgstr "Indexación"
-
-#: src/Admin/SettingsPage.php:205 src/Bootstrap.php:83
-msgid "Indexing"
-msgstr "Indexación"
-
-#: src/Admin/SettingsPage.php:324
-msgid ""
-"Individual SEO controls can add restrictions, but they cannot override a "
-"content group that is disabled here."
-msgstr ""
-"Los controles SEO individuales pueden añadir restricciones, pero no pueden "
-"volver a activar un grupo de contenido deshabilitado aquí."
-
-#: src/Admin/Editor/AnalysisPanel.php:100
-#, php-format, python-format
-msgid "Internal links: %d"
-msgstr "Enlaces internos: %d"
-
-#: src/Admin/SettingsPage.php:717
-msgid ""
-"Leave empty to emit no Core Blueprint meta description for this content "
-"type."
-msgstr ""
-"DÃ©jalo vacÃ­o para que Core Blueprint no emita ninguna metadescripciÃ³n "
-"para este tipo de contenido."
-
-#: src/Admin/Editor/TermFields.php:61 src/Admin/Editor/TermFields.php:108
-msgid ""
-"Leave empty to keep the normal site behaviour. Core Blueprint only emits a "
-"term canonical when an explicit override is configured."
-msgstr ""
-"DÃ©jalo vacÃ­o para mantener el comportamiento normal del sitio. Core "
-"Blueprint solo emite una URL canÃ³nica de tÃ©rmino cuando se configura una "
-"sustituciÃ³n explÃ­cita."
-
-#: src/Admin/SettingsPage.php:709
-msgid "Leave empty to keep WordPress responsible for this title."
-msgstr ""
-"DÃ©jalo vacÃ­o para que WordPress siga siendo responsable de este tÃ­tulo."
-
-#: src/Admin/Editor/SeoMetaBox.php:79
-msgid ""
-"Leave empty to use the global template for this post type. If no template "
-"exists, WordPress keeps its normal document title."
-msgstr ""
-"DÃ©jalo vacÃ­o para usar la plantilla global de este tipo de contenido. Si "
-"no existe ninguna plantilla, WordPress mantiene su tÃ­tulo de documento "
-"normal."
-
-#: src/Admin/Editor/SeoMetaBox.php:85
-msgid ""
-"Leave empty to use the global template. Core Blueprint emits no fallback "
-"description when neither an override nor a template is configured."
-msgstr ""
-"DÃ©jalo vacÃ­o para usar la plantilla global. Core Blueprint no publica una "
-"descripciÃ³n alternativa cuando no hay ni una personalizaciÃ³n ni una "
-"plantilla configurada."
-
-#: src/Admin/SettingsPage.php:427
-msgid "Leave empty to use the WordPress site title."
-msgstr "Déjalo vacío para usar el título del sitio de WordPress."
-
-#: src/Analysis/DocumentFetcher.php:20
-msgid "Live analysis is available after this content has been published."
-msgstr ""
-"El análisis público está disponible después de publicar este contenido."
-
-#: src/Admin/SettingsPage.php:464
-msgid "llms.txt"
-msgstr "llms.txt"
-
-#: src/Admin/SettingsPage.php:539
-msgid "Map to"
-msgstr "Asignar a"
-
-#: src/Admin/SettingsPage.php:485
-msgid "Maximum listed items"
-msgstr "Máximo de elementos listados"
-
-#: src/Admin/Editor/SeoMetaBox.php:82 src/Admin/Editor/TermFields.php:44
-#: src/Admin/Editor/TermFields.php:86 src/Admin/SettingsPage.php:567
-msgid "Meta description"
-msgstr "MetadescripciÃ³n"
-
-#: src/Admin/Editor/AnalysisPanel.php:129
-msgid "Meta description is missing"
-msgstr "Falta la meta descripción"
-
-#: src/Admin/Editor/AnalysisPanel.php:129
-msgid "Meta description is present"
-msgstr "La metadescripción está presente"
-
-#: src/Admin/Editor/AnalysisPanel.php:182
-msgid ""
-"Meta description keyword check was not evaluated because no meta description"
-" is published."
-msgstr ""
-"La comprobación de la palabra clave en la meta descripción no se evaluó "
-"porque no hay ninguna meta descripción publicada."
-
-#: src/Admin/SettingsPage.php:612
-msgid "Metadata template sections"
-msgstr "Secciones de plantillas de metadatos"
-
-#: src/Admin/SettingsPage.php:168
-msgid "Metadata templates"
-msgstr "Plantillas de metadatos"
-
-#: src/Admin/Editor/AnalysisPanel.php:94
-msgid "Needs attention"
-msgstr "Requiere atención"
-
-#: src/Admin/SettingsPage.php:275
-msgid "No AI discovery changes were detected."
-msgstr "No se detectaron cambios en el descubrimiento por IA."
-
-#: src/Admin/SettingsPage.php:511
-msgid ""
-"No compatible SEO metadata candidates were discovered in WordPress post or "
-"term metadata."
-msgstr ""
-"No se han detectado candidatos de metadatos SEO compatibles en los metadatos"
-" de entradas o términos de WordPress."
-
-#: src/Admin/Editor/SeoMetaBox.php:91
-msgid "No Core Blueprint meta description"
-msgstr "Sin metadescripciÃ³n de Core Blueprint"
-
-#: src/Admin/Editor/AnalysisPanel.php:40
-msgid "No live analysis has been run yet."
-msgstr "Todavía no se ha ejecutado ningún análisis público."
-
-#: src/Admin/SettingsPage.php:300
-msgid "No metadata template changes were detected."
-msgstr "No se detectaron cambios en las plantillas de metadatos."
-
-#: src/Admin/SettingsPage.php:267
-msgid "No search visibility changes were detected."
-msgstr "No se detectaron cambios en la visibilidad en buscadores."
-
-#: src/Admin/SettingsPage.php:271
-msgid "No social or structured data changes were detected."
-msgstr ""
-"No se detectaron cambios en los metadatos sociales ni en los datos "
-"estructurados."
-
-#: src/Admin/SettingsPage.php:279
-msgid "No valid SEO metadata mappings were selected, so nothing was imported."
-msgstr ""
-"No se seleccionaron asignaciones de metadatos SEO válidas, por lo que no se "
-"importó nada."
-
-#: src/Admin/SettingsPage.php:472
-msgid ""
-"Only published, publicly viewable, non-password-protected content is "
-"eligible. Content explicitly marked noindex is always excluded."
-msgstr ""
-"Solo es apto el contenido publicado, visible públicamente y no protegido con"
-" contraseña. El contenido marcado explícitamente como noindex siempre se "
-"excluye."
-
-#: src/Admin/Editor/TermFields.php:69 src/Admin/Editor/TermFields.php:120
-msgid ""
-"Open Graph and X/Twitter overrides. Empty values inherit the resolved SEO "
-"metadata."
-msgstr ""
-"Anulaciones de Open Graph y X/Twitter. Los valores vacíos heredan los "
-"metadatos SEO resueltos."
-
-#: src/Admin/SettingsPage.php:619
-msgid ""
-"Open only the content types you want to customize. Unconfigured content "
-"keeps WordPress defaults."
-msgstr ""
-"Abre solo los tipos de contenido que quieras personalizar. El contenido sin "
-"configurar mantiene los valores predeterminados de WordPress."
-
-#: src/Admin/Editor/AnalysisPanel.php:95
-msgid "Optimisation"
-msgstr "Optimización"
-
-#: src/Admin/Editor/TermFields.php:60 src/Admin/Editor/TermFields.php:107
-msgid "Optional absolute HTTP(S) URL"
-msgstr "URL HTTP(S) absoluta opcional"
-
-#: src/Admin/Editor/SeoMetaBox.php:124
-msgid ""
-"Optional absolute HTTP(S) URL. Leave empty to keep the normal WordPress/site"
-" canonical behaviour."
-msgstr ""
-"URL HTTP(S) absoluta opcional. DÃ©jalo vacÃ­o para mantener el "
-"comportamiento canÃ³nico normal de WordPress/del sitio."
-
-#: src/Admin/Editor/SeoMetaBox.php:134
-msgid ""
-"Optional Open Graph and X/Twitter overrides. Empty fields inherit the "
-"resolved SEO metadata."
-msgstr ""
-"Anulaciones opcionales de Open Graph y X/Twitter. Los campos vacíos heredan "
-"los metadatos SEO resueltos."
-
-#: src/Admin/Editor/TermFields.php:41 src/Admin/Editor/TermFields.php:82
-msgid ""
-"Optional. Leave empty to use the taxonomy template or the normal WordPress "
-"title."
-msgstr ""
-"Opcional. DÃ©jalo vacÃ­o para usar la plantilla de taxonomÃ­a o el tÃ­tulo "
-"normal de WordPress."
-
-#: src/Admin/Editor/TermFields.php:46 src/Admin/Editor/TermFields.php:89
-msgid "Optional. Leave empty to use the taxonomy template."
-msgstr "Opcional. DÃ©jalo vacÃ­o para usar la plantilla de taxonomÃ­a."
-
-#: src/Admin/SettingsPage.php:422
-msgid "Organization"
-msgstr "Organización"
-
-#: src/Admin/SettingsPage.php:418
-msgid ""
-"Outputs one small schema.org graph for the site identity, website and "
-"current page. Other Core Blueprint extensions can add their own nodes "
-"through the shared graph filter."
-msgstr ""
-"Emite un grafo schema.org compacto para la identidad del sitio, el sitio web"
-" y la página actual. Otras extensiones de Core Blueprint pueden añadir sus "
-"propios nodos mediante el filtro de grafo compartido."
-
-#: src/Admin/Editor/AnalysisPanel.php:130
-msgid "Page is indexable"
-msgstr "La página es indexable"
-
-#: src/Admin/Editor/AnalysisPanel.php:130
-msgid "Page is marked noindex"
-msgstr "La página está marcada como noindex"
-
-#: src/Admin/SettingsPage.php:422
-msgid "Person"
-msgstr "Persona"
-
-#: src/Admin/SettingsPage.php:744
-msgid "Post title or term name."
-msgstr "TÃ­tulo de la entrada o nombre del tÃ©rmino."
-
-#: src/Admin/SettingsPage.php:327 src/Admin/SettingsPage.php:613
-msgid "Post types"
-msgstr "Tipos de contenido"
-
-#: src/Admin/SettingsPage.php:533
-#, php-format
-msgid "Posts/CPTs: %1$d · Terms: %2$d"
-msgstr "Entradas/CPT: %1$d · Términos: %2$d"
-
-#: src/Admin/SettingsPage.php:465
-msgid "Publish an AI discovery document at /llms.txt"
-msgstr "Publicar un documento de descubrimiento por IA en /llms.txt"
-
-#: src/Admin/Editor/AnalysisPanel.php:33
-msgid ""
-"Publish this content before running the live analysis. Draft analysis will "
-"be added separately so the public renderer remains the source of truth."
-msgstr ""
-"Publica este contenido antes de ejecutar el análisis público. El análisis de"
-" borradores se añadirá por separado para que el renderizado público siga "
-"siendo la fuente de referencia."
-
-#: src/Admin/Editor/SeoMetaBox.php:229 src/Admin/Editor/TermFields.php:202
-#: src/Admin/SettingsPage.php:587
-msgid "Remove image"
-msgstr "Eliminar imagen"
-
-#: src/Admin/Editor/AnalysisPanel.php:75
-msgid "Rendered frontend"
-msgstr "Frontend renderizado"
-
-#: src/Admin/SettingsPage.php:760
-msgid ""
-"Rendered-page content analysis remains a later stage and will use the live "
-"frontend document rather than builder storage."
-msgstr ""
-"El anÃ¡lisis del contenido de la pÃ¡gina renderizada llegarÃ¡ en una fase "
-"posterior y usarÃ¡ el documento frontend en vivo en lugar del almacenamiento"
-" del constructor."
-
-#: src/Admin/Editor/SeoMetaBox.php:89
-msgid "Resolved preview"
-msgstr "Vista previa resuelta"
-
-#: src/Admin/SettingsPage.php:534
-msgid "Review"
-msgstr "Revisar"
-
-#: src/Admin/SettingsPage.php:572
-msgid "Robots: noarchive"
-msgstr "Robots: noarchive"
-
-#: src/Admin/SettingsPage.php:570
+#: src/Admin/SettingsPage.php:567
 msgid "Robots: nofollow"
 msgstr "Robots: nofollow"
 
-#: src/Admin/SettingsPage.php:571
+#: src/Admin/SettingsPage.php:568
 msgid "Robots: noimageindex"
 msgstr "Robots: noimageindex"
 
 #: src/Admin/SettingsPage.php:569
-msgid "Robots: noindex"
-msgstr "Robots: noindex"
+msgid "Robots: noarchive"
+msgstr "Robots: noarchive"
 
-#: src/Admin/SettingsPage.php:573
+#: src/Admin/SettingsPage.php:570
 msgid "Robots: nosnippet"
 msgstr "Robots: nosnippet"
 
-#: src/Admin/SettingsPage.php:491
-msgid "Save AI discovery"
-msgstr "Guardar descubrimiento por IA"
-
-#: src/Admin/SettingsPage.php:659
-msgid "Save metadata templates"
-msgstr "Guardar plantillas de metadatos"
-
-#: src/Admin/SettingsPage.php:334
-msgid "Save search visibility"
-msgstr "Guardar visibilidad"
-
-#: src/Admin/SettingsPage.php:432
-msgid "Save social and structured data"
-msgstr "Guardar metadatos sociales y datos estructurados"
-
-#: src/Admin/SettingsPage.php:204
-msgid "Search appearance"
-msgstr "Apariencia en buscadores"
-
-#: src/Admin/Editor/SeoMetaBox.php:111 src/Admin/Editor/TermFields.php:49
-#: src/Admin/Editor/TermFields.php:93
-msgid "Search engine directives"
-msgstr "Directivas para motores de bÃºsqueda"
-
-#: src/Admin/SettingsPage.php:358
-msgid ""
-"Search results and 404 pages remain noindex in line with WordPress defaults."
-msgstr ""
-"Los resultados de búsqueda y las páginas 404 permanecen en noindex de "
-"acuerdo con los valores predeterminados de WordPress."
-
-#: src/Admin/SettingsPage.php:174
-msgid "Search visibility"
-msgstr "Visibilidad en buscadores"
-
-#: src/Admin/SettingsPage.php:265
-msgid "Search visibility settings saved."
-msgstr "Ajustes de visibilidad en buscadores guardados."
-
-#: src/Admin/Pages/Seo.php:23 src/Admin/Pages/Seo.php:27
-#: src/Admin/SettingsPage.php:145
-msgid "SEO"
-msgstr "SEO"
-
-#: src/Bootstrap.php:160
-msgid "SEO AI discovery settings updated"
-msgstr "Ajustes SEO de descubrimiento por IA actualizados"
-
-#: src/Bootstrap.php:154
-msgid "SEO content canonical updated"
-msgstr "URL canÃ³nica SEO del contenido actualizada"
-
-#: src/Bootstrap.php:152
-msgid "SEO content indexing directives updated"
-msgstr "Directivas de indexaciÃ³n SEO del contenido actualizadas"
-
-#: src/Bootstrap.php:150
-msgid "SEO content metadata updated"
-msgstr "Metadatos SEO del contenido actualizados"
-
-#: src/Bootstrap.php:156
-msgid "SEO content social metadata updated"
-msgstr "Metadatos sociales del contenido SEO actualizados"
-
-#: src/Bootstrap.php:146
-msgid "SEO disabled"
-msgstr "SEO desactivado"
-
-#: src/Bootstrap.php:145
-msgid "SEO enabled"
-msgstr "SEO activado"
-
-#: src/Bootstrap.php:147
-msgid "SEO extension activated"
-msgstr "ExtensiÃÂ³n SEO activada"
-
-#: src/Bootstrap.php:148
-msgid "SEO extension deactivated"
-msgstr "ExtensiÃÂ³n SEO desactivada"
-
-#: src/Bootstrap.php:161
-msgid "SEO indexing policy updated"
-msgstr "Política de indexación SEO actualizada"
-
-#: src/Admin/SettingsPage.php:290
-#, php-format
-msgid ""
-"SEO metadata import completed. %1$d content objects changed, %2$d fields "
-"were imported through %3$d mappings, and %4$d existing Core Blueprint values"
-" were preserved."
-msgstr ""
-"Importación de metadatos SEO completada. Se modificaron %1$d objetos de "
-"contenido, se importaron %2$d campos mediante %3$d asignaciones y se "
-"conservaron %4$d valores existentes de Core Blueprint."
-
-#: src/Bootstrap.php:162
-msgid "SEO metadata imported"
-msgstr "Metadatos SEO importados"
-
-#: src/Admin/SettingsPage.php:262
-msgid "SEO metadata templates saved."
-msgstr "Plantillas de metadatos SEO guardadas."
-
-#: src/Bootstrap.php:149
-msgid "SEO metadata templates updated"
-msgstr "Plantillas de metadatos SEO actualizadas"
-
-#: src/Admin/SettingsPage.php:155
-msgid "SEO output is disabled"
-msgstr "La salida SEO estÃ¡ desactivada"
-
-#: src/Admin/SettingsPage.php:211
-msgid "SEO sections"
-msgstr "Secciones SEO"
-
-#: src/Bootstrap.php:158
-msgid "SEO social settings updated"
-msgstr "Ajustes sociales SEO actualizados"
-
-#: src/Bootstrap.php:159
-msgid "SEO structured data settings updated"
-msgstr "Ajustes SEO de datos estructurados actualizados"
-
-#: src/Bootstrap.php:155
-msgid "SEO term canonical updated"
-msgstr "URL canÃ³nica SEO del tÃ©rmino actualizada"
-
-#: src/Bootstrap.php:153
-msgid "SEO term indexing directives updated"
-msgstr "Directivas de indexaciÃ³n SEO del tÃ©rmino actualizadas"
-
-#: src/Bootstrap.php:151
-msgid "SEO term metadata updated"
-msgstr "Metadatos SEO del tÃ©rmino actualizados"
-
-#: src/Bootstrap.php:157
-msgid "SEO term social metadata updated"
-msgstr "Metadatos sociales del término SEO actualizados"
-
-#: src/Admin/Editor/SeoMetaBox.php:76 src/Admin/Editor/TermFields.php:39
-#: src/Admin/Editor/TermFields.php:79 src/Admin/SettingsPage.php:566
-msgid "SEO title"
-msgstr "TÃ­tulo SEO"
-
-#: src/Admin/Editor/SeoMetaBox.php:45
-msgid "SEO — Analysis"
-msgstr "SEO — Análisis"
-
-#: src/Admin/Editor/SeoMetaBox.php:53
-msgid "SEO — Indexing"
-msgstr "SEO — Indexación"
-
-#: src/Admin/Editor/SeoMetaBox.php:37
-msgid "SEO — Search appearance"
-msgstr "SEO — Apariencia en búsqueda"
-
-#: src/Admin/Editor/SeoMetaBox.php:61
-msgid "SEO — Social appearance"
-msgstr "SEO — Apariencia social"
-
-#: src/Admin/SettingsPage.php:42
-msgid "Settings"
-msgstr "Ajustes"
-
-#: src/Admin/SettingsPage.php:748
-msgid "Singular post-type label."
-msgstr "Etiqueta singular del tipo de contenido."
-
-#: src/Admin/SettingsPage.php:751
-msgid "Singular taxonomy label."
-msgstr "Etiqueta singular de la taxonomÃ­a."
-
-#: src/Admin/SettingsPage.php:425
-msgid "Site identity name"
-msgstr "Nombre de identidad del sitio"
-
-#: src/Admin/SettingsPage.php:421
-msgid "Site identity type"
-msgstr "Tipo de identidad del sitio"
-
-#: src/Admin/SettingsPage.php:373
-msgid "Sitemap"
-msgstr "Mapa del sitio"
-
-#: src/Admin/SettingsPage.php:206 src/Bootstrap.php:90
-msgid "Social & Schema"
-msgstr "Social y Schema"
-
-#: src/Admin/SettingsPage.php:180
-msgid "Social and structured data"
-msgstr "Metadatos sociales y datos estructurados"
-
-#: src/Admin/SettingsPage.php:269
-msgid "Social and structured data settings saved."
-msgstr "Ajustes de metadatos sociales y datos estructurados guardados."
-
-#: src/Admin/Editor/TermFields.php:65 src/Admin/Editor/TermFields.php:113
-msgid "Social appearance"
-msgstr "Apariencia social"
-
-#: src/Admin/Editor/SeoMetaBox.php:140 src/Admin/Editor/TermFields.php:117
-#: src/Admin/SettingsPage.php:575
-msgid "Social description"
-msgstr "Descripción social"
-
-#: src/Admin/Editor/TermFields.php:67
-msgid "Social description (optional)"
-msgstr "Descripción social (opcional)"
-
-#: src/Admin/Editor/SeoMetaBox.php:143
-msgid "Social image"
-msgstr "Imagen social"
-
-#: src/Admin/SettingsPage.php:576
+#: src/Admin/SettingsPage.php:573
 msgid "Social image attachment ID"
 msgstr "ID de adjunto de la imagen social"
 
-#: src/Admin/SettingsPage.php:409
-msgid "Social metadata"
-msgstr "Metadatos sociales"
-
-#: src/Admin/Editor/SeoMetaBox.php:136 src/Admin/Editor/TermFields.php:115
-#: src/Admin/SettingsPage.php:574
-msgid "Social title"
-msgstr "Título social"
-
-#: src/Admin/Editor/TermFields.php:66
-msgid "Social title (optional)"
-msgstr "Título social (opcional)"
-
-#: src/Admin/SettingsPage.php:505
-msgid ""
-"Source metadata is never changed or deleted, and existing Core Blueprint SEO"
-" values always win. Global plugin settings and templates are intentionally "
-"not guessed because WordPress has no canonical SEO option schema."
-msgstr ""
-"Los metadatos de origen nunca se modifican ni se eliminan, y los valores SEO"
-" existentes de Core Blueprint siempre tienen prioridad. Los ajustes globales"
-" de plugins y las plantillas no se deducen deliberadamente porque WordPress "
-"no dispone de un esquema canónico de opciones SEO."
-
-#: src/Admin/SettingsPage.php:416
-msgid "Structured data"
-msgstr "Datos estructurados"
-
-#: src/Admin/SettingsPage.php:547
-#, php-format
-msgid "Suggested: %s. Review before importing."
-msgstr "Sugerencia: %s. Revisa antes de importar."
-
-#: src/Admin/SettingsPage.php:328 src/Admin/SettingsPage.php:614
-msgid "Taxonomies"
-msgstr "TaxonomÃ­as"
-
-#: src/Admin/SettingsPage.php:637
-msgid ""
-"Taxonomy templates apply to public term archive pages when a term has no "
-"individual SEO override."
-msgstr ""
-"Las plantillas de taxonomÃ­a se aplican a los archivos pÃºblicos de "
-"tÃ©rminos cuando un tÃ©rmino no tiene una anulaciÃ³n SEO individual."
-
-#: src/Admin/SettingsPage.php:615
-msgid "Template variables"
-msgstr "Variables de plantilla"
-
-#: src/Admin/SettingsPage.php:605
+#: src/Admin/SettingsPage.php:602
 msgid ""
 "Templates apply only when an individual post or term has no SEO override. "
 "Leave a template empty to keep WordPress in control of that value."
@@ -1112,52 +1069,143 @@ msgstr ""
 "tiene una anulaciÃ³n SEO. Deja una plantilla vacÃ­a para que WordPress "
 "controle ese valor."
 
+#: src/Admin/SettingsPage.php:609
+msgid "Metadata template sections"
+msgstr "Secciones de plantillas de metadatos"
+
+#: src/Admin/SettingsPage.php:612
+msgid "Template variables"
+msgstr "Variables de plantilla"
+
+#: src/Admin/SettingsPage.php:616
+msgid ""
+"Open only the content types you want to customize. Unconfigured content "
+"keeps WordPress defaults."
+msgstr ""
+"Abre solo los tipos de contenido que quieras personalizar. El contenido sin "
+"configurar mantiene los valores predeterminados de WordPress."
+
+#: src/Admin/SettingsPage.php:634
+msgid ""
+"Taxonomy templates apply to public term archive pages when a term has no "
+"individual SEO override."
+msgstr ""
+"Las plantillas de taxonomÃ­a se aplican a los archivos pÃºblicos de tÃ©rminos "
+"cuando un tÃ©rmino no tiene una anulaciÃ³n SEO individual."
+
+#: src/Admin/SettingsPage.php:656
+msgid "Save metadata templates"
+msgstr "Guardar plantillas de metadatos"
+
+#: src/Admin/SettingsPage.php:657
+msgid "All post-type and taxonomy templates are saved together."
+msgstr ""
+"Todas las plantillas de tipos de contenido y taxonomÃ­as se guardan juntas."
+
+#: src/Admin/SettingsPage.php:696
+msgid "Custom"
+msgstr "Personalizado"
+
+#: src/Admin/SettingsPage.php:696
+msgid "WordPress default"
+msgstr "Valor predeterminado de WordPress"
+
+#: src/Admin/SettingsPage.php:702
+msgid "Title template"
+msgstr "Plantilla de tÃ­tulo"
+
+#: src/Admin/SettingsPage.php:706
+msgid "Leave empty to keep WordPress responsible for this title."
+msgstr ""
+"DÃ©jalo vacÃ­o para que WordPress siga siendo responsable de este tÃ­tulo."
+
+#: src/Admin/SettingsPage.php:710
+msgid "Description template"
+msgstr "Plantilla de descripciÃ³n"
+
+#: src/Admin/SettingsPage.php:714
+msgid ""
+"Leave empty to emit no Core Blueprint meta description for this content type."
+msgstr ""
+"DÃ©jalo vacÃ­o para que Core Blueprint no emita ninguna metadescripciÃ³n para "
+"este tipo de contenido."
+
+#: src/Admin/SettingsPage.php:741
+msgid "Post title or term name."
+msgstr "TÃ­tulo de la entrada o nombre del tÃ©rmino."
+
+#: src/Admin/SettingsPage.php:742
+msgid "WordPress site title."
+msgstr "TÃ­tulo del sitio de WordPress."
+
+#: src/Admin/SettingsPage.php:743
+msgid "A typographic dash separator."
+msgstr "Un guion tipogrÃ¡fico utilizado como separador."
+
+#: src/Admin/SettingsPage.php:744
+msgid ""
+"Explicit WordPress post excerpt. Builder content is intentionally not parsed."
+msgstr ""
+"Extracto explÃ­cito de WordPress. El contenido del constructor no se analiza "
+"intencionadamente."
+
+#: src/Admin/SettingsPage.php:745
+msgid "Singular post-type label."
+msgstr "Etiqueta singular del tipo de contenido."
+
+#: src/Admin/SettingsPage.php:746
+msgid "Current term name."
+msgstr "Nombre actual del tÃ©rmino."
+
+#: src/Admin/SettingsPage.php:747
+msgid "Current taxonomy term description."
+msgstr "DescripciÃ³n actual del tÃ©rmino de taxonomÃ­a."
+
+#: src/Admin/SettingsPage.php:748
+msgid "Singular taxonomy label."
+msgstr "Etiqueta singular de la taxonomÃ­a."
+
+#: src/Admin/SettingsPage.php:751
+msgid ""
+"Use these variables inside title and description templates. They are "
+"resolved at render time."
+msgstr ""
+"Usa estas variables dentro de las plantillas de tÃ­tulo y descripciÃ³n. Se "
+"resuelven durante el renderizado."
+
+#: src/Admin/SettingsPage.php:757
+msgid ""
+"Rendered-page content analysis remains a later stage and will use the live "
+"frontend document rather than builder storage."
+msgstr ""
+"El anÃ¡lisis del contenido de la pÃ¡gina renderizada llegarÃ¡ en una fase "
+"posterior y usarÃ¡ el documento frontend en vivo en lugar del almacenamiento "
+"del constructor."
+
 #: src/Analysis/AdminController.php:25
 msgid "The analysis request could not be verified."
 msgstr "No se pudo verificar la solicitud de análisis."
+
+#: src/Analysis/AdminController.php:28
+msgid "You are not allowed to analyze this content."
+msgstr "No tienes permiso para analizar este contenido."
 
 #: src/Analysis/AdminController.php:33
 msgid "The content could not be found."
 msgstr "No se pudo encontrar el contenido."
 
-#: src/Admin/SettingsPage.php:466
-msgid ""
-"The document lists selected public and indexable WordPress content. It is "
-"disabled by default on upgrade and does not affect search rankings."
+#: src/Analysis/AdminController.php:37
+msgid "This content type is not eligible for public SEO analysis."
+msgstr "Este tipo de contenido no es apto para el análisis SEO público."
+
+#: src/Analysis/DocumentFetcher.php:20
+msgid "Live analysis is available after this content has been published."
 msgstr ""
-"El documento enumera el contenido público e indexable de WordPress "
-"seleccionado. Tras una actualización está desactivado por defecto y no "
-"afecta al posicionamiento en buscadores."
+"El análisis público está disponible después de publicar este contenido."
 
-#: src/Admin/Editor/AnalysisPanel.php:171
-msgid "The focus keyword does not appear in the URL"
-msgstr "La palabra clave objetivo no aparece en la URL"
-
-#: src/Admin/Editor/AnalysisPanel.php:175
-msgid "The focus keyword does not appear in the visible page content"
-msgstr ""
-"La palabra clave objetivo no aparece en el contenido visible de la página"
-
-#: src/Admin/Editor/AnalysisPanel.php:146
-msgid "The image has an alt attribute"
-msgstr "La imagen tiene un atributo alt"
-
-#: src/Admin/Editor/AnalysisPanel.php:28
-msgid ""
-"The keyword is used for guidance only. Core Blueprint does not treat keyword"
-" density as a search-engine ranking formula."
-msgstr ""
-"La palabra clave se utiliza solo como orientación. Core Blueprint no "
-"considera la densidad de palabras clave una fórmula de posicionamiento en "
-"buscadores."
-
-#: src/Analysis/HtmlDocument.php:30
-msgid "The live document could not be parsed as HTML."
-msgstr "El documento público no pudo procesarse como HTML."
-
-#: src/Analysis/DocumentFetcher.php:63
-msgid "The live URL returned an empty document."
-msgstr "La URL pública devolvió un documento vacío."
+#: src/Analysis/DocumentFetcher.php:25
+msgid "Core Blueprint could not resolve a public URL for this content."
+msgstr "Core Blueprint no pudo determinar una URL pública para este contenido."
 
 #: src/Analysis/DocumentFetcher.php:29
 msgid ""
@@ -1167,205 +1215,207 @@ msgstr ""
 "La URL determinada está fuera de este sitio WordPress y no se obtuvo por "
 "motivos de seguridad."
 
+#: src/Analysis/DocumentFetcher.php:63
+msgid "The live URL returned an empty document."
+msgstr "La URL pública devolvió un documento vacío."
+
 #: src/Analysis/HtmlDocument.php:27
 msgid "The WordPress HTML API is required for rendered-page analysis."
 msgstr ""
 "La API HTML de WordPress es necesaria para analizar páginas renderizadas."
 
-#: src/Admin/Editor/SeoMetaBox.php:112
-msgid ""
-"These are restrictive per-content overrides. Leave them unchecked to keep "
-"the normal WordPress or global SEO policy."
-msgstr ""
-"Son restricciones especÃ­ficas para este contenido. DÃ©jalas desmarcadas "
-"para mantener la polÃ­tica normal de WordPress o la polÃ­tica SEO global."
+#: src/Analysis/HtmlDocument.php:30
+msgid "The live document could not be parsed as HTML."
+msgstr "El documento público no pudo procesarse como HTML."
 
-#: src/Analysis/AdminController.php:37
-msgid "This content type is not eligible for public SEO analysis."
-msgstr "Este tipo de contenido no es apto para el análisis SEO público."
+#: src/Bootstrap.php:165 src/Bootstrap.php:192
+msgid "SEO disabled"
+msgstr "SEO desactivado"
 
-#: src/Admin/SettingsPage.php:705
-msgid "Title template"
-msgstr "Plantilla de tÃ­tulo"
+#: src/Bootstrap.php:180 src/Bootstrap.php:191
+msgid "SEO enabled"
+msgstr "SEO activado"
 
-#: src/Admin/Editor/TermFields.php:55 src/Admin/Editor/TermFields.php:100
-msgid ""
-"Unchecked directives inherit the normal WordPress or global SEO policy. "
-"noindex also removes this term from the WordPress XML sitemap."
-msgstr ""
-"Las directivas desmarcadas heredan la polÃ­tica normal de WordPress o la "
-"polÃ­tica SEO global. noindex tambiÃ©n elimina este tÃ©rmino del sitemap XML"
-" de WordPress."
+#: src/Bootstrap.php:193
+msgid "SEO extension activated"
+msgstr "ExtensiÃÂ³n SEO activada"
 
-#: src/Admin/Editor/SeoMetaBox.php:77 src/Admin/Editor/SeoMetaBox.php:83
-msgid "Use the configured post-type template"
-msgstr "Usar la plantilla configurada para este tipo de contenido"
+#: src/Bootstrap.php:194
+msgid "SEO extension deactivated"
+msgstr "ExtensiÃÂ³n SEO desactivada"
 
-#: src/Admin/Editor/SeoMetaBox.php:123
-msgid "Use the normal WordPress canonical"
-msgstr "Usar la URL canÃ³nica normal de WordPress"
+#: src/Bootstrap.php:195
+msgid "SEO metadata templates updated"
+msgstr "Plantillas de metadatos SEO actualizadas"
 
-#: src/Admin/Editor/SeoMetaBox.php:141
-msgid "Use the resolved SEO description"
-msgstr "Usar la descripción SEO resuelta"
+#: src/Bootstrap.php:196
+msgid "SEO content metadata updated"
+msgstr "Metadatos SEO del contenido actualizados"
 
-#: src/Admin/Editor/SeoMetaBox.php:137
-msgid "Use the resolved SEO title"
-msgstr "Usar el título SEO resuelto"
+#: src/Bootstrap.php:197
+msgid "SEO term metadata updated"
+msgstr "Metadatos SEO del tÃ©rmino actualizados"
 
-#: src/Admin/SettingsPage.php:754
-msgid ""
-"Use these variables inside title and description templates. They are "
-"resolved at render time."
-msgstr ""
-"Usa estas variables dentro de las plantillas de tÃ­tulo y descripciÃ³n. Se "
-"resuelven durante el renderizado."
+#: src/Bootstrap.php:198
+msgid "SEO content indexing directives updated"
+msgstr "Directivas de indexaciÃ³n SEO del contenido actualizadas"
 
-#: src/Admin/SettingsPage.php:429
-msgid "Used as the Organization logo or Person image in structured data."
-msgstr ""
-"Se usa como logotipo de la organización o imagen de la persona en los datos "
-"estructurados."
+#: src/Bootstrap.php:199
+msgid "SEO term indexing directives updated"
+msgstr "Directivas de indexaciÃ³n SEO del tÃ©rmino actualizadas"
 
-#: src/Admin/SettingsPage.php:412
-msgid "Used when content has no explicit social image or featured image."
-msgstr ""
-"Se usa cuando el contenido no tiene una imagen social explícita ni imagen "
-"destacada."
+#: src/Bootstrap.php:200
+msgid "SEO content canonical updated"
+msgstr "URL canÃ³nica SEO del contenido actualizada"
 
-#: src/Admin/Editor/AnalysisPanel.php:99
-#, php-format, python-format
-msgid "Visible words: %d"
-msgstr "Palabras visibles: %d"
+#: src/Bootstrap.php:201
+msgid "SEO term canonical updated"
+msgstr "URL canÃ³nica SEO del tÃ©rmino actualizada"
 
-#: src/Admin/SettingsPage.php:333
-msgid ""
-"When indexing is disabled, Core Blueprint also removes that content group "
-"from XML sitemaps. Disabling only the sitemap keeps public pages indexable "
-"but stops advertising them through the WordPress sitemap."
-msgstr ""
-"Cuando se desactiva la indexación, Core Blueprint también elimina ese grupo "
-"de contenido de los mapas del sitio XML. Desactivar solo el mapa del sitio "
-"mantiene las páginas públicas indexables, pero evita que WordPress las "
-"anuncie mediante el mapa del sitio."
+#: src/Bootstrap.php:202
+msgid "SEO content social metadata updated"
+msgstr "Metadatos sociales del contenido SEO actualizados"
 
-#: src/Admin/SettingsPage.php:699
-msgid "WordPress default"
-msgstr "Valor predeterminado de WordPress"
+#: src/Bootstrap.php:203
+msgid "SEO term social metadata updated"
+msgstr "Metadatos sociales del término SEO actualizados"
 
-#: src/Admin/Editor/SeoMetaBox.php:90
-msgid "WordPress default title"
-msgstr "TÃ­tulo predeterminado de WordPress"
+#: src/Bootstrap.php:204
+msgid "SEO social settings updated"
+msgstr "Ajustes sociales SEO actualizados"
 
-#: src/Admin/SettingsPage.php:745
-msgid "WordPress site title."
-msgstr "TÃ­tulo del sitio de WordPress."
+#: src/Bootstrap.php:205
+msgid "SEO structured data settings updated"
+msgstr "Ajustes SEO de datos estructurados actualizados"
 
-#: src/Analysis/AdminController.php:28
-msgid "You are not allowed to analyze this content."
-msgstr "No tienes permiso para analizar este contenido."
+#: src/Bootstrap.php:206
+msgid "SEO AI discovery settings updated"
+msgstr "Ajustes SEO de descubrimiento por IA actualizados"
 
-#: src/Admin/SettingsPage.php:156
-msgid ""
-"You can prepare metadata below while the module is dormant. Nothing is "
-"emitted on the frontend until SEO is enabled."
-msgstr ""
-"Puedes preparar los metadatos a continuaciÃ³n mientras el mÃ³dulo estÃ¡ "
-"inactivo. No se publica nada en el frontend hasta que SEO estÃ© activado."
+#: src/Bootstrap.php:207
+msgid "SEO indexing policy updated"
+msgstr "Política de indexación SEO actualizada"
 
-#: core-blueprint-seo.php
-msgid "Core Blueprint SEO"
-msgstr "Core Blueprint SEO"
+#: src/Bootstrap.php:208
+msgid "SEO metadata imported"
+msgstr "Metadatos SEO importados"
 
+#: src/Integration/Builders/Bricks/Elements/Element.php:28
 msgid "No sitemap content is available for the current settings."
 msgstr "No hay contenido de sitemap disponible para los ajustes actuales."
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:23
 msgid "SEO Sitemap"
 msgstr "Sitemap SEO"
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:33
 msgid "All eligible public post types"
 msgstr "Todos los tipos de contenido públicos aptos"
 
-msgid "Leave empty to use all public post types allowed by the Core Blueprint SEO sitemap policy."
-msgstr "Déjalo vacío para usar todos los tipos de contenido públicos permitidos por la política de sitemap de Core Blueprint SEO."
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:34
+msgid ""
+"Leave empty to use all public post types allowed by the Core Blueprint SEO "
+"sitemap policy."
+msgstr ""
+"Déjalo vacío para usar todos los tipos de contenido públicos permitidos por "
+"la política de sitemap de Core Blueprint SEO."
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:42
 msgid "None"
 msgstr "Ninguna"
 
-msgid "Optional taxonomy sections. Only public taxonomies allowed by the SEO sitemap policy are rendered."
-msgstr "Secciones de taxonomía opcionales. Solo se muestran las taxonomías públicas permitidas por la política de sitemap SEO."
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:43
+msgid ""
+"Optional taxonomy sections. Only public taxonomies allowed by the SEO "
+"sitemap policy are rendered."
+msgstr ""
+"Secciones de taxonomía opcionales. Solo se muestran las taxonomías públicas "
+"permitidas por la política de sitemap SEO."
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:47
 msgid "Show section headings"
 msgstr "Mostrar encabezados de sección"
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:53
 msgid "Preserve hierarchy"
 msgstr "Conservar la jerarquía"
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:56
 msgid "Nest hierarchical pages and taxonomy terms below their visible parent."
-msgstr "Anidar las páginas jerárquicas y los términos de taxonomía bajo su elemento padre visible."
+msgstr ""
+"Anidar las páginas jerárquicas y los términos de taxonomía bajo su elemento "
+"padre visible."
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:60
 msgid "Order by"
 msgstr "Ordenar por"
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:63
 msgid "Title"
 msgstr "Título"
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:64
 msgid "Date"
 msgstr "Fecha"
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:65
 msgid "Menu order"
 msgstr "Orden del menú"
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:71
 msgid "Order"
 msgstr "Orden"
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:74
 msgid "Ascending"
 msgstr "Ascendente"
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:75
 msgid "Descending"
 msgstr "Descendente"
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:81
 msgid "Columns"
 msgstr "Columnas"
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:94
 msgid "Section headings"
 msgstr "Encabezados de sección"
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:100
 msgid "Links"
 msgstr "Enlaces"
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:108
 msgid "Core Blueprint SEO is disabled."
 msgstr "Core Blueprint SEO está desactivado."
 
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php:122
 msgid "No indexable sitemap content matches these settings."
 msgstr "Ningún contenido indexable del sitemap coincide con estos ajustes."
 
-msgid "Core Blueprint SEO:"
-msgstr "Core Blueprint SEO:"
-
+#. translators: 1: required PHP version, 2: current PHP version.
+#: src/Requirements.php:98
+#, php-format
 msgid "PHP %1$s or newer is required. This server runs PHP %2$s."
 msgstr "Se requiere PHP %1$s o posterior. Este servidor ejecuta PHP %2$s."
 
-msgid "none"
-msgstr "ninguna"
-
-msgid "Ready"
-msgstr "Listo"
-
-msgid "Required Core Blueprint Base contracts are unavailable."
-msgstr "Los contratos requeridos de Core Blueprint Base no están disponibles."
-
+#: src/Requirements.php:103
 msgid "Core Blueprint must be installed and active."
 msgstr "Core Blueprint debe estar instalado y activo."
 
-msgid "Core API %1$s or a newer compatible minor version is required. Available Core API: %2$s."
+#. translators: 1: required Core API version, 2: available Core API version.
+#: src/Requirements.php:107
+#, php-format
+msgid ""
+"Core API %1$s or a newer compatible minor version is required. Available "
+"Core API: %2$s."
 msgstr "Se requiere Core API %1$s o una versión menor compatible más reciente. Core API disponible: %2$s."
 
-msgid "Governed SEO metadata and indexing controls for Core Blueprint with WordPress-first fallbacks and builder-independent administration."
-msgstr "Metadatos SEO gobernados y controles de indexación para Core Blueprint con alternativas WordPress-first y administración independiente del builder."
+#: src/Requirements.php:109
+msgid "none"
+msgstr "ninguna"
 
-msgid "Core Blueprint"
-msgstr "Core Blueprint"
-
-msgid "https://coreblueprint.io"
-msgstr "https://coreblueprint.io"
+#: src/Requirements.php:112
+msgid "Ready"
+msgstr "Listo"
