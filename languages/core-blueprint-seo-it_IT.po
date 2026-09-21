@@ -79,7 +79,7 @@ msgstr "Tutte le %d immagini hanno attributi alt"
 
 #: src/Admin/SettingsPage.php:660
 msgid "All post-type and taxonomy templates are saved together."
-msgstr ""
+msgstr "Tutti i template dei tipi di contenuto e delle tassonomie vengono salvati insieme."
 "Tutti i modelli per tipi di contenuto e tassonomie vengono salvati insieme."
 
 #: src/Admin/SettingsPage.php:351
@@ -150,13 +150,13 @@ msgstr ""
 
 #: src/Admin/Editor/SeoMetaBox.php:113
 msgid "Block this content from search engine indexes (noindex)"
-msgstr ""
+msgstr "Impedisci ai motori di ricerca di indicizzare questo contenuto (noindex)"
 "Blocca lâindicizzazione di questo contenuto da parte dei motori di ricerca"
 " (noindex)"
 
 #: src/Admin/Editor/TermFields.php:50 src/Admin/Editor/TermFields.php:95
 msgid "Block this term archive from search engine indexes (noindex)"
-msgstr ""
+msgstr "Impedisci ai motori di ricerca di indicizzare questo archivio di termini (noindex)"
 "Blocca lâindicizzazione di questo archivio di termine da parte dei motori "
 "di ricerca (noindex)"
 
@@ -239,7 +239,7 @@ msgstr ""
 
 #: src/Analysis/DocumentFetcher.php:25
 msgid "Core Blueprint could not resolve a public URL for this content."
-msgstr ""
+msgstr "Core Blueprint non è riuscito a determinare un URL pubblico per questo contenuto."
 "Core Blueprint non è riuscito a determinare un URL pubblico per questo "
 "contenuto."
 
@@ -294,7 +294,7 @@ msgstr ""
 
 #: src/Admin/Editor/SeoMetaBox.php:114
 msgid "Do not ask search engines to follow links on this content (nofollow)"
-msgstr ""
+msgstr "Non chiedere ai motori di ricerca di seguire i link in questo contenuto (nofollow)"
 "Chiedi ai motori di ricerca di non seguire i link in questo contenuto "
 "(nofollow)"
 
@@ -315,18 +315,18 @@ msgstr "Non indicizzare le immagini di questo contenuto (noimageindex)"
 
 #: src/Admin/Editor/TermFields.php:52 src/Admin/Editor/TermFields.php:97
 msgid "Do not index images from this term archive (noimageindex)"
-msgstr ""
+msgstr "Non indicizzare le immagini di questo archivio di termini (noimageindex)"
 "Non indicizzare le immagini di questo archivio di termine (noimageindex)"
 
 #: src/Admin/Editor/SeoMetaBox.php:116
 msgid "Do not provide a cached copy of this content (noarchive)"
-msgstr ""
+msgstr "Non fornire una copia memorizzata nella cache di questo contenuto (noarchive)"
 "Non fornire una copia memorizzata nella cache di questo contenuto "
 "(noarchive)"
 
 #: src/Admin/Editor/TermFields.php:53 src/Admin/Editor/TermFields.php:98
 msgid "Do not provide a cached copy of this term archive (noarchive)"
-msgstr ""
+msgstr "Non fornire una copia memorizzata nella cache di questo archivio di termini (noarchive)"
 "Non fornire una copia memorizzata nella cache di questo archivio di termine "
 "(noarchive)"
 
@@ -336,7 +336,7 @@ msgstr "Non mostrare uno snippet di testo per questo contenuto (nosnippet)"
 
 #: src/Admin/Editor/TermFields.php:54 src/Admin/Editor/TermFields.php:99
 msgid "Do not show a text snippet for this term archive (nosnippet)"
-msgstr ""
+msgstr "Non mostrare uno snippet di testo per questo archivio di termini (nosnippet)"
 "Non mostrare uno snippet di testo per questo archivio di termine (nosnippet)"
 
 #: src/Admin/SettingsPage.php:481
@@ -411,12 +411,12 @@ msgstr "La parola chiave principale appare nell’URL"
 
 #: src/Admin/Editor/AnalysisPanel.php:175
 msgid "Focus keyword appears in the visible page content"
-msgstr ""
+msgstr "La parola chiave principale appare nel contenuto visibile della pagina"
 "La parola chiave principale appare nel contenuto visibile della pagina"
 
 #: src/Admin/Editor/AnalysisPanel.php:173
 msgid "Focus keyword appears near the start of the visible content"
-msgstr ""
+msgstr "La parola chiave principale appare vicino all’inizio del contenuto visibile"
 "La parola chiave principale appare vicino all’inizio del contenuto visibile"
 
 #: src/Admin/Editor/AnalysisPanel.php:199
@@ -454,7 +454,7 @@ msgstr "Titoli H1 trovati: %d"
 
 #: src/Admin/Editor/AnalysisPanel.php:186
 msgid "H1 keyword check was not evaluated because no H1 heading is published."
-msgstr ""
+msgstr "Il controllo della parola chiave nell’H1 non è stato valutato perché non è pubblicata alcuna intestazione H1."
 "Il controllo H1 della parola chiave principale non è stato valutato perché "
 "non è pubblicato alcun titolo H1."
 
@@ -590,7 +590,7 @@ msgstr "Lascia vuoto per usare il titolo del sito WordPress."
 
 #: src/Analysis/DocumentFetcher.php:20
 msgid "Live analysis is available after this content has been published."
-msgstr ""
+msgstr "L’analisi in tempo reale è disponibile dopo la pubblicazione di questo contenuto."
 "L’analisi online è disponibile dopo la pubblicazione di questo contenuto."
 
 #: src/Admin/SettingsPage.php:464
@@ -668,12 +668,12 @@ msgstr "Nessuna modifica alla visibilità nei motori di ricerca rilevata."
 
 #: src/Admin/SettingsPage.php:271
 msgid "No social or structured data changes were detected."
-msgstr ""
+msgstr "Non sono state rilevate modifiche ai dati social o strutturati."
 "Non sono state rilevate modifiche ai metadati social o ai dati strutturati."
 
 #: src/Admin/SettingsPage.php:279
 msgid "No valid SEO metadata mappings were selected, so nothing was imported."
-msgstr ""
+msgstr "Non sono state selezionate mappature valide dei metadati SEO, quindi non è stato importato nulla."
 "Non sono state selezionate associazioni valide per i metadati SEO, quindi "
 "non è stato importato nulla."
 
@@ -1135,7 +1135,7 @@ msgstr "La parola chiave principale non compare nell’URL"
 
 #: src/Admin/Editor/AnalysisPanel.php:175
 msgid "The focus keyword does not appear in the visible page content"
-msgstr ""
+msgstr "La parola chiave principale non appare nel contenuto visibile della pagina"
 "La parola chiave principale non compare nel contenuto visibile della pagina"
 
 #: src/Admin/Editor/AnalysisPanel.php:146
@@ -1169,7 +1169,7 @@ msgstr ""
 
 #: src/Analysis/HtmlDocument.php:27
 msgid "The WordPress HTML API is required for rendered-page analysis."
-msgstr ""
+msgstr "L’API HTML di WordPress è necessaria per l’analisi della pagina renderizzata."
 "L’API HTML di WordPress è necessaria per analizzare le pagine renderizzate."
 
 #: src/Admin/Editor/SeoMetaBox.php:112
@@ -1223,13 +1223,13 @@ msgstr ""
 
 #: src/Admin/SettingsPage.php:429
 msgid "Used as the Organization logo or Person image in structured data."
-msgstr ""
+msgstr "Utilizzato come logo dell’organizzazione o immagine della persona nei dati strutturati."
 "Usato come logo dell’organizzazione o immagine della persona nei dati "
 "strutturati."
 
 #: src/Admin/SettingsPage.php:412
 msgid "Used when content has no explicit social image or featured image."
-msgstr ""
+msgstr "Utilizzato quando il contenuto non ha un’immagine social esplicita né un’immagine in evidenza."
 "Usato quando il contenuto non ha un’immagine social esplicita né un’immagine"
 " in evidenza."
 
@@ -1272,3 +1272,7 @@ msgid ""
 msgstr ""
 "Puoi preparare i metadati qui sotto mentre il modulo Ã¨ inattivo. Nulla "
 "viene pubblicato sul frontend finchÃ© SEO non viene attivato."
+
+#: core-blueprint-seo.php
+msgid "Core Blueprint SEO"
+msgstr "Core Blueprint SEO"
