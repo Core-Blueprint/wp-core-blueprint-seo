@@ -1362,3 +1362,6 @@ msgstr "Métadonnées SEO gouvernées et contrôles d’indexation pour Core Blu
 
 msgid "Core Blueprint"
 msgstr "Core Blueprint"
+
+msgid "https://coreblueprint.io"
+msgstr "https://coreblueprint.io"
