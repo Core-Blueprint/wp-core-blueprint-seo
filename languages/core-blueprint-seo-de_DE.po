@@ -79,7 +79,7 @@ msgstr "Alle %d Bilder haben Alt-Attribute"
 
 #: src/Admin/SettingsPage.php:660
 msgid "All post-type and taxonomy templates are saved together."
-msgstr ""
+msgstr "Alle Vorlagen für Beitragstypen und Taxonomien werden zusammen gespeichert."
 "Alle Vorlagen fÃ¼r Inhaltstypen und Taxonomien werden gemeinsam gespeichert."
 
 #: src/Admin/SettingsPage.php:351
@@ -155,7 +155,7 @@ msgstr "Diesen Inhalt von Suchmaschinenindizes ausschlieÃen (noindex)"
 
 #: src/Admin/Editor/TermFields.php:50 src/Admin/Editor/TermFields.php:95
 msgid "Block this term archive from search engine indexes (noindex)"
-msgstr ""
+msgstr "Dieses Begriffsarchiv von Suchmaschinenindizes ausschließen (noindex)"
 "Dieses Begriffsarchiv von Suchmaschinenindizes ausschlieÃen (noindex)"
 
 #: src/Admin/Editor/SeoMetaBox.php:122 src/Admin/Editor/TermFields.php:59
@@ -236,7 +236,7 @@ msgstr ""
 
 #: src/Analysis/DocumentFetcher.php:25
 msgid "Core Blueprint could not resolve a public URL for this content."
-msgstr ""
+msgstr "Core Blueprint konnte keine öffentliche URL für diesen Inhalt ermitteln."
 "Core Blueprint konnte für diesen Inhalt keine öffentliche URL ermitteln."
 
 #: src/Admin/SettingsPage.php:504
@@ -290,7 +290,7 @@ msgstr ""
 
 #: src/Admin/Editor/SeoMetaBox.php:114
 msgid "Do not ask search engines to follow links on this content (nofollow)"
-msgstr ""
+msgstr "Suchmaschinen nicht anweisen, Links in diesem Inhalt zu folgen (nofollow)"
 "Suchmaschinen auffordern, Links in diesem Inhalt nicht zu folgen (nofollow)"
 
 #: src/Admin/Editor/TermFields.php:51 src/Admin/Editor/TermFields.php:96
@@ -314,12 +314,12 @@ msgstr "Bilder aus diesem Begriffsarchiv nicht indexieren (noimageindex)"
 
 #: src/Admin/Editor/SeoMetaBox.php:116
 msgid "Do not provide a cached copy of this content (noarchive)"
-msgstr ""
+msgstr "Keine zwischengespeicherte Kopie dieses Inhalts bereitstellen (noarchive)"
 "Keine zwischengespeicherte Kopie dieses Inhalts bereitstellen (noarchive)"
 
 #: src/Admin/Editor/TermFields.php:53 src/Admin/Editor/TermFields.php:98
 msgid "Do not provide a cached copy of this term archive (noarchive)"
-msgstr ""
+msgstr "Keine zwischengespeicherte Kopie dieses Begriffsarchivs bereitstellen (noarchive)"
 "Keine zwischengespeicherte Kopie dieses Begriffsarchivs bereitstellen "
 "(noarchive)"
 
@@ -444,7 +444,7 @@ msgstr "Gefundene H1-Überschriften: %d"
 
 #: src/Admin/Editor/AnalysisPanel.php:186
 msgid "H1 keyword check was not evaluated because no H1 heading is published."
-msgstr ""
+msgstr "Die H1-Keyword-Prüfung wurde nicht ausgewertet, da keine H1-Überschrift veröffentlicht ist."
 "Die H1-Prüfung des Fokus-Keywords wurde nicht ausgewertet, da keine "
 "H1-Überschrift veröffentlicht ist."
 
@@ -555,7 +555,7 @@ msgstr ""
 
 #: src/Admin/SettingsPage.php:709
 msgid "Leave empty to keep WordPress responsible for this title."
-msgstr ""
+msgstr "Leer lassen, damit WordPress für diesen Titel zuständig bleibt."
 "Leer lassen, damit WordPress weiterhin fÃ¼r diesen Titel zustÃ¤ndig ist."
 
 #: src/Admin/Editor/SeoMetaBox.php:79
@@ -582,7 +582,7 @@ msgstr "Leer lassen, um den WordPress-Website-Titel zu verwenden."
 
 #: src/Analysis/DocumentFetcher.php:20
 msgid "Live analysis is available after this content has been published."
-msgstr ""
+msgstr "Die Live-Analyse ist verfügbar, nachdem dieser Inhalt veröffentlicht wurde."
 "Die Live-Analyse ist verfügbar, nachdem dieser Inhalt veröffentlicht wurde."
 
 #: src/Admin/SettingsPage.php:464
@@ -660,13 +660,13 @@ msgstr "Keine Änderungen an der Sichtbarkeit in Suchmaschinen erkannt."
 
 #: src/Admin/SettingsPage.php:271
 msgid "No social or structured data changes were detected."
-msgstr ""
+msgstr "Es wurden keine Änderungen an Social- oder strukturierten Daten erkannt."
 "Es wurden keine Änderungen an Social-Metadaten oder strukturierten Daten "
 "erkannt."
 
 #: src/Admin/SettingsPage.php:279
 msgid "No valid SEO metadata mappings were selected, so nothing was imported."
-msgstr ""
+msgstr "Es wurden keine gültigen Zuordnungen für SEO-Metadaten ausgewählt, daher wurde nichts importiert."
 "Es wurden keine gültigen Zuordnungen für SEO-Metadaten ausgewählt, daher "
 "wurde nichts importiert."
 
@@ -1023,7 +1023,7 @@ msgstr "Social-Metadaten und strukturierte Daten"
 
 #: src/Admin/SettingsPage.php:269
 msgid "Social and structured data settings saved."
-msgstr ""
+msgstr "Einstellungen für Social- und strukturierte Daten gespeichert."
 "Einstellungen für Social-Metadaten und strukturierte Daten gespeichert."
 
 #: src/Admin/Editor/TermFields.php:65 src/Admin/Editor/TermFields.php:113
@@ -1160,7 +1160,7 @@ msgstr ""
 
 #: src/Analysis/HtmlDocument.php:27
 msgid "The WordPress HTML API is required for rendered-page analysis."
-msgstr ""
+msgstr "Für die Analyse der gerenderten Seite ist die WordPress HTML API erforderlich."
 "Für die Analyse gerenderter Seiten ist die WordPress-HTML-API erforderlich."
 
 #: src/Admin/Editor/SeoMetaBox.php:112
@@ -1214,13 +1214,13 @@ msgstr ""
 
 #: src/Admin/SettingsPage.php:429
 msgid "Used as the Organization logo or Person image in structured data."
-msgstr ""
+msgstr "Wird als Organisationslogo oder Personenbild in strukturierten Daten verwendet."
 "Wird in strukturierten Daten als Organisationslogo oder Personenbild "
 "verwendet."
 
 #: src/Admin/SettingsPage.php:412
 msgid "Used when content has no explicit social image or featured image."
-msgstr ""
+msgstr "Wird verwendet, wenn Inhalte kein explizites Social-Media-Bild oder Beitragsbild haben."
 "Wird verwendet, wenn der Inhalt weder ein explizites Social-Bild noch ein "
 "Beitragsbild hat."
 
@@ -1263,3 +1263,7 @@ msgid ""
 msgstr ""
 "Sie kÃ¶nnen die Metadaten unten vorbereiten, wÃ¤hrend das Modul inaktiv ist."
 " Im Frontend wird nichts ausgegeben, bis SEO aktiviert ist."
+
+#: core-blueprint-seo.php
+msgid "Core Blueprint SEO"
+msgstr "Core Blueprint SEO"
