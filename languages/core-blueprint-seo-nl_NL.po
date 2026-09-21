@@ -1252,3 +1252,111 @@ msgstr ""
 #: core-blueprint-seo.php
 msgid "Core Blueprint SEO"
 msgstr "Core Blueprint SEO"
+
+msgid "SEO metadata import completed. %1$d content objects changed, %2$d fields were imported through %3$d mappings, and %4$d existing Core Blueprint values were preserved."
+msgstr "Import van SEO-metadata voltooid. %1$d contentobjecten gewijzigd, %2$d velden zijn via %3$d toewijzingen geïmporteerd en %4$d bestaande Core Blueprint-waarden zijn behouden."
+
+msgid "Core Blueprint discovers existing WordPress metadata by field semantics rather than vendor-specific import profiles. Stored field names are shown as-is so you can review the source before importing."
+msgstr "Core Blueprint ontdekt bestaande WordPress-metadata op basis van veldbetekenis in plaats van leveranciersspecifieke importprofielen. Opgeslagen veldnamen worden ongewijzigd weergegeven, zodat de bron vóór het importeren kan worden gecontroleerd."
+
+msgid "Source metadata is never changed or deleted, and existing Core Blueprint SEO values always win. Global plugin settings and templates are intentionally not guessed because WordPress has no canonical SEO option schema."
+msgstr "Bronmetadata wordt nooit gewijzigd of verwijderd en bestaande Core Blueprint SEO-waarden hebben altijd voorrang. Algemene plugininstellingen en templates worden bewust niet geraden, omdat WordPress geen canoniek SEO-optieschema heeft."
+
+msgid "No compatible SEO metadata candidates were discovered in WordPress post or term metadata."
+msgstr "Er zijn geen compatibele kandidaten voor SEO-metadata gevonden in WordPress-bericht- of termmetadata."
+
+msgid "Automatic mappings are preselected only when the semantic match is strong and unambiguous. Review candidates remain disabled until you explicitly map them. If multiple source fields target the same Core Blueprint field on one object, the first non-empty mapped source wins and later conflicts are skipped."
+msgstr "Automatische toewijzingen worden alleen vooraf geselecteerd wanneer de semantische overeenkomst sterk en eenduidig is. Kandidaten ter beoordeling blijven uitgeschakeld totdat ze expliciet worden toegewezen. Als meerdere bronvelden op één object naar hetzelfde Core Blueprint-veld verwijzen, wint de eerste niet-lege toegewezen bron en worden latere conflicten overgeslagen."
+
+msgid "Governed search metadata with WordPress-first fallbacks and builder-independent administration."
+msgstr "Beheerde zoekmetadata met WordPress-first fallbacks en builder-onafhankelijk beheer."
+
+msgid "No sitemap content is available for the current settings."
+msgstr "Er is geen sitemapinhoud beschikbaar voor de huidige instellingen."
+
+msgid "SEO Sitemap"
+msgstr "SEO-sitemap"
+
+msgid "All eligible public post types"
+msgstr "Alle geschikte openbare berichttypen"
+
+msgid "Leave empty to use all public post types allowed by the Core Blueprint SEO sitemap policy."
+msgstr "Laat leeg om alle openbare berichttypen te gebruiken die door het sitemapbeleid van Core Blueprint SEO zijn toegestaan."
+
+msgid "None"
+msgstr "Geen"
+
+msgid "Optional taxonomy sections. Only public taxonomies allowed by the SEO sitemap policy are rendered."
+msgstr "Optionele taxonomiesecties. Alleen openbare taxonomieën die door het SEO-sitemapbeleid zijn toegestaan, worden weergegeven."
+
+msgid "Show section headings"
+msgstr "Sectiekoppen tonen"
+
+msgid "Preserve hierarchy"
+msgstr "Hiërarchie behouden"
+
+msgid "Nest hierarchical pages and taxonomy terms below their visible parent."
+msgstr "Plaats hiërarchische pagina’s en taxonomietermen onder hun zichtbare bovenliggende item."
+
+msgid "Order by"
+msgstr "Sorteren op"
+
+msgid "Title"
+msgstr "Titel"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Menu order"
+msgstr "Menuvolgorde"
+
+msgid "Order"
+msgstr "Volgorde"
+
+msgid "Ascending"
+msgstr "Oplopend"
+
+msgid "Descending"
+msgstr "Aflopend"
+
+msgid "Columns"
+msgstr "Kolommen"
+
+msgid "Section headings"
+msgstr "Sectiekoppen"
+
+msgid "Links"
+msgstr "Links"
+
+msgid "Core Blueprint SEO is disabled."
+msgstr "Core Blueprint SEO is uitgeschakeld."
+
+msgid "No indexable sitemap content matches these settings."
+msgstr "Geen indexeerbare sitemapinhoud komt overeen met deze instellingen."
+
+msgid "Core Blueprint SEO:"
+msgstr "Core Blueprint SEO:"
+
+msgid "PHP %1$s or newer is required. This server runs PHP %2$s."
+msgstr "PHP %1$s of nieuwer is vereist. Deze server draait PHP %2$s."
+
+msgid "none"
+msgstr "geen"
+
+msgid "Ready"
+msgstr "Gereed"
+
+msgid "Required Core Blueprint Base contracts are unavailable."
+msgstr "Vereiste Core Blueprint Base-contracten zijn niet beschikbaar."
+
+msgid "Core Blueprint must be installed and active."
+msgstr "Core Blueprint moet geïnstalleerd en actief zijn."
+
+msgid "Core API %1$s or a newer compatible minor version is required. Available Core API: %2$s."
+msgstr "Core API %1$s of een nieuwere compatibele minorversie is vereist. Beschikbare Core API: %2$s."
+
+msgid "Governed SEO metadata and indexing controls for Core Blueprint with WordPress-first fallbacks and builder-independent administration."
+msgstr "Beheerde SEO-metadata en indexeringscontroles voor Core Blueprint, met WordPress-first fallbacks en builder-onafhankelijk beheer."
+
+msgid "Core Blueprint"
+msgstr "Core Blueprint"
