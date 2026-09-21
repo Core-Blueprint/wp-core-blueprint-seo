@@ -1342,3 +1342,6 @@ msgstr "Beheerde SEO-metadata en indexeringscontroles voor Core Blueprint, met W
 
 msgid "Core Blueprint"
 msgstr "Core Blueprint"
+
+msgid "https://coreblueprint.io"
+msgstr "https://coreblueprint.io"
