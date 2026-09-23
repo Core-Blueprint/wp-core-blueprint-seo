@@ -29,9 +29,12 @@ final class Requirements {
 		if ( version_compare( PHP_VERSION, CB_SEO_MIN_PHP, '<' ) ) {
 			$issues[] = 'php-version';
 		}
-		if ( ! defined( 'CB_CORE_API_VERSION' ) ) {
+		if ( ! defined( 'CB_CORE_VERSION' ) || ! defined( 'CB_CORE_API_VERSION' ) ) {
 			$issues[] = 'base-missing';
 			return $issues;
+		}
+		if ( version_compare( (string) CB_CORE_VERSION, CB_SEO_REQUIRED_BASE, '<' ) ) {
+			$issues[] = 'base-version-incompatible';
 		}
 		if ( ! self::api_compatible( (string) CB_CORE_API_VERSION, CB_SEO_REQUIRED_API ) ) {
 			$issues[] = 'base-api-incompatible';
@@ -57,6 +60,19 @@ final class Requirements {
 				);
 			case 'base-missing':
 				return 'Core Blueprint must be installed and active.';
+			case 'base-version-incompatible':
+				return sprintf(
+					'Core Blueprint %1$s or newer is required. Available Base version: %2$s.',
+					CB_SEO_REQUIRED_BASE,
+					defined( 'CB_CORE_VERSION' ) ? (string) CB_CORE_VERSION : 'none'
+				);
+			case 'base-version-incompatible':
+				return sprintf(
+					/* translators: 1: required Core Blueprint Base version, 2: available Base version. */
+					__( 'Core Blueprint %1$s or newer is required. Available Base version: %2$s.', 'core-blueprint-seo' ),
+					CB_SEO_REQUIRED_BASE,
+					defined( 'CB_CORE_VERSION' ) ? (string) CB_CORE_VERSION : __( 'none', 'core-blueprint-seo' )
+				);
 			case 'base-api-incompatible':
 				return sprintf(
 					'Core API %1$s or a newer compatible minor version is required. Available Core API: %2$s.',
