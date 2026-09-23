@@ -569,7 +569,7 @@ msgstr ""
 #. translators: %s: comma-separated plugin names.
 #: src/Admin/SettingsPage.php:248
 #, php-format
-msgid "%s can emit overlapping titles, canonicals, robots directives, social metadata or structured data. Keep only one SEO output provider active when validating the frontend."
+msgid "%s is active, so Core Blueprint SEO has paused its public metadata, indexing, social, schema and AI Discovery output. Settings and stored data remain available until the conflict is removed."
 msgstr ""
 
 #: src/Admin/SettingsPage.php:259
