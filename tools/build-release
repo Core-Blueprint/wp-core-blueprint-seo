@@ -90,6 +90,8 @@ while IFS= read -r -d '' file; do
   php -l "$file" >/dev/null || fail "PHP lint failed: $file"
 done < <(find "$ROOT/tests" -type f -name '*.php' -print0)
 
+bash -n "$ROOT/tools/runtime-test" || fail "runtime test harness shell syntax failed"
+
 echo "==> Running SEO product regressions"
 for test in "$ROOT"/tests/*-regression.php; do
   [[ -f "$test" ]] || fail "no SEO product regressions found"
