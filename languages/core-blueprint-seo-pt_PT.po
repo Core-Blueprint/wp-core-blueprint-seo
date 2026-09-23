@@ -558,7 +558,7 @@ msgstr ""
 
 #: src/Admin/SettingsPage.php:43
 msgid "Settings"
-msgstr "DefiniÃ§Ãµes"
+msgstr "Definições"
 
 #: src/Admin/SettingsPage.php:145 src/Bootstrap.php:79 src/Bootstrap.php:152
 msgid "SEO"
@@ -1230,11 +1230,11 @@ msgstr "SEO ativado"
 
 #: src/Bootstrap.php:193
 msgid "SEO extension activated"
-msgstr "ExtensÃ£o SEO ativada"
+msgstr "Extensão SEO ativada"
 
 #: src/Bootstrap.php:194
 msgid "SEO extension deactivated"
-msgstr "ExtensÃ£o SEO desativada"
+msgstr "Extensão SEO desativada"
 
 #: src/Bootstrap.php:195
 msgid "SEO metadata templates updated"
