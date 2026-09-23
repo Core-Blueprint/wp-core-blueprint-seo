@@ -20,8 +20,383 @@ VERSION=""
 CONSTANT_VERSION=""
 REQUIRES_PHP=""
 REQUIRED_API=""
+REQUIRED_BASE=""
+REQUIRES_PLUGINS=""
+TEXT_DOMAIN=""
 header_re='^[[:space:]]*\*[[:space:]]*Version:[[:space:]]*([^[:space:]]+)'
 php_re='^[[:space:]]*\*[[:space:]]*Requires PHP:[[:space:]]*([^[:space:]]+)'
+plugins_re='^[[:space:]]*\*[[:space:]]*Requires Plugins:[[:space:]]*(.*)
+version_re="^[[:space:]]*define\\([[:space:]]*'CB_SEO_VERSION'[[:space:]]*,[[:space:]]*'([^']+)'[[:space:]]*\\)[[:space:]]*;"
+api_re="^[[:space:]]*define\\([[:space:]]*'CB_SEO_REQUIRED_API'[[:space:]]*,[[:space:]]*'([^']+)'[[:space:]]*\\)[[:space:]]*;"
+base_re="^[[:space:]]*define\\([[:space:]]*'CB_SEO_REQUIRED_BASE'[[:space:]]*,[[:space:]]*'([^']+)'[[:space:]]*\\)[[:space:]]*;"
+while IFS= read -r line; do
+  if [[ -z "$VERSION" && "$line" =~ $header_re ]]; then VERSION="${BASH_REMATCH[1]}"; fi
+  if [[ -z "$REQUIRES_PHP" && "$line" =~ $php_re ]]; then REQUIRES_PHP="${BASH_REMATCH[1]}"; fi
+  if [[ -z "$CONSTANT_VERSION" && "$line" =~ $version_re ]]; then CONSTANT_VERSION="${BASH_REMATCH[1]}"; fi
+  if [[ -z "$REQUIRED_API" && "$line" =~ $api_re ]]; then REQUIRED_API="${BASH_REMATCH[1]}"; fi
+  if [[ -z "$REQUIRED_BASE" && "$line" =~ $base_re ]]; then REQUIRED_BASE="${BASH_REMATCH[1]}"; fi
+  if [[ -z "$REQUIRES_PLUGINS" && "$line" =~ $plugins_re ]]; then REQUIRES_PLUGINS="${BASH_REMATCH[1]}"; fi
+  if [[ -z "$TEXT_DOMAIN" && "$line" =~ $domain_re ]]; then TEXT_DOMAIN="${BASH_REMATCH[1]}"; fi
+done < "$ENTRY"
+[[ -n "$VERSION" ]] || fail "could not resolve plugin Version header"
+[[ "$VERSION" == "$CONSTANT_VERSION" ]] || fail "Version header and CB_SEO_VERSION differ"
+[[ "$REQUIRES_PHP" == "8.4" ]] || fail "Requires PHP must remain 8.4"
+[[ "$REQUIRED_API" == "1.1" ]] || fail "CB_SEO_REQUIRED_API must remain 1.1"
+[[ "$REQUIRED_BASE" == "1.0.0-rc1" ]] || fail "CB_SEO_REQUIRED_BASE must remain 1.0.0-rc1"
+[[ "$REQUIRES_PLUGINS" == "core-blueprint" ]] || fail "Requires Plugins must declare core-blueprint"
+[[ "$TEXT_DOMAIN" == "core-blueprint-seo" ]] || fail "Text Domain must remain core-blueprint-seo"
+
+# 2. Prove required toolchain.
+for command in php python3 git wp msgfmt node zip unzip sha256sum find sort touch grep; do
+  command -v "$command" >/dev/null 2>&1 || fail "missing required command: $command"
+done
+php -r 'exit(version_compare(PHP_VERSION, "8.4", ">=") ? 0 : 1);' || fail "PHP 8.4 or newer is required"
+
+if ! git diff --quiet -- . ':!dist' ':!build' || ! git diff --cached --quiet -- . ':!dist' ':!build'; then
+  fail "working tree contains uncommitted release-source changes"
+fi
+
+# 3. Canonical read-only localization gate.
+"$ROOT/tools/i18n/check"
+
+# 4. Source syntax validation before product regressions.
+for file in "$ENTRY" "$ROOT/uninstall.php"; do
+  php -l "$file" >/dev/null || fail "PHP lint failed: $file"
+done
+while IFS= read -r -d '' file; do
+  php -l "$file" >/dev/null || fail "PHP lint failed: $file"
+done < <(find "$ROOT/src" -type f -name '*.php' -print0)
+
+# 5. Existing SEO product regressions.
+for test in "$ROOT"/tests/*-regression.php; do
+  [[ -f "$test" ]] || fail "no SEO product regressions found"
+  php "$test"
+done
+
+# 6. Explicit customer runtime staging.
+PACKAGE_ROOT="$STAGE/$PACKAGE"
+mkdir -p "$DIST" "$PACKAGE_ROOT"
+ZIP="$DIST/$PACKAGE-$VERSION.zip"
+CHECKSUM="$ZIP.sha256"
+rm -f "$ZIP" "$CHECKSUM"
+
+for path in "$MAIN_FILE" uninstall.php README.md CHANGELOG.md; do
+  [[ -f "$ROOT/$path" ]] || fail "required release file is missing: $path"
+  cp "$ROOT/$path" "$PACKAGE_ROOT/"
+done
+for path in src assets languages; do
+  [[ -d "$ROOT/$path" ]] || fail "required release directory is missing: $path"
+  cp -R "$ROOT/$path" "$PACKAGE_ROOT/"
+done
+
+# 7-8. Compile release-only MO artifacts from the reviewed PO sources, then
+# validate the staged runtime and shipped JavaScript before archive creation.
+POT="$PACKAGE_ROOT/languages/core-blueprint-seo.pot"
+[[ -s "$POT" ]] || fail "release package is missing canonical POT"
+for locale in "${LOCALES[@]}"; do
+  po="$PACKAGE_ROOT/languages/core-blueprint-seo-${locale}.po"
+  mo="$PACKAGE_ROOT/languages/core-blueprint-seo-${locale}.mo"
+  [[ -s "$po" ]] || fail "release package is missing reviewed ${locale}.po catalog"
+  msgfmt --check-format --check-header -o "$mo" "$po"
+  [[ -s "$mo" ]] || fail "compiled MO is missing for $locale"
+done
+while IFS= read -r -d '' file; do
+  php -l "$file" >/dev/null || fail "staged PHP lint failed: $file"
+done < <(find "$PACKAGE_ROOT" -type f -name '*.php' -print0)
+while IFS= read -r -d '' file; do
+  node --check "$file" >/dev/null || fail "JavaScript syntax failed: $file"
+done < <(find "$PACKAGE_ROOT/assets" -type f -name '*.js' -print0)
+
+for locale in "${LOCALES[@]}"; do
+  for ext in po mo; do
+    catalog="$PACKAGE_ROOT/languages/core-blueprint-seo-${locale}.${ext}"
+    [[ -s "$catalog" ]] || fail "release package is missing ${locale}.${ext} catalog"
+  done
+done
+
+find "$PACKAGE_ROOT" -exec touch -t 198001010000 {} +
+(
+  cd "$STAGE"
+  zip -X -q "$ZIP" "$PACKAGE/"
+  find "$PACKAGE" -type f -print | LC_ALL=C sort | zip -X -q "$ZIP" -@
+)
+
+# 9-10. Archive acceptance.
+unzip -tqq "$ZIP"
+ZIP_ENTRIES="$(unzip -Z1 "$ZIP")"
+FIRST_ENTRY="${ZIP_ENTRIES%%$'\n'*}"
+[[ "$FIRST_ENTRY" == "$PACKAGE/" ]] || fail "release ZIP root is not $PACKAGE/"
+
+if grep -Eq '(^|/)(\.git|\.github|tests|tools|docs|dist|build)(/|$)' <<<"$ZIP_ENTRIES"; then
+  fail "development-only files leaked into the release ZIP"
+fi
+
+for required in "$PACKAGE/$MAIN_FILE" "$PACKAGE/uninstall.php" "$PACKAGE/languages/core-blueprint-seo.pot"; do
+  grep -Fxq "$required" <<<"$ZIP_ENTRIES" || fail "required release file missing from ZIP: $required"
+done
+for locale in "${LOCALES[@]}"; do
+  for ext in po mo; do
+    required="$PACKAGE/languages/core-blueprint-seo-${locale}.${ext}"
+    grep -Fxq "$required" <<<"$ZIP_ENTRIES" || fail "required catalog missing from ZIP: $required"
+  done
+done
+
+PACKAGED_MAIN="$(unzip -p "$ZIP" "$PACKAGE/$MAIN_FILE")"
+PACKAGED_VERSION=""
+PACKAGED_CONSTANT=""
+while IFS= read -r line; do
+  if [[ -z "$PACKAGED_VERSION" && "$line" =~ $header_re ]]; then PACKAGED_VERSION="${BASH_REMATCH[1]}"; fi
+  if [[ -z "$PACKAGED_CONSTANT" && "$line" =~ $version_re ]]; then PACKAGED_CONSTANT="${BASH_REMATCH[1]}"; fi
+done <<< "$PACKAGED_MAIN"
+[[ "$PACKAGED_VERSION" == "$VERSION" ]] || fail "packaged Version header differs from verified source"
+[[ "$PACKAGED_CONSTANT" == "$VERSION" ]] || fail "packaged CB_SEO_VERSION differs from verified source"
+grep -Eq '^[[:space:]]*\*[[:space:]]*Requires Plugins:[[:space:]]*core-blueprint[[:space:]]*
+
+# 11. SHA-256 only after archive acceptance.
+sha256sum "$ZIP" > "$CHECKSUM"
+SHA256="$(awk '{print $1}' "$CHECKSUM")"
+printf 'SEO release build: PASS\nPackage: %s\nVersion: %s\nCanonical root: %s/\nSHA-256: %s\n' "$ZIP" "$VERSION" "$PACKAGE" "$SHA256"
+
+domain_re='^[[:space:]]*\*[[:space:]]*Text Domain:[[:space:]]*([^[:space:]]+)'
+version_re="^[[:space:]]*define\\([[:space:]]*'CB_SEO_VERSION'[[:space:]]*,[[:space:]]*'([^']+)'[[:space:]]*\\)[[:space:]]*;"
+api_re="^[[:space:]]*define\\([[:space:]]*'CB_SEO_REQUIRED_API'[[:space:]]*,[[:space:]]*'([^']+)'[[:space:]]*\\)[[:space:]]*;"
+while IFS= read -r line; do
+  if [[ -z "$VERSION" && "$line" =~ $header_re ]]; then VERSION="${BASH_REMATCH[1]}"; fi
+  if [[ -z "$REQUIRES_PHP" && "$line" =~ $php_re ]]; then REQUIRES_PHP="${BASH_REMATCH[1]}"; fi
+  if [[ -z "$CONSTANT_VERSION" && "$line" =~ $version_re ]]; then CONSTANT_VERSION="${BASH_REMATCH[1]}"; fi
+  if [[ -z "$REQUIRED_API" && "$line" =~ $api_re ]]; then REQUIRED_API="${BASH_REMATCH[1]}"; fi
+done < "$ENTRY"
+[[ -n "$VERSION" ]] || fail "could not resolve plugin Version header"
+[[ "$VERSION" == "$CONSTANT_VERSION" ]] || fail "Version header and CB_SEO_VERSION differ"
+[[ "$REQUIRES_PHP" == "8.4" ]] || fail "Requires PHP must remain 8.4"
+[[ "$REQUIRED_API" == "1.0" ]] || fail "CB_SEO_REQUIRED_API must remain 1.0"
+
+# 2. Prove required toolchain.
+for command in php python3 git wp msgfmt node zip unzip sha256sum find sort touch grep; do
+  command -v "$command" >/dev/null 2>&1 || fail "missing required command: $command"
+done
+php -r 'exit(version_compare(PHP_VERSION, "8.4", ">=") ? 0 : 1);' || fail "PHP 8.4 or newer is required"
+
+# 3. Canonical read-only localization gate.
+"$ROOT/tools/i18n/check"
+
+# 4. Source syntax validation before product regressions.
+for file in "$ENTRY" "$ROOT/uninstall.php"; do
+  php -l "$file" >/dev/null || fail "PHP lint failed: $file"
+done
+while IFS= read -r -d '' file; do
+  php -l "$file" >/dev/null || fail "PHP lint failed: $file"
+done < <(find "$ROOT/src" -type f -name '*.php' -print0)
+
+# 5. Existing SEO product regressions.
+for test in "$ROOT"/tests/*-regression.php; do
+  [[ -f "$test" ]] || fail "no SEO product regressions found"
+  php "$test"
+done
+
+# 6. Explicit customer runtime staging.
+PACKAGE_ROOT="$STAGE/$PACKAGE"
+mkdir -p "$DIST" "$PACKAGE_ROOT"
+ZIP="$DIST/$PACKAGE-$VERSION.zip"
+CHECKSUM="$ZIP.sha256"
+rm -f "$ZIP" "$CHECKSUM"
+
+for path in "$MAIN_FILE" uninstall.php README.md CHANGELOG.md; do
+  [[ -f "$ROOT/$path" ]] || fail "required release file is missing: $path"
+  cp "$ROOT/$path" "$PACKAGE_ROOT/"
+done
+for path in src assets languages; do
+  [[ -d "$ROOT/$path" ]] || fail "required release directory is missing: $path"
+  cp -R "$ROOT/$path" "$PACKAGE_ROOT/"
+done
+
+# 7-8. Committed MO artifacts are already proven reproducible by canonical check;
+# validate the staged runtime and shipped JavaScript before archive creation.
+while IFS= read -r -d '' file; do
+  php -l "$file" >/dev/null || fail "staged PHP lint failed: $file"
+done < <(find "$PACKAGE_ROOT" -type f -name '*.php' -print0)
+while IFS= read -r -d '' file; do
+  node --check "$file" >/dev/null || fail "JavaScript syntax failed: $file"
+done < <(find "$PACKAGE_ROOT/assets" -type f -name '*.js' -print0)
+
+POT="$PACKAGE_ROOT/languages/core-blueprint-seo.pot"
+[[ -s "$POT" ]] || fail "release package is missing canonical POT"
+for locale in "${LOCALES[@]}"; do
+  for ext in po mo; do
+    catalog="$PACKAGE_ROOT/languages/core-blueprint-seo-${locale}.${ext}"
+    [[ -s "$catalog" ]] || fail "release package is missing ${locale}.${ext} catalog"
+  done
+done
+
+find "$PACKAGE_ROOT" -exec touch -t 198001010000 {} +
+(
+  cd "$STAGE"
+  zip -X -q "$ZIP" "$PACKAGE/"
+  find "$PACKAGE" -type f -print | LC_ALL=C sort | zip -X -q "$ZIP" -@
+)
+
+# 9-10. Archive acceptance.
+unzip -tqq "$ZIP"
+ZIP_ENTRIES="$(unzip -Z1 "$ZIP")"
+FIRST_ENTRY="${ZIP_ENTRIES%%$'\n'*}"
+[[ "$FIRST_ENTRY" == "$PACKAGE/" ]] || fail "release ZIP root is not $PACKAGE/"
+
+if grep -Eq '(^|/)(\.git|\.github|tests|tools|docs|dist|build)(/|$)' <<<"$ZIP_ENTRIES"; then
+  fail "development-only files leaked into the release ZIP"
+fi
+
+for required in "$PACKAGE/$MAIN_FILE" "$PACKAGE/uninstall.php" "$PACKAGE/languages/core-blueprint-seo.pot"; do
+  grep -Fxq "$required" <<<"$ZIP_ENTRIES" || fail "required release file missing from ZIP: $required"
+done
+for locale in "${LOCALES[@]}"; do
+  for ext in po mo; do
+    required="$PACKAGE/languages/core-blueprint-seo-${locale}.${ext}"
+    grep -Fxq "$required" <<<"$ZIP_ENTRIES" || fail "required catalog missing from ZIP: $required"
+  done
+done
+
+PACKAGED_MAIN="$(unzip -p "$ZIP" "$PACKAGE/$MAIN_FILE")"
+PACKAGED_VERSION=""
+PACKAGED_CONSTANT=""
+while IFS= read -r line; do
+  if [[ -z "$PACKAGED_VERSION" && "$line" =~ $header_re ]]; then PACKAGED_VERSION="${BASH_REMATCH[1]}"; fi
+  if [[ -z "$PACKAGED_CONSTANT" && "$line" =~ $version_re ]]; then PACKAGED_CONSTANT="${BASH_REMATCH[1]}"; fi
+done <<< "$PACKAGED_MAIN"
+[[ "$PACKAGED_VERSION" == "$VERSION" ]] || fail "packaged Version header differs from verified source"
+[[ "$PACKAGED_CONSTANT" == "$VERSION" ]] || fail "packaged CB_SEO_VERSION differs from verified source"
+
+# 11. SHA-256 only after archive acceptance.
+sha256sum "$ZIP" > "$CHECKSUM"
+SHA256="$(awk '{print $1}' "$CHECKSUM")"
+printf 'SEO release build: PASS\nPackage: %s\nVersion: %s\nCanonical root: %s/\nSHA-256: %s\n' "$ZIP" "$VERSION" "$PACKAGE" "$SHA256"
+ <<<"$PACKAGED_MAIN" || fail "packaged Requires Plugins identity is invalid"
+grep -Eq '^[[:space:]]*\*[[:space:]]*Text Domain:[[:space:]]*core-blueprint-seo[[:space:]]*
+
+# 11. SHA-256 only after archive acceptance.
+sha256sum "$ZIP" > "$CHECKSUM"
+SHA256="$(awk '{print $1}' "$CHECKSUM")"
+printf 'SEO release build: PASS\nPackage: %s\nVersion: %s\nCanonical root: %s/\nSHA-256: %s\n' "$ZIP" "$VERSION" "$PACKAGE" "$SHA256"
+
+domain_re='^[[:space:]]*\*[[:space:]]*Text Domain:[[:space:]]*([^[:space:]]+)'
+version_re="^[[:space:]]*define\\([[:space:]]*'CB_SEO_VERSION'[[:space:]]*,[[:space:]]*'([^']+)'[[:space:]]*\\)[[:space:]]*;"
+api_re="^[[:space:]]*define\\([[:space:]]*'CB_SEO_REQUIRED_API'[[:space:]]*,[[:space:]]*'([^']+)'[[:space:]]*\\)[[:space:]]*;"
+while IFS= read -r line; do
+  if [[ -z "$VERSION" && "$line" =~ $header_re ]]; then VERSION="${BASH_REMATCH[1]}"; fi
+  if [[ -z "$REQUIRES_PHP" && "$line" =~ $php_re ]]; then REQUIRES_PHP="${BASH_REMATCH[1]}"; fi
+  if [[ -z "$CONSTANT_VERSION" && "$line" =~ $version_re ]]; then CONSTANT_VERSION="${BASH_REMATCH[1]}"; fi
+  if [[ -z "$REQUIRED_API" && "$line" =~ $api_re ]]; then REQUIRED_API="${BASH_REMATCH[1]}"; fi
+done < "$ENTRY"
+[[ -n "$VERSION" ]] || fail "could not resolve plugin Version header"
+[[ "$VERSION" == "$CONSTANT_VERSION" ]] || fail "Version header and CB_SEO_VERSION differ"
+[[ "$REQUIRES_PHP" == "8.4" ]] || fail "Requires PHP must remain 8.4"
+[[ "$REQUIRED_API" == "1.0" ]] || fail "CB_SEO_REQUIRED_API must remain 1.0"
+
+# 2. Prove required toolchain.
+for command in php python3 git wp msgfmt node zip unzip sha256sum find sort touch grep; do
+  command -v "$command" >/dev/null 2>&1 || fail "missing required command: $command"
+done
+php -r 'exit(version_compare(PHP_VERSION, "8.4", ">=") ? 0 : 1);' || fail "PHP 8.4 or newer is required"
+
+# 3. Canonical read-only localization gate.
+"$ROOT/tools/i18n/check"
+
+# 4. Source syntax validation before product regressions.
+for file in "$ENTRY" "$ROOT/uninstall.php"; do
+  php -l "$file" >/dev/null || fail "PHP lint failed: $file"
+done
+while IFS= read -r -d '' file; do
+  php -l "$file" >/dev/null || fail "PHP lint failed: $file"
+done < <(find "$ROOT/src" -type f -name '*.php' -print0)
+
+# 5. Existing SEO product regressions.
+for test in "$ROOT"/tests/*-regression.php; do
+  [[ -f "$test" ]] || fail "no SEO product regressions found"
+  php "$test"
+done
+
+# 6. Explicit customer runtime staging.
+PACKAGE_ROOT="$STAGE/$PACKAGE"
+mkdir -p "$DIST" "$PACKAGE_ROOT"
+ZIP="$DIST/$PACKAGE-$VERSION.zip"
+CHECKSUM="$ZIP.sha256"
+rm -f "$ZIP" "$CHECKSUM"
+
+for path in "$MAIN_FILE" uninstall.php README.md CHANGELOG.md; do
+  [[ -f "$ROOT/$path" ]] || fail "required release file is missing: $path"
+  cp "$ROOT/$path" "$PACKAGE_ROOT/"
+done
+for path in src assets languages; do
+  [[ -d "$ROOT/$path" ]] || fail "required release directory is missing: $path"
+  cp -R "$ROOT/$path" "$PACKAGE_ROOT/"
+done
+
+# 7-8. Committed MO artifacts are already proven reproducible by canonical check;
+# validate the staged runtime and shipped JavaScript before archive creation.
+while IFS= read -r -d '' file; do
+  php -l "$file" >/dev/null || fail "staged PHP lint failed: $file"
+done < <(find "$PACKAGE_ROOT" -type f -name '*.php' -print0)
+while IFS= read -r -d '' file; do
+  node --check "$file" >/dev/null || fail "JavaScript syntax failed: $file"
+done < <(find "$PACKAGE_ROOT/assets" -type f -name '*.js' -print0)
+
+POT="$PACKAGE_ROOT/languages/core-blueprint-seo.pot"
+[[ -s "$POT" ]] || fail "release package is missing canonical POT"
+for locale in "${LOCALES[@]}"; do
+  for ext in po mo; do
+    catalog="$PACKAGE_ROOT/languages/core-blueprint-seo-${locale}.${ext}"
+    [[ -s "$catalog" ]] || fail "release package is missing ${locale}.${ext} catalog"
+  done
+done
+
+find "$PACKAGE_ROOT" -exec touch -t 198001010000 {} +
+(
+  cd "$STAGE"
+  zip -X -q "$ZIP" "$PACKAGE/"
+  find "$PACKAGE" -type f -print | LC_ALL=C sort | zip -X -q "$ZIP" -@
+)
+
+# 9-10. Archive acceptance.
+unzip -tqq "$ZIP"
+ZIP_ENTRIES="$(unzip -Z1 "$ZIP")"
+FIRST_ENTRY="${ZIP_ENTRIES%%$'\n'*}"
+[[ "$FIRST_ENTRY" == "$PACKAGE/" ]] || fail "release ZIP root is not $PACKAGE/"
+
+if grep -Eq '(^|/)(\.git|\.github|tests|tools|docs|dist|build)(/|$)' <<<"$ZIP_ENTRIES"; then
+  fail "development-only files leaked into the release ZIP"
+fi
+
+for required in "$PACKAGE/$MAIN_FILE" "$PACKAGE/uninstall.php" "$PACKAGE/languages/core-blueprint-seo.pot"; do
+  grep -Fxq "$required" <<<"$ZIP_ENTRIES" || fail "required release file missing from ZIP: $required"
+done
+for locale in "${LOCALES[@]}"; do
+  for ext in po mo; do
+    required="$PACKAGE/languages/core-blueprint-seo-${locale}.${ext}"
+    grep -Fxq "$required" <<<"$ZIP_ENTRIES" || fail "required catalog missing from ZIP: $required"
+  done
+done
+
+PACKAGED_MAIN="$(unzip -p "$ZIP" "$PACKAGE/$MAIN_FILE")"
+PACKAGED_VERSION=""
+PACKAGED_CONSTANT=""
+while IFS= read -r line; do
+  if [[ -z "$PACKAGED_VERSION" && "$line" =~ $header_re ]]; then PACKAGED_VERSION="${BASH_REMATCH[1]}"; fi
+  if [[ -z "$PACKAGED_CONSTANT" && "$line" =~ $version_re ]]; then PACKAGED_CONSTANT="${BASH_REMATCH[1]}"; fi
+done <<< "$PACKAGED_MAIN"
+[[ "$PACKAGED_VERSION" == "$VERSION" ]] || fail "packaged Version header differs from verified source"
+[[ "$PACKAGED_CONSTANT" == "$VERSION" ]] || fail "packaged CB_SEO_VERSION differs from verified source"
+
+# 11. SHA-256 only after archive acceptance.
+sha256sum "$ZIP" > "$CHECKSUM"
+SHA256="$(awk '{print $1}' "$CHECKSUM")"
+printf 'SEO release build: PASS\nPackage: %s\nVersion: %s\nCanonical root: %s/\nSHA-256: %s\n' "$ZIP" "$VERSION" "$PACKAGE" "$SHA256"
+ <<<"$PACKAGED_MAIN" || fail "packaged Text Domain identity is invalid"
+
+# 11. SHA-256 only after archive acceptance.
+sha256sum "$ZIP" > "$CHECKSUM"
+SHA256="$(awk '{print $1}' "$CHECKSUM")"
+printf 'SEO release build: PASS\nPackage: %s\nVersion: %s\nCanonical root: %s/\nSHA-256: %s\n' "$ZIP" "$VERSION" "$PACKAGE" "$SHA256"
+
+domain_re='^[[:space:]]*\*[[:space:]]*Text Domain:[[:space:]]*([^[:space:]]+)'
 version_re="^[[:space:]]*define\\([[:space:]]*'CB_SEO_VERSION'[[:space:]]*,[[:space:]]*'([^']+)'[[:space:]]*\\)[[:space:]]*;"
 api_re="^[[:space:]]*define\\([[:space:]]*'CB_SEO_REQUIRED_API'[[:space:]]*,[[:space:]]*'([^']+)'[[:space:]]*\\)[[:space:]]*;"
 while IFS= read -r line; do
