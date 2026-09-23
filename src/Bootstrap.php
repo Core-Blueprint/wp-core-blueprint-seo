@@ -16,6 +16,7 @@ use CB\SEO\Admin\Assets;
 use CB\SEO\Admin\Editor\SeoMetaBox;
 use CB\SEO\Admin\Editor\TermFields;
 use CB\SEO\Compatibility\SeoPluginConflictDetector;
+use CB\SEO\Compatibility\RuntimeGate;
 use CB\SEO\Metadata\Runtime;
 use CB\SEO\Indexing\Runtime as IndexingRuntime;
 use CB\SEO\Social\Runtime as SocialRuntime;
@@ -52,7 +53,7 @@ final class Bootstrap {
 		DiscoveryRuntime::boot();
 
 		// Frontend metadata output is atomically governed by the same master state.
-		if ( ! State::is_enabled() ) {
+		if ( ! RuntimeGate::frontend_allowed() ) {
 			return;
 		}
 
@@ -66,7 +67,8 @@ final class Bootstrap {
 		ExtensionRegistry::register( [
 			'id'           => 'core-blueprint-seo',
 			'plugin_file'  => CB_SEO_BASENAME,
-			'requires_api' => '1.0',
+			'requires_api'  => CB_SEO_REQUIRED_API,
+			'requires_base' => CB_SEO_REQUIRED_BASE,
 			'menu_url'     => SettingsRegistry::url( 'core-blueprint-seo' ),
 			'status_id'    => 'seo',
 		] );
