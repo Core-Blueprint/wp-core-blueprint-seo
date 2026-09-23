@@ -81,11 +81,13 @@ final class Requirements {
 	public static function base_contracts_ready(): bool {
 		$required_classes = [
 			'\\CB\\Core\\Admin\\SettingsRegistry',
+			'\\CB\\Core\\Dashboard\\CardRegistry',
 			'\\CB\\Core\\ExtensionRegistry',
 			'\\CB\\Core\\Modules\\ActivationRegistry',
 			'\\CB\\Core\\Modules\\ModuleStateInterface',
 			'\\CB\\Core\\UI\\Notice',
 			'\\CB\\Core\\UI\\Card',
+			'\\CB\\Core\\UI\\Icon',
 			'\\CB\\Core\\Log\\AuditLog',
 		];
 
