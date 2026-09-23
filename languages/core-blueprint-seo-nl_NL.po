@@ -703,7 +703,7 @@ msgstr "Berichttypen"
 #: src/Admin/SettingsPage.php:325 src/Admin/SettingsPage.php:611
 #: src/Integration/Builders/Bricks/Elements/Sitemap.php:38
 msgid "Taxonomies"
-msgstr "TaxonomieÃ«n"
+msgstr "Taxonomieën"
 
 #: src/Admin/SettingsPage.php:330
 msgid ""
@@ -1068,7 +1068,7 @@ msgid ""
 "Taxonomy templates apply to public term archive pages when a term has no "
 "individual SEO override."
 msgstr ""
-"Taxonomietemplates gelden voor openbare termarchiefpaginaâs wanneer een term "
+"Taxonomietemplates gelden voor openbare termarchiefpagina’s wanneer een term "
 "geen individuele SEO-override heeft."
 
 #: src/Admin/SettingsPage.php:656
@@ -1078,7 +1078,7 @@ msgstr "Metadatatemplates opslaan"
 #: src/Admin/SettingsPage.php:657
 msgid "All post-type and taxonomy templates are saved together."
 msgstr ""
-"Alle templates voor berichttypen en taxonomieÃ«n worden samen opgeslagen."
+"Alle templates voor berichttypen en taxonomieën worden samen opgeslagen."
 
 #: src/Admin/SettingsPage.php:696
 msgid "Custom"
