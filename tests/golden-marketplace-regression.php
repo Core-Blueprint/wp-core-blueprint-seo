@@ -74,6 +74,20 @@ function cb_seo_golden_marketplace_failures( string $root ): array {
 		}
 	}
 
+	$catalog = $read( 'tools/i18n/catalog.py' );
+	$reference = json_decode( $read( 'tools/i18n/reference.json' ), true );
+	if ( ! is_array( $reference ) ) {
+		$failures[] = 'Canonical i18n reference metadata is invalid.';
+	} else {
+		$blob = sha1( 'blob ' . strlen( $catalog ) . "\0" . $catalog );
+		if ( $blob !== ( $reference['catalog_git_blob'] ?? '' ) ) {
+			$failures[] = 'SEO modified the canonical i18n catalog engine.';
+		}
+		if ( hash( 'sha256', $catalog ) !== ( $reference['catalog_sha256'] ?? '' ) ) {
+			$failures[] = 'Canonical i18n catalog SHA-256 does not match reference metadata.';
+		}
+	}
+
 	$config = json_decode( $read( 'tools/i18n/config.json' ), true );
 	if ( ! is_array( $config ) || true !== array_key_exists( 'commit_mo', $config ) || false !== $config['commit_mo'] ) {
 		$failures[] = 'Localization must keep MO files release-only (commit_mo=false).';
@@ -90,13 +104,18 @@ function cb_seo_golden_marketplace_failures( string $root ): array {
 		}
 	}
 
+	$license = $read( 'LICENSE' );
+	$require( $license, 'GNU GENERAL PUBLIC LICENSE', 'Repository LICENSE does not contain the GPL license text.' );
+
 	$builder = $read( 'tools/build-release' );
 	foreach ( [
 		'CB_SEO_REQUIRED_API must remain 1.1' => 'Release builder does not enforce Core API 1.1.',
 		'CB_SEO_REQUIRED_BASE must remain 1.0.0-rc1' => 'Release builder does not enforce the minimum Base version.',
 		'Requires Plugins must declare core-blueprint' => 'Release builder does not verify the native Base dependency.',
 		'msgfmt --check-format --check-header -o "$mo" "$po"' => 'Release builder does not compile staged MO catalogs from reviewed PO sources.',
+		'git status --porcelain --untracked-files=all' => 'Release builder does not detect untracked release-source files.',
 		'working tree contains uncommitted release-source changes' => 'Release builder does not require a clean release source tree.',
+		'$PACKAGE/LICENSE' => 'Release builder does not require LICENSE in the customer archive.',
 	] as $needle => $message ) {
 		$require( $builder, $needle, $message );
 	}
