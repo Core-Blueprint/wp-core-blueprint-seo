@@ -59,6 +59,14 @@ SHARED_TRANSLATIONS = {
         "it_IT": "I contratti Core Blueprint Base richiesti non sono disponibili.",
         "pt_PT": "Os contratos Core Blueprint Base necessários não estão disponíveis.",
     },
+    "%s is active, so Core Blueprint SEO has paused its public metadata, indexing, social, schema and AI Discovery output. Settings and stored data remain available until the conflict is removed.": {
+        "nl_NL": "%s is actief, daarom heeft Core Blueprint SEO de publieke metadata-, indexerings-, social-, schema- en AI Discovery-output gepauzeerd. Instellingen en opgeslagen gegevens blijven beschikbaar totdat het conflict is opgelost.",
+        "de_DE": "%s ist aktiv. Deshalb hat Core Blueprint SEO die öffentliche Ausgabe von Metadaten, Indexierung, Social-Metadaten, Schema und AI Discovery pausiert. Einstellungen und gespeicherte Daten bleiben verfügbar, bis der Konflikt behoben ist.",
+        "fr_FR": "%s est actif. Core Blueprint SEO a donc suspendu la sortie publique des métadonnées, de l’indexation, des données sociales, du schéma et d’AI Discovery. Les réglages et les données enregistrées restent disponibles jusqu’à la résolution du conflit.",
+        "es_ES": "%s está activo, por lo que Core Blueprint SEO ha pausado la salida pública de metadatos, indexación, datos sociales, schema y AI Discovery. Los ajustes y los datos guardados siguen disponibles hasta que se resuelva el conflicto.",
+        "it_IT": "%s è attivo, quindi Core Blueprint SEO ha sospeso l’output pubblico di metadati, indicizzazione, social, schema e AI Discovery. Le impostazioni e i dati salvati restano disponibili finché il conflitto non viene risolto.",
+        "pt_PT": "%s está ativo, por isso o Core Blueprint SEO colocou em pausa a saída pública de metadados, indexação, social, schema e AI Discovery. As definições e os dados guardados permanecem disponíveis até o conflito ser resolvido.",
+    },
 }
 
 
