@@ -35,14 +35,6 @@ SHARED_TRANSLATIONS = {
         "it_IT": "Core Blueprint deve essere installato e attivo.",
         "pt_PT": "O Core Blueprint tem de estar instalado e ativo.",
     },
-    "Core Blueprint %1$s or newer is required. Available Base version: %2$s.": {
-        "nl_NL": "Core Blueprint %1$s of nieuwer is vereist. Beschikbare Base-versie: %2$s.",
-        "de_DE": "Core Blueprint %1$s oder neuer ist erforderlich. Verfügbare Base-Version: %2$s.",
-        "fr_FR": "Core Blueprint %1$s ou une version ultérieure est requis. Version de Base disponible : %2$s.",
-        "es_ES": "Se requiere Core Blueprint %1$s o posterior. Versión de Base disponible: %2$s.",
-        "it_IT": "È richiesto Core Blueprint %1$s o una versione successiva. Versione Base disponibile: %2$s.",
-        "pt_PT": "É necessário Core Blueprint %1$s ou mais recente. Versão Base disponível: %2$s.",
-    },
     "Core API %1$s or a newer compatible minor version is required. Available Core API: %2$s.": {
         "nl_NL": "Core API %1$s of een nieuwere compatibele minorversie is vereist. Beschikbare Core API: %2$s.",
         "de_DE": "Core API %1$s oder eine neuere kompatible Minor-Version ist erforderlich. Verfügbare Core API: %2$s.",
@@ -58,14 +50,6 @@ SHARED_TRANSLATIONS = {
         "es_ES": "Los contratos requeridos de Core Blueprint Base no están disponibles.",
         "it_IT": "I contratti Core Blueprint Base richiesti non sono disponibili.",
         "pt_PT": "Os contratos Core Blueprint Base necessários não estão disponíveis.",
-    },
-    "%s is active, so Core Blueprint SEO has paused its public metadata, indexing, social, schema and AI Discovery output. Settings and stored data remain available until the conflict is removed.": {
-        "nl_NL": "%s is actief, daarom heeft Core Blueprint SEO de publieke metadata-, indexerings-, social-, schema- en AI Discovery-output gepauzeerd. Instellingen en opgeslagen gegevens blijven beschikbaar totdat het conflict is opgelost.",
-        "de_DE": "%s ist aktiv. Deshalb hat Core Blueprint SEO die öffentliche Ausgabe von Metadaten, Indexierung, Social-Metadaten, Schema und AI Discovery pausiert. Einstellungen und gespeicherte Daten bleiben verfügbar, bis der Konflikt behoben ist.",
-        "fr_FR": "%s est actif. Core Blueprint SEO a donc suspendu la sortie publique des métadonnées, de l’indexation, des données sociales, du schéma et d’AI Discovery. Les réglages et les données enregistrées restent disponibles jusqu’à la résolution du conflit.",
-        "es_ES": "%s está activo, por lo que Core Blueprint SEO ha pausado la salida pública de metadatos, indexación, datos sociales, schema y AI Discovery. Los ajustes y los datos guardados siguen disponibles hasta que se resuelva el conflicto.",
-        "it_IT": "%s è attivo, quindi Core Blueprint SEO ha sospeso l’output pubblico di metadati, indicizzazione, social, schema e AI Discovery. Le impostazioni e i dati salvati restano disponibili finché il conflitto non viene risolto.",
-        "pt_PT": "%s está ativo, por isso o Core Blueprint SEO colocou em pausa a saída pública de metadados, indexação, social, schema e AI Discovery. As definições e os dados guardados permanecem disponíveis até o conflito ser resolvido.",
     },
 }
 
