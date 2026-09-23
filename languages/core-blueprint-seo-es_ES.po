@@ -1238,11 +1238,11 @@ msgstr "SEO activado"
 
 #: src/Bootstrap.php:193
 msgid "SEO extension activated"
-msgstr "ExtensiÃ³n SEO activada"
+msgstr "Extensión SEO activada"
 
 #: src/Bootstrap.php:194
 msgid "SEO extension deactivated"
-msgstr "ExtensiÃ³n SEO desactivada"
+msgstr "Extensión SEO desactivada"
 
 #: src/Bootstrap.php:195
 msgid "SEO metadata templates updated"
