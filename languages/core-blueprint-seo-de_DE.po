@@ -1409,3 +1409,7 @@ msgstr "keine"
 #: src/Requirements.php:112
 msgid "Ready"
 msgstr "Bereit"
+
+#, php-format
+msgid "Core Blueprint %1$s or newer is required. Available Base version: %2$s."
+msgstr "Core Blueprint %1$s oder neuer ist erforderlich. Verfügbare Base-Version: %2$s."
