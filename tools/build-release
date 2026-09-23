@@ -86,6 +86,10 @@ while IFS= read -r -d '' file; do
   php -l "$file" >/dev/null || fail "PHP lint failed: $file"
 done < <(find "$ROOT/src" -type f -name '*.php' -print0)
 
+while IFS= read -r -d '' file; do
+  php -l "$file" >/dev/null || fail "PHP lint failed: $file"
+done < <(find "$ROOT/tests" -type f -name '*.php' -print0)
+
 echo "==> Running SEO product regressions"
 for test in "$ROOT"/tests/*-regression.php; do
   [[ -f "$test" ]] || fail "no SEO product regressions found"
