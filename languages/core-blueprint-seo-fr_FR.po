@@ -558,7 +558,7 @@ msgstr ""
 
 #: src/Admin/SettingsPage.php:43
 msgid "Settings"
-msgstr "RÃ©glages"
+msgstr "Réglages"
 
 #: src/Admin/SettingsPage.php:145 src/Bootstrap.php:79 src/Bootstrap.php:152
 msgid "SEO"
@@ -1222,19 +1222,19 @@ msgstr "Le document en ligne n’a pas pu être traité comme HTML."
 
 #: src/Bootstrap.php:165 src/Bootstrap.php:192
 msgid "SEO disabled"
-msgstr "SEO dÃ©sactivÃ©"
+msgstr "SEO désactivé"
 
 #: src/Bootstrap.php:180 src/Bootstrap.php:191
 msgid "SEO enabled"
-msgstr "SEO activÃ©"
+msgstr "SEO activé"
 
 #: src/Bootstrap.php:193
 msgid "SEO extension activated"
-msgstr "Extension SEO activÃ©e"
+msgstr "Extension SEO activée"
 
 #: src/Bootstrap.php:194
 msgid "SEO extension deactivated"
-msgstr "Extension SEO dÃ©sactivÃ©e"
+msgstr "Extension SEO désactivée"
 
 #: src/Bootstrap.php:195
 msgid "SEO metadata templates updated"
