@@ -107,6 +107,14 @@ function cb_seo_golden_marketplace_failures( string $root ): array {
 	$license = $read( 'LICENSE' );
 	$require( $license, 'GNU GENERAL PUBLIC LICENSE', 'Repository LICENSE does not contain the GPL license text.' );
 
+	$runtime_harness = $read( 'tools/runtime-test' );
+	$require( $runtime_harness, 'wp cb operator recover 1', 'Runtime harness does not follow the Base operator recovery flow.' );
+	$require( $runtime_harness, 'runtime-conflict-wordpress.php', 'Runtime harness does not execute the SEO conflict regression.' );
+	$require( $runtime_harness, 'runtime-seo-wordpress.php', 'Runtime harness does not execute the healthy SEO runtime regression.' );
+
+	$workflow = $read( '.github/workflows/golden-validation.yml' );
+	$require( $workflow, 'bash tools/runtime-test', 'CI runtime validation does not use the shared runtime harness.' );
+
 	$builder = $read( 'tools/build-release' );
 	foreach ( [
 		'CB_SEO_REQUIRED_API must remain 1.1' => 'Release builder does not enforce Core API 1.1.',
