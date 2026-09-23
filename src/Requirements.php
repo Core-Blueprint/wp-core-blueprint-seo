@@ -66,13 +66,6 @@ final class Requirements {
 					CB_SEO_REQUIRED_BASE,
 					defined( 'CB_CORE_VERSION' ) ? (string) CB_CORE_VERSION : 'none'
 				);
-			case 'base-version-incompatible':
-				return sprintf(
-					/* translators: 1: required Core Blueprint Base version, 2: available Base version. */
-					__( 'Core Blueprint %1$s or newer is required. Available Base version: %2$s.', 'core-blueprint-seo' ),
-					CB_SEO_REQUIRED_BASE,
-					defined( 'CB_CORE_VERSION' ) ? (string) CB_CORE_VERSION : __( 'none', 'core-blueprint-seo' )
-				);
 			case 'base-api-incompatible':
 				return sprintf(
 					'Core API %1$s or a newer compatible minor version is required. Available Core API: %2$s.',
@@ -117,6 +110,13 @@ final class Requirements {
 				);
 			case 'base-missing':
 				return __( 'Core Blueprint must be installed and active.', 'core-blueprint-seo' );
+			case 'base-version-incompatible':
+				return sprintf(
+					/* translators: 1: required Core Blueprint Base version, 2: available Base version. */
+					__( 'Core Blueprint %1$s or newer is required. Available Base version: %2$s.', 'core-blueprint-seo' ),
+					CB_SEO_REQUIRED_BASE,
+					defined( 'CB_CORE_VERSION' ) ? (string) CB_CORE_VERSION : __( 'none', 'core-blueprint-seo' )
+				);
 			case 'base-api-incompatible':
 				return sprintf(
 					/* translators: 1: required Core API version, 2: available Core API version. */
