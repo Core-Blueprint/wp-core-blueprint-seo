@@ -638,14 +638,8 @@ msgstr "È attivo un altro plugin SEO"
 #. translators: %s: comma-separated plugin names.
 #: src/Admin/SettingsPage.php:248
 #, php-format
-msgid ""
-"%s can emit overlapping titles, canonicals, robots directives, social "
-"metadata or structured data. Keep only one SEO output provider active when "
-"validating the frontend."
-msgstr ""
-"%s può generare titoli, canonical, direttive robots, metadati social o dati "
-"strutturati sovrapposti. Mantieni attivo un solo provider di output SEO "
-"durante la validazione del frontend."
+msgid "%s is active, so Core Blueprint SEO has paused its public metadata, indexing, social, schema and AI Discovery output. Settings and stored data remain available until the conflict is removed."
+msgstr "%s è attivo, quindi Core Blueprint SEO ha sospeso l’output pubblico di metadati, indicizzazione, social, schema e AI Discovery. Le impostazioni e i dati salvati restano disponibili finché il conflitto non viene risolto."
 
 #: src/Admin/SettingsPage.php:259
 msgid "SEO metadata templates saved."
