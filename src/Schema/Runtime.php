@@ -33,8 +33,15 @@ final class Runtime {
 			'@context' => 'https://schema.org',
 			'@graph'   => $graph,
 		];
+		$json = wp_json_encode(
+			$payload,
+			JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+		);
+		if ( ! is_string( $json ) || '' === $json ) {
+			return;
+		}
 		echo "\n<script type=\"application/ld+json\" class=\"cb-seo-schema\">";
-		echo wp_json_encode( $payload, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON is encoded by WordPress.
+		echo $json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON_HEX_* keeps the inline script context safe.
 		echo "</script>\n";
 	}
 
