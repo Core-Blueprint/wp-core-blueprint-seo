@@ -35,6 +35,14 @@ SHARED_TRANSLATIONS = {
         "it_IT": "Core Blueprint deve essere installato e attivo.",
         "pt_PT": "O Core Blueprint tem de estar instalado e ativo.",
     },
+    "Core Blueprint %1$s or newer is required. Available Base version: %2$s.": {
+        "nl_NL": "Core Blueprint %1$s of nieuwer is vereist. Beschikbare Base-versie: %2$s.",
+        "de_DE": "Core Blueprint %1$s oder neuer ist erforderlich. Verfügbare Base-Version: %2$s.",
+        "fr_FR": "Core Blueprint %1$s ou une version ultérieure est requis. Version de Base disponible : %2$s.",
+        "es_ES": "Se requiere Core Blueprint %1$s o posterior. Versión de Base disponible: %2$s.",
+        "it_IT": "È richiesto Core Blueprint %1$s o una versione successiva. Versione Base disponibile: %2$s.",
+        "pt_PT": "É necessário Core Blueprint %1$s ou mais recente. Versão Base disponível: %2$s.",
+    },
     "Core API %1$s or a newer compatible minor version is required. Available Core API: %2$s.": {
         "nl_NL": "Core API %1$s of een nieuwere compatibele minorversie is vereist. Beschikbare Core API: %2$s.",
         "de_DE": "Core API %1$s oder eine neuere kompatible Minor-Version ist erforderlich. Verfügbare Core API: %2$s.",
