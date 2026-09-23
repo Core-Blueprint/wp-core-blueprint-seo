@@ -63,7 +63,7 @@ function cb_seo_golden_marketplace_failures( string $root ): array {
 	foreach ( [ 'JSON_HEX_TAG', 'JSON_HEX_AMP', 'JSON_HEX_APOS', 'JSON_HEX_QUOT' ] as $flag ) {
 		$require( $schema, $flag, 'Inline JSON-LD is missing ' . $flag . ' escaping.' );
 	}
-	if ( str_contains( $schema, 'wp_json_encode( $payload, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )' ) {
+	if ( str_contains( $schema, 'wp_json_encode( $payload, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )' ) ) {
 		$failures[] = 'Unsafe legacy inline JSON-LD encoding remains.';
 	}
 
