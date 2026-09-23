@@ -37,7 +37,7 @@ function cb_seo_golden_marketplace_failures( string $root ): array {
 	$require( $integration, "'requires_api'  => CB_SEO_REQUIRED_API", 'Extension Registry does not use the canonical Core API constant.' );
 	$require( $integration, "'requires_base' => CB_SEO_REQUIRED_BASE", 'Extension Registry does not declare the Base version requirement.' );
 	$gate = strpos( $integration, 'if ( ! RuntimeGate::frontend_allowed() )' );
-	$metadata = strpos( $integration, 'Runtime::boot();' );
+	$metadata = false === $gate ? false : strpos( $integration, "\n\t\tRuntime::boot();", $gate );
 	if ( false === $gate || false === $metadata || $gate >= $metadata ) {
 		$failures[] = 'SEO frontend runtimes are not gated before metadata output boots.';
 	}
