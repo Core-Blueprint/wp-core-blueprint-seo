@@ -32,6 +32,8 @@ function cb_seo_golden_marketplace_failures( string $root ): array {
 	$requirements = $read( 'src/Requirements.php' );
 	$require( $requirements, "defined( 'CB_CORE_VERSION' )", 'Runtime requirements do not verify the Base version contract.' );
 	$require( $requirements, 'version_compare( (string) CB_CORE_VERSION, CB_SEO_REQUIRED_BASE', 'Minimum Base version comparison is missing.' );
+	$require( $requirements, "'\\\\CB\\\\Core\\\\Dashboard\\\\CardRegistry'", 'Dashboard CardRegistry is missing from the Base contract gate.' );
+	$require( $requirements, "'\\\\CB\\\\Core\\\\UI\\\\Icon'", 'Base Icon contract is missing from the runtime gate.' );
 
 	$integration = $read( 'src/Bootstrap.php' );
 	$require( $integration, "'requires_api'  => CB_SEO_REQUIRED_API", 'Extension Registry does not use the canonical Core API constant.' );
@@ -44,6 +46,13 @@ function cb_seo_golden_marketplace_failures( string $root ): array {
 
 	$runtime_gate = $read( 'src/Compatibility/RuntimeGate.php' );
 	$require( $runtime_gate, '[] === SeoPluginConflictDetector::active_conflicts()', 'Frontend conflict gate is not fail closed.' );
+
+	$settings_page = $read( 'src/Admin/SettingsPage.php' );
+	$require(
+		$settings_page,
+		'has paused its public metadata, indexing, social, schema and AI Discovery output',
+		'Conflict notice does not explain that Core Blueprint SEO public output is paused.'
+	);
 
 	$discovery = $read( 'src/Discovery/Runtime.php' );
 	if ( substr_count( $discovery, 'RuntimeGate::frontend_allowed()' ) < 2 ) {
@@ -72,6 +81,13 @@ function cb_seo_golden_marketplace_failures( string $root ): array {
 	$committed_mo = glob( $root . '/languages/*.mo' );
 	if ( is_array( $committed_mo ) && [] !== $committed_mo ) {
 		$failures[] = 'Committed MO artifacts remain in source control.';
+	}
+
+	foreach ( [ 'nl_NL', 'de_DE', 'fr_FR', 'es_ES', 'it_IT', 'pt_PT' ] as $locale ) {
+		$po = $read( 'languages/core-blueprint-seo-' . $locale . '.po' );
+		if ( preg_match( '/(?:Ã|Â|â€|â€™|ðŸ|�|[\x{0080}-\x{009F}])/u', $po ) ) {
+			$failures[] = 'Localization encoding corruption detected in ' . $locale . ' PO.';
+		}
 	}
 
 	$builder = $read( 'tools/build-release' );
