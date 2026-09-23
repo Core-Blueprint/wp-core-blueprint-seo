@@ -31,15 +31,13 @@ final class State implements ModuleStateInterface {
 			update_option( CB_SEO_ENABLED_OPT, $value );
 		}
 
-		if ( class_exists( AuditLog::class ) ) {
-			AuditLog::log(
-				$enabled ? 'seo_subsystem_enabled' : 'seo_subsystem_disabled',
-				'notice',
-				[
-					'actor'   => $actor,
-					'version' => CB_SEO_VERSION,
-				]
-			);
-		}
+		AuditLog::log(
+			$enabled ? 'seo_subsystem_enabled' : 'seo_subsystem_disabled',
+			'notice',
+			[
+				'actor'   => $actor,
+				'version' => CB_SEO_VERSION,
+			]
+		);
 	}
 }

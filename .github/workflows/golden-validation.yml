@@ -1,0 +1,76 @@
+name: Golden validation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php:
+          - '8.4'
+          - '8.5'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          tools: wp-cli
+
+      - name: Install gettext
+        run: sudo apt-get update && sudo apt-get install -y gettext
+
+      - name: PHP syntax
+        run: find . -type f -name '*.php' -not -path './dist/*' -not -path './build/*' -print0 | xargs -0 -n1 php -l
+
+      - name: Golden Marketplace regression
+        run: php tests/golden-marketplace-regression.php
+
+      - name: Product regressions
+        run: |
+          for test in tests/*-regression.php; do
+            php "$test"
+          done
+
+      - name: Release build
+        run: bash tools/build-release
+
+  runtime:
+    name: Runtime PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php:
+          - '8.4'
+          - '8.5'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          extensions: mysqli, sodium
+          tools: wp-cli
+
+      - name: Run disposable WordPress/MySQL runtime regression
+        run: bash tools/runtime-test

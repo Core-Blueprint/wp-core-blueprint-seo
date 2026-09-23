@@ -618,14 +618,8 @@ msgstr "Er is nog een SEO-plugin actief"
 #. translators: %s: comma-separated plugin names.
 #: src/Admin/SettingsPage.php:248
 #, php-format
-msgid ""
-"%s can emit overlapping titles, canonicals, robots directives, social "
-"metadata or structured data. Keep only one SEO output provider active when "
-"validating the frontend."
-msgstr ""
-"%s kan overlappende titels, canonicals, robots-directives, social metadata "
-"of structured data uitvoeren. Houd bij het valideren van de frontend slechts "
-"één SEO-outputprovider actief."
+msgid "%s is active, so Core Blueprint SEO has paused its public metadata, indexing, social, schema and AI Discovery output. Settings and stored data remain available until the conflict is removed."
+msgstr "%s is actief, daarom heeft Core Blueprint SEO de publieke metadata-, indexerings-, social-, schema- en AI Discovery-output gepauzeerd. Instellingen en opgeslagen gegevens blijven beschikbaar totdat het conflict is opgelost."
 
 #: src/Admin/SettingsPage.php:259
 msgid "SEO metadata templates saved."
@@ -703,7 +697,7 @@ msgstr "Berichttypen"
 #: src/Admin/SettingsPage.php:325 src/Admin/SettingsPage.php:611
 #: src/Integration/Builders/Bricks/Elements/Sitemap.php:38
 msgid "Taxonomies"
-msgstr "TaxonomieÃ«n"
+msgstr "Taxonomieën"
 
 #: src/Admin/SettingsPage.php:330
 msgid ""
@@ -1068,7 +1062,7 @@ msgid ""
 "Taxonomy templates apply to public term archive pages when a term has no "
 "individual SEO override."
 msgstr ""
-"Taxonomietemplates gelden voor openbare termarchiefpaginaâs wanneer een term "
+"Taxonomietemplates gelden voor openbare termarchiefpagina’s wanneer een term "
 "geen individuele SEO-override heeft."
 
 #: src/Admin/SettingsPage.php:656
@@ -1078,7 +1072,7 @@ msgstr "Metadatatemplates opslaan"
 #: src/Admin/SettingsPage.php:657
 msgid "All post-type and taxonomy templates are saved together."
 msgstr ""
-"Alle templates voor berichttypen en taxonomieÃ«n worden samen opgeslagen."
+"Alle templates voor berichttypen en taxonomieën worden samen opgeslagen."
 
 #: src/Admin/SettingsPage.php:696
 msgid "Custom"
@@ -1393,3 +1387,7 @@ msgstr "geen"
 #: src/Requirements.php:112
 msgid "Ready"
 msgstr "Gereed"
+
+#, php-format
+msgid "Core Blueprint %1$s or newer is required. Available Base version: %2$s."
+msgstr "Core Blueprint %1$s of nieuwer is vereist. Beschikbare Base-versie: %2$s."

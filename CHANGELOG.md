@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased - Golden Marketplace hardening
+
+- Require Core Blueprint Base 1.0.0-rc1+ and compatible Core API 1.1 through both WordPress and the Extension Registry contract.
+- Fail closed when another supported SEO output provider is active. Administration remains available, while metadata, indexing, social, schema and AI Discovery output stay dormant.
+- Harden inline schema.org JSON-LD with HTML-safe JSON escaping for script context.
+- Make Base audit logging part of the required runtime contract instead of a best-effort fallback.
+- Keep POT and reviewed PO files as localization source authority. Compile MO files only inside release staging.
+- Replace the release builder with a clean Packaging v1 contract that validates dependency, version, API, package boundary, translations and archive identity.
+- Add Golden Marketplace regression contracts and disposable WordPress/MySQL runtime coverage for conflict handling and JSON-LD safety.
+- Repair historical UTF-8 mojibake in the six reviewed locale catalogs and add a regression guard against encoding corruption.
+- Keep the suite-owned i18n engine byte-for-byte aligned with the canonical 1.1.0 reference; product translations remain POT/PO data only.
+- Reject untracked release-source files during packaging and ship an explicit GPL license in the customer archive.
+
 ## 1.0.0-rc4 — 2026-09-02
 
 - Replaced the vendor-specific SEOPress migration surface with a vendor-neutral WordPress metadata importer.

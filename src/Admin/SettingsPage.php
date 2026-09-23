@@ -245,7 +245,7 @@ final class SettingsPage {
 			'title'   => __( 'Another SEO plugin is active', 'core-blueprint-seo' ),
 			'message' => sprintf(
 				/* translators: %s: comma-separated plugin names. */
-				__( '%s can emit overlapping titles, canonicals, robots directives, social metadata or structured data. Keep only one SEO output provider active when validating the frontend.', 'core-blueprint-seo' ),
+				__( '%s is active, so Core Blueprint SEO has paused its public metadata, indexing, social, schema and AI Discovery output. Settings and stored data remain available until the conflict is removed.', 'core-blueprint-seo' ),
 				$names
 			),
 		] );

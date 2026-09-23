@@ -331,41 +331,41 @@ msgstr "Titre SEO"
 
 #: src/Admin/Editor/SeoMetaBox.php:77 src/Admin/Editor/SeoMetaBox.php:83
 msgid "Use the configured post-type template"
-msgstr "Utiliser le modÃ¨le configurÃ© pour ce type de contenu"
+msgstr "Utiliser le modèle configuré pour ce type de contenu"
 
 #: src/Admin/Editor/SeoMetaBox.php:79
 msgid ""
 "Leave empty to use the global template for this post type. If no template "
 "exists, WordPress keeps its normal document title."
 msgstr ""
-"Laissez vide pour utiliser le modÃ¨le global de ce type de contenu. Si aucun "
-"modÃ¨le nâexiste, WordPress conserve son titre de document normal."
+"Laissez vide pour utiliser le modèle global de ce type de contenu. Si aucun "
+"modèle n’existe, WordPress conserve son titre de document normal."
 
 #: src/Admin/Editor/SeoMetaBox.php:82 src/Admin/Editor/TermFields.php:44
 #: src/Admin/Editor/TermFields.php:86 src/Admin/SettingsPage.php:564
 msgid "Meta description"
-msgstr "MÃ©ta-description"
+msgstr "Méta-description"
 
 #: src/Admin/Editor/SeoMetaBox.php:85
 msgid ""
 "Leave empty to use the global template. Core Blueprint emits no fallback "
 "description when neither an override nor a template is configured."
 msgstr ""
-"Laissez vide pour utiliser le modÃ¨le global. Core Blueprint ne gÃ©nÃ¨re "
-"aucune description de secours si aucun remplacement ni modÃ¨le nâest "
-"configurÃ©."
+"Laissez vide pour utiliser le modèle global. Core Blueprint ne génère "
+"aucune description de secours si aucun remplacement ni modèle n’est "
+"configuré."
 
 #: src/Admin/Editor/SeoMetaBox.php:89
 msgid "Resolved preview"
-msgstr "AperÃ§u rÃ©solu"
+msgstr "Aperçu résolu"
 
 #: src/Admin/Editor/SeoMetaBox.php:90
 msgid "WordPress default title"
-msgstr "Titre WordPress par dÃ©faut"
+msgstr "Titre WordPress par défaut"
 
 #: src/Admin/Editor/SeoMetaBox.php:91
 msgid "No Core Blueprint meta description"
-msgstr "Aucune mÃ©ta-description Core Blueprint"
+msgstr "Aucune méta-description Core Blueprint"
 
 #: src/Admin/Editor/SeoMetaBox.php:111 src/Admin/Editor/TermFields.php:49
 #: src/Admin/Editor/TermFields.php:93
@@ -377,13 +377,13 @@ msgid ""
 "These are restrictive per-content overrides. Leave them unchecked to keep "
 "the normal WordPress or global SEO policy."
 msgstr ""
-"Il sâagit de restrictions appliquÃ©es Ã  ce contenu. Laissez-les dÃ©cochÃ©es "
+"Il s’agit de restrictions appliquées à ce contenu. Laissez-les décochées "
 "pour conserver la politique WordPress ou SEO globale normale."
 
 #: src/Admin/Editor/SeoMetaBox.php:113
 msgid "Block this content from search engine indexes (noindex)"
 msgstr ""
-"Bloquer lâindexation de ce contenu par les moteurs de recherche (noindex)"
+"Bloquer l’indexation de ce contenu par les moteurs de recherche (noindex)"
 
 #: src/Admin/Editor/SeoMetaBox.php:114
 msgid "Do not ask search engines to follow links on this content (nofollow)"
@@ -401,14 +401,14 @@ msgstr "Ne pas fournir de copie en cache de ce contenu (noarchive)"
 
 #: src/Admin/Editor/SeoMetaBox.php:117
 msgid "Do not show a text snippet for this content (nosnippet)"
-msgstr "Ne pas afficher dâextrait de texte pour ce contenu (nosnippet)"
+msgstr "Ne pas afficher d’extrait de texte pour ce contenu (nosnippet)"
 
 #: src/Admin/Editor/SeoMetaBox.php:118
 msgid ""
 "Content marked noindex is also excluded from the WordPress XML sitemap while "
 "Core Blueprint SEO is active."
 msgstr ""
-"Le contenu marquÃ© noindex est Ã©galement exclu du sitemap XML WordPress "
+"Le contenu marqué noindex est également exclu du sitemap XML WordPress "
 "tant que Core Blueprint SEO est actif."
 
 #: src/Admin/Editor/SeoMetaBox.php:122 src/Admin/Editor/TermFields.php:59
@@ -418,7 +418,7 @@ msgstr "URL canonique"
 
 #: src/Admin/Editor/SeoMetaBox.php:123
 msgid "Use the normal WordPress canonical"
-msgstr "Utiliser lâURL canonique WordPress normale"
+msgstr "Utiliser l’URL canonique WordPress normale"
 
 #: src/Admin/Editor/SeoMetaBox.php:124
 msgid ""
@@ -481,17 +481,17 @@ msgid ""
 "Optional. Leave empty to use the taxonomy template or the normal WordPress "
 "title."
 msgstr ""
-"Facultatif. Laissez vide pour utiliser le modÃ¨le de taxonomie ou le titre "
+"Facultatif. Laissez vide pour utiliser le modèle de taxonomie ou le titre "
 "WordPress normal."
 
 #: src/Admin/Editor/TermFields.php:46 src/Admin/Editor/TermFields.php:89
 msgid "Optional. Leave empty to use the taxonomy template."
-msgstr "Facultatif. Laissez vide pour utiliser le modÃ¨le de taxonomie."
+msgstr "Facultatif. Laissez vide pour utiliser le modèle de taxonomie."
 
 #: src/Admin/Editor/TermFields.php:50 src/Admin/Editor/TermFields.php:95
 msgid "Block this term archive from search engine indexes (noindex)"
 msgstr ""
-"Bloquer lâindexation de cette archive de terme par les moteurs de recherche "
+"Bloquer l’indexation de cette archive de terme par les moteurs de recherche "
 "(noindex)"
 
 #: src/Admin/Editor/TermFields.php:51 src/Admin/Editor/TermFields.php:96
@@ -512,15 +512,15 @@ msgstr "Ne pas fournir de copie en cache de cette archive de terme (noarchive)"
 #: src/Admin/Editor/TermFields.php:54 src/Admin/Editor/TermFields.php:99
 msgid "Do not show a text snippet for this term archive (nosnippet)"
 msgstr ""
-"Ne pas afficher dâextrait de texte pour cette archive de terme (nosnippet)"
+"Ne pas afficher d’extrait de texte pour cette archive de terme (nosnippet)"
 
 #: src/Admin/Editor/TermFields.php:55 src/Admin/Editor/TermFields.php:100
 msgid ""
 "Unchecked directives inherit the normal WordPress or global SEO policy. "
 "noindex also removes this term from the WordPress XML sitemap."
 msgstr ""
-"Les directives non cochÃ©es hÃ©ritent de la politique WordPress ou SEO "
-"globale normale. noindex supprime Ã©galement ce terme du sitemap XML "
+"Les directives non cochées héritent de la politique WordPress ou SEO "
+"globale normale. noindex supprime également ce terme du sitemap XML "
 "WordPress."
 
 #: src/Admin/Editor/TermFields.php:60 src/Admin/Editor/TermFields.php:107
@@ -533,8 +533,8 @@ msgid ""
 "term canonical when an explicit override is configured."
 msgstr ""
 "Laissez vide pour conserver le comportement normal du site. Core Blueprint "
-"nâÃ©met une URL canonique pour un terme que lorsquâun remplacement explicite "
-"est configurÃ©."
+"n’émet une URL canonique pour un terme que lorsqu’un remplacement explicite "
+"est configuré."
 
 #: src/Admin/Editor/TermFields.php:65 src/Admin/Editor/TermFields.php:113
 msgid "Social appearance"
@@ -558,7 +558,7 @@ msgstr ""
 
 #: src/Admin/SettingsPage.php:43
 msgid "Settings"
-msgstr "RÃÂ©glages"
+msgstr "Réglages"
 
 #: src/Admin/SettingsPage.php:145 src/Bootstrap.php:79 src/Bootstrap.php:152
 msgid "SEO"
@@ -569,25 +569,25 @@ msgid ""
 "Governed search metadata with WordPress-first fallbacks and builder-"
 "independent administration."
 msgstr ""
-"MÃ©tadonnÃ©es de recherche gouvernÃ©es avec des replis WordPress-first et "
-"une administration indÃ©pendante du constructeur."
+"Métadonnées de recherche gouvernées avec des replis WordPress-first et "
+"une administration indépendante du constructeur."
 
 #: src/Admin/SettingsPage.php:155
 msgid "SEO output is disabled"
-msgstr "La sortie SEO est dÃ©sactivÃ©e"
+msgstr "La sortie SEO est désactivée"
 
 #: src/Admin/SettingsPage.php:156
 msgid ""
 "You can prepare metadata below while the module is dormant. Nothing is "
 "emitted on the frontend until SEO is enabled."
 msgstr ""
-"Vous pouvez prÃ©parer les mÃ©tadonnÃ©es ci-dessous pendant que le module est "
-"inactif. Rien nâest gÃ©nÃ©rÃ© sur le frontend tant que le SEO nâest pas "
-"activÃ©."
+"Vous pouvez préparer les métadonnées ci-dessous pendant que le module est "
+"inactif. Rien n’est généré sur le frontend tant que le SEO n’est pas "
+"activé."
 
 #: src/Admin/SettingsPage.php:168
 msgid "Metadata templates"
-msgstr "ModÃ¨les de mÃ©tadonnÃ©es"
+msgstr "Modèles de métadonnées"
 
 #: src/Admin/SettingsPage.php:174
 msgid "Search visibility"
@@ -633,18 +633,12 @@ msgstr "Une autre extension SEO est active"
 #. translators: %s: comma-separated plugin names.
 #: src/Admin/SettingsPage.php:248
 #, php-format
-msgid ""
-"%s can emit overlapping titles, canonicals, robots directives, social "
-"metadata or structured data. Keep only one SEO output provider active when "
-"validating the frontend."
-msgstr ""
-"%s peut générer des titres, URL canoniques, directives robots, métadonnées "
-"sociales ou données structurées en double. Ne conservez qu’un seul "
-"fournisseur de sortie SEO actif lors de la validation du site public."
+msgid "%s is active, so Core Blueprint SEO has paused its public metadata, indexing, social, schema and AI Discovery output. Settings and stored data remain available until the conflict is removed."
+msgstr "%s est actif. Core Blueprint SEO a donc suspendu la sortie publique des métadonnées, de l’indexation, des données sociales, du schéma et d’AI Discovery. Les réglages et les données enregistrées restent disponibles jusqu’à la résolution du conflit."
 
 #: src/Admin/SettingsPage.php:259
 msgid "SEO metadata templates saved."
-msgstr "ModÃ¨les de mÃ©tadonnÃ©es SEO enregistrÃ©s."
+msgstr "Modèles de métadonnées SEO enregistrés."
 
 #: src/Admin/SettingsPage.php:262
 msgid "Search visibility settings saved."
@@ -695,7 +689,7 @@ msgstr ""
 #: src/Admin/SettingsPage.php:297
 msgid "No metadata template changes were detected."
 msgstr ""
-"Aucune modification des modÃ¨les de mÃ©tadonnÃ©es nâa Ã©tÃ© dÃ©tectÃ©e."
+"Aucune modification des modèles de métadonnées n’a été détectée."
 
 #: src/Admin/SettingsPage.php:320
 msgid ""
@@ -1060,55 +1054,55 @@ msgid ""
 "Templates apply only when an individual post or term has no SEO override. "
 "Leave a template empty to keep WordPress in control of that value."
 msgstr ""
-"Les modÃ¨les sâappliquent uniquement lorsquâun article ou un terme ne "
-"possÃ¨de aucune substitution SEO individuelle. Laissez un modÃ¨le vide pour "
-"laisser WordPress gÃ©rer cette valeur."
+"Les modèles s’appliquent uniquement lorsqu’un article ou un terme ne "
+"possède aucune substitution SEO individuelle. Laissez un modèle vide pour "
+"laisser WordPress gérer cette valeur."
 
 #: src/Admin/SettingsPage.php:609
 msgid "Metadata template sections"
-msgstr "Sections des modÃ¨les de mÃ©tadonnÃ©es"
+msgstr "Sections des modèles de métadonnées"
 
 #: src/Admin/SettingsPage.php:612
 msgid "Template variables"
-msgstr "Variables de modÃ¨le"
+msgstr "Variables de modèle"
 
 #: src/Admin/SettingsPage.php:616
 msgid ""
 "Open only the content types you want to customize. Unconfigured content "
 "keeps WordPress defaults."
 msgstr ""
-"Ouvrez uniquement les types de contenu Ã  personnaliser. Le contenu non "
-"configurÃ© conserve les valeurs par dÃ©faut de WordPress."
+"Ouvrez uniquement les types de contenu à personnaliser. Le contenu non "
+"configuré conserve les valeurs par défaut de WordPress."
 
 #: src/Admin/SettingsPage.php:634
 msgid ""
 "Taxonomy templates apply to public term archive pages when a term has no "
 "individual SEO override."
 msgstr ""
-"Les modÃ¨les de taxonomie sâappliquent aux archives publiques de termes "
-"lorsquâun terme ne possÃ¨de aucune substitution SEO individuelle."
+"Les modèles de taxonomie s’appliquent aux archives publiques de termes "
+"lorsqu’un terme ne possède aucune substitution SEO individuelle."
 
 #: src/Admin/SettingsPage.php:656
 msgid "Save metadata templates"
-msgstr "Enregistrer les modÃ¨les de mÃ©tadonnÃ©es"
+msgstr "Enregistrer les modèles de métadonnées"
 
 #: src/Admin/SettingsPage.php:657
 msgid "All post-type and taxonomy templates are saved together."
 msgstr ""
-"Tous les modÃ¨les de types de contenu et de taxonomies sont enregistrÃ©s "
+"Tous les modèles de types de contenu et de taxonomies sont enregistrés "
 "ensemble."
 
 #: src/Admin/SettingsPage.php:696
 msgid "Custom"
-msgstr "PersonnalisÃ©"
+msgstr "Personnalisé"
 
 #: src/Admin/SettingsPage.php:696
 msgid "WordPress default"
-msgstr "Valeur WordPress par dÃ©faut"
+msgstr "Valeur WordPress par défaut"
 
 #: src/Admin/SettingsPage.php:702
 msgid "Title template"
-msgstr "ModÃ¨le de titre"
+msgstr "Modèle de titre"
 
 #: src/Admin/SettingsPage.php:706
 msgid "Leave empty to keep WordPress responsible for this title."
@@ -1116,13 +1110,13 @@ msgstr "Laissez vide pour que WordPress reste responsable de ce titre."
 
 #: src/Admin/SettingsPage.php:710
 msgid "Description template"
-msgstr "ModÃ¨le de description"
+msgstr "Modèle de description"
 
 #: src/Admin/SettingsPage.php:714
 msgid ""
 "Leave empty to emit no Core Blueprint meta description for this content type."
 msgstr ""
-"Laissez vide pour que Core Blueprint ne gÃ©nÃ¨re aucune mÃ©ta-description "
+"Laissez vide pour que Core Blueprint ne génère aucune méta-description "
 "pour ce type de contenu."
 
 #: src/Admin/SettingsPage.php:741
@@ -1135,18 +1129,18 @@ msgstr "Titre du site WordPress."
 
 #: src/Admin/SettingsPage.php:743
 msgid "A typographic dash separator."
-msgstr "Un tiret typographique utilisÃ© comme sÃ©parateur."
+msgstr "Un tiret typographique utilisé comme séparateur."
 
 #: src/Admin/SettingsPage.php:744
 msgid ""
 "Explicit WordPress post excerpt. Builder content is intentionally not parsed."
 msgstr ""
-"Extrait WordPress explicite. Le contenu du constructeur nâest volontairement "
-"pas analysÃ©."
+"Extrait WordPress explicite. Le contenu du constructeur n’est volontairement "
+"pas analysé."
 
 #: src/Admin/SettingsPage.php:745
 msgid "Singular post-type label."
-msgstr "LibellÃ© singulier du type de contenu."
+msgstr "Libellé singulier du type de contenu."
 
 #: src/Admin/SettingsPage.php:746
 msgid "Current term name."
@@ -1158,23 +1152,23 @@ msgstr "Description actuelle du terme de taxonomie."
 
 #: src/Admin/SettingsPage.php:748
 msgid "Singular taxonomy label."
-msgstr "LibellÃ© singulier de la taxonomie."
+msgstr "Libellé singulier de la taxonomie."
 
 #: src/Admin/SettingsPage.php:751
 msgid ""
 "Use these variables inside title and description templates. They are "
 "resolved at render time."
 msgstr ""
-"Utilisez ces variables dans les modÃ¨les de titre et de description. Elles "
-"sont rÃ©solues lors du rendu."
+"Utilisez ces variables dans les modèles de titre et de description. Elles "
+"sont résolues lors du rendu."
 
 #: src/Admin/SettingsPage.php:757
 msgid ""
 "Rendered-page content analysis remains a later stage and will use the live "
 "frontend document rather than builder storage."
 msgstr ""
-"Lâanalyse du contenu de la page rendue viendra ultÃ©rieurement et utilisera "
-"le document frontend en direct plutÃ´t que le stockage du constructeur."
+"L’analyse du contenu de la page rendue viendra ultérieurement et utilisera "
+"le document frontend en direct plutôt que le stockage du constructeur."
 
 #: src/Analysis/AdminController.php:25
 msgid "The analysis request could not be verified."
@@ -1222,47 +1216,47 @@ msgstr "Le document en ligne n’a pas pu être traité comme HTML."
 
 #: src/Bootstrap.php:165 src/Bootstrap.php:192
 msgid "SEO disabled"
-msgstr "SEO dÃÂ©sactivÃÂ©"
+msgstr "SEO désactivé"
 
 #: src/Bootstrap.php:180 src/Bootstrap.php:191
 msgid "SEO enabled"
-msgstr "SEO activÃÂ©"
+msgstr "SEO activé"
 
 #: src/Bootstrap.php:193
 msgid "SEO extension activated"
-msgstr "Extension SEO activÃÂ©e"
+msgstr "Extension SEO activée"
 
 #: src/Bootstrap.php:194
 msgid "SEO extension deactivated"
-msgstr "Extension SEO dÃÂ©sactivÃÂ©e"
+msgstr "Extension SEO désactivée"
 
 #: src/Bootstrap.php:195
 msgid "SEO metadata templates updated"
-msgstr "ModÃ¨les de mÃ©tadonnÃ©es SEO mis Ã  jour"
+msgstr "Modèles de métadonnées SEO mis à jour"
 
 #: src/Bootstrap.php:196
 msgid "SEO content metadata updated"
-msgstr "MÃ©tadonnÃ©es SEO du contenu mises Ã  jour"
+msgstr "Métadonnées SEO du contenu mises à jour"
 
 #: src/Bootstrap.php:197
 msgid "SEO term metadata updated"
-msgstr "MÃ©tadonnÃ©es SEO du terme mises Ã  jour"
+msgstr "Métadonnées SEO du terme mises à jour"
 
 #: src/Bootstrap.php:198
 msgid "SEO content indexing directives updated"
-msgstr "Directives dâindexation SEO du contenu mises Ã  jour"
+msgstr "Directives d’indexation SEO du contenu mises à jour"
 
 #: src/Bootstrap.php:199
 msgid "SEO term indexing directives updated"
-msgstr "Directives dâindexation SEO du terme mises Ã  jour"
+msgstr "Directives d’indexation SEO du terme mises à jour"
 
 #: src/Bootstrap.php:200
 msgid "SEO content canonical updated"
-msgstr "URL canonique SEO du contenu mise Ã  jour"
+msgstr "URL canonique SEO du contenu mise à jour"
 
 #: src/Bootstrap.php:201
 msgid "SEO term canonical updated"
-msgstr "URL canonique SEO du terme mise Ã  jour"
+msgstr "URL canonique SEO du terme mise à jour"
 
 #: src/Bootstrap.php:202
 msgid "SEO content social metadata updated"
@@ -1411,3 +1405,7 @@ msgstr "aucun"
 #: src/Requirements.php:112
 msgid "Ready"
 msgstr "Prêt"
+
+#, php-format
+msgid "Core Blueprint %1$s or newer is required. Available Base version: %2$s."
+msgstr "Core Blueprint %1$s ou une version ultérieure est requis. Version de Base disponible : %2$s."

@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace {
 	defined( 'ABSPATH' ) || define( 'ABSPATH', __DIR__ . '/' );
 	defined( 'CB_SEO_BASENAME' ) || define( 'CB_SEO_BASENAME', 'core-blueprint-seo/core-blueprint-seo.php' );
+	defined( 'CB_SEO_REQUIRED_API' ) || define( 'CB_SEO_REQUIRED_API', '1.1' );
+	defined( 'CB_SEO_REQUIRED_BASE' ) || define( 'CB_SEO_REQUIRED_BASE', '1.0.0-rc1' );
 
 	function admin_url( string $path = '' ): string {
 		return 'https://example.test/wp-admin/' . ltrim( $path, '/' );
@@ -96,6 +98,8 @@ namespace CB\SEO {
 	$definition = ExtensionRegistry::$registered;
 	cb_seo_health_expect( is_array( $definition ), 'SEO must register with ExtensionRegistry.' );
 	cb_seo_health_expect( 'seo' === ( $definition['status_id'] ?? '' ), 'SEO extension registration must reference status_id seo.' );
+	cb_seo_health_expect( CB_SEO_REQUIRED_API === ( $definition['requires_api'] ?? '' ), 'SEO ExtensionRegistry definition must use the canonical Core API requirement.' );
+	cb_seo_health_expect( CB_SEO_REQUIRED_BASE === ( $definition['requires_base'] ?? '' ), 'SEO ExtensionRegistry definition must use the canonical Base requirement.' );
 	cb_seo_health_expect( str_contains( (string) ( $definition['menu_url'] ?? '' ), 'extension=core-blueprint-seo' ), 'SEO extension menu URL must target the Settings Hub provider.' );
 
 	Bootstrap::register_settings();
@@ -126,8 +130,8 @@ namespace CB\SEO {
 	$source = file_get_contents( __DIR__ . '/../src/Bootstrap.php' );
 	cb_seo_health_expect( false !== $source, 'Could not read SEO Bootstrap source.' );
 	$status_hook = strpos( $source, "add_filter( 'cb_core_module_status_definitions'" );
-	$state_gate  = strpos( $source, 'if ( ! State::is_enabled() )' );
-	cb_seo_health_expect( false !== $status_hook && false !== $state_gate && $status_hook < $state_gate, 'Status provider must remain registered while SEO is deliberately disabled.' );
+	$runtime_gate = strpos( $source, 'if ( ! RuntimeGate::frontend_allowed() )' );
+	cb_seo_health_expect( false !== $status_hook && false !== $runtime_gate && $status_hook < $runtime_gate, 'Status provider must remain registered before the governed frontend runtime gate.' );
 	cb_seo_health_expect( false === strpos( $source, 'cb_core_register_pages' ) && false === strpos( $source, 'PageRegistry::register' ), 'Retired PageRegistry settings registration must be absent.' );
 
 	echo "SEO dashboard health: PASS\n";

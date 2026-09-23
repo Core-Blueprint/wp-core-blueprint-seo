@@ -353,8 +353,8 @@ msgid ""
 "description when neither an override nor a template is configured."
 msgstr ""
 "Lascia vuoto per usare il modello globale. Core Blueprint non pubblica "
-"alcuna descrizione di fallback quando non sono configurati nÃ© un override "
-"nÃ© un modello."
+"alcuna descrizione di fallback quando non sono configurati né un override "
+"né un modello."
 
 #: src/Admin/Editor/SeoMetaBox.php:89
 msgid "Resolved preview"
@@ -384,7 +384,7 @@ msgstr ""
 #: src/Admin/Editor/SeoMetaBox.php:113
 msgid "Block this content from search engine indexes (noindex)"
 msgstr ""
-"Blocca lâindicizzazione di questo contenuto da parte dei motori di ricerca "
+"Blocca l’indicizzazione di questo contenuto da parte dei motori di ricerca "
 "(noindex)"
 
 #: src/Admin/Editor/SeoMetaBox.php:114
@@ -412,7 +412,7 @@ msgid ""
 "Core Blueprint SEO is active."
 msgstr ""
 "I contenuti contrassegnati come noindex vengono anche esclusi dalla sitemap "
-"XML di WordPress mentre Core Blueprint SEO Ã¨ attivo."
+"XML di WordPress mentre Core Blueprint SEO è attivo."
 
 #: src/Admin/Editor/SeoMetaBox.php:122 src/Admin/Editor/TermFields.php:59
 #: src/Admin/Editor/TermFields.php:105 src/Admin/SettingsPage.php:565
@@ -421,7 +421,7 @@ msgstr "URL canonico"
 
 #: src/Admin/Editor/SeoMetaBox.php:123
 msgid "Use the normal WordPress canonical"
-msgstr "Usa lâURL canonico normale di WordPress"
+msgstr "Usa l’URL canonico normale di WordPress"
 
 #: src/Admin/Editor/SeoMetaBox.php:124
 msgid ""
@@ -494,7 +494,7 @@ msgstr "Opzionale. Lascia vuoto per usare il modello della tassonomia."
 #: src/Admin/Editor/TermFields.php:50 src/Admin/Editor/TermFields.php:95
 msgid "Block this term archive from search engine indexes (noindex)"
 msgstr ""
-"Blocca lâindicizzazione di questo archivio di termine da parte dei motori di "
+"Blocca l’indicizzazione di questo archivio di termine da parte dei motori di "
 "ricerca (noindex)"
 
 #: src/Admin/Editor/TermFields.php:51 src/Admin/Editor/TermFields.php:96
@@ -539,7 +539,7 @@ msgid ""
 "term canonical when an explicit override is configured."
 msgstr ""
 "Lascia vuoto per mantenere il normale comportamento del sito. Core Blueprint "
-"emette un URL canonico per il termine solo quando Ã¨ configurato un override "
+"emette un URL canonico per il termine solo quando è configurato un override "
 "esplicito."
 
 #: src/Admin/Editor/TermFields.php:65 src/Admin/Editor/TermFields.php:113
@@ -580,15 +580,15 @@ msgstr ""
 
 #: src/Admin/SettingsPage.php:155
 msgid "SEO output is disabled"
-msgstr "Lâoutput SEO Ã¨ disattivato"
+msgstr "L’output SEO è disattivato"
 
 #: src/Admin/SettingsPage.php:156
 msgid ""
 "You can prepare metadata below while the module is dormant. Nothing is "
 "emitted on the frontend until SEO is enabled."
 msgstr ""
-"Puoi preparare i metadati qui sotto mentre il modulo Ã¨ inattivo. Nulla "
-"viene pubblicato sul frontend finchÃ© SEO non viene attivato."
+"Puoi preparare i metadati qui sotto mentre il modulo è inattivo. Nulla "
+"viene pubblicato sul frontend finché SEO non viene attivato."
 
 #: src/Admin/SettingsPage.php:168
 msgid "Metadata templates"
@@ -638,14 +638,8 @@ msgstr "È attivo un altro plugin SEO"
 #. translators: %s: comma-separated plugin names.
 #: src/Admin/SettingsPage.php:248
 #, php-format
-msgid ""
-"%s can emit overlapping titles, canonicals, robots directives, social "
-"metadata or structured data. Keep only one SEO output provider active when "
-"validating the frontend."
-msgstr ""
-"%s può generare titoli, canonical, direttive robots, metadati social o dati "
-"strutturati sovrapposti. Mantieni attivo un solo provider di output SEO "
-"durante la validazione del frontend."
+msgid "%s is active, so Core Blueprint SEO has paused its public metadata, indexing, social, schema and AI Discovery output. Settings and stored data remain available until the conflict is removed."
+msgstr "%s è attivo, quindi Core Blueprint SEO ha sospeso l’output pubblico di metadati, indicizzazione, social, schema e AI Discovery. Le impostazioni e i dati salvati restano disponibili finché il conflitto non viene risolto."
 
 #: src/Admin/SettingsPage.php:259
 msgid "SEO metadata templates saved."
@@ -1174,8 +1168,8 @@ msgid ""
 "Rendered-page content analysis remains a later stage and will use the live "
 "frontend document rather than builder storage."
 msgstr ""
-"Lâanalisi del contenuto della pagina renderizzata arriverÃ  in una fase "
-"successiva e userÃ  il documento frontend live invece dellâarchiviazione del "
+"L’analisi del contenuto della pagina renderizzata arriverà in una fase "
+"successiva e userà il documento frontend live invece dell’archiviazione del "
 "builder."
 
 #: src/Analysis/AdminController.php:25
@@ -1420,3 +1414,7 @@ msgstr "nessuna"
 #: src/Requirements.php:112
 msgid "Ready"
 msgstr "Pronto"
+
+#, php-format
+msgid "Core Blueprint %1$s or newer is required. Available Base version: %2$s."
+msgstr "È richiesto Core Blueprint %1$s o una versione successiva. Versione Base disponibile: %2$s."

@@ -4,6 +4,17 @@ Version: `1.0.0-rc1`
 
 Core Blueprint SEO is the privacy-first SEO and discovery extension for Core Blueprint. It improves how public WordPress content is described, indexed, shared and discovered without analytics, visitor tracking, advertising integrations or Google SDKs.
 
+## Requirements
+
+- WordPress 7.0+
+- PHP 8.4+
+- Core Blueprint Base 1.0.0-rc1 or newer
+- compatible Core API 1.1
+
+Core Blueprint Base is required. SEO registers through the public Extension Registry, uses Base module state and Settings Hub contracts, and records configuration changes through the Base audit log.
+
+If another supported SEO output provider is active, Core Blueprint SEO keeps its administration and stored configuration available but does not boot public metadata, indexing, social or schema output. The AI Discovery endpoint and discovery link also fail closed until the conflict is removed.
+
 ## v1 baseline
 
 - metadata templates for public post types and taxonomies;
@@ -19,7 +30,7 @@ Core Blueprint SEO is the privacy-first SEO and discovery extension for Core Blu
 - opt-in `/llms.txt` AI Discovery;
 - fail-closed AI Discovery handling for Core Blueprint Access-managed content;
 - builder-agnostic rendered frontend analyzer with focus-keyword checks;
-- detection of overlapping SEO plugins;
+- fail-closed detection of overlapping SEO plugins, with public SEO output kept dormant while a conflict is active;
 - vendor-neutral import of compatible SEO metadata already stored in WordPress post/term meta;
 - explicit review/mapping for ambiguous metadata fields, with existing Core Blueprint values always preserved;
 - Core Blueprint governance/audit events.

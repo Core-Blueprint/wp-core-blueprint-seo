@@ -72,10 +72,6 @@ final class Lifecycle {
 	}
 
 	private static function audit( string $event ): void {
-		if ( ! class_exists( AuditLog::class ) ) {
-			return;
-		}
-
 		AuditLog::log(
 			$event,
 			'notice',

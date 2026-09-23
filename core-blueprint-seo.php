@@ -30,7 +30,8 @@ if ( defined( 'CB_SEO_FILE' ) || defined( 'CB_SEO_VERSION' ) ) {
 define( 'CB_SEO_NAME', 'Core Blueprint SEO' );
 define( 'CB_SEO_VERSION', '1.0.0-rc1' );
 define( 'CB_SEO_MIN_PHP', '8.4' );
-define( 'CB_SEO_REQUIRED_API', '1.0' );
+define( 'CB_SEO_REQUIRED_API', '1.1' );
+define( 'CB_SEO_REQUIRED_BASE', '1.0.0-rc1' );
 define( 'CB_SEO_FILE', __FILE__ );
 define( 'CB_SEO_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CB_SEO_URL', plugin_dir_url( __FILE__ ) );
