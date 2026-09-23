@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+TMP="$(mktemp -d)"
+WP="$TMP/wordpress"
+MYSQL_NAME="cb-seo-runtime-$$"
+MYSQL_IMAGE="${CB_SEO_RUNTIME_MYSQL_IMAGE:-mysql:8.0}"
+
+cleanup() {
+  docker rm -f "$MYSQL_NAME" >/dev/null 2>&1 || true
+  rm -rf "$TMP"
+}
+trap cleanup EXIT
+
+fail() {
+  printf 'SEO runtime test failed: %s\n' "$*" >&2
+  exit 1
+}
+
+for command in docker git wp rsync php; do
+  command -v "$command" >/dev/null 2>&1 || fail "missing required command: $command"
+done
+
+docker info >/dev/null 2>&1 || fail "Docker daemon is unavailable"
+
+echo "==> Starting disposable MySQL"
+docker run -d   --name "$MYSQL_NAME"   -e MYSQL_ROOT_PASSWORD=root   -e MYSQL_DATABASE=wordpress   -P   "$MYSQL_IMAGE" >/dev/null
+
+ready=0
+for _ in $(seq 1 60); do
+  if docker exec "$MYSQL_NAME" mysqladmin ping -uroot -proot --silent >/dev/null 2>&1; then
+    ready=1
+    break
+  fi
+  sleep 2
+done
+[[ "$ready" == '1' ]] || fail "MySQL did not become ready"
+
+MYSQL_PORT="$(docker port "$MYSQL_NAME" 3306/tcp | head -n1 | awk -F: '{print $NF}')"
+[[ "$MYSQL_PORT" =~ ^[0-9]+$ ]] || fail "could not determine the disposable MySQL port"
+
+echo "==> Installing disposable WordPress"
+wp core download --path="$WP" --force
+wp config create   --path="$WP"   --dbname=wordpress   --dbuser=root   --dbpass=root   --dbhost="127.0.0.1:$MYSQL_PORT"
+wp core install   --path="$WP"   --url=http://seo-runtime.test   --title="SEO Runtime"   --admin_user=admin   --admin_password='runtime-test-password'   --admin_email=runtime@example.test   --skip-email
+
+echo "==> Installing Core Blueprint Base"
+git clone --depth 1 https://github.com/Core-Blueprint/wp-core-blueprint.git "$WP/wp-content/plugins/core-blueprint"
+wp plugin activate core-blueprint --path="$WP"
+wp cb operator recover 1 --path="$WP"
+
+echo "==> Installing conflict fixture"
+mkdir -p "$WP/wp-content/plugins/wordpress-seo"
+cat > "$WP/wp-content/plugins/wordpress-seo/wp-seo.php" <<'PHP'
+<?php
+/**
+ * Plugin Name: Golden SEO Conflict Fixture
+ * Version: 1.0.0
+ */
+defined( 'ABSPATH' ) || exit;
+PHP
+wp plugin activate wordpress-seo --path="$WP"
+
+echo "==> Installing Core Blueprint SEO from current checkout"
+mkdir -p "$WP/wp-content/plugins/core-blueprint-seo"
+rsync -a   --exclude='.git/'   --exclude='dist/'   --exclude='build/'   "$ROOT/"   "$WP/wp-content/plugins/core-blueprint-seo/"
+wp plugin activate core-blueprint-seo --path="$WP"
+
+echo "==> Verifying SEO conflict fail-safe"
+wp eval-file "$ROOT/tests/runtime-conflict-wordpress.php" --path="$WP" --user=1
+
+echo "==> Removing conflicting SEO provider"
+wp plugin deactivate wordpress-seo --path="$WP"
+
+echo "==> Verifying healthy runtime and JSON-LD safety"
+wp eval-file "$ROOT/tests/runtime-seo-wordpress.php" --path="$WP" --user=1
+
+echo "Core Blueprint SEO WordPress runtime: PASS"
