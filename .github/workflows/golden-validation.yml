@@ -60,20 +60,6 @@ jobs:
           - '8.4'
           - '8.5'
 
-    services:
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: wordpress
-        ports:
-          - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping -h 127.0.0.1 -proot"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=10
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -86,38 +72,5 @@ jobs:
           extensions: mysqli, sodium
           tools: wp-cli
 
-      - name: Install disposable WordPress
-        run: |
-          wp core download --path=/tmp/wordpress --force
-          wp config create             --path=/tmp/wordpress             --dbname=wordpress             --dbuser=root             --dbpass=root             --dbhost=127.0.0.1:3306
-          wp core install             --path=/tmp/wordpress             --url=http://seo-runtime.test             --title="SEO Runtime"             --admin_user=admin             --admin_password='runtime-test-password'             --admin_email=runtime@example.test             --skip-email
-
-      - name: Install Base, conflict fixture and SEO
-        run: |
-          git clone --depth 1 https://github.com/Core-Blueprint/wp-core-blueprint.git /tmp/wordpress/wp-content/plugins/core-blueprint
-          wp plugin activate core-blueprint --path=/tmp/wordpress
-          wp cb operator recover 1 --path=/tmp/wordpress
-
-          mkdir -p /tmp/wordpress/wp-content/plugins/wordpress-seo
-          cat > /tmp/wordpress/wp-content/plugins/wordpress-seo/wp-seo.php <<'PHP'
-          <?php
-          /**
-           * Plugin Name: Golden SEO Conflict Fixture
-           * Version: 1.0.0
-           */
-          defined( 'ABSPATH' ) || exit;
-          PHP
-          wp plugin activate wordpress-seo --path=/tmp/wordpress
-
-          mkdir -p /tmp/wordpress/wp-content/plugins/core-blueprint-seo
-          rsync -a             --exclude='.git/'             --exclude='dist/'             --exclude='build/'             "$GITHUB_WORKSPACE/"             /tmp/wordpress/wp-content/plugins/core-blueprint-seo/
-          wp plugin activate core-blueprint-seo --path=/tmp/wordpress
-
-      - name: Verify conflict fail-safe
-        run: wp eval-file "$GITHUB_WORKSPACE/tests/runtime-conflict-wordpress.php" --path=/tmp/wordpress --user=1
-
-      - name: Remove conflicting SEO provider
-        run: wp plugin deactivate wordpress-seo --path=/tmp/wordpress
-
-      - name: Verify conflict-free runtime and JSON-LD safety
-        run: wp eval-file "$GITHUB_WORKSPACE/tests/runtime-seo-wordpress.php" --path=/tmp/wordpress --user=1
+      - name: Run disposable WordPress/MySQL runtime regression
+        run: bash tools/runtime-test
