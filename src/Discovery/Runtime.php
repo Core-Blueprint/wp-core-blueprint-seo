@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace CB\SEO\Discovery;
 
-use CB\SEO\State;
+use CB\SEO\Compatibility\RuntimeGate;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -46,7 +46,7 @@ final class Runtime {
 			return;
 		}
 
-		if ( ! State::is_enabled() || ! SettingsRepository::all()['enabled'] ) {
+		if ( ! RuntimeGate::frontend_allowed() || ! SettingsRepository::all()['enabled'] ) {
 			status_header( 404 );
 			nocache_headers();
 			exit;
@@ -61,7 +61,7 @@ final class Runtime {
 	}
 
 	public static function render_discovery_link(): void {
-		if ( ! State::is_enabled() || ! SettingsRepository::all()['enabled'] || is_admin() || is_feed() ) {
+		if ( ! RuntimeGate::frontend_allowed() || ! SettingsRepository::all()['enabled'] || is_admin() || is_feed() ) {
 			return;
 		}
 		echo '<link rel="describedby" href="' . esc_url( home_url( '/llms.txt' ) ) . '">' . "\n";
