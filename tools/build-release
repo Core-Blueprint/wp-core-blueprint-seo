@@ -103,7 +103,7 @@ ZIP="$DIST/$PACKAGE-$VERSION.zip"
 CHECKSUM="$ZIP.sha256"
 rm -f "$ZIP" "$CHECKSUM"
 
-for path in "$MAIN_FILE" uninstall.php README.md CHANGELOG.md LICENSE; do
+for path in "$MAIN_FILE" uninstall.php readme.txt CHANGELOG.md LICENSE; do
   [[ -f "$ROOT/$path" ]] || fail "required release file is missing: $path"
   cp "$ROOT/$path" "$PACKAGE_ROOT/"
 done
@@ -158,7 +158,7 @@ if grep -Eq '(^|/)(\.git|\.github|tests|tools|docs|dist|build|node_modules|vendo
   fail "development-only files leaked into the release ZIP"
 fi
 
-for required in   "$PACKAGE/$MAIN_FILE"   "$PACKAGE/uninstall.php"   "$PACKAGE/LICENSE"   "$PACKAGE/languages/$PACKAGE.pot"; do
+for required in   "$PACKAGE/$MAIN_FILE"   "$PACKAGE/readme.txt"   "$PACKAGE/uninstall.php"   "$PACKAGE/LICENSE"   "$PACKAGE/languages/$PACKAGE.pot"; do
   grep -Fxq "$required" <<<"$ZIP_ENTRIES" || fail "required release file missing from ZIP: $required"
 done
 for locale in "${LOCALES[@]}"; do
