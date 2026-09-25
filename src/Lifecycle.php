@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace CB\SEO;
 
-use CB\Core\Log\AuditLog;
+use CB\SEO\Governance\Audit as GovernanceAudit;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -72,13 +72,6 @@ final class Lifecycle {
 	}
 
 	private static function audit( string $event ): void {
-		AuditLog::log(
-			$event,
-			'notice',
-			[
-				'actor'   => 'user:' . get_current_user_id(),
-				'version' => CB_SEO_VERSION,
-			]
-		);
+		GovernanceAudit::log( $event );
 	}
 }
