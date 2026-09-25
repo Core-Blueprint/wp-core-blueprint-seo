@@ -9,13 +9,13 @@ declare(strict_types=1);
 namespace CB\SEO\Integration\Builders\Bricks\Elements;
 
 use CB\SEO\Frontend\Sitemap as SitemapRenderer;
+use CB\SEO\Integration\Builders\Bricks\ElementRegistry;
 use CB\SEO\State;
-use WP_Post_Type;
-use WP_Taxonomy;
 
 defined( 'ABSPATH' ) || exit;
 
 final class Sitemap extends Element {
+	public $category = ElementRegistry::CATEGORY;
 	public $name = 'cb-seo-sitemap';
 	public $icon = 'ti-map-alt';
 
@@ -28,7 +28,7 @@ final class Sitemap extends Element {
 			'tab'         => 'content',
 			'label'       => esc_html__( 'Post types', 'core-blueprint-seo' ),
 			'type'        => 'select',
-			'options'     => self::post_type_options(),
+			'options'     => SitemapRenderer::post_type_options(),
 			'multiple'    => true,
 			'placeholder' => esc_html__( 'All eligible public post types', 'core-blueprint-seo' ),
 			'description' => esc_html__( 'Leave empty to use all public post types allowed by the Core Blueprint SEO sitemap policy.', 'core-blueprint-seo' ),
@@ -37,7 +37,7 @@ final class Sitemap extends Element {
 			'tab'         => 'content',
 			'label'       => esc_html__( 'Taxonomies', 'core-blueprint-seo' ),
 			'type'        => 'select',
-			'options'     => self::taxonomy_options(),
+			'options'     => SitemapRenderer::taxonomy_options(),
 			'multiple'    => true,
 			'placeholder' => esc_html__( 'None', 'core-blueprint-seo' ),
 			'description' => esc_html__( 'Optional taxonomy sections. Only public taxonomies allowed by the SEO sitemap policy are rendered.', 'core-blueprint-seo' ),
@@ -89,17 +89,74 @@ final class Sitemap extends Element {
 			'default' => '2',
 		];
 
+		$this->controls['sectionGap'] = [
+			'tab'   => 'content',
+			'label' => esc_html__( 'Section gap', 'core-blueprint-seo' ),
+			'type'  => 'number',
+			'units' => true,
+			'css'   => [ [ 'property' => 'gap', 'selector' => '.cb-seo-sitemap' ] ],
+		];
+		$this->controls['listStyleType'] = [
+			'tab'     => 'content',
+			'label'   => esc_html__( 'List marker', 'core-blueprint-seo' ),
+			'type'    => 'select',
+			'options' => [
+				'revert'      => esc_html__( 'Browser default', 'core-blueprint-seo' ),
+				'none'        => esc_html__( 'None', 'core-blueprint-seo' ),
+				'disc'        => esc_html__( 'Disc', 'core-blueprint-seo' ),
+				'circle'      => esc_html__( 'Circle', 'core-blueprint-seo' ),
+				'square'      => esc_html__( 'Square', 'core-blueprint-seo' ),
+				'decimal'     => esc_html__( 'Decimal', 'core-blueprint-seo' ),
+				'lower-alpha' => esc_html__( 'Lower alpha', 'core-blueprint-seo' ),
+				'upper-alpha' => esc_html__( 'Upper alpha', 'core-blueprint-seo' ),
+				'lower-roman' => esc_html__( 'Lower roman', 'core-blueprint-seo' ),
+				'upper-roman' => esc_html__( 'Upper roman', 'core-blueprint-seo' ),
+			],
+			'default' => 'none',
+			'css'     => [ [ 'property' => 'list-style-type', 'selector' => '.cb-seo-sitemap__list' ] ],
+		];
+		$this->controls['listMargin'] = [
+			'tab'   => 'content',
+			'label' => esc_html__( 'List margin', 'core-blueprint-seo' ),
+			'type'  => 'dimensions',
+			'css'   => [ [ 'property' => 'margin', 'selector' => '.cb-seo-sitemap__list' ] ],
+		];
+		$this->controls['listPadding'] = [
+			'tab'   => 'content',
+			'label' => esc_html__( 'List padding', 'core-blueprint-seo' ),
+			'type'  => 'dimensions',
+			'css'   => [ [ 'property' => 'padding', 'selector' => '.cb-seo-sitemap__list' ] ],
+		];
+		$this->controls['itemTypography'] = [
+			'tab'   => 'content',
+			'label' => esc_html__( 'Item typography', 'core-blueprint-seo' ),
+			'type'  => 'typography',
+			'css'   => [ [ 'property' => 'typography', 'selector' => '.cb-seo-sitemap__item' ] ],
+		];
 		$this->controls['headingTypography'] = [
-			'tab'   => 'style',
+			'tab'   => 'content',
 			'label' => esc_html__( 'Section headings', 'core-blueprint-seo' ),
 			'type'  => 'typography',
-			'css'   => [ [ 'property' => 'typography', 'selector' => '.cb-seo-sitemap__heading' ] ],
+			'css'      => [ [ 'property' => 'typography', 'selector' => '.cb-seo-sitemap__heading' ] ],
+			'required' => [ 'showHeadings', '=', true ],
 		];
 		$this->controls['linkTypography'] = [
-			'tab'   => 'style',
+			'tab'   => 'content',
 			'label' => esc_html__( 'Links', 'core-blueprint-seo' ),
 			'type'  => 'typography',
 			'css'   => [ [ 'property' => 'typography', 'selector' => '.cb-seo-sitemap__link' ] ],
+		];
+		$this->controls['linkHoverColor'] = [
+			'tab'   => 'content',
+			'label' => esc_html__( 'Link hover color', 'core-blueprint-seo' ),
+			'type'  => 'color',
+			'css'   => [ [ 'property' => 'color', 'selector' => '.cb-seo-sitemap__link:hover' ] ],
+		];
+		$this->controls['linkFocusColor'] = [
+			'tab'   => 'content',
+			'label' => esc_html__( 'Link focus color', 'core-blueprint-seo' ),
+			'type'  => 'color',
+			'css'   => [ [ 'property' => 'color', 'selector' => '.cb-seo-sitemap__link:focus-visible' ] ],
 		];
 	}
 
@@ -123,35 +180,4 @@ final class Sitemap extends Element {
 		);
 	}
 
-	/** @return array<string,string> */
-	private static function post_type_options(): array {
-		$objects = get_post_types( [ 'public' => true ], 'objects' );
-		$options = [];
-		if ( ! is_array( $objects ) ) {
-			return $options;
-		}
-		foreach ( $objects as $object ) {
-			if ( ! $object instanceof WP_Post_Type || 'attachment' === $object->name ) {
-				continue;
-			}
-			$options[ $object->name ] = isset( $object->labels->name ) ? (string) $object->labels->name : $object->name;
-		}
-		return $options;
-	}
-
-	/** @return array<string,string> */
-	private static function taxonomy_options(): array {
-		$objects = get_taxonomies( [ 'public' => true ], 'objects' );
-		$options = [];
-		if ( ! is_array( $objects ) ) {
-			return $options;
-		}
-		foreach ( $objects as $object ) {
-			if ( ! $object instanceof WP_Taxonomy ) {
-				continue;
-			}
-			$options[ $object->name ] = isset( $object->labels->name ) ? (string) $object->labels->name : $object->name;
-		}
-		return $options;
-	}
 }
