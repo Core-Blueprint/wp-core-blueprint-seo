@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace CB\SEO\Governance;
 
-use CB\Core\Log\AuditLog;
+use CB\Core\Governance\Audit as CoreAudit;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -17,6 +17,6 @@ final class Audit {
 	public static function log( string $event, array $context = [] ): void {
 		$context['actor']   = 'user:' . get_current_user_id();
 		$context['version'] = CB_SEO_VERSION;
-		AuditLog::log( $event, 'notice', $context );
+		CoreAudit::record( $event, 'notice', $context );
 	}
 }
