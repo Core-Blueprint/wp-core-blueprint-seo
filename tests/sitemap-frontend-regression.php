@@ -145,9 +145,9 @@ namespace {
 	require_once dirname( __DIR__ ) . '/src/Frontend/Assets.php';
 	require_once dirname( __DIR__ ) . '/src/Frontend/Sitemap.php';
 	require_once dirname( __DIR__ ) . '/src/Frontend/Shortcodes.php';
+	require_once dirname( __DIR__ ) . '/src/Integration/Builders/Bricks/ElementRegistry.php';
 	require_once dirname( __DIR__ ) . '/src/Integration/Builders/Bricks/Elements/Element.php';
 	require_once dirname( __DIR__ ) . '/src/Integration/Builders/Bricks/Elements/Sitemap.php';
-	require_once dirname( __DIR__ ) . '/src/Integration/Builders/Bricks/ElementRegistry.php';
 
 	function cb_assert( bool $condition, string $message ): void {
 		if ( ! $condition ) {
