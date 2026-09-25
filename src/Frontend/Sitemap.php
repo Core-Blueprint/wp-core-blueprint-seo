@@ -17,6 +17,42 @@ use WP_Taxonomy;
 defined( 'ABSPATH' ) || exit;
 
 final class Sitemap {
+	/** @return array<string,string> */
+	public static function post_type_options(): array {
+		$options = [];
+		$objects = get_post_types( [ 'public' => true ], 'objects' );
+		if ( ! is_array( $objects ) ) {
+			return $options;
+		}
+
+		foreach ( $objects as $object ) {
+			if ( ! $object instanceof WP_Post_Type || 'attachment' === $object->name || ! SitemapPolicy::post_type_allowed( $object->name ) ) {
+				continue;
+			}
+			$options[ $object->name ] = isset( $object->labels->name ) ? (string) $object->labels->name : $object->name;
+		}
+
+		return $options;
+	}
+
+	/** @return array<string,string> */
+	public static function taxonomy_options(): array {
+		$options = [];
+		$objects = get_taxonomies( [ 'public' => true ], 'objects' );
+		if ( ! is_array( $objects ) ) {
+			return $options;
+		}
+
+		foreach ( $objects as $object ) {
+			if ( ! $object instanceof WP_Taxonomy || ! SitemapPolicy::taxonomy_allowed( $object->name ) ) {
+				continue;
+			}
+			$options[ $object->name ] = isset( $object->labels->name ) ? (string) $object->labels->name : $object->name;
+		}
+
+		return $options;
+	}
+
 	/** @param array<string,mixed> $args */
 	public static function render( array $args = [] ): string {
 		$args = self::normalize_args( $args );
