@@ -61,6 +61,7 @@ namespace {
 		$GLOBALS['cb_test_styles'][ $handle ] = [ $src, $version ];
 	}
 	function add_action( string $hook, callable $callback, int $priority = 10, int $accepted_args = 1 ): void {}
+	function add_filter( string $hook, callable $callback, int $priority = 10, int $accepted_args = 1 ): void {}
 	function add_shortcode( string $tag, callable $callback ): void { $GLOBALS['cb_test_shortcodes'][ $tag ] = $callback; }
 	function shortcode_atts( array $defaults, array $attributes, string $tag = '' ): array { return array_merge( $defaults, $attributes ); }
 	function get_post_types( array $args = [], string $output = 'names' ): array {
@@ -190,6 +191,10 @@ namespace {
 	$element = new \CB\SEO\Integration\Builders\Bricks\Elements\Sitemap();
 	$element->set_controls();
 	cb_assert( isset( $element->controls['postTypes'], $element->controls['taxonomies'], $element->controls['columns'] ), 'Bricks sitemap controls are incomplete.' );
+	cb_assert( isset( $element->controls['listStyleType'], $element->controls['sectionGap'], $element->controls['linkFocusColor'] ), 'Bricks sitemap Golden presentation controls are incomplete.' );
+	cb_assert( isset( \CB\SEO\Frontend\Sitemap::post_type_options()['page'] ), 'Builder-neutral sitemap post type options are missing Pages.' );
+	cb_assert( ! isset( \CB\SEO\Frontend\Sitemap::post_type_options()['attachment'] ), 'Builder-neutral sitemap post type options must exclude attachments.' );
+	cb_assert( isset( \CB\SEO\Frontend\Sitemap::taxonomy_options()['category'] ), 'Builder-neutral sitemap taxonomy options are missing Categories.' );
 	$element->settings = [ 'postTypes' => [ 'page' ], 'columns' => '1' ];
 	ob_start();
 	$element->render();
