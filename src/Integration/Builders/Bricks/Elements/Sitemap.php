@@ -23,8 +23,24 @@ final class Sitemap extends Element {
 		return esc_html__( 'SEO Sitemap', 'core-blueprint-seo' );
 	}
 
+	public function set_control_groups(): void {
+		foreach ( [
+			'content' => esc_html__( 'Sitemap', 'core-blueprint-seo' ),
+			'layout'  => esc_html__( 'Layout', 'core-blueprint-seo' ),
+			'lists'   => esc_html__( 'Lists', 'core-blueprint-seo' ),
+			'heading' => esc_html__( 'Section headings', 'core-blueprint-seo' ),
+			'links'   => esc_html__( 'Links', 'core-blueprint-seo' ),
+		] as $key => $title ) {
+			$this->control_groups[ $key ] = [
+				'title' => $title,
+				'tab'   => 'content',
+			];
+		}
+	}
+
 	public function set_controls(): void {
 		$this->controls['postTypes'] = [
+			'group' => 'content',
 			'tab'         => 'content',
 			'label'       => esc_html__( 'Post types', 'core-blueprint-seo' ),
 			'type'        => 'select',
@@ -34,6 +50,7 @@ final class Sitemap extends Element {
 			'description' => esc_html__( 'Leave empty to use all public post types allowed by the Core Blueprint SEO sitemap policy.', 'core-blueprint-seo' ),
 		];
 		$this->controls['taxonomies'] = [
+			'group' => 'content',
 			'tab'         => 'content',
 			'label'       => esc_html__( 'Taxonomies', 'core-blueprint-seo' ),
 			'type'        => 'select',
@@ -43,12 +60,14 @@ final class Sitemap extends Element {
 			'description' => esc_html__( 'Optional taxonomy sections. Only public taxonomies allowed by the SEO sitemap policy are rendered.', 'core-blueprint-seo' ),
 		];
 		$this->controls['showHeadings'] = [
+			'group' => 'content',
 			'tab'     => 'content',
 			'label'   => esc_html__( 'Show section headings', 'core-blueprint-seo' ),
 			'type'    => 'checkbox',
 			'default' => true,
 		];
 		$this->controls['hierarchy'] = [
+			'group' => 'content',
 			'tab'         => 'content',
 			'label'       => esc_html__( 'Preserve hierarchy', 'core-blueprint-seo' ),
 			'type'        => 'checkbox',
@@ -56,6 +75,7 @@ final class Sitemap extends Element {
 			'description' => esc_html__( 'Nest hierarchical pages and taxonomy terms below their visible parent.', 'core-blueprint-seo' ),
 		];
 		$this->controls['orderby'] = [
+			'group' => 'content',
 			'tab'     => 'content',
 			'label'   => esc_html__( 'Order by', 'core-blueprint-seo' ),
 			'type'    => 'select',
@@ -67,6 +87,7 @@ final class Sitemap extends Element {
 			'default' => 'title',
 		];
 		$this->controls['order'] = [
+			'group' => 'content',
 			'tab'     => 'content',
 			'label'   => esc_html__( 'Order', 'core-blueprint-seo' ),
 			'type'    => 'select',
@@ -77,6 +98,7 @@ final class Sitemap extends Element {
 			'default' => 'ASC',
 		];
 		$this->controls['columns'] = [
+			'group' => 'layout',
 			'tab'     => 'content',
 			'label'   => esc_html__( 'Columns', 'core-blueprint-seo' ),
 			'type'    => 'select',
@@ -90,6 +112,7 @@ final class Sitemap extends Element {
 		];
 
 		$this->controls['sectionGap'] = [
+			'group' => 'layout',
 			'tab'   => 'content',
 			'label' => esc_html__( 'Section gap', 'core-blueprint-seo' ),
 			'type'  => 'number',
@@ -97,6 +120,7 @@ final class Sitemap extends Element {
 			'css'   => [ [ 'property' => 'gap', 'selector' => '.cb-seo-sitemap' ] ],
 		];
 		$this->controls['listStyleType'] = [
+			'group' => 'lists',
 			'tab'     => 'content',
 			'label'   => esc_html__( 'List marker', 'core-blueprint-seo' ),
 			'type'    => 'select',
@@ -116,24 +140,28 @@ final class Sitemap extends Element {
 			'css'     => [ [ 'property' => 'list-style-type', 'selector' => '.cb-seo-sitemap__list' ] ],
 		];
 		$this->controls['listMargin'] = [
+			'group' => 'lists',
 			'tab'   => 'content',
 			'label' => esc_html__( 'List margin', 'core-blueprint-seo' ),
 			'type'  => 'dimensions',
 			'css'   => [ [ 'property' => 'margin', 'selector' => '.cb-seo-sitemap__list' ] ],
 		];
 		$this->controls['listPadding'] = [
+			'group' => 'lists',
 			'tab'   => 'content',
 			'label' => esc_html__( 'List padding', 'core-blueprint-seo' ),
 			'type'  => 'dimensions',
 			'css'   => [ [ 'property' => 'padding', 'selector' => '.cb-seo-sitemap__list' ] ],
 		];
 		$this->controls['itemTypography'] = [
+			'group' => 'lists',
 			'tab'   => 'content',
 			'label' => esc_html__( 'Item typography', 'core-blueprint-seo' ),
 			'type'  => 'typography',
 			'css'   => [ [ 'property' => 'typography', 'selector' => '.cb-seo-sitemap__item' ] ],
 		];
 		$this->controls['headingTypography'] = [
+			'group' => 'heading',
 			'tab'   => 'content',
 			'label' => esc_html__( 'Section headings', 'core-blueprint-seo' ),
 			'type'  => 'typography',
@@ -141,18 +169,21 @@ final class Sitemap extends Element {
 			'required' => [ 'showHeadings', '=', true ],
 		];
 		$this->controls['linkTypography'] = [
+			'group' => 'links',
 			'tab'   => 'content',
 			'label' => esc_html__( 'Links', 'core-blueprint-seo' ),
 			'type'  => 'typography',
 			'css'   => [ [ 'property' => 'typography', 'selector' => '.cb-seo-sitemap__link' ] ],
 		];
 		$this->controls['linkHoverColor'] = [
+			'group' => 'links',
 			'tab'   => 'content',
 			'label' => esc_html__( 'Link hover color', 'core-blueprint-seo' ),
 			'type'  => 'color',
 			'css'   => [ [ 'property' => 'color', 'selector' => '.cb-seo-sitemap__link:hover' ] ],
 		];
 		$this->controls['linkFocusColor'] = [
+			'group' => 'links',
 			'tab'   => 'content',
 			'label' => esc_html__( 'Link focus color', 'core-blueprint-seo' ),
 			'type'  => 'color',
