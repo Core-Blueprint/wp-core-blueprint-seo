@@ -40,6 +40,24 @@ done
 MYSQL_PORT="$(docker port "$MYSQL_NAME" 3306/tcp | head -n1 | awk -F: '{print $NF}')"
 [[ "$MYSQL_PORT" =~ ^[0-9]+$ ]] || fail "could not determine the disposable MySQL port"
 
+echo "==> Waiting for disposable MySQL host port"
+host_ready=0
+for _ in $(seq 1 60); do
+  if php -r '
+    mysqli_report(MYSQLI_REPORT_OFF);
+    $db = @new mysqli("127.0.0.1", "root", "root", "wordpress", (int) $argv[1]);
+    if ($db->connect_errno) {
+        exit(1);
+    }
+    $db->close();
+  ' "$MYSQL_PORT"; then
+    host_ready=1
+    break
+  fi
+  sleep 1
+done
+[[ "$host_ready" == '1' ]] || fail "MySQL host port did not become ready"
+
 echo "==> Installing disposable WordPress"
 wp core download --path="$WP" --force
 wp config create   --path="$WP"   --dbname=wordpress   --dbuser=root   --dbpass=root   --dbhost="127.0.0.1:$MYSQL_PORT"
