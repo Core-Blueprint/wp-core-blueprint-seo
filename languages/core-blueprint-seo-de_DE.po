@@ -1407,3 +1407,75 @@ msgstr "Bereit"
 #, php-format
 msgid "Core Blueprint %1$s or newer is required. Available Base version: %2$s."
 msgstr "Core Blueprint %1$s oder neuer ist erforderlich. Verfügbare Base-Version: %2$s."
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "Layout"
+msgstr "Layout"
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "Lists"
+msgstr "Listen"
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "Section gap"
+msgstr "Abschnittsabstand"
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "List marker"
+msgstr "Listenmarkierung"
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "Browser default"
+msgstr "Browserstandard"
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "Disc"
+msgstr "Scheibe"
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "Circle"
+msgstr "Kreis"
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "Square"
+msgstr "Quadrat"
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "Decimal"
+msgstr "Dezimal"
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "Lower alpha"
+msgstr "Kleinbuchstaben"
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "Upper alpha"
+msgstr "Großbuchstaben"
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "Lower roman"
+msgstr "Kleine römische Zahlen"
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "Upper roman"
+msgstr "Große römische Zahlen"
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "List margin"
+msgstr "Listenaußenabstand"
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "List padding"
+msgstr "Listeninnenabstand"
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "Item typography"
+msgstr "Elementtypografie"
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "Link hover color"
+msgstr "Linkfarbe beim Überfahren"
+
+#: src/Integration/Builders/Bricks/Elements/Sitemap.php
+msgid "Link focus color"
+msgstr "Linkfarbe bei Fokus"
