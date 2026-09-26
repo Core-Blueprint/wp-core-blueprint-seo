@@ -75,7 +75,11 @@ if [[ -n "$(git status --porcelain --untracked-files=all -- . ':!dist' ':!build'
   fail "working tree contains uncommitted release-source changes"
 fi
 
-echo "==> Running canonical SEO checks"\n"$ROOT/tools/check"\n\nrm -rf "$DIST"\nmkdir -p "$DIST" "$PACKAGE_ROOT/languages"
+echo "==> Running canonical SEO checks"
+"$ROOT/tools/check"
+
+rm -rf "$DIST"
+mkdir -p "$DIST" "$PACKAGE_ROOT/languages"
 ZIP="$DIST/$PACKAGE-$VERSION.zip"
 CHECKSUM="$ZIP.sha256"
 rm -f "$ZIP" "$CHECKSUM"
