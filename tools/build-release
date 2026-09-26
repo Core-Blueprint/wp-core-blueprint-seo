@@ -75,30 +75,7 @@ if [[ -n "$(git status --porcelain --untracked-files=all -- . ':!dist' ':!build'
   fail "working tree contains uncommitted release-source changes"
 fi
 
-echo "==> Validating canonical translation catalogs"
-"$ROOT/tools/i18n/check"
-
-echo "==> Linting source PHP"
-for file in "$ENTRY" "$ROOT/uninstall.php"; do
-  php -l "$file" >/dev/null || fail "PHP lint failed: $file"
-done
-while IFS= read -r -d '' file; do
-  php -l "$file" >/dev/null || fail "PHP lint failed: $file"
-done < <(find "$ROOT/src" -type f -name '*.php' -print0)
-
-while IFS= read -r -d '' file; do
-  php -l "$file" >/dev/null || fail "PHP lint failed: $file"
-done < <(find "$ROOT/tests" -type f -name '*.php' -print0)
-
-bash -n "$ROOT/tools/runtime-test" || fail "runtime test harness shell syntax failed"
-
-echo "==> Running SEO product regressions"
-for test in "$ROOT"/tests/*-regression.php; do
-  [[ -f "$test" ]] || fail "no SEO product regressions found"
-  php "$test"
-done
-
-mkdir -p "$DIST" "$PACKAGE_ROOT/languages"
+echo "==> Running canonical SEO checks"\n"$ROOT/tools/check"\n\nrm -rf "$DIST"\nmkdir -p "$DIST" "$PACKAGE_ROOT/languages"
 ZIP="$DIST/$PACKAGE-$VERSION.zip"
 CHECKSUM="$ZIP.sha256"
 rm -f "$ZIP" "$CHECKSUM"
@@ -154,7 +131,7 @@ while IFS= read -r entry; do
   [[ "$entry" == "$PACKAGE/"* ]] || fail "unexpected archive root entry: $entry"
 done <<<"$ZIP_ENTRIES"
 
-if grep -Eq '(^|/)(\.git|\.github|tests|tools|docs|dist|build|node_modules|vendor)(/|$)' <<<"$ZIP_ENTRIES"; then
+if grep -Eq '(^|/)(\.git|\.github|tests|tools|docs|dist|build|node_modules|vendor|\.venv)(/|$)' <<<"$ZIP_ENTRIES"; then
   fail "development-only files leaked into the release ZIP"
 fi
 
