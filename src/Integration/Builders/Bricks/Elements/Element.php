@@ -8,10 +8,12 @@ declare(strict_types=1);
 
 namespace CB\SEO\Integration\Builders\Bricks\Elements;
 
+use CB\SEO\Integration\Builders\Bricks\ElementRegistry;
+
 defined( 'ABSPATH' ) || exit;
 
 abstract class Element extends \Bricks\Element {
-	public $category = 'core-blueprint-seo';
+	public $category = ElementRegistry::CATEGORY;
 
 	/** @return string[] */
 	public function get_keywords(): array {

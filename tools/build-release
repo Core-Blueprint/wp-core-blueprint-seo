@@ -75,35 +75,16 @@ if [[ -n "$(git status --porcelain --untracked-files=all -- . ':!dist' ':!build'
   fail "working tree contains uncommitted release-source changes"
 fi
 
-echo "==> Validating canonical translation catalogs"
-"$ROOT/tools/i18n/check"
+echo "==> Running canonical SEO checks"
+"$ROOT/tools/check"
 
-echo "==> Linting source PHP"
-for file in "$ENTRY" "$ROOT/uninstall.php"; do
-  php -l "$file" >/dev/null || fail "PHP lint failed: $file"
-done
-while IFS= read -r -d '' file; do
-  php -l "$file" >/dev/null || fail "PHP lint failed: $file"
-done < <(find "$ROOT/src" -type f -name '*.php' -print0)
-
-while IFS= read -r -d '' file; do
-  php -l "$file" >/dev/null || fail "PHP lint failed: $file"
-done < <(find "$ROOT/tests" -type f -name '*.php' -print0)
-
-bash -n "$ROOT/tools/runtime-test" || fail "runtime test harness shell syntax failed"
-
-echo "==> Running SEO product regressions"
-for test in "$ROOT"/tests/*-regression.php; do
-  [[ -f "$test" ]] || fail "no SEO product regressions found"
-  php "$test"
-done
-
+rm -rf "$DIST"
 mkdir -p "$DIST" "$PACKAGE_ROOT/languages"
 ZIP="$DIST/$PACKAGE-$VERSION.zip"
 CHECKSUM="$ZIP.sha256"
 rm -f "$ZIP" "$CHECKSUM"
 
-for path in "$MAIN_FILE" uninstall.php README.md CHANGELOG.md LICENSE; do
+for path in "$MAIN_FILE" uninstall.php readme.txt CHANGELOG.md LICENSE; do
   [[ -f "$ROOT/$path" ]] || fail "required release file is missing: $path"
   cp "$ROOT/$path" "$PACKAGE_ROOT/"
 done
@@ -154,11 +135,11 @@ while IFS= read -r entry; do
   [[ "$entry" == "$PACKAGE/"* ]] || fail "unexpected archive root entry: $entry"
 done <<<"$ZIP_ENTRIES"
 
-if grep -Eq '(^|/)(\.git|\.github|tests|tools|docs|dist|build|node_modules|vendor)(/|$)' <<<"$ZIP_ENTRIES"; then
+if grep -Eq '(^|/)(\.git|\.github|tests|tools|docs|dist|build|node_modules|vendor|\.venv)(/|$)' <<<"$ZIP_ENTRIES"; then
   fail "development-only files leaked into the release ZIP"
 fi
 
-for required in   "$PACKAGE/$MAIN_FILE"   "$PACKAGE/uninstall.php"   "$PACKAGE/LICENSE"   "$PACKAGE/languages/$PACKAGE.pot"; do
+for required in   "$PACKAGE/$MAIN_FILE"   "$PACKAGE/readme.txt"   "$PACKAGE/uninstall.php"   "$PACKAGE/LICENSE"   "$PACKAGE/languages/$PACKAGE.pot"; do
   grep -Fxq "$required" <<<"$ZIP_ENTRIES" || fail "required release file missing from ZIP: $required"
 done
 for locale in "${LOCALES[@]}"; do
