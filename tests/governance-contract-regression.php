@@ -64,7 +64,26 @@ foreach ( [
 ] as $event_id ) {
 	cb_seo_governance_expect( str_contains( $audit . $runtime, $event_id ), 'Missing canonical dotted event id: ' . $event_id );
 }
-foreach ( array_keys( {'seo_subsystem_enabled':'seo.subsystem.enabled','seo_subsystem_disabled':'seo.subsystem.disabled','seo_extension_activated':'seo.extension.activated','seo_extension_deactivated':'seo.extension.deactivated','seo_metadata_settings_updated':'seo.metadata.settings.updated','seo_object_metadata_updated':'seo.object.metadata.updated','seo_term_metadata_updated':'seo.term.metadata.updated','seo_object_indexing_updated':'seo.object.indexing.updated','seo_term_indexing_updated':'seo.term.indexing.updated','seo_object_canonical_updated':'seo.object.canonical.updated','seo_term_canonical_updated':'seo.term.canonical.updated','seo_object_social_updated':'seo.object.social.updated','seo_term_social_updated':'seo.term.social.updated','seo_social_settings_updated':'seo.social.settings.updated','seo_schema_settings_updated':'seo.schema.settings.updated','seo_discovery_settings_updated':'seo.discovery.settings.updated','seo_indexing_settings_updated':'seo.indexing.settings.updated','seo_metadata_imported':'seo.metadata.imported'} ) as $legacy_event ) {
+foreach ( [
+	'seo_subsystem_enabled',
+	'seo_subsystem_disabled',
+	'seo_extension_activated',
+	'seo_extension_deactivated',
+	'seo_metadata_settings_updated',
+	'seo_object_metadata_updated',
+	'seo_term_metadata_updated',
+	'seo_object_indexing_updated',
+	'seo_term_indexing_updated',
+	'seo_object_canonical_updated',
+	'seo_term_canonical_updated',
+	'seo_object_social_updated',
+	'seo_term_social_updated',
+	'seo_social_settings_updated',
+	'seo_schema_settings_updated',
+	'seo_discovery_settings_updated',
+	'seo_indexing_settings_updated',
+	'seo_metadata_imported',
+] as $legacy_event ) {
 	cb_seo_governance_expect( ! str_contains( $runtime, $legacy_event ), 'Legacy underscore event id returned: ' . $legacy_event );
 }
 
