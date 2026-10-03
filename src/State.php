@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace CB\SEO;
 
-use CoreBlueprint\Core\Log\AuditLog;
+use CB\SEO\Governance\Audit as GovernanceAudit;
 use CoreBlueprint\Core\Modules\ModuleStateInterface;
 
 defined( 'ABSPATH' ) || exit;
@@ -31,13 +31,9 @@ final class State implements ModuleStateInterface {
 			update_option( CB_SEO_ENABLED_OPT, $value );
 		}
 
-		AuditLog::log(
-			$enabled ? 'seo_subsystem_enabled' : 'seo_subsystem_disabled',
-			'notice',
-			[
-				'actor'   => $actor,
-				'version' => CB_SEO_VERSION,
-			]
+		GovernanceAudit::log(
+			$enabled ? 'seo.subsystem.enabled' : 'seo.subsystem.disabled',
+			[ 'actor' => $actor ]
 		);
 	}
 }

@@ -160,11 +160,11 @@ final class TermFields {
 
 		$after = Repository::term( $term_id );
 		if ( $before['title'] !== $after['title'] || $before['description'] !== $after['description'] ) {
-			Audit::log( 'seo_term_metadata_updated', [ 'term_id' => $term_id, 'taxonomy' => $term->taxonomy ] );
+			Audit::log( 'seo.term.metadata.updated', [ 'term_id' => $term_id, 'taxonomy' => $term->taxonomy ] );
 		}
 		if ( $before['canonical'] !== $after['canonical'] ) {
 			Audit::log(
-				'seo_term_canonical_updated',
+				'seo.term.canonical.updated',
 				[
 					'term_id'   => $term_id,
 					'taxonomy'  => $term->taxonomy,
@@ -174,7 +174,7 @@ final class TermFields {
 		}
 		if ( $before['social_title'] !== $after['social_title'] || $before['social_description'] !== $after['social_description'] || $before['social_image_id'] !== $after['social_image_id'] ) {
 			Audit::log(
-				'seo_term_social_updated',
+				'seo.term.social.updated',
 				[
 					'term_id'  => $term_id,
 					'taxonomy' => $term->taxonomy,
@@ -183,7 +183,7 @@ final class TermFields {
 		}
 		if ( Repository::robots_from_values( $before ) !== Repository::robots_from_values( $after ) ) {
 			Audit::log(
-				'seo_term_indexing_updated',
+				'seo.term.indexing.updated',
 				[
 					'term_id'  => $term_id,
 					'taxonomy' => $term->taxonomy,

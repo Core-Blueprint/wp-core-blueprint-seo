@@ -6,6 +6,8 @@ $bootstrap = (string) file_get_contents( $root . '/core-blueprint-seo.php' );
 $readme    = (string) file_get_contents( $root . '/readme.txt' );
 $audit     = (string) file_get_contents( $root . '/src/Governance/Audit.php' );
 $lifecycle = (string) file_get_contents( $root . '/src/Lifecycle.php' );
+$state     = (string) file_get_contents( $root . '/src/State.php' );
+$bootstrap = (string) file_get_contents( $root . '/src/Bootstrap.php' );
 $fetcher   = (string) file_get_contents( $root . '/src/Analysis/DocumentFetcher.php' );
 
 $assert = static function ( bool $ok, string $message ): void {
@@ -27,7 +29,10 @@ $assert(
 $assert(
     str_contains( $audit, 'CoreBlueprint\\Core\\Governance\\Audit' )
         && ! str_contains( $audit, 'CoreBlueprint\\Core\\Log\\AuditLog' )
-        && ! str_contains( $lifecycle, 'CoreBlueprint\\Core\\Log\\AuditLog' ),
+        && ! str_contains( $lifecycle, 'CoreBlueprint\\Core\\Log\\AuditLog' )
+        && ! str_contains( $state, 'CoreBlueprint\\Core\\Log\\AuditLog' )
+        && str_contains( $audit, 'CoreBlueprint\\Core\\Governance\\EventRegistry' )
+        && ! str_contains( $bootstrap, 'cb_core_event_labels' ),
     'SEO audit events must use the public Base Governance boundary'
 );
 $assert(

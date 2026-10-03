@@ -66,7 +66,7 @@ final class SettingsPage {
 				AnalysisRepository::delete_all_snapshots();
 			}
 			if ( $report['mappings_used'] > 0 ) {
-				Audit::log( 'seo_metadata_imported', $report );
+				Audit::log( 'seo.metadata.imported', $report );
 			}
 			wp_safe_redirect(
 				SettingsRegistry::url(
@@ -89,7 +89,7 @@ final class SettingsPage {
 			$changed = IndexingSettingsRepository::save( $raw );
 			if ( $changed ) {
 				AnalysisRepository::delete_all_snapshots();
-				Audit::log( 'seo_indexing_settings_updated' );
+				Audit::log( 'seo.indexing.settings.updated' );
 			}
 			wp_safe_redirect( SettingsRegistry::url( 'core-blueprint-seo', [ 'tab' => 'indexing', 'cb_seo_notice' => $changed ? 'indexing-saved' : 'indexing-unchanged' ] ) );
 			exit;
@@ -99,7 +99,7 @@ final class SettingsPage {
 			$raw = isset( $_POST['cb_seo_discovery'] ) && is_array( $_POST['cb_seo_discovery'] ) ? $_POST['cb_seo_discovery'] : []; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- repository sanitizes values.
 			$changed = DiscoverySettingsRepository::save( $raw );
 			if ( $changed ) {
-				Audit::log( 'seo_discovery_settings_updated' );
+				Audit::log( 'seo.discovery.settings.updated' );
 			}
 			wp_safe_redirect( SettingsRegistry::url( 'core-blueprint-seo', [ 'tab' => 'ai-discovery', 'cb_seo_notice' => $changed ? 'discovery-saved' : 'discovery-unchanged' ] ) );
 			exit;
@@ -111,10 +111,10 @@ final class SettingsPage {
 			$social_changed = SocialSettingsRepository::save( $social_raw );
 			$schema_changed = SchemaSettingsRepository::save( $schema_raw );
 			if ( $social_changed ) {
-				Audit::log( 'seo_social_settings_updated' );
+				Audit::log( 'seo.social.settings.updated' );
 			}
 			if ( $schema_changed ) {
-				Audit::log( 'seo_schema_settings_updated' );
+				Audit::log( 'seo.schema.settings.updated' );
 			}
 			$changed = $social_changed || $schema_changed;
 			wp_safe_redirect( SettingsRegistry::url( 'core-blueprint-seo', [ 'tab' => 'social-schema', 'cb_seo_notice' => $changed ? 'presentation-saved' : 'presentation-unchanged' ] ) );
@@ -128,7 +128,7 @@ final class SettingsPage {
 		}
 		$changed = SettingsRepository::save( $raw );
 		if ( $changed ) {
-			Audit::log( 'seo_metadata_settings_updated' );
+			Audit::log( 'seo.metadata.settings.updated' );
 		}
 		wp_safe_redirect( SettingsRegistry::url( 'core-blueprint-seo', [ 'tab' => 'search-appearance', 'section' => $section, 'cb_seo_notice' => $changed ? 'saved' : 'unchanged' ] ) );
 		exit;

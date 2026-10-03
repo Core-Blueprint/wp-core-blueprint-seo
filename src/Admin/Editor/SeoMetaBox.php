@@ -182,11 +182,11 @@ final class SeoMetaBox {
 
 		$after = Repository::post( $post_id );
 		if ( $before['title'] !== $after['title'] || $before['description'] !== $after['description'] ) {
-			Audit::log( 'seo_object_metadata_updated', [ 'post_id' => $post_id, 'post_type' => $post->post_type ] );
+			Audit::log( 'seo.object.metadata.updated', [ 'post_id' => $post_id, 'post_type' => $post->post_type ] );
 		}
 		if ( $before['canonical'] !== $after['canonical'] ) {
 			Audit::log(
-				'seo_object_canonical_updated',
+				'seo.object.canonical.updated',
 				[
 					'post_id'   => $post_id,
 					'post_type' => $post->post_type,
@@ -196,7 +196,7 @@ final class SeoMetaBox {
 		}
 		if ( $before['social_title'] !== $after['social_title'] || $before['social_description'] !== $after['social_description'] || $before['social_image_id'] !== $after['social_image_id'] ) {
 			Audit::log(
-				'seo_object_social_updated',
+				'seo.object.social.updated',
 				[
 					'post_id'   => $post_id,
 					'post_type' => $post->post_type,
@@ -205,7 +205,7 @@ final class SeoMetaBox {
 		}
 		if ( self::robots_changed( $before, $after ) ) {
 			Audit::log(
-				'seo_object_indexing_updated',
+				'seo.object.indexing.updated',
 				[
 					'post_id'   => $post_id,
 					'post_type' => $post->post_type,

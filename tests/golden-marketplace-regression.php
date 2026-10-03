@@ -34,6 +34,11 @@ function cb_seo_golden_marketplace_failures( string $root ): array {
 	$require( $requirements, 'version_compare( (string) CB_CORE_VERSION, CB_SEO_REQUIRED_BASE', 'Minimum Base version comparison is missing.' );
 	$require( $requirements, "'\\\\CoreBlueprint\\\\Core\\\\Dashboard\\\\CardRegistry'", 'Dashboard CardRegistry is missing from the Base contract gate.' );
 	$require( $requirements, "'\\\\CoreBlueprint\\\\Core\\\\UI\\\\Icon'", 'Base Icon contract is missing from the runtime gate.' );
+	$require( $requirements, "'\\\\CoreBlueprint\\\\Core\\\\Governance\\\\Audit'", 'Public Governance Audit contract is missing from the runtime gate.' );
+	$require( $requirements, "'\\\\CoreBlueprint\\\\Core\\\\Governance\\\\EventRegistry'", 'Public Governance EventRegistry contract is missing from the runtime gate.' );
+	if ( str_contains( $requirements, "'\\\\CoreBlueprint\\\\Core\\\\Log\\\\AuditLog'" ) ) {
+		$failures[] = 'SEO still requires the internal Base AuditLog contract.';
+	}
 
 	$integration = $read( 'src/Bootstrap.php' );
 	$require( $integration, "'requires_api'  => CB_SEO_REQUIRED_API", 'Extension Registry does not use the canonical Core API constant.' );

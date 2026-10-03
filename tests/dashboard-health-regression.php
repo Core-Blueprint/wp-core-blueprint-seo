@@ -129,7 +129,7 @@ namespace CB\SEO {
 
 	$source = file_get_contents( __DIR__ . '/../src/Bootstrap.php' );
 	cb_seo_health_expect( false !== $source, 'Could not read SEO Bootstrap source.' );
-	$status_hook = strpos( $source, "add_filter( 'cb_core_module_status_definitions'" );
+	$status_hook = strpos( $source, "add_filter( 'core_blueprint_module_status_definitions'" );
 	$runtime_gate = strpos( $source, 'if ( ! RuntimeGate::frontend_allowed() )' );
 	cb_seo_health_expect( false !== $status_hook && false !== $runtime_gate && $status_hook < $runtime_gate, 'Status provider must remain registered before the governed frontend runtime gate.' );
 	cb_seo_health_expect( false === strpos( $source, 'cb_core_register_pages' ) && false === strpos( $source, 'PageRegistry::register' ), 'Retired PageRegistry settings registration must be absent.' );

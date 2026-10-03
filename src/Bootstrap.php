@@ -23,6 +23,7 @@ use CB\SEO\Social\Runtime as SocialRuntime;
 use CB\SEO\Schema\Runtime as SchemaRuntime;
 use CB\SEO\Discovery\Runtime as DiscoveryRuntime;
 use CB\SEO\Analysis\AdminController as AnalysisAdminController;
+use CB\SEO\Governance\Audit as GovernanceAudit;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -30,11 +31,12 @@ final class Bootstrap {
 
 	public static function boot(): void {
 		Lifecycle::maybe_upgrade();
+		GovernanceAudit::init();
 
 		// The settings surface remains available while SEO is disabled because the
 		// Base dashboard controls activation through the canonical State.
-		add_action( 'cb_core_register_extensions', [ self::class, 'register_extension' ] );
-		add_action( 'cb_core_register_settings', [ self::class, 'register_settings' ] );
+		add_action( 'core_blueprint_register_extensions', [ self::class, 'register_extension' ] );
+		add_action( 'core_blueprint_register_settings', [ self::class, 'register_settings' ] );
 		add_filter( 'plugin_action_links_' . CB_SEO_BASENAME, [ SettingsPage::class, 'plugin_action_links' ] );
 		add_action( 'admin_init', [ SettingsPage::class, 'handle_save' ] );
 		add_action( 'admin_enqueue_scripts', [ Assets::class, 'enqueue' ] );
@@ -43,10 +45,9 @@ final class Bootstrap {
 		AnalysisAdminController::boot();
 
 		// Public Base Foundation boundaries consumed by extensions.
-		add_filter( 'cb_core_module_activation_definitions', [ self::class, 'register_module_activation' ] );
-		add_filter( 'cb_core_module_status_definitions', [ self::class, 'register_status_definition' ] );
-		add_filter( 'cb_core_event_labels', [ self::class, 'register_event_labels' ] );
-		add_action( 'cb_core_dashboard_register_cards', [ self::class, 'register_dashboard_shortcuts' ] );
+		add_filter( 'core_blueprint_module_activation_definitions', [ self::class, 'register_module_activation' ] );
+		add_filter( 'core_blueprint_module_status_definitions', [ self::class, 'register_status_definition' ] );
+		add_action( 'core_blueprint_dashboard_register_cards', [ self::class, 'register_dashboard_shortcuts' ] );
 
 		// Discovery owns a stable route even while dormant so stale rewrite rules
 		// can never fall through to unrelated WordPress content.
@@ -184,30 +185,4 @@ final class Bootstrap {
 		];
 	}
 
-	/** @param array<string,string> $labels */
-	public static function register_event_labels( array $labels ): array {
-		// Defensive: AuditLog can be touched by maintenance code before init.
-		// Keep the labels available without triggering WordPress 6.7+ early
-		// just-in-time translation loading.
-		$translate = did_action( 'init' ) > 0;
-		$labels['seo_subsystem_enabled']     = $translate ? __( 'SEO enabled', 'core-blueprint-seo' ) : 'SEO enabled';
-		$labels['seo_subsystem_disabled']    = $translate ? __( 'SEO disabled', 'core-blueprint-seo' ) : 'SEO disabled';
-		$labels['seo_extension_activated']   = $translate ? __( 'SEO extension activated', 'core-blueprint-seo' ) : 'SEO extension activated';
-		$labels['seo_extension_deactivated'] = $translate ? __( 'SEO extension deactivated', 'core-blueprint-seo' ) : 'SEO extension deactivated';
-		$labels['seo_metadata_settings_updated'] = $translate ? __( 'SEO metadata templates updated', 'core-blueprint-seo' ) : 'SEO metadata templates updated';
-		$labels['seo_object_metadata_updated']   = $translate ? __( 'SEO content metadata updated', 'core-blueprint-seo' ) : 'SEO content metadata updated';
-		$labels['seo_term_metadata_updated']      = $translate ? __( 'SEO term metadata updated', 'core-blueprint-seo' ) : 'SEO term metadata updated';
-		$labels['seo_object_indexing_updated']    = $translate ? __( 'SEO content indexing directives updated', 'core-blueprint-seo' ) : 'SEO content indexing directives updated';
-		$labels['seo_term_indexing_updated']      = $translate ? __( 'SEO term indexing directives updated', 'core-blueprint-seo' ) : 'SEO term indexing directives updated';
-		$labels['seo_object_canonical_updated']  = $translate ? __( 'SEO content canonical updated', 'core-blueprint-seo' ) : 'SEO content canonical updated';
-		$labels['seo_term_canonical_updated']    = $translate ? __( 'SEO term canonical updated', 'core-blueprint-seo' ) : 'SEO term canonical updated';
-		$labels['seo_object_social_updated']      = $translate ? __( 'SEO content social metadata updated', 'core-blueprint-seo' ) : 'SEO content social metadata updated';
-		$labels['seo_term_social_updated']        = $translate ? __( 'SEO term social metadata updated', 'core-blueprint-seo' ) : 'SEO term social metadata updated';
-		$labels['seo_social_settings_updated']    = $translate ? __( 'SEO social settings updated', 'core-blueprint-seo' ) : 'SEO social settings updated';
-		$labels['seo_schema_settings_updated']    = $translate ? __( 'SEO structured data settings updated', 'core-blueprint-seo' ) : 'SEO structured data settings updated';
-		$labels['seo_discovery_settings_updated'] = $translate ? __( 'SEO AI discovery settings updated', 'core-blueprint-seo' ) : 'SEO AI discovery settings updated';
-		$labels['seo_indexing_settings_updated']  = $translate ? __( 'SEO indexing policy updated', 'core-blueprint-seo' ) : 'SEO indexing policy updated';
-		$labels['seo_metadata_imported']          = $translate ? __( 'SEO metadata imported', 'core-blueprint-seo' ) : 'SEO metadata imported';
-		return $labels;
-	}
 }

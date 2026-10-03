@@ -88,7 +88,8 @@ final class Requirements {
 			'\\CoreBlueprint\\Core\\UI\\Notice',
 			'\\CoreBlueprint\\Core\\UI\\Card',
 			'\\CoreBlueprint\\Core\\UI\\Icon',
-			'\\CoreBlueprint\\Core\\Log\\AuditLog',
+			'\\CoreBlueprint\\Core\\Governance\\Audit',
+			'\\CoreBlueprint\\Core\\Governance\\EventRegistry',
 		];
 
 		foreach ( $required_classes as $class ) {

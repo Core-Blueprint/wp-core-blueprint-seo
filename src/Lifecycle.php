@@ -46,14 +46,14 @@ final class Lifecycle {
 		add_option( CB_SEO_INDEXING_SETTINGS_OPT, [], '', 'no' );
 		update_option( 'cb_seo_installed_version', CB_SEO_VERSION, false );
 
-		self::audit( 'seo_extension_activated' );
+		self::audit( 'seo.extension.activated' );
 	}
 
 	public static function deactivate(): void {
 		// Configuration and the module-state option are deliberately preserved.
 		// Deactivation removes the runtime by virtue of WordPress unloading the
 		// plugin; deletion is handled by uninstall.php.
-		self::audit( 'seo_extension_deactivated' );
+		self::audit( 'seo.extension.deactivated' );
 	}
 
 	private static function fail_activation( string $message ): void {
