@@ -32,8 +32,8 @@ function cb_seo_golden_marketplace_failures( string $root ): array {
 	$requirements = $read( 'src/Requirements.php' );
 	$require( $requirements, "defined( 'CB_CORE_VERSION' )", 'Runtime requirements do not verify the Base version contract.' );
 	$require( $requirements, 'version_compare( (string) CB_CORE_VERSION, CB_SEO_REQUIRED_BASE', 'Minimum Base version comparison is missing.' );
-	$require( $requirements, "'\\\\CB\\\\Core\\\\Dashboard\\\\CardRegistry'", 'Dashboard CardRegistry is missing from the Base contract gate.' );
-	$require( $requirements, "'\\\\CB\\\\Core\\\\UI\\\\Icon'", 'Base Icon contract is missing from the runtime gate.' );
+	$require( $requirements, "'\\\\CoreBlueprint\\\\Core\\\\Dashboard\\\\CardRegistry'", 'Dashboard CardRegistry is missing from the Base contract gate.' );
+	$require( $requirements, "'\\\\CoreBlueprint\\\\Core\\\\UI\\\\Icon'", 'Base Icon contract is missing from the runtime gate.' );
 
 	$integration = $read( 'src/Bootstrap.php' );
 	$require( $integration, "'requires_api'  => CB_SEO_REQUIRED_API", 'Extension Registry does not use the canonical Core API constant.' );
