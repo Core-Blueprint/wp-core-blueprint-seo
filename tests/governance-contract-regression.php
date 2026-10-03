@@ -49,8 +49,8 @@ foreach ( [
 cb_seo_governance_expect( str_contains( $audit, 'EventRegistry::register' ), 'SEO must register governance events through EventRegistry.' );
 cb_seo_governance_expect( str_contains( $audit, 'CoreAudit::record' ), 'SEO must write governance events through the public Audit facade.' );
 cb_seo_governance_expect( ! str_contains( $state, 'AuditLog::log' ), 'SEO State must not call internal AuditLog directly.' );
-cb_seo_governance_expect( str_contains( $requirements, 'Core\\Governance\\Audit' ) && str_contains( $requirements, 'Core\\Governance\\EventRegistry' ), 'SEO runtime gate must require public Governance contracts.' );
-cb_seo_governance_expect( ! str_contains( $requirements, 'Core\\Log\\AuditLog' ), 'SEO runtime gate must not require internal AuditLog.' );
+cb_seo_governance_expect( str_contains( $requirements, '\\\\CoreBlueprint\\\\Core\\\\Governance\\\\Audit' ) && str_contains( $requirements, '\\\\CoreBlueprint\\\\Core\\\\Governance\\\\EventRegistry' ), 'SEO runtime gate must require public Governance contracts.' );
+cb_seo_governance_expect( ! str_contains( $requirements, '\\\\CoreBlueprint\\\\Core\\\\Log\\\\AuditLog' ), 'SEO runtime gate must not require internal AuditLog.' );
 
 foreach ( [
 	'seo.subsystem.enabled',
