@@ -8,9 +8,9 @@ declare(strict_types=1);
 
 namespace CB\SEO;
 
-use CB\Core\Admin\SettingsRegistry;
-use CB\Core\Dashboard\CardRegistry;
-use CB\Core\ExtensionRegistry;
+use CoreBlueprint\Core\Admin\SettingsRegistry;
+use CoreBlueprint\Core\Dashboard\CardRegistry;
+use CoreBlueprint\Core\ExtensionRegistry;
 use CB\SEO\Admin\SettingsPage;
 use CB\SEO\Admin\Assets;
 use CB\SEO\Admin\Editor\SeoMetaBox;

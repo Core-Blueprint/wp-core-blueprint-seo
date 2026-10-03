@@ -18,7 +18,7 @@ namespace {
 	function wp_enqueue_media(): void { ++$GLOBALS['cb_test_media']; }
 }
 
-namespace CB\Core\Admin {
+namespace CoreBlueprint\Core\Admin {
 	final class SettingsRegistry {
 		public static function url( string $extension_id ): string {
 			return 'https://example.test/wp-admin/admin.php?page=core-blueprint-settings&extension=' . $extension_id;
@@ -26,7 +26,7 @@ namespace CB\Core\Admin {
 	}
 }
 
-namespace CB\Core\UI {
+namespace CoreBlueprint\Core\UI {
 	final class AdminTheme {
 		/** @var string[] */
 		public static array $registered = [];
@@ -47,7 +47,7 @@ namespace {
 	$_GET = [ 'page' => 'core-blueprint-settings', 'extension' => 'core-blueprint-seo' ];
 	\CB\SEO\Admin\Assets::enqueue( 'core-blueprint_page_core-blueprint-settings' );
 	cb_assert(
-		[ 'core-blueprint_page_core-blueprint-settings' ] === \CB\Core\UI\AdminTheme::$registered,
+		[ 'core-blueprint_page_core-blueprint-settings' ] === \CoreBlueprint\Core\UI\AdminTheme::$registered,
 		'SEO Settings Hub did not declare Admin Theme compatibility.'
 	);
 	cb_assert( isset( $GLOBALS['cb_test_styles']['core-blueprint-seo-admin'] ), 'SEO admin stylesheet was not enqueued on its settings provider.' );
@@ -56,7 +56,7 @@ namespace {
 	$_GET = [];
 	\CB\SEO\Admin\Assets::enqueue( 'post.php' );
 	cb_assert(
-		1 === count( \CB\Core\UI\AdminTheme::$registered ),
+		1 === count( \CoreBlueprint\Core\UI\AdminTheme::$registered ),
 		'Native WordPress editor must not be registered as an SEO-owned Admin Theme screen.'
 	);
 	cb_assert( isset( $GLOBALS['cb_test_styles']['core-blueprint-seo-editor'] ), 'Native editor composition stylesheet was not enqueued.' );

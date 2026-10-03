@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace CB\SEO\Governance;
 
-use CB\Core\Governance\Audit as CoreAudit;
+use CoreBlueprint\Core\Governance\Audit as CoreAudit;
 
 defined( 'ABSPATH' ) || exit;
 

@@ -23,7 +23,7 @@ wp_set_current_user( 1 );
 $assert( defined( 'CB_SEO_REQUIRED_API' ) && '1.1' === CB_SEO_REQUIRED_API, 'SEO does not require Core API 1.1.' );
 $assert( defined( 'CB_SEO_REQUIRED_BASE' ) && '1.0.0-rc1' === CB_SEO_REQUIRED_BASE, 'SEO does not require Base 1.0.0-rc1+.' );
 
-$definition = \CB\Core\ExtensionRegistry::definition( 'core-blueprint-seo' );
+$definition = \CoreBlueprint\Core\ExtensionRegistry::definition( 'core-blueprint-seo' );
 $assert( is_array( $definition ), 'SEO is not registered with the Base Extension Registry.' );
 if ( is_array( $definition ) ) {
 	$assert( CB_SEO_REQUIRED_API === ( $definition['requires_api'] ?? null ), 'Extension Registry API contract differs.' );

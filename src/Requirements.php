@@ -80,15 +80,15 @@ final class Requirements {
 	/** Product-specific public Base services consumed by SEO. */
 	public static function base_contracts_ready(): bool {
 		$required_classes = [
-			'\\CB\\Core\\Admin\\SettingsRegistry',
-			'\\CB\\Core\\Dashboard\\CardRegistry',
-			'\\CB\\Core\\ExtensionRegistry',
-			'\\CB\\Core\\Modules\\ActivationRegistry',
-			'\\CB\\Core\\Modules\\ModuleStateInterface',
-			'\\CB\\Core\\UI\\Notice',
-			'\\CB\\Core\\UI\\Card',
-			'\\CB\\Core\\UI\\Icon',
-			'\\CB\\Core\\Log\\AuditLog',
+			'\\CoreBlueprint\\Core\\Admin\\SettingsRegistry',
+			'\\CoreBlueprint\\Core\\Dashboard\\CardRegistry',
+			'\\CoreBlueprint\\Core\\ExtensionRegistry',
+			'\\CoreBlueprint\\Core\\Modules\\ActivationRegistry',
+			'\\CoreBlueprint\\Core\\Modules\\ModuleStateInterface',
+			'\\CoreBlueprint\\Core\\UI\\Notice',
+			'\\CoreBlueprint\\Core\\UI\\Card',
+			'\\CoreBlueprint\\Core\\UI\\Icon',
+			'\\CoreBlueprint\\Core\\Log\\AuditLog',
 		];
 
 		foreach ( $required_classes as $class ) {

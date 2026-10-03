@@ -25,9 +25,9 @@ $assert(
     'WordPress.org readme.txt is missing or invalid'
 );
 $assert(
-    str_contains( $audit, 'CB\\Core\\Governance\\Audit' )
-        && ! str_contains( $audit, 'CB\\Core\\Log\\AuditLog' )
-        && ! str_contains( $lifecycle, 'CB\\Core\\Log\\AuditLog' ),
+    str_contains( $audit, 'CoreBlueprint\\Core\\Governance\\Audit' )
+        && ! str_contains( $audit, 'CoreBlueprint\\Core\\Log\\AuditLog' )
+        && ! str_contains( $lifecycle, 'CoreBlueprint\\Core\\Log\\AuditLog' ),
     'SEO audit events must use the public Base Governance boundary'
 );
 $assert(

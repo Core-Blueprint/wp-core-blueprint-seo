@@ -8,8 +8,8 @@ declare(strict_types=1);
 
 namespace CB\SEO\Admin;
 
-use CB\Core\Admin\SettingsRegistry;
-use CB\Core\UI\AdminTheme;
+use CoreBlueprint\Core\Admin\SettingsRegistry;
+use CoreBlueprint\Core\UI\AdminTheme;
 
 defined( 'ABSPATH' ) || exit;
 

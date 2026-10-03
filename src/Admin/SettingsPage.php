@@ -8,10 +8,10 @@ declare(strict_types=1);
 
 namespace CB\SEO\Admin;
 
-use CB\Core\Admin\SettingsRegistry;
-use CB\Core\UI\Card;
-use CB\Core\UI\Icon;
-use CB\Core\UI\Notice;
+use CoreBlueprint\Core\Admin\SettingsRegistry;
+use CoreBlueprint\Core\UI\Card;
+use CoreBlueprint\Core\UI\Icon;
+use CoreBlueprint\Core\UI\Notice;
 use CB\SEO\Governance\Audit;
 use CB\SEO\Metadata\SettingsRepository;
 use CB\SEO\Indexing\SettingsRepository as IndexingSettingsRepository;

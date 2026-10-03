@@ -16,7 +16,7 @@ namespace {
 	}
 }
 
-namespace CB\Core\Admin {
+namespace CoreBlueprint\Core\Admin {
 	final class SettingsRegistry {
 		public const GROUP_CONTENT_PUBLISHING = 'content-publishing';
 
@@ -46,7 +46,7 @@ namespace CB\Core\Admin {
 	}
 }
 
-namespace CB\Core {
+namespace CoreBlueprint\Core {
 	final class ExtensionRegistry {
 		/** @var array<string,mixed>|null */
 		public static ?array $registered = null;
@@ -72,8 +72,8 @@ namespace CB\SEO\Compatibility {
 }
 
 namespace CB\SEO {
-	use CB\Core\Admin\SettingsRegistry;
-	use CB\Core\ExtensionRegistry;
+	use CoreBlueprint\Core\Admin\SettingsRegistry;
+	use CoreBlueprint\Core\ExtensionRegistry;
 	use CB\SEO\Compatibility\SeoPluginConflictDetector;
 
 	final class State {
